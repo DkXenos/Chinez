@@ -18,9 +18,6 @@ struct CanvasPlaceholder: View {
             .stroke(Color.gray.opacity(0.2), lineWidth: 1)
             .clipped()
             
-            Text("PencilKit Canvas")
-                .font(DesignSystem.Typography.title)
-                .foregroundColor(DesignSystem.Colors.textSecondary)
         }
         .aspectRatio(1, contentMode: .fit)
         .clipShape(RoundedRectangle(cornerRadius: DesignSystem.Dimensions.cornerRadius, style: .continuous))

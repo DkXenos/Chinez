@@ -11,11 +11,16 @@ struct ExerciseContainerView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: DesignSystem.Dimensions.paddingStandard) {
                         ForEach(viewModel.characters, id: \.self) { char in
-                            Text(char)
-                                .font(.system(size: 40, weight: .bold))
-                                .frame(width: 80, height: 80)
-                                .background(DesignSystem.Colors.secondaryBackground)
-                                .clipShape(RoundedRectangle(cornerRadius: DesignSystem.Dimensions.cornerRadius))
+                            Button(action: {
+                                viewModel.selectedCharacter = char
+                            }) {
+                                Text(char)
+                                    .font(.system(size: 40, weight: .bold))
+                                    .foregroundColor(viewModel.selectedCharacter == char ? .white : DesignSystem.Colors.textPrimary)
+                                    .frame(width: 80, height: 80)
+                                    .background(viewModel.selectedCharacter == char ? DesignSystem.Colors.primary : DesignSystem.Colors.secondaryBackground)
+                                    .clipShape(RoundedRectangle(cornerRadius: DesignSystem.Dimensions.cornerRadius))
+                            }
                         }
                     }
                     .padding(DesignSystem.Dimensions.paddingStandard)
@@ -24,12 +29,18 @@ struct ExerciseContainerView: View {
                 Spacer()
                 
                 ZStack {
-                    Image(systemName: "character")
-                        .font(.system(size: 200))
-                        .foregroundColor(DesignSystem.Colors.secondaryBackground)
-                    
                     CanvasPlaceholder()
                         .padding(DesignSystem.Dimensions.paddingLarge)
+                    
+                    if let selectedChar = viewModel.selectedCharacter {
+                        Text(selectedChar)
+                            .font(.system(size: 200))
+                            .foregroundColor(DesignSystem.Colors.textSecondary.opacity(0.15))
+                        
+                        StrokeCanvasView(character: selectedChar)
+                            .id(selectedChar)
+                            .padding(DesignSystem.Dimensions.paddingLarge)
+                    }
                 }
                 
                 Spacer()

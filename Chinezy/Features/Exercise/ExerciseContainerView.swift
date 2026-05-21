@@ -7,46 +7,57 @@ struct ExerciseContainerView: View {
     
     var body: some View {
         NavigationStack {
-            VStack(spacing: 0) {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: DesignSystem.Dimensions.paddingStandard) {
-                        ForEach(viewModel.characters, id: \.self) { char in
-                            Button(action: {
-                                viewModel.selectedCharacter = char
-                            }) {
-                                Text(char)
-                                    .font(.system(size: 40, weight: .bold))
-                                    .foregroundColor(viewModel.selectedCharacter == char ? .white : DesignSystem.Colors.textPrimary)
-                                    .frame(width: 80, height: 80)
-                                    .background(viewModel.selectedCharacter == char ? DesignSystem.Colors.primary : DesignSystem.Colors.secondaryBackground)
-                                    .clipShape(RoundedRectangle(cornerRadius: DesignSystem.Dimensions.cornerRadius))
-                            }
-                        }
-                    }
-                    .padding(DesignSystem.Dimensions.paddingStandard)
-                }
-                
-                Spacer()
-                
-                ZStack {
-                    CanvasPlaceholder()
-                        .padding(DesignSystem.Dimensions.paddingLarge)
-                    
-                    if let selectedChar = viewModel.selectedCharacter {
-                        Text(selectedChar)
-                            .font(.system(size: 200))
-                            .foregroundColor(DesignSystem.Colors.textSecondary.opacity(0.15))
+            VStack {
+                if viewModel.isQuizComplete {
+                    VStack(spacing: DesignSystem.Dimensions.paddingLarge) {
+                        Text("Level Complete!")
+                            .font(.system(size: 32, weight: .bold))
+                            .foregroundColor(DesignSystem.Colors.textPrimary)
                         
-                        StrokeCanvasView(character: selectedChar)
-                            .id(selectedChar)
+                        Text("Total Mistakes: \(viewModel.mistakeCount)")
+                            .font(.system(size: 20, weight: .medium))
+                            .foregroundColor(DesignSystem.Colors.textSecondary)
+                        
+                        PrimaryButton(title: "Return to Course", systemImage: "checkmark.circle.fill") {
+                            router.showExercise = false
+                        }
+                        .padding(.horizontal, DesignSystem.Dimensions.paddingLarge)
+                        .padding(.top, DesignSystem.Dimensions.paddingLarge)
+                    }
+                } else {
+                    VStack(spacing: DesignSystem.Dimensions.paddingStandard) {
+                        Text("\(viewModel.currentIndex + 1) / \(viewModel.charactersToLearn.count)")
+                            .font(.system(size: 18, weight: .semibold))
+                            .foregroundColor(DesignSystem.Colors.textSecondary)
+                            .padding(.top, DesignSystem.Dimensions.paddingLarge)
+                        
+                        Text(viewModel.currentCharacter)
+                            .font(.system(size: 120, weight: .bold))
+                            .foregroundColor(DesignSystem.Colors.textPrimary)
+                            .padding(.top, DesignSystem.Dimensions.paddingStandard)
+                        
+                        Spacer()
+                        
+                        ZStack {
+                            CanvasPlaceholder()
+                                .padding(DesignSystem.Dimensions.paddingLarge)
+                            
+                            StrokeCanvasView(
+                                character: viewModel.currentCharacter,
+                                onCharacterFinished: {
+                                    viewModel.characterCompleted()
+                                },
+                                onMistake: {
+                                    viewModel.registerMistake()
+                                }
+                            )
+                            .id(viewModel.currentCharacter)
                             .padding(DesignSystem.Dimensions.paddingLarge)
+                        }
+                        
+                        Spacer()
                     }
                 }
-                
-                Spacer()
-                
-                ExerciseNavBar(selectedMode: $viewModel.selectedMode)
-                    .padding(.bottom, DesignSystem.Dimensions.paddingStandard)
             }
             .navigationTitle(part.name)
             .navigationBarTitleDisplayMode(.inline)

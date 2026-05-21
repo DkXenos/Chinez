@@ -11,14 +11,18 @@ struct BoundsPreferenceKey: PreferenceKey {
 struct StrokeCanvasView: View {
     @StateObject private var validator: StrokeValidator
     @State private var canvasBounds: CGRect = .zero
+    let onCharacterFinished: () -> Void
+    let onMistake: () -> Void
     
-    init(character: String) {
+    init(character: String, onCharacterFinished: @escaping () -> Void, onMistake: @escaping () -> Void) {
         _validator = StateObject(wrappedValue: StrokeValidator(character: character))
+        self.onCharacterFinished = onCharacterFinished
+        self.onMistake = onMistake
     }
     
     var body: some View {
         ZStack {
-            PencilKitRepresentable(validator: validator)
+            PencilKitRepresentable(validator: validator, onCharacterFinished: onCharacterFinished, onMistake: onMistake)
                 .background(
                     GeometryReader { geo in
                         Color.clear
@@ -47,6 +51,8 @@ struct StrokeCanvasView: View {
 
 struct PencilKitRepresentable: UIViewRepresentable {
     @ObservedObject var validator: StrokeValidator
+    let onCharacterFinished: () -> Void
+    let onMistake: () -> Void
     
     func makeUIView(context: Context) -> PKCanvasView {
         let canvas = PKCanvasView()
@@ -60,19 +66,24 @@ struct PencilKitRepresentable: UIViewRepresentable {
     func updateUIView(_ uiView: PKCanvasView, context: Context) {}
     
     func makeCoordinator() -> Coordinator {
-        Coordinator(self, validator: validator)
+        Coordinator(self, validator: validator, onCharacterFinished: onCharacterFinished, onMistake: onMistake)
     }
     
     class Coordinator: NSObject, PKCanvasViewDelegate {
         var parent: PencilKitRepresentable
         var validator: StrokeValidator
+        let onCharacterFinished: () -> Void
+        let onMistake: () -> Void
         
-        init(_ parent: PencilKitRepresentable, validator: StrokeValidator) {
+        init(_ parent: PencilKitRepresentable, validator: StrokeValidator, onCharacterFinished: @escaping () -> Void, onMistake: @escaping () -> Void) {
             self.parent = parent
             self.validator = validator
+            self.onCharacterFinished = onCharacterFinished
+            self.onMistake = onMistake
         }
         
         func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
+            guard !canvasView.drawing.strokes.isEmpty else { return }
             let currentStrokesCount = canvasView.drawing.strokes.count
             
             if currentStrokesCount <= validator.currentStrokeIndex {
@@ -90,6 +101,8 @@ struct PencilKitRepresentable: UIViewRepresentable {
                 DispatchQueue.main.async {
                     canvasView.undoManager?.undo()
                 }
+                
+                onMistake()
             } else {
                 let generator = UIImpactFeedbackGenerator(style: .medium)
                 generator.impactOccurred()
@@ -97,6 +110,7 @@ struct PencilKitRepresentable: UIViewRepresentable {
                 if validator.isFinished {
                     let successGenerator = UINotificationFeedbackGenerator()
                     successGenerator.notificationOccurred(.success)
+                    onCharacterFinished()
                 }
             }
         }

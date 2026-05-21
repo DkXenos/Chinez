@@ -16,7 +16,7 @@ struct ContentView: View {
                             switch route {
                             case .theme(let theme):
                                 PartSelectionView(theme: theme)
-                            case .part(let part):
+                            case .part(_):
                                 EmptyView()
                             }
                         }

@@ -42,17 +42,23 @@ class StrokeValidator: ObservableObject {
             return
         }
         
-        let scaleX = bounds.width / 1024.0
-        let scaleY = bounds.height / 1024.0
+        let scale = min(bounds.width, bounds.height) / 1024.0
+        let offsetX = (bounds.width - (1024.0 * scale)) / 2.0
+        let offsetY = (bounds.height - (1024.0 * scale)) / 2.0
         
-        expectedStartOnScreen = CGPoint(
-            x: CGFloat(targetFirstPoint[0]) * scaleX,
-            y: CGFloat(targetFirstPoint[1]) * scaleY
-        )
-        expectedEndOnScreen = CGPoint(
-            x: CGFloat(targetLastPoint[0]) * scaleX,
-            y: CGFloat(targetLastPoint[1]) * scaleY
-        )
+        let rawStartX = CGFloat(targetFirstPoint[0])
+        let rawStartY = CGFloat(targetFirstPoint[1])
+        let rawEndX = CGFloat(targetLastPoint[0])
+        let rawEndY = CGFloat(targetLastPoint[1])
+        
+        let expectedStartX = (rawStartX * scale) + offsetX
+        let expectedStartY = ((1024.0 - rawStartY) * scale) + offsetY
+        
+        let expectedEndX = (rawEndX * scale) + offsetX
+        let expectedEndY = ((1024.0 - rawEndY) * scale) + offsetY
+        
+        expectedStartOnScreen = CGPoint(x: expectedStartX, y: expectedStartY)
+        expectedEndOnScreen = CGPoint(x: expectedEndX, y: expectedEndY)
     }
     
     func validateStroke(_ stroke: PKStroke, canvasBounds: CGRect) -> Bool {
@@ -84,19 +90,24 @@ class StrokeValidator: ObservableObject {
         let userLast = userPathLast.location
         print("Actual User Start: \(userFirst), Actual User End: \(userLast)")
         
-        let scaleX = canvasBounds.width / 1024.0
-        let scaleY = canvasBounds.height / 1024.0
-        print("Calculated scaleX: \(scaleX), scaleY: \(scaleY)")
+        let scale = min(canvasBounds.width, canvasBounds.height) / 1024.0
+        let offsetX = (canvasBounds.width - (1024.0 * scale)) / 2.0
+        let offsetY = (canvasBounds.height - (1024.0 * scale)) / 2.0
+        print("Calculated uniform scale: \(scale), offsets: \(offsetX), \(offsetY)")
         
-        let expectedFirstPoint = CGPoint(
-            x: CGFloat(targetFirstPoint[0]) * scaleX,
-            y: CGFloat(targetFirstPoint[1]) * scaleY
-        )
+        let rawStartX = CGFloat(targetFirstPoint[0])
+        let rawStartY = CGFloat(targetFirstPoint[1])
+        let rawEndX = CGFloat(targetLastPoint[0])
+        let rawEndY = CGFloat(targetLastPoint[1])
         
-        let expectedLastPoint = CGPoint(
-            x: CGFloat(targetLastPoint[0]) * scaleX,
-            y: CGFloat(targetLastPoint[1]) * scaleY
-        )
+        let expectedStartX = (rawStartX * scale) + offsetX
+        let expectedStartY = ((1024.0 - rawStartY) * scale) + offsetY
+        
+        let expectedEndX = (rawEndX * scale) + offsetX
+        let expectedEndY = ((1024.0 - rawEndY) * scale) + offsetY
+        
+        let expectedFirstPoint = CGPoint(x: expectedStartX, y: expectedStartY)
+        let expectedLastPoint = CGPoint(x: expectedEndX, y: expectedEndY)
         print("Scaled Expected Start: \(expectedFirstPoint), Scaled Expected End: \(expectedLastPoint)")
         
         let startDist = hypot(userFirst.x - expectedFirstPoint.x, userFirst.y - expectedFirstPoint.y)

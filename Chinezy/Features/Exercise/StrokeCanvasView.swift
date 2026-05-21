@@ -1,12 +1,52 @@
 import SwiftUI
 import PencilKit
 
-struct StrokeCanvasView: UIViewRepresentable {
+struct BoundsPreferenceKey: PreferenceKey {
+    static var defaultValue: CGRect = .zero
+    static func reduce(value: inout CGRect, nextValue: () -> CGRect) {
+        value = nextValue()
+    }
+}
+
+struct StrokeCanvasView: View {
     @StateObject private var validator: StrokeValidator
+    @State private var canvasBounds: CGRect = .zero
     
     init(character: String) {
         _validator = StateObject(wrappedValue: StrokeValidator(character: character))
     }
+    
+    var body: some View {
+        ZStack {
+            PencilKitRepresentable(validator: validator)
+                .background(
+                    GeometryReader { geo in
+                        Color.clear
+                            .preference(key: BoundsPreferenceKey.self, value: geo.frame(in: .local))
+                    }
+                )
+                .onPreferenceChange(BoundsPreferenceKey.self) { bounds in
+                    canvasBounds = bounds
+                    validator.updateExpectedPoints(for: bounds)
+                }
+            
+            if let start = validator.expectedStartOnScreen, let end = validator.expectedEndOnScreen {
+                Circle()
+                    .fill(Color.green)
+                    .frame(width: 15, height: 15)
+                    .position(start)
+                
+                Circle()
+                    .fill(Color.red)
+                    .frame(width: 15, height: 15)
+                    .position(end)
+            }
+        }
+    }
+}
+
+struct PencilKitRepresentable: UIViewRepresentable {
+    @ObservedObject var validator: StrokeValidator
     
     func makeUIView(context: Context) -> PKCanvasView {
         let canvas = PKCanvasView()
@@ -24,10 +64,10 @@ struct StrokeCanvasView: UIViewRepresentable {
     }
     
     class Coordinator: NSObject, PKCanvasViewDelegate {
-        var parent: StrokeCanvasView
+        var parent: PencilKitRepresentable
         var validator: StrokeValidator
         
-        init(_ parent: StrokeCanvasView, validator: StrokeValidator) {
+        init(_ parent: PencilKitRepresentable, validator: StrokeValidator) {
             self.parent = parent
             self.validator = validator
         }

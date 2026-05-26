@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Hanzi Stroke Animator</title>
+    <style>
+        /* ── Reset & Transparent Background ──────────────────────────── */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body {
+            background: transparent;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+            /* Disable ALL pointer events — native layer handles touch */
+            pointer-events: none;
+        }
+
+        #writer-container {
+            position: relative;
+            width: 100vmin;
+            height: 100vmin;
+        }
+
+        #writer-container svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── SVG practice grid (standard Hanzi Writer guide lines) ─────── -->
+<svg xmlns="http://www.w3.org/2000/svg"
+     id="grid-background"
+     width="100" height="100"
+     viewBox="0 0 100 100"
+     style="position:absolute; width:100vmin; height:100vmin;">
+    <!-- Outer border -->
+    <line x1="0" y1="0"   x2="100" y2="0"   stroke="#DDD" stroke-width="2" />
+    <line x1="0" y1="0"   x2="0"   y2="100" stroke="#DDD" stroke-width="2" />
+    <line x1="100" y1="0" x2="100" y2="100" stroke="#DDD" stroke-width="2" />
+    <line x1="0" y1="100" x2="100" y2="100" stroke="#DDD" stroke-width="2" />
+    <!-- Cross (vertical + horizontal midlines) -->
+    <line x1="50" y1="0"   x2="50"  y2="100" stroke="#DDD" stroke-width="1" stroke-dasharray="4,4" />
+    <line x1="0"  y1="50"  x2="100" y2="50"  stroke="#DDD" stroke-width="1" stroke-dasharray="4,4" />
+    <!-- Diagonals -->
+    <line x1="0"   y1="0"   x2="100" y2="100" stroke="#DDD" stroke-width="1" stroke-dasharray="4,4" />
+    <line x1="100" y1="0"   x2="0"   y2="100" stroke="#DDD" stroke-width="1" stroke-dasharray="4,4" />
+</svg>
+
+<!-- Hanzi Writer renders into this container -->
+<div id="writer-container"></div>
+
+<!-- ── Load the bundled Hanzi Writer library ──────────────────────── -->
+<script src="hanzi-writer.min.js"></script>
+
+<script>
+    // ── Globals ──────────────────────────────────────────────────────
+    var writer = null;
+    var totalStrokes = 0;
+    var _strokeDataCache = null;
+
+    /**
+     * charDataLoader — resolves character data from the bundled JSON
+     * (HSK1_StrokeData.json) first, then falls back to CDN.
+     *
+     * The bundled JSON is an array of { character, medians } objects.
+     * HanziWriter needs { strokes, medians } — so if the bundled data
+     * lacks `strokes`, we fall back to the CDN which has the full data
+     * (SVG paths + medians).
+     */
+    function charDataLoader(character, onLoad, onError) {
+        // Always try CDN first since our bundled JSON only has medians,
+        // not the SVG stroke paths that HanziWriter needs for rendering.
+        // The bundled JSON is used by the native StrokeValidator only.
+        fetch('https://cdn.jsdelivr.net/npm/hanzi-writer-data@latest/' + character + '.json')
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+                totalStrokes = data.strokes.length;
+                onLoad(data);
+            })
+            .catch(function(err) {
+                console.error('Failed to load character data for: ' + character, err);
+                onError(err);
+            });
+    }
+
+    /**
+     * loadCharacter(character)
+     * Called from Swift. Creates the HanziWriter instance with the
+     * character's outline visible but all strokes initially hidden.
+     * The native layer will call animateStroke() one-by-one after
+     * each successful PencilKit stroke validation.
+     */
+    function loadCharacter(character) {
+        var container = document.getElementById('writer-container');
+        container.innerHTML = '';
+
+        var size = Math.min(window.innerWidth, window.innerHeight);
+
+        writer = HanziWriter.create('writer-container', character, {
+            width: size,
+            height: size,
+            padding: 10,
+            showCharacter: false,     // strokes start hidden
+            showOutline: true,        // show the light outline as guide
+            strokeAnimationSpeed: 2,
+            delayBetweenStrokes: 50,
+            charDataLoader: charDataLoader,
+            strokeColor: '#333',
+            outlineColor: '#CCCCCC',
+            drawingWidth: 12
+        });
+    }
+
+    /**
+     * animateStroke(strokeIndex)
+     * Called from Swift after the native StrokeValidator confirms a
+     * correct stroke. Animates the nth stroke on the Hanzi Writer
+     * canvas, visually "inking in" the correct path.
+     *
+     * After the last stroke is animated, sends `allStrokesCompleted`
+     * back to Swift.
+     */
+    function animateStroke(strokeIndex) {
+        if (!writer) {
+            console.warn('animateStroke called but writer is null');
+            return;
+        }
+
+        // HanziWriter exposes animateStroke to draw a single stroke
+        writer.animateStroke(strokeIndex, {
+            onComplete: function () {
+                // Check if this was the last stroke
+                if (strokeIndex >= totalStrokes - 1) {
+                    if (window.webkit && window.webkit.messageHandlers &&
+                        window.webkit.messageHandlers.allStrokesCompleted) {
+                        window.webkit.messageHandlers.allStrokesCompleted
+                            .postMessage(true);
+                    }
+                }
+            }
+        });
+    }
+
+    /**
+     * animateFullCharacter()
+     * Optional: called from Swift to play the full stroke-order
+     * animation as a demo/review after the quiz is completed.
+     */
+    function animateFullCharacter() {
+        if (!writer) return;
+        writer.animateCharacter();
+    }
+
+    /**
+     * resetCharacter()
+     * Hides all strokes again so the quiz can restart.
+     */
+    function resetCharacter() {
+        if (!writer) return;
+        writer.hideCharacter();
+    }
+</script>
+
+</body>
+</html>

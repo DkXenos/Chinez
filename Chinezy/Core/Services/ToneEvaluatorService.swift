@@ -3,7 +3,7 @@ import AVFoundation
 import SoundAnalysis
 import Combine
 
-// MARK: – Service State
+// MARK: - Service State
 
 enum ToneEvaluatorState: Equatable {
     case idle
@@ -12,29 +12,29 @@ enum ToneEvaluatorState: Equatable {
     case result
 }
 
-// MARK: – Service
+// MARK: - Service
 
 final class ToneEvaluatorService: NSObject, ObservableObject {
 
-    // MARK: – Published State
+    // MARK: - Published State
 
     @Published var state: ToneEvaluatorState = .idle
     @Published var predictedTone: String = ""
     @Published var errorMessage: String?
 
-    // MARK: – Confidence Threshold
+    // MARK: - Confidence Threshold
 
     /// Only predictions at or above this confidence are kept.
     private let confidenceThreshold: Double = 0.85
 
-    // MARK: – Prediction Buffer
+    // MARK: - Prediction Buffer
 
-    /// Accumulated high‑confidence predictions collected while recording.
+    /// Accumulated high-confidence predictions collected while recording.
     /// Accessed from the analysis queue; guarded by `bufferLock`.
     nonisolated(unsafe) private var accumulatedPredictions: [String] = []
     nonisolated(unsafe) private let bufferLock = NSLock()
 
-    // MARK: – Audio Properties
+    // MARK: - Audio Properties
 
     nonisolated(unsafe) private let audioEngine = AVAudioEngine()
     nonisolated(unsafe) private var streamAnalyzer: SNAudioStreamAnalyzer?
@@ -43,7 +43,7 @@ final class ToneEvaluatorService: NSObject, ObservableObject {
         label: "com.chinezy.toneAnalysis"
     )
 
-    // MARK: – Lifecycle
+    // MARK: - Lifecycle
 
     override init() {
         super.init()
@@ -54,7 +54,7 @@ final class ToneEvaluatorService: NSObject, ObservableObject {
         audioEngine.inputNode.removeTap(onBus: 0)
     }
 
-    // MARK: – Microphone Permission
+    // MARK: - Microphone Permission
 
     func requestMicrophonePermission() {
         AVAudioApplication.requestRecordPermission { [weak self] granted in
@@ -67,7 +67,7 @@ final class ToneEvaluatorService: NSObject, ObservableObject {
         }
     }
 
-    // MARK: – Recording Controls
+    // MARK: - Recording Controls
 
     /// Clears the buffer and begins capturing + classifying audio.
     func startRecording() {
@@ -93,7 +93,7 @@ final class ToneEvaluatorService: NSObject, ObservableObject {
         let format = inputNode.outputFormat(forBus: 0)
 
         guard format.sampleRate > 0 else {
-            errorMessage = "Invalid audio format — no microphone available."
+            errorMessage = "Invalid audio format - no microphone available."
             return
         }
 
@@ -154,7 +154,7 @@ final class ToneEvaluatorService: NSObject, ObservableObject {
             guard let self else { return }
 
             if predictions.isEmpty {
-                self.predictedTone = "Unclear / Too Noisy"
+                self.predictedTone = "Noise detected. Please try again."
             } else {
                 self.predictedTone = Self.mode(of: predictions)
             }
@@ -169,9 +169,9 @@ final class ToneEvaluatorService: NSObject, ObservableObject {
         state = .idle
     }
 
-    // MARK: – Helpers
+    // MARK: - Helpers
 
-    /// Returns the most frequent element in a non‑empty array.
+    /// Returns the most frequent element in a non-empty array.
     private static func mode(of array: [String]) -> String {
         var counts: [String: Int] = [:]
         for item in array { counts[item, default: 0] += 1 }
@@ -179,7 +179,7 @@ final class ToneEvaluatorService: NSObject, ObservableObject {
     }
 }
 
-// MARK: – SNResultsObserving
+// MARK: - SNResultsObserving
 
 extension ToneEvaluatorService: @preconcurrency SNResultsObserving {
 
@@ -187,7 +187,12 @@ extension ToneEvaluatorService: @preconcurrency SNResultsObserving {
         guard let classification = result as? SNClassificationResult,
               let top = classification.classifications.first,
               top.confidence >= confidenceThreshold else {
-            return          // Below threshold → discard (noise)
+            return // Below threshold -> discard
+        }
+
+        // Ignore the explicit noise class
+        if top.identifier == "Tone_0_Noise" {
+            return
         }
 
         bufferLock.lock()

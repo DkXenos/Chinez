@@ -1,6 +1,6 @@
 import SwiftUI
 
-// MARK: – Data Model
+// MARK: - Data Model
 
 struct ToneTarget {
     let hanzi: String
@@ -9,7 +9,7 @@ struct ToneTarget {
     let toneNumber: Int
 }
 
-// MARK: – Main View
+// MARK: - Main View
 
 struct TonePracticeView: View {
     @EnvironmentObject var router: NavigationRouter
@@ -27,53 +27,49 @@ struct TonePracticeView: View {
 
     var body: some View {
         ZStack {
-            // ── Background ──────────────────────────────────
-            LinearGradient(
-                colors: [
-                    Color(red: 0.06, green: 0.07, blue: 0.14),
-                    Color(red: 0.10, green: 0.11, blue: 0.22)
-                ],
-                startPoint: .top,
-                endPoint: .bottom
-            )
-            .ignoresSafeArea()
+            // Background
+            Color(uiColor: .systemGroupedBackground)
+                .ignoresSafeArea()
 
-            VStack(spacing: 0) {
-
-                // ── Header ──────────────────────────────────
-                headerSection
-                    .padding(.top, 8)
+            VStack(spacing: 24) {
 
                 Spacer()
 
-                // ── Character Card ──────────────────────────
+                // Character Card
                 characterCard
-                    .padding(.horizontal, DesignSystem.Dimensions.paddingLarge)
+                    .padding(.horizontal, 24)
 
                 Spacer()
 
-                // ── Feedback (only in .result) ──────────────
+                // Feedback (only in .result)
                 if toneService.state == .result {
                     feedbackBadge
                         .transition(.scale.combined(with: .opacity))
-                        .padding(.bottom, 20)
+                        .padding(.bottom, 8)
+                } else if toneService.state == .recording {
+                    listeningBadge
+                        .transition(.scale.combined(with: .opacity))
+                        .padding(.bottom, 8)
+                } else {
+                    // Placeholder to maintain spacing
+                    Color.clear
+                        .frame(height: 40)
+                        .padding(.bottom, 8)
                 }
 
-                // ── Action Area ─────────────────────────────
+                // Action Area
                 actionArea
-                    .padding(.bottom, 12)
+                    .padding(.bottom, 16)
 
-                // ── Hint ────────────────────────────────────
+                // Hint
                 Text(hintText)
-                    .font(.system(size: 13, weight: .medium, design: .rounded))
-                    .foregroundColor(.white.opacity(0.4))
-                    .padding(.bottom, DesignSystem.Dimensions.paddingLarge)
+                    .font(.footnote)
+                    .foregroundColor(.secondary)
+                    .padding(.bottom, 32)
             }
         }
         .navigationTitle("Tone Practice")
         .navigationBarTitleDisplayMode(.inline)
-        .toolbarColorScheme(.dark, for: .navigationBar)
-        .toolbarBackground(Color.clear, for: .navigationBar)
         .onAppear { toneService.requestMicrophonePermission() }
         .animation(.easeInOut(duration: 0.3), value: toneService.state)
         .alert("Error", isPresented: .constant(toneService.errorMessage != nil)) {
@@ -83,113 +79,61 @@ struct TonePracticeView: View {
         }
     }
 
-    // MARK: – Header
-
-    private var headerSection: some View {
-        VStack(spacing: 4) {
-            Text("Pronounce the character")
-                .font(.system(size: 15, weight: .medium, design: .rounded))
-                .foregroundColor(.white.opacity(0.5))
-
-            HStack(spacing: 6) {
-                Image(systemName: "target")
-                    .font(.system(size: 14, weight: .semibold))
-                Text("Target: Tone \(target.toneNumber)")
-                    .font(.system(size: 16, weight: .bold, design: .rounded))
-            }
-            .foregroundColor(accentColor)
-        }
-    }
-
-    // MARK: – Character Card
+    // MARK: - Character Card
 
     private var characterCard: some View {
-        VStack(spacing: 16) {
+        VStack(spacing: 12) {
+            Text("Target: Tone \(target.toneNumber)")
+                .font(.subheadline)
+                .fontWeight(.medium)
+                .foregroundColor(.secondary)
+                .padding(.top, 24)
+
             Text(target.hanzi)
-                .font(.system(size: 120, weight: .bold))
-                .foregroundColor(.white)
-                .shadow(color: accentColor.opacity(0.35), radius: 24, x: 0, y: 8)
+                .font(.system(size: 140, weight: .bold))
+                .foregroundColor(.primary)
 
             Text(target.pinyin)
-                .font(.system(size: 28, weight: .semibold, design: .rounded))
-                .foregroundColor(.white.opacity(0.65))
-
-            // Waveform bars
-            waveformView
-                .frame(height: 32)
-                .padding(.horizontal, 32)
+                .font(.system(size: 32, weight: .medium, design: .rounded))
+                .foregroundColor(.secondary)
+                .padding(.bottom, 32)
         }
         .frame(maxWidth: .infinity)
-        .padding(.vertical, 36)
-        .background(
-            RoundedRectangle(cornerRadius: 28, style: .continuous)
-                .fill(.ultraThinMaterial.opacity(0.35))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 28, style: .continuous)
-                        .strokeBorder(
-                            LinearGradient(
-                                colors: [.white.opacity(0.15), .white.opacity(0.05)],
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            ),
-                            lineWidth: 1
-                        )
-                )
-        )
-        .environment(\.colorScheme, .dark)
+        .background(Color(uiColor: .secondarySystemGroupedBackground))
+        .clipShape(RoundedRectangle(cornerRadius: 32, style: .continuous))
+        .shadow(color: Color.black.opacity(0.05), radius: 10, x: 0, y: 5)
     }
 
-    private var waveformView: some View {
-        HStack(spacing: 3) {
-            ForEach(0..<20, id: \.self) { i in
-                let isActive = toneService.state == .recording
-                RoundedRectangle(cornerRadius: 2)
-                    .fill(accentColor.opacity(isActive ? 0.8 : 0.3))
-                    .frame(
-                        width: 3,
-                        height: isActive ? waveHeight(for: i) : 6
-                    )
-                    .animation(
-                        isActive
-                            ? .easeInOut(duration: 0.4)
-                                .repeatForever(autoreverses: true)
-                                .delay(Double(i) * 0.05)
-                            : .easeOut(duration: 0.3),
-                        value: isActive
-                    )
-            }
+    // MARK: - Badges
+
+    private var listeningBadge: some View {
+        HStack(spacing: 6) {
+            Image(systemName: "ear")
+                .font(.system(size: 14, weight: .semibold))
+            Text("Listening...")
+                .font(.system(size: 15, weight: .semibold))
         }
+        .foregroundColor(.white)
+        .padding(.horizontal, 16)
+        .padding(.vertical, 8)
+        .background(Capsule().fill(Color.blue))
     }
-
-    private func waveHeight(for index: Int) -> CGFloat {
-        let n = Double(index) / 20.0
-        return CGFloat(8 + 18 * abs(sin(n * .pi * 2)))
-    }
-
-    // MARK: – Feedback Badge (shown only in .result)
 
     private var feedbackBadge: some View {
         let verdict = evaluateResult()
-        return HStack(spacing: 8) {
+        return HStack(spacing: 6) {
             Image(systemName: verdict.icon)
-                .font(.system(size: 16, weight: .semibold))
+                .font(.system(size: 14, weight: .semibold))
             Text(verdict.text)
-                .font(.system(size: 17, weight: .bold, design: .rounded))
+                .font(.system(size: 15, weight: .semibold))
         }
-        .foregroundColor(verdict.color)
-        .padding(.horizontal, 20)
-        .padding(.vertical, 10)
-        .background(
-            Capsule()
-                .fill(verdict.color.opacity(0.12))
-                .overlay(
-                    Capsule()
-                        .strokeBorder(verdict.color.opacity(0.25), lineWidth: 1)
-                )
-        )
+        .foregroundColor(.white)
+        .padding(.horizontal, 16)
+        .padding(.vertical, 8)
+        .background(Capsule().fill(verdict.color))
     }
 
-    // MARK: – Action Area (button or spinner)
+    // MARK: - Action Area
 
     @ViewBuilder
     private var actionArea: some View {
@@ -199,15 +143,14 @@ struct TonePracticeView: View {
         case .recording:
             micButton(isRecording: true)
         case .analyzing:
-            VStack(spacing: 10) {
+            VStack(spacing: 12) {
                 ProgressView()
                     .controlSize(.large)
-                    .tint(.white)
-                Text("Analyzing…")
-                    .font(.system(size: 14, weight: .semibold, design: .rounded))
-                    .foregroundColor(.white.opacity(0.6))
+                Text("Analyzing...")
+                    .font(.footnote)
+                    .foregroundColor(.secondary)
             }
-            .frame(height: 100)
+            .frame(height: 88)
         }
     }
 
@@ -221,62 +164,35 @@ struct TonePracticeView: View {
                 isPulsing = true
             }
         } label: {
-            ZStack {
-                // Outer pulse ring
-                if isRecording {
-                    Circle()
-                        .fill(Color.red.opacity(0.15))
-                        .frame(width: 100, height: 100)
-                        .scaleEffect(isPulsing ? 1.3 : 1.0)
-                        .opacity(isPulsing ? 0.0 : 0.6)
-                        .animation(
-                            .easeOut(duration: 1.0)
-                                .repeatForever(autoreverses: false),
-                            value: isPulsing
-                        )
-                }
-
-                // Circle
-                Circle()
-                    .fill(
-                        isRecording
-                            ? LinearGradient(
-                                colors: [Color.red, Color.red.opacity(0.7)],
-                                startPoint: .top, endPoint: .bottom
-                              )
-                            : LinearGradient(
-                                colors: [accentColor, accentColor.opacity(0.7)],
-                                startPoint: .top, endPoint: .bottom
-                              )
-                    )
-                    .frame(width: 80, height: 80)
-                    .shadow(
-                        color: (isRecording ? Color.red : accentColor).opacity(0.5),
-                        radius: 16, x: 0, y: 6
-                    )
-
-                // Icon
-                Image(systemName: isRecording ? "stop.fill" : "mic.fill")
-                    .font(.system(size: 30, weight: .semibold))
-                    .foregroundColor(.white)
-            }
+            Image(systemName: isRecording ? "stop.circle.fill" : "mic.circle.fill")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 88, height: 88)
+                .foregroundColor(isRecording ? .red : .blue)
+                .symbolEffect(.bounce, value: toneService.state)
+                .scaleEffect(isPulsing ? 1.05 : 1.0)
+                .animation(
+                    isRecording
+                        ? .easeInOut(duration: 0.8).repeatForever(autoreverses: true)
+                        : .default,
+                    value: isPulsing
+                )
         }
         .buttonStyle(.plain)
-        .sensoryFeedback(.impact(weight: .medium), trigger: toneService.state)
     }
 
-    // MARK: – Hint Text
+    // MARK: - Hint Text
 
     private var hintText: String {
         switch toneService.state {
         case .idle:      return "Tap to start recording"
-        case .recording: return "Listening… Tap to stop"
-        case .analyzing: return "Processing your pronunciation"
+        case .recording: return "Tap to stop"
+        case .analyzing: return "Please wait"
         case .result:    return "Tap to try again"
         }
     }
 
-    // MARK: – Verdict Logic
+    // MARK: - Verdict Logic
 
     private struct Verdict {
         let text: String
@@ -287,23 +203,23 @@ struct TonePracticeView: View {
     private func evaluateResult() -> Verdict {
         let predicted = toneService.predictedTone
 
-        if predicted == "Unclear / Too Noisy" {
+        if predicted == "Noise detected. Please try again." {
             return Verdict(
-                text: "Unclear — try again in a quieter place",
+                text: "Unclear / Too Noisy",
                 icon: "exclamationmark.triangle.fill",
-                color: .yellow
+                color: .orange
             )
         } else if predicted == target.tone {
             return Verdict(
-                text: "Correct!  \(displayTone(predicted))",
+                text: "Correct! \(displayTone(predicted))",
                 icon: "checkmark.circle.fill",
                 color: .green
             )
         } else {
             return Verdict(
-                text: "Detected \(displayTone(predicted)) — expected Tone \(target.toneNumber)",
+                text: "Detected \(displayTone(predicted)) - expected Tone \(target.toneNumber)",
                 icon: "xmark.circle.fill",
-                color: Color(red: 1.0, green: 0.35, blue: 0.37)
+                color: .red
             )
         }
     }
@@ -317,21 +233,9 @@ struct TonePracticeView: View {
         default:       return raw
         }
     }
-
-    // MARK: – Accent Color
-
-    private var accentColor: Color {
-        switch target.toneNumber {
-        case 1:  return Color(red: 0.30, green: 0.70, blue: 1.0)
-        case 2:  return Color(red: 0.45, green: 0.85, blue: 0.50)
-        case 3:  return Color(red: 0.95, green: 0.65, blue: 0.20)
-        case 4:  return Color(red: 0.95, green: 0.35, blue: 0.40)
-        default: return DesignSystem.Colors.primary
-        }
-    }
 }
 
-// MARK: – Preview
+// MARK: - Preview
 
 #Preview {
     NavigationStack {

@@ -13,7 +13,7 @@ class StrokeValidator: ObservableObject {
     let targetCharacter: String
     private var expectedStrokes: [[[Int]]] = []
     
-    private let maxDistanceTolerance: CGFloat = 100.0
+    private let maxDistanceTolerance: CGFloat = 90.0
     
     init(character: String) {
         self.targetCharacter = character

@@ -7,26 +7,65 @@ struct PartSelectionView: View {
     
     var body: some View {
         List {
-            ForEach(viewModel.parts) { part in
-                Button(action: {
-                    router.startExercise(part: part)
-                }) {
-                    HStack {
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text(part.name)
+            // ── Tone Practice shortcut ──────────────────────
+            Section {
+                NavigationLink(destination: TonePracticeView()) {
+                    HStack(spacing: 14) {
+                        ZStack {
+                            Circle()
+                                .fill(
+                                    LinearGradient(
+                                        colors: [
+                                            Color(red: 0.95, green: 0.35, blue: 0.50),
+                                            Color(red: 0.85, green: 0.25, blue: 0.65)
+                                        ],
+                                        startPoint: .topLeading,
+                                        endPoint: .bottomTrailing
+                                    )
+                                )
+                                .frame(width: 44, height: 44)
+
+                            Image(systemName: "waveform.and.mic")
+                                .font(.system(size: 18, weight: .semibold))
+                                .foregroundColor(.white)
+                        }
+
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("Practice Pronunciation")
                                 .font(DesignSystem.Typography.headline)
                                 .foregroundColor(DesignSystem.Colors.textPrimary)
-                            Text("\(part.characterCount) characters")
+                            Text("Train your Mandarin tones")
                                 .font(DesignSystem.Typography.caption)
                                 .foregroundColor(DesignSystem.Colors.textSecondary)
                         }
-                        
-                        Spacer()
-                        
-                        CircularProgressView(progress: part.progress)
-                            .frame(width: 40, height: 40)
                     }
-                    .padding(.vertical, 8)
+                    .padding(.vertical, 6)
+                }
+            }
+
+            // ── Parts ───────────────────────────────────────
+            Section {
+                ForEach(viewModel.parts) { part in
+                    Button(action: {
+                        router.startExercise(part: part)
+                    }) {
+                        HStack {
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text(part.name)
+                                    .font(DesignSystem.Typography.headline)
+                                    .foregroundColor(DesignSystem.Colors.textPrimary)
+                                Text("\(part.characterCount) characters")
+                                    .font(DesignSystem.Typography.caption)
+                                    .foregroundColor(DesignSystem.Colors.textSecondary)
+                            }
+
+                            Spacer()
+
+                            CircularProgressView(progress: part.progress)
+                                .frame(width: 40, height: 40)
+                        }
+                        .padding(.vertical, 8)
+                    }
                 }
             }
         }

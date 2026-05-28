@@ -22,17 +22,12 @@ final class ToneEvaluatorService: NSObject, ObservableObject {
     @Published var predictedTone: String = ""
     @Published var errorMessage: String?
 
-    // MARK: - Tuning Constants
+    // MARK: - Constants
 
-    /// Confidence threshold for appending a prediction.
-    /// Lowered to 0.60 to capture short transients like Tone 4.
-    /// The dedicated "Tone_0_Noise" class will absorb actual garbage audio.
-    private let confidenceThreshold: Double = 0.60
+    private let confidenceThreshold: Double = 0.70
 
     // MARK: - Prediction Buffer
 
-    /// Accumulated high-confidence predictions collected while recording.
-    /// Accessed from the analysis queue; guarded by `bufferLock`.
     nonisolated(unsafe) private var accumulatedPredictions: [String] = []
     nonisolated(unsafe) private let bufferLock = NSLock()
 
@@ -63,7 +58,7 @@ final class ToneEvaluatorService: NSObject, ObservableObject {
             guard let self else { return }
             if !granted {
                 Task { @MainActor in
-                    self.errorMessage = "Microphone access is required to evaluate your pronunciation."
+                    self.errorMessage = "Microphone access is required."
                 }
             }
         }
@@ -71,7 +66,6 @@ final class ToneEvaluatorService: NSObject, ObservableObject {
 
     // MARK: - Recording Controls
 
-    /// Clears the buffer and begins capturing + classifying audio.
     func startRecording() {
         // Reset
         predictedTone = ""
@@ -80,7 +74,6 @@ final class ToneEvaluatorService: NSObject, ObservableObject {
         accumulatedPredictions.removeAll()
         bufferLock.unlock()
 
-        // Audio session
         let session = AVAudioSession.sharedInstance()
         do {
             try session.setCategory(.record, mode: .measurement, options: .duckOthers)
@@ -94,17 +87,16 @@ final class ToneEvaluatorService: NSObject, ObservableObject {
         let format = inputNode.outputFormat(forBus: 0)
 
         guard format.sampleRate > 0 else {
-            errorMessage = "Invalid audio format — no microphone available."
+            errorMessage = "Invalid audio format."
             return
         }
 
-        // Analyzer + V2 model
         let analyzer = SNAudioStreamAnalyzer(format: format)
         streamAnalyzer = analyzer
 
         do {
             let config = MLModelConfiguration()
-            let model = try HanziSoundClassifierVER2(configuration: config)
+            let model = try HanziSoundClassifier(configuration: config)
             let request = try SNClassifySoundRequest(mlModel: model.model)
             classifyRequest = request
             try analyzer.add(request, withObserver: self)
@@ -113,17 +105,13 @@ final class ToneEvaluatorService: NSObject, ObservableObject {
             return
         }
 
-        // Tap
-        inputNode.installTap(onBus: 0, bufferSize: 8192, format: format) {
-            [weak self] buffer, time in
+        inputNode.installTap(onBus: 0, bufferSize: 8192, format: format) { [weak self] buffer, time in
             guard let self else { return }
-
             self.analysisQueue.async {
                 self.streamAnalyzer?.analyze(buffer, atAudioFramePosition: time.sampleTime)
             }
         }
 
-        // Start
         do {
             audioEngine.prepare()
             try audioEngine.start()
@@ -133,9 +121,7 @@ final class ToneEvaluatorService: NSObject, ObservableObject {
         }
     }
 
-    /// Stops the engine, aggregates the buffer with noise-bypass logic, and publishes the verdict.
     func stopAndEvaluate() {
-        // Tear down audio pipeline
         audioEngine.stop()
         audioEngine.inputNode.removeTap(onBus: 0)
         if let req = classifyRequest { streamAnalyzer?.remove(req) }
@@ -147,30 +133,23 @@ final class ToneEvaluatorService: NSObject, ObservableObject {
 
         state = .analyzing
 
-        // Snapshot the buffer
         bufferLock.lock()
-        let rawPredictions = accumulatedPredictions
+        let predictions = accumulatedPredictions
         bufferLock.unlock()
 
-        // Short delay so the user sees the analyzing spinner
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) { [weak self] in
             guard let self else { return }
 
-            // Filter OUT all noise predictions
-            let validTones = rawPredictions.filter { $0 != "Tone_0_Noise" }
-
-            if validTones.isEmpty {
-                self.predictedTone = "Noise detected. Please try again."
+            if predictions.isEmpty {
+                self.predictedTone = "Unclear"
             } else {
-                // Mode of valid tones (Tone_1 … Tone_4)
-                self.predictedTone = Self.mode(of: validTones)
+                self.predictedTone = Self.mode(of: predictions)
             }
 
             self.state = .result
         }
     }
 
-    /// Resets back to idle so the user can try again.
     func reset() {
         predictedTone = ""
         errorMessage = nil
@@ -179,7 +158,6 @@ final class ToneEvaluatorService: NSObject, ObservableObject {
 
     // MARK: - Helpers
 
-    /// Returns the most frequent element in a non-empty array.
     private static func mode(of array: [String]) -> String {
         var counts: [String: Int] = [:]
         for item in array { counts[item, default: 0] += 1 }
@@ -190,12 +168,10 @@ final class ToneEvaluatorService: NSObject, ObservableObject {
 // MARK: - SNResultsObserving
 
 extension ToneEvaluatorService: @preconcurrency SNResultsObserving {
-
-    /// Appends the top classification if it meets the 0.60 confidence threshold.
     nonisolated func request(_ request: SNRequest, didProduce result: SNResult) {
         guard let classification = result as? SNClassificationResult,
               let top = classification.classifications.first,
-              top.confidence >= confidenceThreshold else {
+              top.confidence >= 0.70 else {
             return
         }
 

@@ -24,12 +24,13 @@ final class ToneEvaluatorService: NSObject, ObservableObject {
 
     // MARK: - Confidence Threshold
 
-    /// Only predictions at or above this confidence are kept.
-    private let confidenceThreshold: Double = 0.85
+    /// Lowered to 0.80 so short-duration tones (especially Tone 4) are not discarded.
+    private let confidenceThreshold: Double = 0.80
 
     // MARK: - Prediction Buffer
 
     /// Accumulated high-confidence predictions collected while recording.
+    /// Includes ALL classes (tones + noise); noise is filtered in `stopAndEvaluate()`.
     /// Accessed from the analysis queue; guarded by `bufferLock`.
     nonisolated(unsafe) private var accumulatedPredictions: [String] = []
     nonisolated(unsafe) private let bufferLock = NSLock()
@@ -97,13 +98,13 @@ final class ToneEvaluatorService: NSObject, ObservableObject {
             return
         }
 
-        // Analyzer + model
+        // Analyzer + V2 model
         let analyzer = SNAudioStreamAnalyzer(format: format)
         streamAnalyzer = analyzer
 
         do {
             let config = MLModelConfiguration()
-            let model = try HanziSoundClassifierVER1(configuration: config)
+            let model = try HanziSoundClassifierVER2(configuration: config)
             let request = try SNClassifySoundRequest(mlModel: model.model)
             classifyRequest = request
             try analyzer.add(request, withObserver: self)
@@ -131,7 +132,7 @@ final class ToneEvaluatorService: NSObject, ObservableObject {
         }
     }
 
-    /// Stops the engine, aggregates the buffer, and publishes the verdict.
+    /// Stops the engine, aggregates the buffer with smart noise filtering, and publishes the verdict.
     func stopAndEvaluate() {
         // Tear down audio pipeline
         audioEngine.stop()
@@ -146,18 +147,24 @@ final class ToneEvaluatorService: NSObject, ObservableObject {
 
         // Snapshot the buffer
         bufferLock.lock()
-        let predictions = accumulatedPredictions
+        let rawPredictions = accumulatedPredictions
         bufferLock.unlock()
 
         // Short delay so the user sees the analyzing spinner
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) { [weak self] in
             guard let self else { return }
 
-            if predictions.isEmpty {
+            // Step A: Filter OUT all noise predictions
+            let validTones = rawPredictions.filter { $0 != "Tone_0_Noise" }
+
+            // Step B: If only noise/silence was recorded
+            if validTones.isEmpty {
                 self.predictedTone = "Noise detected. Please try again."
             } else {
-                self.predictedTone = Self.mode(of: predictions)
+                // Step C: Find the mode among valid tones only (Tone_1 … Tone_4)
+                self.predictedTone = Self.mode(of: validTones)
             }
+
             self.state = .result
         }
     }
@@ -183,16 +190,14 @@ final class ToneEvaluatorService: NSObject, ObservableObject {
 
 extension ToneEvaluatorService: @preconcurrency SNResultsObserving {
 
+    /// Collects ALL predictions (including Tone_0_Noise) at or above the confidence threshold.
+    /// Noise filtering happens later in `stopAndEvaluate()` so the aggregation logic
+    /// can reason about the full distribution.
     nonisolated func request(_ request: SNRequest, didProduce result: SNResult) {
         guard let classification = result as? SNClassificationResult,
               let top = classification.classifications.first,
               top.confidence >= confidenceThreshold else {
             return // Below threshold -> discard
-        }
-
-        // Ignore the explicit noise class
-        if top.identifier == "Tone_0_Noise" {
-            return
         }
 
         bufferLock.lock()

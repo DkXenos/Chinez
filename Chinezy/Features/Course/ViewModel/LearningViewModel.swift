@@ -2,7 +2,7 @@ import Foundation
 import Combine
 import AVFoundation
 
-public class LearningViewModel: ObservableObject {
+class LearningViewModel: ObservableObject {
     @Published public var currentSubChapter: SubChapter?
     @Published public var currentFlashcardIndex: Int = 0
     @Published public var isCardFlipped: Bool = false
@@ -10,8 +10,6 @@ public class LearningViewModel: ObservableObject {
 
     private var audioPlayer: AVPlayer?
     private let speechSynthesizer = AVSpeechSynthesizer()
-
-    public init() {}
 
     public func startLearning(subChapter: SubChapter) {
         currentSubChapter = subChapter

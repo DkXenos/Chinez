@@ -1,6 +1,6 @@
 import SwiftUI
 
-public struct LearningView: View {
+struct LearningView: View {
     let subChapter: SubChapter
     @StateObject private var viewModel = LearningViewModel()
 

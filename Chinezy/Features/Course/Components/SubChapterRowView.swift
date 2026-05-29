@@ -1,6 +1,6 @@
 import SwiftUI
 
-public struct SubChapterRowView: View {
+struct SubChapterRowView: View {
     let subChapter: SubChapter
 
     public var body: some View {

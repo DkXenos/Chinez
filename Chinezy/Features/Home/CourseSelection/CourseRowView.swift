@@ -37,6 +37,7 @@ public struct CourseRowView: View {
     CourseRowView(course: Course(
         title: "Bab 1: Perkenalan Diri",
         description: "Belajar menyapa, berkenalan, dan menanyakan umur atau profesi.",
+        icon: "book.fill",
         subChapters: [
             SubChapter(title: "1.1 Menyapa", dialogText: ""),
             SubChapter(title: "1.2 Berkenalan", dialogText: "")

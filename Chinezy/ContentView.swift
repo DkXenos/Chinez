@@ -11,11 +11,13 @@ struct ContentView: View {
                 LandingView()
             case .home:
                 NavigationStack(path: $router.navigationPath) {
-                    ThemeSelectionView()
+                    HomeView()
                         .navigationDestination(for: AppRoute.self) { route in
                             switch route {
                             case .theme(let theme):
                                 PartSelectionView(theme: theme)
+                            case .course(let course):
+                                CourseListView()
                             case .part(_):
                                 EmptyView()
                             }

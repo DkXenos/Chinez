@@ -1,6 +1,6 @@
 import SwiftUI
 
-public struct LearningFlashcardContent: View {
+struct LearningFlashcardContent: View {
     let flashcard: Flashcard
     let isFlipped: Bool
     let currentIndex: Int

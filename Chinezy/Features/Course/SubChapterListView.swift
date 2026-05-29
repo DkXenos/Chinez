@@ -1,6 +1,6 @@
 import SwiftUI
 
-public struct SubChapterListView: View {
+struct SubChapterListView: View {
     let course: Course
     @State private var selectedTab: ChapterTabOption = .material
 
@@ -22,9 +22,9 @@ public struct SubChapterListView: View {
                 case .material:
                     materialContent
                 case .quiz:
-                    ChapterPlaceholderView(title: "Quiz Section")
+                    PlaceholderView(title: "Quiz Section")
                 case .writing:
-                    ChapterPlaceholderView(title: "Writing Section")
+                    PlaceholderView(title: "Writing Section")
                 }
             }
         }
@@ -55,6 +55,7 @@ struct SubChapterListView_Previews: PreviewProvider {
                 course: Course(
                     title: "Bab 1: Perkenalan Diri",
                     description: "Belajar menyapa, berkenalan, dan menanyakan umur atau profesi.",
+                    icon: "book.fill",
                     subChapters: [
                         SubChapter(title: "1.1 Menyapa", dialogText: ""),
                         SubChapter(title: "1.2 Berkenalan", dialogText: "")

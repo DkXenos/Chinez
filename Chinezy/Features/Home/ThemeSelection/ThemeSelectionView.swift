@@ -15,16 +15,16 @@ struct ThemeSelectionView: View {
     var body: some View {
         ScrollView {
             LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: DesignSystem.Dimensions.paddingStandard) {
-                ForEach(filteredThemes) { theme in
-                    Button(action: {
-                        if !theme.isLocked {
-                            router.navigateToCourse(theme: theme)
-                        }
-                    }) {
-                        ThemeCard(theme: theme)
-                    }
-                    .buttonStyle(PlainButtonStyle())
-                }
+//                ForEach(filteredThemes) { theme in
+//                    Button(action: {
+//                        if !theme.isLocked {
+//                            router.navigateToCourse(course: theme)
+//                        }
+//                    }) {
+//                        ThemeCard(theme: theme)
+//                    }
+//                    .buttonStyle(PlainButtonStyle())
+//                }
             }
             .padding(DesignSystem.Dimensions.paddingStandard)
         }
@@ -42,4 +42,9 @@ struct ThemeSelectionView: View {
             }
         }
     }
+}
+
+#Preview {
+    ThemeSelectionView()
+        .environmentObject(NavigationRouter())
 }

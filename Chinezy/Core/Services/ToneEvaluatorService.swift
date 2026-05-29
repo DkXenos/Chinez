@@ -96,7 +96,7 @@ final class ToneEvaluatorService: NSObject, ObservableObject {
 
         do {
             let config = MLModelConfiguration()
-            let model = try HanziSoundClassifier(configuration: config)
+            let model = try HanziSoundClassifierVER3(configuration: config)
             let request = try SNClassifySoundRequest(mlModel: model.model)
             classifyRequest = request
             try analyzer.add(request, withObserver: self)

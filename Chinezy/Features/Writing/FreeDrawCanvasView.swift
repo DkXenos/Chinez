@@ -4,8 +4,26 @@ struct FreeDrawCanvasView: View {
     @EnvironmentObject var router: NavigationRouter
     @StateObject private var viewModel = FreeDrawCanvasViewModel()
     
+    @Environment(\.dismiss) private var dismiss
+    
     var body: some View {
         VStack(spacing: DesignSystem.Dimensions.paddingLarge) {
+            HStack {
+                Button {
+                    dismiss()
+                } label: {
+                    HStack(spacing: 5) {
+                        Image(systemName: "chevron.left")
+                            .font(.system(size: 24, weight: .semibold))
+                    }
+                    .foregroundStyle(Color.black)
+                }
+                
+                Spacer()
+            }
+            .padding(.horizontal, DesignSystem.Dimensions.paddingLarge)
+            .padding(.top, 12)
+
             
             HStack(spacing: DesignSystem.Dimensions.paddingStandard) {
                 Text(viewModel.recognizedCharacter.isEmpty ? "..." : viewModel.recognizedCharacter)

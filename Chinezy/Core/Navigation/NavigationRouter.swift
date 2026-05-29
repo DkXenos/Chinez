@@ -7,9 +7,15 @@ enum AppState {
 }
 
 enum AppRoute: Hashable {
-    case theme(Theme)
+    // Used
     case course(Course)
-    case part(Part)
+    case subChapter(SubChapter)
+    
+    case courseList
+    case tonePractice
+    case freeDraw
+    case dictionary
+    case progress
 }
 
 class NavigationRouter: ObservableObject {
@@ -28,8 +34,8 @@ class NavigationRouter: ObservableObject {
         navigationPath.append(AppRoute.course(course))
     }
     
-    func navigateToPart(part: Part) {
-        navigationPath.append(AppRoute.part(part))
+    func navigateToSubchapter(subChapter: SubChapter) {
+        navigationPath.append(AppRoute.subChapter(subChapter))
     }
     
     func startExercise(part: Part) {

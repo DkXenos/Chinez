@@ -3,77 +3,64 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject var router: NavigationRouter
 
-    /// Ambient gradient animation state
-    @State private var animateGradient: Bool = false
-
     var body: some View {
-        NavigationStack {
-            ZStack {
-                // ── Animated Background ─────────────────────────
-                LinearGradient(
-                    colors: [
-                        Color(red: 0.06, green: 0.07, blue: 0.14),
-                        Color(red: 0.10, green: 0.12, blue: 0.24),
-                        Color(red: 0.06, green: 0.07, blue: 0.14)
-                    ],
-                    startPoint: animateGradient ? .topLeading : .bottomLeading,
-                    endPoint: animateGradient ? .bottomTrailing : .topTrailing
-                )
-                .ignoresSafeArea()
-                .onAppear {
-                    withAnimation(.easeInOut(duration: 6).repeatForever(autoreverses: true)) {
-                        animateGradient.toggle()
+        ZStack {
+            LinearGradient(
+                colors: [
+                    DesignSystem.Colors.secondaryBackground,
+                    DesignSystem.Colors.background
+                ],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .ignoresSafeArea()
+
+            ScrollView(showsIndicators: false) {
+                VStack(spacing: 24) {
+
+                    // ── Greeting ────────────────────────────────
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text(greetingText)
+                            .font(DesignSystem.Typography.body)
+                            .foregroundStyle(DesignSystem.Colors.textSecondary).opacity(0.8)
+
+                        Text("Chinez")
+                            .font(DesignSystem.Typography.largeTitle)
+                            .foregroundStyle(DesignSystem.Colors.primary)
                     }
-                }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal, DesignSystem.Dimensions.paddingLarge)
+                    .padding(.top, 12)
 
-                ScrollView(showsIndicators: false) {
-                    VStack(spacing: 24) {
+                    // ── Practice Pronunciation Card ─────────────
+                    Button {
+                        router.navigationPath.append(AppRoute.tonePractice)
+                    } label: {
+                        PronunciationCard()
+                    }
+                    .buttonStyle(.plain)
+                    .padding(.horizontal, DesignSystem.Dimensions.paddingLarge)
 
-                        // ── Greeting ────────────────────────────────
-                        VStack(alignment: .leading, spacing: 6) {
-                            Text(greetingText)
-                                .font(.system(size: 15, weight: .medium, design: .rounded))
-                                .foregroundColor(.white.opacity(0.5))
-
-                            Text("Chinez")
-                                .font(.system(size: 34, weight: .heavy, design: .rounded))
-                                .foregroundStyle(
-                                    LinearGradient(
-                                        colors: [
-                                            Color(red: 0.40, green: 0.75, blue: 1.0),
-                                            Color(red: 0.60, green: 0.50, blue: 1.0)
-                                        ],
-                                        startPoint: .leading,
-                                        endPoint: .trailing
-                                    )
-                                )
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.horizontal, DesignSystem.Dimensions.paddingLarge)
-                        .padding(.top, 12)
-
-                        // ── Practice Pronunciation Card ─────────────
-                        NavigationLink(destination: TonePracticeView().environmentObject(router)) {
-                            PronunciationCard()
-                        }
-                        .buttonStyle(.plain)
-                        .padding(.horizontal, DesignSystem.Dimensions.paddingLarge)
-
-                        // ── Quick Actions Grid ──────────────────────
-                        LazyVGrid(
-                            columns: [GridItem(.flexible(), spacing: 16), GridItem(.flexible(), spacing: 16)],
-                            spacing: 16
-                        ) {
+                    // ── Quick Actions Grid ──────────────────────
+                    LazyVGrid(
+                        columns: [GridItem(.flexible(), spacing: 16), GridItem(.flexible(), spacing: 16)],
+                        spacing: 16
+                    ) {
+                        Button {
+                            router.navigationPath.append(AppRoute.courseList)
+                        } label: {
                             QuickActionTile(
                                 icon: "character.book.closed.fill",
-                                title: "Themes",
+                                title: "Courses",
                                 subtitle: "Learn by topic",
-                                gradient: [
-                                    Color(red: 0.20, green: 0.55, blue: 0.95),
-                                    Color(red: 0.30, green: 0.40, blue: 0.90)
-                                ]
+                                gradient: [Color(red: 0.20, green: 0.55, blue: 0.95), Color(red: 0.30, green: 0.40, blue: 0.90)]
                             )
+                        }
+                        .buttonStyle(.plain)
 
+                        Button {
+                            router.navigationPath.append(AppRoute.freeDraw)
+                        } label: {
                             QuickActionTile(
                                 icon: "pencil.tip.crop.circle",
                                 title: "Free Draw",
@@ -83,7 +70,13 @@ struct HomeView: View {
                                     Color(red: 0.85, green: 0.30, blue: 0.50)
                                 ]
                             )
+                        }
+                        .buttonStyle(.plain)
 
+
+                        Button {
+                            router.navigationPath.append(AppRoute.dictionary)
+                        } label: {
                             QuickActionTile(
                                 icon: "book.fill",
                                 title: "Dictionary",
@@ -93,7 +86,13 @@ struct HomeView: View {
                                     Color(red: 0.20, green: 0.60, blue: 0.65)
                                 ]
                             )
+                        }
+                        .buttonStyle(.plain)
 
+
+                        Button {
+                            router.navigationPath.append(AppRoute.progress)
+                        } label: {
                             QuickActionTile(
                                 icon: "chart.bar.fill",
                                 title: "Progress",
@@ -104,39 +103,35 @@ struct HomeView: View {
                                 ]
                             )
                         }
-                        .padding(.horizontal, DesignSystem.Dimensions.paddingLarge)
+                        .buttonStyle(.plain)
 
-                        Spacer(minLength: 40)
                     }
+                    .padding(.horizontal, DesignSystem.Dimensions.paddingLarge)
+
+                    Spacer(minLength: 40)
                 }
             }
-            .navigationBarHidden(true)
         }
     }
+}
 
-    // MARK: – Helpers
+// MARK: – Helpers
 
-    /// Returns a time‑of‑day greeting.
-    private var greetingText: String {
-        let hour = Calendar.current.component(.hour, from: Date())
-        switch hour {
-        case 5..<12:  return "Good morning ☀️"
-        case 12..<17: return "Good afternoon 🌤️"
-        case 17..<21: return "Good evening 🌙"
-        default:      return "Good night 🌙"
-        }
+private var greetingText: String {
+    let hour = Calendar.current.component(.hour, from: Date())
+    switch hour {
+    case 5..<12:  return "Good morning, start your day with.."
+    case 12..<17: return "Good afternoon, let's spend some time with.."
+    case 17..<21: return "Good evening, there's always a time with.."
+    default:      return "Good night, end your day with.."
     }
 }
 
 // MARK: – Pronunciation Card
 
-/// A large, visually prominent card that navigates to TonePracticeView.
 private struct PronunciationCard: View {
-    @State private var hovered = false
-
     var body: some View {
         HStack(spacing: 16) {
-            // Icon
             ZStack {
                 Circle()
                     .fill(
@@ -158,12 +153,12 @@ private struct PronunciationCard: View {
 
             VStack(alignment: .leading, spacing: 4) {
                 Text("Practice Pronunciation")
-                    .font(.system(size: 18, weight: .bold, design: .rounded))
-                    .foregroundColor(.white)
+                    .font(DesignSystem.Typography.headline)
+                    .foregroundColor(DesignSystem.Colors.textPrimary)
 
                 Text("Train your Mandarin tones with AI feedback")
-                    .font(.system(size: 13, weight: .medium, design: .rounded))
-                    .foregroundColor(.white.opacity(0.55))
+                    .font(DesignSystem.Typography.caption)
+                    .foregroundColor(DesignSystem.Colors.secondary)
                     .lineLimit(2)
             }
 
@@ -171,34 +166,22 @@ private struct PronunciationCard: View {
 
             Image(systemName: "chevron.right")
                 .font(.system(size: 14, weight: .bold))
-                .foregroundColor(.white.opacity(0.3))
+                .foregroundColor(DesignSystem.Colors.textPrimary)
         }
-        .padding(20)
+        .padding(DesignSystem.Dimensions.paddingStandard)
         .background(
-            RoundedRectangle(cornerRadius: 22, style: .continuous)
-                .fill(.ultraThinMaterial.opacity(0.4))
+            RoundedRectangle(cornerRadius: DesignSystem.Dimensions.cornerRadius, style: .continuous)
+                .fill(DesignSystem.Colors.secondaryBackground)
                 .overlay(
-                    RoundedRectangle(cornerRadius: 22, style: .continuous)
-                        .strokeBorder(
-                            LinearGradient(
-                                colors: [
-                                    .white.opacity(0.18),
-                                    .white.opacity(0.04)
-                                ],
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            ),
-                            lineWidth: 1
-                        )
+                    RoundedRectangle(cornerRadius: DesignSystem.Dimensions.cornerRadius, style: .continuous)
+                        .strokeBorder(DesignSystem.Colors.secondary, lineWidth: 1)
                 )
         )
-        .environment(\.colorScheme, .dark)
     }
 }
 
 // MARK: – Quick Action Tile
 
-/// Small grid tiles for secondary navigation items.
 private struct QuickActionTile: View {
     let icon: String
     let title: String
@@ -225,39 +208,26 @@ private struct QuickActionTile: View {
 
             VStack(alignment: .leading, spacing: 2) {
                 Text(title)
-                    .font(.system(size: 15, weight: .bold, design: .rounded))
-                    .foregroundColor(.white)
+                    .font(DesignSystem.Typography.headline)
+                    .foregroundColor(DesignSystem.Colors.textPrimary)
 
                 Text(subtitle)
-                    .font(.system(size: 12, weight: .medium, design: .rounded))
-                    .foregroundColor(.white.opacity(0.45))
+                    .font(DesignSystem.Typography.caption)
+                    .foregroundColor(DesignSystem.Colors.secondary)
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(18)
+        .padding(DesignSystem.Dimensions.paddingStandard)
         .background(
-            RoundedRectangle(cornerRadius: 18, style: .continuous)
-                .fill(.ultraThinMaterial.opacity(0.3))
+            RoundedRectangle(cornerRadius: DesignSystem.Dimensions.cornerRadius, style: .continuous)
+                .fill(DesignSystem.Colors.secondaryBackground)
                 .overlay(
-                    RoundedRectangle(cornerRadius: 18, style: .continuous)
-                        .strokeBorder(
-                            LinearGradient(
-                                colors: [
-                                    .white.opacity(0.12),
-                                    .white.opacity(0.03)
-                                ],
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            ),
-                            lineWidth: 1
-                        )
+                    RoundedRectangle(cornerRadius: DesignSystem.Dimensions.cornerRadius, style: .continuous)
+                        .strokeBorder(DesignSystem.Colors.secondary, lineWidth: 1)
                 )
         )
-        .environment(\.colorScheme, .dark)
     }
 }
-
-// MARK: – Preview
 
 #Preview {
     HomeView()

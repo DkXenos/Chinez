@@ -9,16 +9,27 @@ struct ContentView: View {
             switch router.currentState {
             case .unauthenticated:
                 LandingView()
+                
             case .home:
                 NavigationStack(path: $router.navigationPath) {
                     HomeView()
                         .navigationDestination(for: AppRoute.self) { route in
                             switch route {
-                            case .theme(let theme):
-                                PartSelectionView(theme: theme)
+                                
                             case .course(let course):
+                                SubChapterListView(course: course)
+                            case .subChapter(let subChapter):
+                                LearningView(subChapter: subChapter)
+                                
+                            case .courseList:
                                 CourseListView()
-                            case .part(_):
+                            case .freeDraw:
+                                FreeDrawCanvasView()
+                            case .tonePractice:
+                                TonePracticeView()
+                            case .dictionary:
+                                EmptyView()
+                            case .progress:
                                 EmptyView()
                             }
                         }

@@ -9,24 +9,10 @@ public struct LearningBottomNavigationBar: View {
     let onOpenDialog: () -> Void
     let onBackToFlashcard: () -> Void
 
-    public init(
-        isShowingDialog: Bool,
-        currentIndex: Int,
-        totalCount: Int,
-        onPrevious: @escaping () -> Void,
-        onNextFlashcard: @escaping () -> Void,
-        onOpenDialog: @escaping () -> Void,
-        onBackToFlashcard: @escaping () -> Void
-    ) {
-        self.isShowingDialog = isShowingDialog
-        self.currentIndex = currentIndex
-        self.totalCount = totalCount
-        self.onPrevious = onPrevious
-        self.onNextFlashcard = onNextFlashcard
-        self.onOpenDialog = onOpenDialog
-        self.onBackToFlashcard = onBackToFlashcard
+    private var isFirstCard: Bool {
+        currentIndex == 0
     }
-
+    
     private var isLastCard: Bool {
         currentIndex >= totalCount - 1
     }
@@ -34,10 +20,12 @@ public struct LearningBottomNavigationBar: View {
     public var body: some View {
         VStack(spacing: 12) {
             if isShowingDialog {
+                
+                // DIALOG BUTTON
                 Button(action: onBackToFlashcard) {
                     HStack {
-                        Image(systemName: "arrow.left.circle.fill")
-                        Text("Kembali ke Flashcard")
+                        Image(systemName: "arrow.left.circle")
+                        Text("Flashcard")
                     }
                     .font(DesignSystem.Typography.headline)
                     .foregroundColor(DesignSystem.Colors.primary)
@@ -47,34 +35,42 @@ public struct LearningBottomNavigationBar: View {
                     .cornerRadius(DesignSystem.Dimensions.cornerRadius)
                 }
             } else {
+                
+                // FLASHCARD BUTTON
                 HStack(spacing: 16) {
-                    if currentIndex > 0 {
+                    
+                    // Back Button
+                    if !isFirstCard {
                         Button(action: onPrevious) {
-                            Image(systemName: "arrow.left")
+                            HStack {
+                                Text("Back")
+                            }
+                                .foregroundColor(DesignSystem.Colors.primary)
+                                .frame(maxWidth: .infinity)
                                 .padding()
                                 .background(DesignSystem.Colors.cardBackground)
-                                .foregroundColor(DesignSystem.Colors.primary)
-                                .clipShape(Circle())
+                                .cornerRadius(DesignSystem.Dimensions.cornerRadius)
                                 .shadow(radius: 2)
                         }
                     }
 
+                    // Blue Button
                     if isLastCard {
                         Button(action: onOpenDialog) {
                             HStack {
-                                Text("Lihat Dialog")
-                                Image(systemName: "arrow.right.circle.fill")
+                                Text("Dialog")
+                                Image(systemName: "arrow.right.circle")
                             }
                             .font(DesignSystem.Typography.headline)
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
                             .padding()
-                            .background(DesignSystem.Colors.secondaryBackground)
+                            .background(DesignSystem.Colors.primary)
                             .cornerRadius(DesignSystem.Dimensions.cornerRadius)
                         }
                     } else {
                         Button(action: onNextFlashcard) {
-                            Text("Flashcard Berikutnya")
+                            Text("Next")
                                 .font(DesignSystem.Typography.headline)
                                 .foregroundColor(.white)
                                 .frame(maxWidth: .infinity)
@@ -88,4 +84,8 @@ public struct LearningBottomNavigationBar: View {
         }
         .padding(.top, 8)
     }
+}
+
+#Preview {
+    LearningBottomNavigationBar(isShowingDialog: true, currentIndex: 3, totalCount: 4, onPrevious: {}, onNextFlashcard: {}, onOpenDialog: {}, onBackToFlashcard: {})
 }

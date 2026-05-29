@@ -13,7 +13,6 @@ enum AppRoute: Hashable {
     
     case courseList
     case tonePractice
-    case freeDraw
     case dictionary
     case progress
 }

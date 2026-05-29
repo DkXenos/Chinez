@@ -52,7 +52,7 @@ struct HomeView: View {
                         .buttonStyle(.plain)
 
                         Button {
-                            router.navigationPath.append(AppRoute.freeDraw)
+                            router.openFreeDrawCanvas()
                         } label: {
                             QuickActionTile(
                                 icon: "pencil.tip.crop.circle",

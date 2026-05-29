@@ -23,8 +23,6 @@ struct ContentView: View {
                                 
                             case .courseList:
                                 CourseListView()
-                            case .freeDraw:
-                                FreeDrawCanvasView()
                             case .tonePractice:
                                 TonePracticeView()
                             case .dictionary:
@@ -33,6 +31,9 @@ struct ContentView: View {
                                 EmptyView()
                             }
                         }
+                        .fullScreenCover(isPresented: $router.showFreeDrawCanvas) {
+                                            FreeDrawCanvasView()
+                                        }
                 }
             }
         }

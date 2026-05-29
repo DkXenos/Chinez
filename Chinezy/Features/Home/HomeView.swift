@@ -5,14 +5,7 @@ struct HomeView: View {
 
     var body: some View {
         ZStack {
-            LinearGradient(
-                colors: [
-                    DesignSystem.Colors.secondaryBackground,
-                    DesignSystem.Colors.background
-                ],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
+            DesignSystem.Colors.background
             .ignoresSafeArea()
 
             ScrollView(showsIndicators: false) {

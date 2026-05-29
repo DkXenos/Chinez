@@ -34,14 +34,6 @@ struct ContentView: View {
                             }
                         }
                 }
-                .fullScreenCover(isPresented: $router.showExercise) {
-                    if let part = router.selectedPart {
-                        ExerciseContainerView(part: part)
-                    }
-                }
-                .fullScreenCover(isPresented: $router.showFreeDrawCanvas) {
-                    FreeDrawCanvasView()
-                }
             }
         }
         .environmentObject(router)

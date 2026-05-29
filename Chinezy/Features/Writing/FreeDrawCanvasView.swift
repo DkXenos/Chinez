@@ -5,46 +5,32 @@ struct FreeDrawCanvasView: View {
     @StateObject private var viewModel = FreeDrawCanvasViewModel()
     
     var body: some View {
-        NavigationStack {
-            VStack(spacing: DesignSystem.Dimensions.paddingLarge) {
+        VStack(spacing: DesignSystem.Dimensions.paddingLarge) {
+            
+            HStack(spacing: DesignSystem.Dimensions.paddingStandard) {
+                Text(viewModel.recognizedCharacter.isEmpty ? "..." : viewModel.recognizedCharacter)
+                    .font(.system(size: 60, weight: .bold))
+                    .foregroundColor(DesignSystem.Colors.textPrimary)
                 
-                HStack(spacing: DesignSystem.Dimensions.paddingStandard) {
-                    Text(viewModel.recognizedCharacter.isEmpty ? "..." : viewModel.recognizedCharacter)
-                        .font(.system(size: 60, weight: .bold))
-                        .foregroundColor(DesignSystem.Colors.textPrimary)
-                    
-                    Text(viewModel.pinyin.isEmpty ? "" : viewModel.pinyin)
-                        .font(DesignSystem.Typography.title)
-                        .foregroundColor(DesignSystem.Colors.textSecondary)
-                }
-                .padding(.top, DesignSystem.Dimensions.paddingLarge)
-                
-                Spacer()
-                
-                CanvasPlaceholder()
-                    .padding(DesignSystem.Dimensions.paddingLarge)
-                
-                Spacer()
-                
-                PrimaryButton(title: "Clear", systemImage: "trash") {
-                    viewModel.clearCanvas()
-                }
-                .padding(.horizontal, DesignSystem.Dimensions.paddingLarge)
-                .padding(.bottom, DesignSystem.Dimensions.paddingLarge)
+                Text(viewModel.pinyin.isEmpty ? "" : viewModel.pinyin)
+                    .font(DesignSystem.Typography.title)
+                    .foregroundColor(DesignSystem.Colors.textSecondary)
             }
-            .navigationTitle("Free Draw ML Canvas")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {
-                        router.showFreeDrawCanvas = false
-                    }) {
-                        Image(systemName: "xmark")
-                            .foregroundColor(DesignSystem.Colors.textPrimary)
-                    }
-                }
+            .padding(.top, DesignSystem.Dimensions.paddingLarge)
+            
+            Spacer()
+            
+            CanvasPlaceholder()
+                .padding(DesignSystem.Dimensions.paddingLarge)
+            
+            Spacer()
+            
+            PrimaryButton(title: "Clear", systemImage: "trash") {
+                viewModel.clearCanvas()
             }
-            .background(DesignSystem.Colors.background.ignoresSafeArea())
+            .padding(.horizontal, DesignSystem.Dimensions.paddingLarge)
+            .padding(.bottom, DesignSystem.Dimensions.paddingLarge)
         }
+        .background(DesignSystem.Colors.background.ignoresSafeArea())
     }
 }

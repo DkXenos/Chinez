@@ -3,10 +3,6 @@ import SwiftUI
 public struct SubChapterRowView: View {
     let subChapter: SubChapter
 
-    public init(subChapter: SubChapter) {
-        self.subChapter = subChapter
-    }
-
     public var body: some View {
         HStack(spacing: 16) {
             Circle()

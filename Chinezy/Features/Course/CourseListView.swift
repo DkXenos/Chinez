@@ -2,9 +2,7 @@ import SwiftUI
 
 public struct CourseListView: View {
     @StateObject private var viewModel = CourseListViewModel()
-    
-    public init() {}
-    
+
     public var body: some View {
         NavigationView {
             ZStack {

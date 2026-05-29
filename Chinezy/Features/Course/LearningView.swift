@@ -1,20 +1,8 @@
-//
-//  LearningView.swift
-//  Chinezy
-//
-//  Created by student on 29/05/26.
-//
-
-
 import SwiftUI
 
 public struct LearningView: View {
     let subChapter: SubChapter
     @StateObject private var viewModel = LearningViewModel()
-
-    public init(subChapter: SubChapter) {
-        self.subChapter = subChapter
-    }
 
     public var body: some View {
         ZStack {
@@ -70,19 +58,14 @@ public struct LearningView: View {
     }
 }
 
-
-struct LearningView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            LearningView(
-                subChapter: SubChapter(
-                    title: "1.1 Menyapa",
-                    flashcards: [
-                        Flashcard(hanzi: "你好", pinyin: "nǐ hǎo", indonesianTranslation: "halo", imageRef: "hand.wave.fill", audioRef: "")
-                    ],
-                    dialogText: "A: 你好！\nB: 你好！"
-                )
-            )
-        }
-    }
+#Preview {
+    LearningView(subChapter:
+        SubChapter(
+            title: "1.1 Menyapa",
+            flashcards: [
+                Flashcard(hanzi: "你好", pinyin: "nǐ hǎo", indonesianTranslation: "halo", imageRef: "hand.wave.fill", audioRef: "")
+            ],
+            dialogText: "A: 你好！\nB: 你好！"
+        )
+    )
 }

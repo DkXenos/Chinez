@@ -13,3 +13,7 @@ public struct ChapterPlaceholderView: View {
         }
     }
 }
+
+#Preview {
+    ChapterPlaceholderView(title: "Quiz section")
+}

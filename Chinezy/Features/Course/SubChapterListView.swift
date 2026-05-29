@@ -4,10 +4,6 @@ public struct SubChapterListView: View {
     let course: Course
     @State private var selectedTab: ChapterTabOption = .material
 
-    public init(course: Course) {
-        self.course = course
-    }
-
     public var body: some View {
         ZStack {
             DesignSystem.Colors.background.ignoresSafeArea()

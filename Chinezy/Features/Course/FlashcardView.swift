@@ -31,13 +31,6 @@ public struct FlashcardView: View {
 
     private var frontFace: some View {
         VStack(spacing: 24) {
-            if let imageRef = flashcard.imageRef {
-                Image(systemName: imageRef)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 80)
-                    .foregroundColor(DesignSystem.Colors.primary)
-            }
             Text(flashcard.hanzi)
                 .font(.system(size: 80, weight: .bold, design: .rounded))
                 .foregroundColor(DesignSystem.Colors.textPrimary)
@@ -46,6 +39,14 @@ public struct FlashcardView: View {
 
     private var backFace: some View {
         VStack(spacing: 16) {
+            if let imageRef = flashcard.imageRef {
+                Image(systemName: imageRef)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 80)
+                    .foregroundColor(DesignSystem.Colors.primary)
+            }
+            
             Text(flashcard.pinyin)
                 .font(DesignSystem.Typography.title)
                 .foregroundColor(DesignSystem.Colors.primary)
@@ -57,15 +58,11 @@ public struct FlashcardView: View {
     }
 }
 
-
-struct FlashcardView_Previews: PreviewProvider {
-    static var previews: some View {
-        FlashcardView(
-            flashcard: Flashcard(hanzi: "你好", pinyin: "nǐ hǎo", indonesianTranslation: "halo", imageRef: "hand.wave.fill", audioRef: ""),
-            isFlipped: false
-        )
-        .frame(height: 400)
-        .padding()
-        .previewLayout(.sizeThatFits)
-    }
+#Preview {
+    FlashcardView(
+        flashcard: Flashcard(hanzi: "你好", pinyin: "nǐ hǎo", indonesianTranslation: "halo", imageRef: "hand.wave.fill", audioRef: ""),
+        isFlipped: true
+    )
+    .frame(height: 400)
+    .padding()
 }

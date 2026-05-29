@@ -3,10 +3,6 @@ import SwiftUI
 public struct CourseRowView: View {
     let course: Course
 
-    public init(course: Course) {
-        self.course = course
-    }
-
     public var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(course.title)
@@ -35,4 +31,15 @@ public struct CourseRowView: View {
         .cornerRadius(DesignSystem.Dimensions.cornerRadius)
         .shadow(color: Color.black.opacity(0.05), radius: 5, x: 0, y: 2)
     }
+}
+
+#Preview {
+    CourseRowView(course: Course(
+        title: "Bab 1: Perkenalan Diri",
+        description: "Belajar menyapa, berkenalan, dan menanyakan umur atau profesi.",
+        subChapters: [
+            SubChapter(title: "1.1 Menyapa", dialogText: ""),
+            SubChapter(title: "1.2 Berkenalan", dialogText: "")
+        ]
+    ))
 }

@@ -1,0 +1,1909 @@
+{
+  "chapters": [
+    {
+      "id": 1,
+      "title": "Perkenalan Diri",
+      "hanzi": "你",
+      "questions": [
+        {
+          "id": 1,
+          "type": "Hanzi → Arti",
+          "stem": "Apa arti 老师 ?",
+          "options": [
+            "murid",
+            "guru",
+            "teman",
+            "nama"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 2,
+          "type": "Hanzi → Arti",
+          "stem": "Apa arti 名字 ?",
+          "options": [
+            "nama",
+            "teman",
+            "negara",
+            "umur"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 3,
+          "type": "Pinyin → Hanzi",
+          "stem": "Hanzi untuk «péngyou» (teman) adalah …",
+          "options": [
+            "老师",
+            "学生",
+            "朋友",
+            "名字"
+          ],
+          "answerIndex": 2
+        },
+        {
+          "id": 4,
+          "type": "Hanzi → Pinyin",
+          "stem": "Pinyin yang benar untuk 高兴 adalah …",
+          "options": [
+            "gāoxīng",
+            "gāoxìng",
+            "gàoxìng",
+            "gāoxíng"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 5,
+          "type": "Arti → Hanzi",
+          "stem": "Hanzi untuk «murid» adalah …",
+          "options": [
+            "老师",
+            "名字",
+            "学生",
+            "朋友"
+          ],
+          "answerIndex": 2
+        },
+        {
+          "id": 6,
+          "type": "Isi Rumpang",
+          "stem": "你___什么名字？",
+          "options": [
+            "叫",
+            "是",
+            "很",
+            "也"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 7,
+          "type": "Tata Bahasa",
+          "stem": "Susunan kalimat yang benar adalah …",
+          "options": [
+            "我很高兴认识你",
+            "我认识很高兴你",
+            "高兴我很认识你",
+            "你认识我很高兴"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 8,
+          "type": "Respons Dialog",
+          "stem": "你叫什么名字？ — Jawaban yang tepat:",
+          "options": [
+            "我很好",
+            "我叫李娜",
+            "谢谢",
+            "再见"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 9,
+          "type": "Pemahaman",
+          "stem": "A:你是老师吗？ B:不，我是学生。 — B adalah seorang …",
+          "options": [
+            "guru",
+            "murid",
+            "teman",
+            "dokter"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 10,
+          "type": "Kategori",
+          "stem": "Mana yang BUKAN menyebut orang?",
+          "options": [
+            "老师",
+            "学生",
+            "朋友",
+            "名字"
+          ],
+          "answerIndex": 3
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Asal Negara",
+      "hanzi": "国",
+      "questions": [
+        {
+          "id": 11,
+          "type": "Hanzi → Arti",
+          "stem": "Apa arti 城市 ?",
+          "options": [
+            "negara",
+            "kota",
+            "orang",
+            "bahasa"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 12,
+          "type": "Hanzi → Arti",
+          "stem": "Apa arti 中国 ?",
+          "options": [
+            "Amerika",
+            "Jepang",
+            "Tiongkok",
+            "Inggris"
+          ],
+          "answerIndex": 2
+        },
+        {
+          "id": 13,
+          "type": "Pinyin → Hanzi",
+          "stem": "Hanzi untuk «Hànyǔ» (bahasa Mandarin) adalah …",
+          "options": [
+            "英国",
+            "汉语",
+            "日本",
+            "城市"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 14,
+          "type": "Hanzi → Pinyin",
+          "stem": "Pinyin yang benar untuk 英国 adalah …",
+          "options": [
+            "Yīngguó",
+            "Yíngguó",
+            "Yìngguó",
+            "Yīngguǒ"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 15,
+          "type": "Arti → Hanzi",
+          "stem": "Hanzi untuk «Indonesia» adalah …",
+          "options": [
+            "中国",
+            "美国",
+            "印尼",
+            "日本"
+          ],
+          "answerIndex": 2
+        },
+        {
+          "id": 16,
+          "type": "Isi Rumpang",
+          "stem": "你是___国人？",
+          "options": [
+            "哪",
+            "什么",
+            "谁",
+            "几"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 17,
+          "type": "Tata Bahasa",
+          "stem": "Susunan kalimat yang benar adalah …",
+          "options": [
+            "我会说汉语",
+            "我说会汉语",
+            "汉语我会说",
+            "我汉语说会"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 18,
+          "type": "Respons Dialog",
+          "stem": "你是哪国人？ — Jawaban yang tepat:",
+          "options": [
+            "我是学生",
+            "我是中国人",
+            "我很高兴",
+            "我叫王明"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 19,
+          "type": "Pemahaman",
+          "stem": "A:你从哪里来？ B:我从北京来。 — B berasal dari …",
+          "options": [
+            "Shanghai",
+            "Beijing",
+            "Indonesia",
+            "Jepang"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 20,
+          "type": "Kategori",
+          "stem": "Mana yang BUKAN nama negara?",
+          "options": [
+            "美国",
+            "日本",
+            "城市",
+            "英国"
+          ],
+          "answerIndex": 2
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Angka",
+      "hanzi": "数",
+      "questions": [
+        {
+          "id": 21,
+          "type": "Hanzi → Arti",
+          "stem": "Apa arti 多少 ?",
+          "options": [
+            "berapa (jumlah)",
+            "siapa",
+            "mana",
+            "apa"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 22,
+          "type": "Hanzi → Arti",
+          "stem": "Angka berapakah 八 ?",
+          "options": [
+            "enam",
+            "tujuh",
+            "delapan",
+            "sembilan"
+          ],
+          "answerIndex": 2
+        },
+        {
+          "id": 23,
+          "type": "Pinyin → Hanzi",
+          "stem": "Hanzi untuk «wǔ» (lima) adalah …",
+          "options": [
+            "三",
+            "五",
+            "八",
+            "十"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 24,
+          "type": "Hanzi → Pinyin",
+          "stem": "Pinyin yang benar untuk 四 adalah …",
+          "options": [
+            "sì",
+            "sǐ",
+            "shì",
+            "xì"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 25,
+          "type": "Arti → Hanzi",
+          "stem": "Hanzi untuk «seratus» adalah …",
+          "options": [
+            "一百",
+            "二十",
+            "十一",
+            "一千"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 26,
+          "type": "Isi Rumpang",
+          "stem": "这里有___人？ (menanyakan jumlah)",
+          "options": [
+            "多少",
+            "什么",
+            "怎么样",
+            "哪"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 27,
+          "type": "Tata Bahasa",
+          "stem": "Pada nomor telepon, angka 一 dibaca …",
+          "options": [
+            "yī",
+            "yāo",
+            "èr",
+            "líng"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 28,
+          "type": "Respons Dialog",
+          "stem": "你的电话号码是多少？ — Jawaban yang tepat:",
+          "options": [
+            "我二十岁",
+            "我的号码是一三八……",
+            "今天星期一",
+            "我很好"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 29,
+          "type": "Pemahaman",
+          "stem": "A:这里有多少人？ B:有二十个人。 — Ada berapa orang?",
+          "options": [
+            "12",
+            "20",
+            "100",
+            "2"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 30,
+          "type": "Kategori",
+          "stem": "Mana yang BUKAN angka 1–10?",
+          "options": [
+            "七",
+            "二十",
+            "三",
+            "九"
+          ],
+          "answerIndex": 1
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Keluarga",
+      "hanzi": "家",
+      "questions": [
+        {
+          "id": 31,
+          "type": "Hanzi → Arti",
+          "stem": "Apa arti 哥哥 ?",
+          "options": [
+            "adik laki-laki",
+            "kakak laki-laki",
+            "kakek",
+            "ayah"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 32,
+          "type": "Hanzi → Arti",
+          "stem": "Apa arti 妈妈 ?",
+          "options": [
+            "ayah",
+            "ibu",
+            "nenek",
+            "kakak perempuan"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 33,
+          "type": "Pinyin → Hanzi",
+          "stem": "Hanzi untuk «mèimei» (adik perempuan) adalah …",
+          "options": [
+            "姐姐",
+            "妹妹",
+            "女儿",
+            "奶奶"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 34,
+          "type": "Hanzi → Pinyin",
+          "stem": "Pinyin yang benar untuk 姐姐 adalah …",
+          "options": [
+            "jiějie",
+            "jièjie",
+            "jiějié",
+            "jiéjie"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 35,
+          "type": "Arti → Hanzi",
+          "stem": "Hanzi untuk «anak perempuan» adalah …",
+          "options": [
+            "儿子",
+            "女儿",
+            "孩子",
+            "妹妹"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 36,
+          "type": "Isi Rumpang",
+          "stem": "我家有五___人。",
+          "options": [
+            "个",
+            "口",
+            "只",
+            "岁"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 37,
+          "type": "Tata Bahasa",
+          "stem": "«Saya tidak punya kakak laki-laki» = ",
+          "options": [
+            "我没有哥哥",
+            "我有没哥哥",
+            "我哥哥没有",
+            "我不有哥哥"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 38,
+          "type": "Respons Dialog",
+          "stem": "你家有几口人？ — Jawaban yang tepat:",
+          "options": [
+            "我有一个姐姐",
+            "我家有五口人",
+            "我爱我的家",
+            "我是学生"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 39,
+          "type": "Pemahaman",
+          "stem": "A:你有哥哥吗？ B:我有一个姐姐和一个弟弟。 — B punya …",
+          "options": [
+            "kakak lk & adik pr",
+            "kakak pr & adik lk",
+            "dua kakak",
+            "tidak punya saudara"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 40,
+          "type": "Kategori",
+          "stem": "Mana yang BUKAN anggota keluarga?",
+          "options": [
+            "爷爷",
+            "妹妹",
+            "朋友",
+            "妈妈"
+          ],
+          "answerIndex": 2
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Hobi",
+      "hanzi": "喜",
+      "questions": [
+        {
+          "id": 41,
+          "type": "Hanzi → Arti",
+          "stem": "Apa arti 音乐 ?",
+          "options": [
+            "film",
+            "buku",
+            "musik",
+            "olahraga"
+          ],
+          "answerIndex": 2
+        },
+        {
+          "id": 42,
+          "type": "Hanzi → Arti",
+          "stem": "Apa arti 唱歌 ?",
+          "options": [
+            "menari",
+            "menyanyi",
+            "menggambar",
+            "berwisata"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 43,
+          "type": "Pinyin → Hanzi",
+          "stem": "Hanzi untuk «diànyǐng» (film) adalah …",
+          "options": [
+            "音乐",
+            "电影",
+            "电脑",
+            "电话"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 44,
+          "type": "Hanzi → Pinyin",
+          "stem": "Pinyin yang benar untuk 喜欢 adalah …",
+          "options": [
+            "xǐhuan",
+            "xǐhuān",
+            "xīhuan",
+            "xìhuan"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 45,
+          "type": "Arti → Hanzi",
+          "stem": "Hanzi untuk «berenang» adalah …",
+          "options": [
+            "跑步",
+            "游泳",
+            "跳舞",
+            "打球"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 46,
+          "type": "Isi Rumpang",
+          "stem": "我喜欢___音乐。",
+          "options": [
+            "看",
+            "听",
+            "吃",
+            "喝"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 47,
+          "type": "Tata Bahasa",
+          "stem": "Susunan kalimat yang benar adalah …",
+          "options": [
+            "我喜欢看书",
+            "我看书喜欢",
+            "喜欢我看书",
+            "看书我喜欢"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 48,
+          "type": "Respons Dialog",
+          "stem": "你喜欢做什么？ — Jawaban yang tepat:",
+          "options": [
+            "我喜欢看电影",
+            "我很高兴",
+            "我是中国人",
+            "谢谢"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 49,
+          "type": "Pemahaman",
+          "stem": "A:你喜欢运动吗？ B:喜欢，我喜欢游泳和跑步。 — Olahraga yang B suka:",
+          "options": [
+            "basket & lari",
+            "renang & lari",
+            "renang & menari",
+            "sepak bola"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 50,
+          "type": "Kategori",
+          "stem": "Mana yang BUKAN kegiatan/hobi?",
+          "options": [
+            "唱歌",
+            "跳舞",
+            "旅游",
+            "桌子"
+          ],
+          "answerIndex": 3
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Waktu",
+      "hanzi": "时",
+      "questions": [
+        {
+          "id": 51,
+          "type": "Hanzi → Arti",
+          "stem": "Apa arti 昨天 ?",
+          "options": [
+            "hari ini",
+            "besok",
+            "kemarin",
+            "sekarang"
+          ],
+          "answerIndex": 2
+        },
+        {
+          "id": 52,
+          "type": "Hanzi → Arti",
+          "stem": "Apa arti 生日 ?",
+          "options": [
+            "minggu",
+            "ulang tahun",
+            "tahun",
+            "bulan"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 53,
+          "type": "Pinyin → Hanzi",
+          "stem": "Hanzi untuk «zǎoshang» (pagi) adalah …",
+          "options": [
+            "早上",
+            "晚上",
+            "现在",
+            "今天"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 54,
+          "type": "Hanzi → Pinyin",
+          "stem": "Pinyin yang benar untuk 星期 adalah …",
+          "options": [
+            "xīngqī",
+            "xíngqī",
+            "xīngqí",
+            "xìngqī"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 55,
+          "type": "Arti → Hanzi",
+          "stem": "Hanzi untuk «sekarang» adalah …",
+          "options": [
+            "今天",
+            "现在",
+            "早上",
+            "明天"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 56,
+          "type": "Isi Rumpang",
+          "stem": "现在八___半。 (jam)",
+          "options": [
+            "点",
+            "分",
+            "号",
+            "月"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 57,
+          "type": "Tata Bahasa",
+          "stem": "你的生日是几月几___？",
+          "options": [
+            "号",
+            "点",
+            "岁",
+            "年"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 58,
+          "type": "Respons Dialog",
+          "stem": "今天星期几？ — Jawaban yang tepat:",
+          "options": [
+            "今天星期一",
+            "现在八点",
+            "我十八岁",
+            "五月十号"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 59,
+          "type": "Pemahaman",
+          "stem": "A:你早上几点起床？ B:我六点起床。 — B bangun jam …",
+          "options": [
+            "8",
+            "6",
+            "9",
+            "setengah"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 60,
+          "type": "Lawan Kata",
+          "stem": "Lawan kata dari 早上 (pagi) adalah …",
+          "options": [
+            "晚上",
+            "现在",
+            "明天",
+            "星期"
+          ],
+          "answerIndex": 0
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Makanan & Minuman",
+      "hanzi": "食",
+      "questions": [
+        {
+          "id": 61,
+          "type": "Hanzi → Arti",
+          "stem": "Apa arti 喝 ?",
+          "options": [
+            "makan",
+            "minum",
+            "lihat",
+            "dengar"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 62,
+          "type": "Hanzi → Arti",
+          "stem": "Apa arti 苹果 ?",
+          "options": [
+            "pisang",
+            "apel",
+            "roti",
+            "telur"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 63,
+          "type": "Pinyin → Hanzi",
+          "stem": "Hanzi untuk «chá» (teh) adalah …",
+          "options": [
+            "水",
+            "茶",
+            "咖啡",
+            "牛奶"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 64,
+          "type": "Hanzi → Pinyin",
+          "stem": "Pinyin yang benar untuk 咖啡 adalah …",
+          "options": [
+            "kāfēi",
+            "kāféi",
+            "kàfēi",
+            "kǎfēi"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 65,
+          "type": "Arti → Hanzi",
+          "stem": "Hanzi untuk «haus» adalah …",
+          "options": [
+            "饿",
+            "渴",
+            "甜",
+            "喝"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 66,
+          "type": "Isi Rumpang",
+          "stem": "我很饿，想___米饭。",
+          "options": [
+            "喝",
+            "吃",
+            "看",
+            "听"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 67,
+          "type": "Tata Bahasa",
+          "stem": "你喝茶___喝咖啡？ (pilihan)",
+          "options": [
+            "还是",
+            "和",
+            "也",
+            "很"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 68,
+          "type": "Respons Dialog",
+          "stem": "你渴吗？ — Jawaban yang tepat:",
+          "options": [
+            "我很渴，想喝水",
+            "我很饿",
+            "我喜欢苹果",
+            "我是学生"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 69,
+          "type": "Pemahaman",
+          "stem": "A:苹果好吃吗？ B:很好吃，很甜。 — Rasa apelnya …",
+          "options": [
+            "asin",
+            "manis",
+            "pahit",
+            "pedas"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 70,
+          "type": "Kategori",
+          "stem": "Mana yang termasuk MINUMAN?",
+          "options": [
+            "米饭",
+            "面条",
+            "咖啡",
+            "鸡蛋"
+          ],
+          "answerIndex": 2
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Binatang",
+      "hanzi": "动",
+      "questions": [
+        {
+          "id": 71,
+          "type": "Hanzi → Arti",
+          "stem": "Apa arti 猫 ?",
+          "options": [
+            "anjing",
+            "kucing",
+            "ikan",
+            "burung"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 72,
+          "type": "Hanzi → Arti",
+          "stem": "Apa arti 熊猫 ?",
+          "options": [
+            "harimau",
+            "panda",
+            "gajah",
+            "monyet"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 73,
+          "type": "Pinyin → Hanzi",
+          "stem": "Hanzi untuk «gǒu» (anjing) adalah …",
+          "options": [
+            "猫",
+            "狗",
+            "鱼",
+            "鸟"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 74,
+          "type": "Hanzi → Pinyin",
+          "stem": "Pinyin yang benar untuk 可爱 adalah …",
+          "options": [
+            "kě'ài",
+            "kē'ài",
+            "kè'ài",
+            "kě'āi"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 75,
+          "type": "Arti → Hanzi",
+          "stem": "Hanzi untuk «gajah» adalah …",
+          "options": [
+            "老虎",
+            "大象",
+            "熊猫",
+            "马"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 76,
+          "type": "Isi Rumpang",
+          "stem": "我有一___狗。 (kata bantu bilangan)",
+          "options": [
+            "个",
+            "只",
+            "口",
+            "本"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 77,
+          "type": "Tata Bahasa",
+          "stem": "«Kambing ini kecil» = ",
+          "options": [
+            "这只羊很小",
+            "这羊只很小",
+            "很小这只羊",
+            "这只小很羊"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 78,
+          "type": "Respons Dialog",
+          "stem": "你家有动物吗？ — Jawaban yang tepat:",
+          "options": [
+            "有，我有一只猫",
+            "我很可爱",
+            "我去动物园",
+            "我喜欢音乐"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 79,
+          "type": "Pemahaman",
+          "stem": "A:周末我们去动物园吧。 B:好！我想看熊猫。 — B ingin melihat …",
+          "options": [
+            "harimau",
+            "panda",
+            "gajah",
+            "monyet"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 80,
+          "type": "Lawan Kata",
+          "stem": "Lawan kata dari 大 (besar) adalah …",
+          "options": [
+            "小",
+            "多",
+            "高",
+            "可爱"
+          ],
+          "answerIndex": 0
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Warna",
+      "hanzi": "色",
+      "questions": [
+        {
+          "id": 81,
+          "type": "Hanzi → Arti",
+          "stem": "Apa arti 颜色 ?",
+          "options": [
+            "baju",
+            "warna",
+            "cantik",
+            "langit"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 82,
+          "type": "Hanzi → Arti",
+          "stem": "Warna apakah 红色 ?",
+          "options": [
+            "biru",
+            "merah",
+            "hijau",
+            "kuning"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 83,
+          "type": "Pinyin → Hanzi",
+          "stem": "Hanzi untuk «lánsè» (biru) adalah …",
+          "options": [
+            "红色",
+            "蓝色",
+            "黄色",
+            "绿色"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 84,
+          "type": "Hanzi → Pinyin",
+          "stem": "Pinyin yang benar untuk 绿色 adalah …",
+          "options": [
+            "lǜsè",
+            "lùsè",
+            "lǚsè",
+            "lüsè"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 85,
+          "type": "Arti → Hanzi",
+          "stem": "Hanzi untuk «hitam» adalah …",
+          "options": [
+            "白色",
+            "黑色",
+            "灰色",
+            "红色"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 86,
+          "type": "Isi Rumpang",
+          "stem": "你喜欢什么___？ (menanyakan warna)",
+          "options": [
+            "颜色",
+            "衣服",
+            "天",
+            "漂亮"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 87,
+          "type": "Tata Bahasa",
+          "stem": "这件白色___衣服很漂亮。",
+          "options": [
+            "的",
+            "是",
+            "很",
+            "也"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 88,
+          "type": "Respons Dialog",
+          "stem": "你喜欢什么颜色？ — Jawaban yang tepat:",
+          "options": [
+            "我喜欢红色",
+            "我很漂亮",
+            "这是衣服",
+            "他是老师"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 89,
+          "type": "Pemahaman",
+          "stem": "A:天是什么颜色？ B:天是蓝色的。 — Warna langit …",
+          "options": [
+            "merah",
+            "biru",
+            "hijau",
+            "abu-abu"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 90,
+          "type": "Kategori",
+          "stem": "Mana yang BUKAN warna?",
+          "options": [
+            "红色",
+            "蓝色",
+            "衣服",
+            "黄色"
+          ],
+          "answerIndex": 2
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Benda di Sekitar",
+      "hanzi": "物",
+      "questions": [
+        {
+          "id": 91,
+          "type": "Hanzi → Arti",
+          "stem": "Apa arti 钱 ?",
+          "options": [
+            "tas",
+            "uang",
+            "kunci",
+            "pena"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 92,
+          "type": "Hanzi → Arti",
+          "stem": "Apa arti 手机 ?",
+          "options": [
+            "komputer",
+            "HP / ponsel",
+            "kacamata",
+            "kunci"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 93,
+          "type": "Pinyin → Hanzi",
+          "stem": "Hanzi untuk «yǐzi» (kursi) adalah …",
+          "options": [
+            "桌子",
+            "椅子",
+            "本子",
+            "包"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 94,
+          "type": "Hanzi → Pinyin",
+          "stem": "Pinyin yang benar untuk 眼镜 adalah …",
+          "options": [
+            "yǎnjìng",
+            "yánjìng",
+            "yǎnjīng",
+            "yànjìng"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 95,
+          "type": "Arti → Hanzi",
+          "stem": "Hanzi untuk «komputer» adalah …",
+          "options": [
+            "手机",
+            "电脑",
+            "电话",
+            "电影"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 96,
+          "type": "Isi Rumpang",
+          "stem": "我的手机在你的包___。 (di dalam)",
+          "options": [
+            "里",
+            "上",
+            "下",
+            "旁"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 97,
+          "type": "Tata Bahasa",
+          "stem": "«Kucing di bawah meja» = ",
+          "options": [
+            "猫在桌子下面",
+            "猫桌子在下面",
+            "下面猫在桌子",
+            "猫在下面桌子"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 98,
+          "type": "Respons Dialog",
+          "stem": "你的电脑在哪儿？ — Jawaban yang tepat:",
+          "options": [
+            "在椅子旁边",
+            "我有电脑",
+            "电脑很大",
+            "我喜欢电脑"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 99,
+          "type": "Pemahaman",
+          "stem": "A:猫在哪里？ B:在桌子下面。 — Kucing berada di …",
+          "options": [
+            "atas meja",
+            "bawah meja",
+            "dalam tas",
+            "sebelah kursi"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 100,
+          "type": "Lawan Kata",
+          "stem": "Lawan kata dari 上面 (atas) adalah …",
+          "options": [
+            "下面",
+            "里面",
+            "旁边",
+            "前面"
+          ],
+          "answerIndex": 0
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "title": "Ruangan & Tempat",
+      "hanzi": "房",
+      "questions": [
+        {
+          "id": 101,
+          "type": "Hanzi → Arti",
+          "stem": "Apa arti 医院 ?",
+          "options": [
+            "sekolah",
+            "rumah sakit",
+            "toko",
+            "bank"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 102,
+          "type": "Hanzi → Arti",
+          "stem": "Apa arti 厨房 ?",
+          "options": [
+            "ruang tamu",
+            "dapur",
+            "kamar tidur",
+            "toilet"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 103,
+          "type": "Pinyin → Hanzi",
+          "stem": "Hanzi untuk «xuéxiào» (sekolah) adalah …",
+          "options": [
+            "医院",
+            "学校",
+            "银行",
+            "商店"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 104,
+          "type": "Hanzi → Pinyin",
+          "stem": "Pinyin yang benar untuk 洗手间 adalah …",
+          "options": [
+            "xǐshǒujiān",
+            "xíshǒujiān",
+            "xǐshōujiān",
+            "xìshǒujiān"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 105,
+          "type": "Arti → Hanzi",
+          "stem": "Hanzi untuk «bank» adalah …",
+          "options": [
+            "商店",
+            "银行",
+            "医院",
+            "饭馆"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 106,
+          "type": "Isi Rumpang",
+          "stem": "洗手间在卧室___。 (sebelah)",
+          "options": [
+            "旁边",
+            "上面",
+            "里面",
+            "下面"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 107,
+          "type": "Tata Bahasa",
+          "stem": "往前走，在___。 (sebelah kiri)",
+          "options": [
+            "左边",
+            "右走",
+            "远边",
+            "近面"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 108,
+          "type": "Respons Dialog",
+          "stem": "你去哪儿？ — Jawaban yang tepat:",
+          "options": [
+            "我去学校",
+            "我很忙",
+            "学校很大",
+            "我是学生"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 109,
+          "type": "Pemahaman",
+          "stem": "A:去车站怎么走？ B:往前走，在左边。 A:远吗？ B:不远，很近。 — Stasiunnya …",
+          "options": [
+            "jauh",
+            "dekat",
+            "di kanan",
+            "tidak ada"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 110,
+          "type": "Lawan Kata",
+          "stem": "Lawan kata dari 远 (jauh) adalah …",
+          "options": [
+            "近",
+            "左",
+            "大",
+            "走"
+          ],
+          "answerIndex": 0
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "title": "Cuaca",
+      "hanzi": "天",
+      "questions": [
+        {
+          "id": 111,
+          "type": "Hanzi → Arti",
+          "stem": "Apa arti 热 ?",
+          "options": [
+            "dingin",
+            "panas",
+            "hangat",
+            "sejuk"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 112,
+          "type": "Hanzi → Arti",
+          "stem": "Apa arti 下雨 ?",
+          "options": [
+            "cerah",
+            "mendung",
+            "hujan",
+            "berangin"
+          ],
+          "answerIndex": 2
+        },
+        {
+          "id": 113,
+          "type": "Pinyin → Hanzi",
+          "stem": "Hanzi untuk «lěng» (dingin) adalah …",
+          "options": [
+            "热",
+            "冷",
+            "暖和",
+            "凉快"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 114,
+          "type": "Hanzi → Pinyin",
+          "stem": "Pinyin yang benar untuk 天气 adalah …",
+          "options": [
+            "tiānqì",
+            "tiānqí",
+            "tiǎnqì",
+            "tiānqī"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 115,
+          "type": "Arti → Hanzi",
+          "stem": "Hanzi untuk «musim panas» adalah …",
+          "options": [
+            "春天",
+            "夏天",
+            "秋天",
+            "冬天"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 116,
+          "type": "Isi Rumpang",
+          "stem": "今天___怎么样？",
+          "options": [
+            "天气",
+            "季节",
+            "雪",
+            "度"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 117,
+          "type": "Tata Bahasa",
+          "stem": "«Besok hujan» = ",
+          "options": [
+            "明天下雨",
+            "下雨明天",
+            "明天雨下",
+            "雨下明天"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 118,
+          "type": "Respons Dialog",
+          "stem": "今天天气怎么样？ — Jawaban yang tepat:",
+          "options": [
+            "今天是晴天",
+            "我很冷",
+            "我喜欢春天",
+            "我是学生"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 119,
+          "type": "Pemahaman",
+          "stem": "A:今天热吗？ B:很热，有三十五度。 — Suhu hari ini …",
+          "options": [
+            "25 derajat",
+            "35 derajat",
+            "15 derajat",
+            "dingin"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 120,
+          "type": "Lawan Kata",
+          "stem": "Lawan kata dari 热 (panas) adalah …",
+          "options": [
+            "冷",
+            "暖和",
+            "晴",
+            "度"
+          ],
+          "answerIndex": 0
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "title": "Jenis Olahraga",
+      "hanzi": "球",
+      "questions": [
+        {
+          "id": 121,
+          "type": "Hanzi → Arti",
+          "stem": "Apa arti 比赛 ?",
+          "options": [
+            "tim",
+            "pertandingan",
+            "menang",
+            "kalah"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 122,
+          "type": "Hanzi → Arti",
+          "stem": "Olahraga apakah 篮球 ?",
+          "options": [
+            "sepak bola",
+            "bola basket",
+            "tenis",
+            "tenis meja"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 123,
+          "type": "Pinyin → Hanzi",
+          "stem": "Hanzi untuk «zúqiú» (sepak bola) adalah …",
+          "options": [
+            "篮球",
+            "足球",
+            "网球",
+            "乒乓球"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 124,
+          "type": "Hanzi → Pinyin",
+          "stem": "Pinyin yang benar untuk 锻炼 adalah …",
+          "options": [
+            "duànliàn",
+            "duānliàn",
+            "duànliǎn",
+            "duǎnliàn"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 125,
+          "type": "Arti → Hanzi",
+          "stem": "Hanzi untuk «menang» adalah …",
+          "options": [
+            "输",
+            "赢",
+            "踢",
+            "队"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 126,
+          "type": "Isi Rumpang",
+          "stem": "我喜欢___篮球。",
+          "options": [
+            "打",
+            "踢",
+            "跑",
+            "看"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 127,
+          "type": "Tata Bahasa",
+          "stem": "«Setiap hari saya berolahraga» = ",
+          "options": [
+            "我每天锻炼",
+            "每天锻炼我吗",
+            "我锻炼每天",
+            "锻炼每天我"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 128,
+          "type": "Respons Dialog",
+          "stem": "你喜欢什么运动？ — Jawaban yang tepat:",
+          "options": [
+            "我喜欢打篮球",
+            "我们队会赢",
+            "加油",
+            "我很累"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 129,
+          "type": "Pemahaman",
+          "stem": "A:哪个队会赢？ B:我们队不会输！ — B yakin timnya akan …",
+          "options": [
+            "kalah",
+            "menang",
+            "seri",
+            "tidak main"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 130,
+          "type": "Kategori",
+          "stem": "Mana yang BUKAN olahraga dengan bola?",
+          "options": [
+            "篮球",
+            "足球",
+            "爬山",
+            "网球"
+          ],
+          "answerIndex": 2
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "title": "Profesi",
+      "hanzi": "工",
+      "questions": [
+        {
+          "id": 131,
+          "type": "Hanzi → Arti",
+          "stem": "Apa arti 厨师 ?",
+          "options": [
+            "koki",
+            "polisi",
+            "petani",
+            "guru"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 132,
+          "type": "Hanzi → Arti",
+          "stem": "Apa arti 医生 ?",
+          "options": [
+            "perawat",
+            "dokter",
+            "sopir",
+            "pengacara"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 133,
+          "type": "Pinyin → Hanzi",
+          "stem": "Hanzi untuk «jǐngchá» (polisi) adalah …",
+          "options": [
+            "厨师",
+            "警察",
+            "农民",
+            "商人"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 134,
+          "type": "Hanzi → Pinyin",
+          "stem": "Pinyin yang benar untuk 律师 adalah …",
+          "options": [
+            "lǜshī",
+            "lùshī",
+            "lǚshī",
+            "lùshí"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 135,
+          "type": "Arti → Hanzi",
+          "stem": "Hanzi untuk «perawat» adalah …",
+          "options": [
+            "医生",
+            "护士",
+            "工人",
+            "农民"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 136,
+          "type": "Isi Rumpang",
+          "stem": "你爸爸做什么___？",
+          "options": [
+            "工作",
+            "公司",
+            "上班",
+            "忙"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 137,
+          "type": "Tata Bahasa",
+          "stem": "«Saya kerja di sebuah perusahaan» = ",
+          "options": [
+            "我在一家公司上班",
+            "我上班在一家公司",
+            "一家公司我在上班",
+            "我公司在一家上班"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 138,
+          "type": "Respons Dialog",
+          "stem": "你想做什么工作？ — Jawaban yang tepat:",
+          "options": [
+            "我想当律师",
+            "我很累",
+            "工作很忙",
+            "我去公司"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 139,
+          "type": "Pemahaman",
+          "stem": "A:你爸爸做什么工作？ B:他是医生。A:你妈妈呢？ B:她是护士。 — Ibu bekerja sebagai …",
+          "options": [
+            "dokter",
+            "perawat",
+            "guru",
+            "koki"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 140,
+          "type": "Lawan Kata",
+          "stem": "Lawan kata dari 上班 (masuk kerja) adalah …",
+          "options": [
+            "下班",
+            "工作",
+            "忙",
+            "累"
+          ],
+          "answerIndex": 0
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "title": "Penyakit",
+      "hanzi": "病",
+      "questions": [
+        {
+          "id": 141,
+          "type": "Hanzi → Arti",
+          "stem": "Apa arti 药 ?",
+          "options": [
+            "obat",
+            "dokter",
+            "sakit",
+            "istirahat"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 142,
+          "type": "Hanzi → Arti",
+          "stem": "Apa arti 头疼 ?",
+          "options": [
+            "batuk",
+            "sakit kepala",
+            "demam",
+            "flu"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 143,
+          "type": "Pinyin → Hanzi",
+          "stem": "Hanzi untuk «fāshāo» (demam) adalah …",
+          "options": [
+            "咳嗽",
+            "发烧",
+            "头疼",
+            "感冒"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 144,
+          "type": "Hanzi → Pinyin",
+          "stem": "Pinyin yang benar untuk 舒服 adalah …",
+          "options": [
+            "shūfu",
+            "shūfū",
+            "shùfu",
+            "shūfú"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 145,
+          "type": "Arti → Hanzi",
+          "stem": "Hanzi untuk «istirahat» adalah …",
+          "options": [
+            "看病",
+            "休息",
+            "吃药",
+            "生病"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 146,
+          "type": "Isi Rumpang",
+          "stem": "我生病了，有点儿___。",
+          "options": [
+            "感冒",
+            "休息",
+            "没事",
+            "舒服"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 147,
+          "type": "Tata Bahasa",
+          "stem": "«Perut saya sakit» = ",
+          "options": [
+            "我肚子疼",
+            "我疼肚子",
+            "肚子我疼",
+            "疼我肚子"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 148,
+          "type": "Respons Dialog",
+          "stem": "你怎么了？ — Jawaban yang tepat:",
+          "options": [
+            "我生病了",
+            "我很高兴",
+            "我是医生",
+            "谢谢"
+          ],
+          "answerIndex": 0
+        },
+        {
+          "id": 149,
+          "type": "Pemahaman",
+          "stem": "A:你哪里不舒服？ B:我肚子疼。 — Bagian yang sakit …",
+          "options": [
+            "kepala",
+            "perut",
+            "gigi",
+            "tenggorokan"
+          ],
+          "answerIndex": 1
+        },
+        {
+          "id": 150,
+          "type": "Lawan Kata",
+          "stem": "Lawan kata dari 舒服 (enak badan) adalah …",
+          "options": [
+            "难受",
+            "生病",
+            "休息",
+            "没事"
+          ],
+          "answerIndex": 0
+        }
+      ]
+    }
+  ]
+}

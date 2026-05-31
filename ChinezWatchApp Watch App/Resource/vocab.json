@@ -1,0 +1,585 @@
+{
+  "vocab": [
+    {
+      "id": 1,
+      "chapter": 1,
+      "hanzi": "我",
+      "pinyin": "wǒ",
+      "arti": "saya"
+    },
+    {
+      "id": 2,
+      "chapter": 1,
+      "hanzi": "你",
+      "pinyin": "nǐ",
+      "arti": "kamu"
+    },
+    {
+      "id": 3,
+      "chapter": 1,
+      "hanzi": "叫",
+      "pinyin": "jiào",
+      "arti": "bernama / memanggil"
+    },
+    {
+      "id": 4,
+      "chapter": 1,
+      "hanzi": "很",
+      "pinyin": "hěn",
+      "arti": "sangat"
+    },
+    {
+      "id": 5,
+      "chapter": 1,
+      "hanzi": "也",
+      "pinyin": "yě",
+      "arti": "juga"
+    },
+    {
+      "id": 6,
+      "chapter": 1,
+      "hanzi": "谁",
+      "pinyin": "shéi",
+      "arti": "siapa"
+    },
+    {
+      "id": 7,
+      "chapter": 1,
+      "hanzi": "不",
+      "pinyin": "bù",
+      "arti": "tidak / bukan"
+    },
+    {
+      "id": 8,
+      "chapter": 1,
+      "hanzi": "岁",
+      "pinyin": "suì",
+      "arti": "tahun (usia)"
+    },
+    {
+      "id": 9,
+      "chapter": 2,
+      "hanzi": "哪",
+      "pinyin": "nǎ",
+      "arti": "mana"
+    },
+    {
+      "id": 10,
+      "chapter": 2,
+      "hanzi": "国",
+      "pinyin": "guó",
+      "arti": "negara"
+    },
+    {
+      "id": 11,
+      "chapter": 2,
+      "hanzi": "人",
+      "pinyin": "rén",
+      "arti": "orang"
+    },
+    {
+      "id": 12,
+      "chapter": 2,
+      "hanzi": "来",
+      "pinyin": "lái",
+      "arti": "datang / berasal"
+    },
+    {
+      "id": 13,
+      "chapter": 2,
+      "hanzi": "对",
+      "pinyin": "duì",
+      "arti": "benar / ya"
+    },
+    {
+      "id": 14,
+      "chapter": 2,
+      "hanzi": "会",
+      "pinyin": "huì",
+      "arti": "bisa"
+    },
+    {
+      "id": 15,
+      "chapter": 2,
+      "hanzi": "说",
+      "pinyin": "shuō",
+      "arti": "berbicara"
+    },
+    {
+      "id": 16,
+      "chapter": 2,
+      "hanzi": "住",
+      "pinyin": "zhù",
+      "arti": "tinggal"
+    },
+    {
+      "id": 17,
+      "chapter": 3,
+      "hanzi": "一",
+      "pinyin": "yī",
+      "arti": "satu"
+    },
+    {
+      "id": 18,
+      "chapter": 3,
+      "hanzi": "二",
+      "pinyin": "èr",
+      "arti": "dua"
+    },
+    {
+      "id": 19,
+      "chapter": 3,
+      "hanzi": "三",
+      "pinyin": "sān",
+      "arti": "tiga"
+    },
+    {
+      "id": 20,
+      "chapter": 3,
+      "hanzi": "四",
+      "pinyin": "sì",
+      "arti": "empat"
+    },
+    {
+      "id": 21,
+      "chapter": 3,
+      "hanzi": "五",
+      "pinyin": "wǔ",
+      "arti": "lima"
+    },
+    {
+      "id": 22,
+      "chapter": 3,
+      "hanzi": "六",
+      "pinyin": "liù",
+      "arti": "enam"
+    },
+    {
+      "id": 23,
+      "chapter": 3,
+      "hanzi": "七",
+      "pinyin": "qī",
+      "arti": "tujuh"
+    },
+    {
+      "id": 24,
+      "chapter": 3,
+      "hanzi": "八",
+      "pinyin": "bā",
+      "arti": "delapan"
+    },
+    {
+      "id": 25,
+      "chapter": 3,
+      "hanzi": "九",
+      "pinyin": "jiǔ",
+      "arti": "sembilan"
+    },
+    {
+      "id": 26,
+      "chapter": 3,
+      "hanzi": "十",
+      "pinyin": "shí",
+      "arti": "sepuluh"
+    },
+    {
+      "id": 27,
+      "chapter": 3,
+      "hanzi": "有",
+      "pinyin": "yǒu",
+      "arti": "ada / punya"
+    },
+    {
+      "id": 28,
+      "chapter": 3,
+      "hanzi": "零",
+      "pinyin": "líng",
+      "arti": "nol"
+    },
+    {
+      "id": 29,
+      "chapter": 4,
+      "hanzi": "家",
+      "pinyin": "jiā",
+      "arti": "rumah / keluarga"
+    },
+    {
+      "id": 30,
+      "chapter": 4,
+      "hanzi": "几",
+      "pinyin": "jǐ",
+      "arti": "berapa"
+    },
+    {
+      "id": 31,
+      "chapter": 4,
+      "hanzi": "爱",
+      "pinyin": "ài",
+      "arti": "cinta / sayang"
+    },
+    {
+      "id": 32,
+      "chapter": 5,
+      "hanzi": "看",
+      "pinyin": "kàn",
+      "arti": "melihat / menonton"
+    },
+    {
+      "id": 33,
+      "chapter": 5,
+      "hanzi": "书",
+      "pinyin": "shū",
+      "arti": "buku"
+    },
+    {
+      "id": 34,
+      "chapter": 5,
+      "hanzi": "听",
+      "pinyin": "tīng",
+      "arti": "mendengar"
+    },
+    {
+      "id": 35,
+      "chapter": 6,
+      "hanzi": "点",
+      "pinyin": "diǎn",
+      "arti": "pukul (jam)"
+    },
+    {
+      "id": 36,
+      "chapter": 6,
+      "hanzi": "分",
+      "pinyin": "fēn",
+      "arti": "menit"
+    },
+    {
+      "id": 37,
+      "chapter": 6,
+      "hanzi": "半",
+      "pinyin": "bàn",
+      "arti": "setengah"
+    },
+    {
+      "id": 38,
+      "chapter": 6,
+      "hanzi": "月",
+      "pinyin": "yuè",
+      "arti": "bulan"
+    },
+    {
+      "id": 39,
+      "chapter": 6,
+      "hanzi": "号",
+      "pinyin": "hào",
+      "arti": "tanggal"
+    },
+    {
+      "id": 40,
+      "chapter": 6,
+      "hanzi": "年",
+      "pinyin": "nián",
+      "arti": "tahun"
+    },
+    {
+      "id": 41,
+      "chapter": 7,
+      "hanzi": "吃",
+      "pinyin": "chī",
+      "arti": "makan"
+    },
+    {
+      "id": 42,
+      "chapter": 7,
+      "hanzi": "饿",
+      "pinyin": "è",
+      "arti": "lapar"
+    },
+    {
+      "id": 43,
+      "chapter": 7,
+      "hanzi": "喝",
+      "pinyin": "hē",
+      "arti": "minum"
+    },
+    {
+      "id": 44,
+      "chapter": 7,
+      "hanzi": "渴",
+      "pinyin": "kě",
+      "arti": "haus"
+    },
+    {
+      "id": 45,
+      "chapter": 7,
+      "hanzi": "水",
+      "pinyin": "shuǐ",
+      "arti": "air"
+    },
+    {
+      "id": 46,
+      "chapter": 7,
+      "hanzi": "茶",
+      "pinyin": "chá",
+      "arti": "teh"
+    },
+    {
+      "id": 47,
+      "chapter": 7,
+      "hanzi": "甜",
+      "pinyin": "tián",
+      "arti": "manis"
+    },
+    {
+      "id": 48,
+      "chapter": 8,
+      "hanzi": "狗",
+      "pinyin": "gǒu",
+      "arti": "anjing"
+    },
+    {
+      "id": 49,
+      "chapter": 8,
+      "hanzi": "猫",
+      "pinyin": "māo",
+      "arti": "kucing"
+    },
+    {
+      "id": 50,
+      "chapter": 8,
+      "hanzi": "鱼",
+      "pinyin": "yú",
+      "arti": "ikan"
+    },
+    {
+      "id": 51,
+      "chapter": 8,
+      "hanzi": "鸟",
+      "pinyin": "niǎo",
+      "arti": "burung"
+    },
+    {
+      "id": 52,
+      "chapter": 8,
+      "hanzi": "马",
+      "pinyin": "mǎ",
+      "arti": "kuda"
+    },
+    {
+      "id": 53,
+      "chapter": 8,
+      "hanzi": "牛",
+      "pinyin": "niú",
+      "arti": "sapi"
+    },
+    {
+      "id": 54,
+      "chapter": 8,
+      "hanzi": "羊",
+      "pinyin": "yáng",
+      "arti": "kambing / domba"
+    },
+    {
+      "id": 55,
+      "chapter": 8,
+      "hanzi": "鸡",
+      "pinyin": "jī",
+      "arti": "ayam"
+    },
+    {
+      "id": 56,
+      "chapter": 8,
+      "hanzi": "大",
+      "pinyin": "dà",
+      "arti": "besar"
+    },
+    {
+      "id": 57,
+      "chapter": 8,
+      "hanzi": "小",
+      "pinyin": "xiǎo",
+      "arti": "kecil"
+    },
+    {
+      "id": 58,
+      "chapter": 9,
+      "hanzi": "天",
+      "pinyin": "tiān",
+      "arti": "langit"
+    },
+    {
+      "id": 59,
+      "chapter": 9,
+      "hanzi": "深",
+      "pinyin": "shēn",
+      "arti": "tua / gelap (warna)"
+    },
+    {
+      "id": 60,
+      "chapter": 9,
+      "hanzi": "浅",
+      "pinyin": "qiǎn",
+      "arti": "muda / terang (warna)"
+    },
+    {
+      "id": 61,
+      "chapter": 10,
+      "hanzi": "笔",
+      "pinyin": "bǐ",
+      "arti": "pena / pulpen"
+    },
+    {
+      "id": 62,
+      "chapter": 10,
+      "hanzi": "钱",
+      "pinyin": "qián",
+      "arti": "uang"
+    },
+    {
+      "id": 63,
+      "chapter": 10,
+      "hanzi": "包",
+      "pinyin": "bāo",
+      "arti": "tas"
+    },
+    {
+      "id": 64,
+      "chapter": 11,
+      "hanzi": "走",
+      "pinyin": "zǒu",
+      "arti": "berjalan"
+    },
+    {
+      "id": 65,
+      "chapter": 11,
+      "hanzi": "左",
+      "pinyin": "zuǒ",
+      "arti": "kiri"
+    },
+    {
+      "id": 66,
+      "chapter": 11,
+      "hanzi": "右",
+      "pinyin": "yòu",
+      "arti": "kanan"
+    },
+    {
+      "id": 67,
+      "chapter": 11,
+      "hanzi": "远",
+      "pinyin": "yuǎn",
+      "arti": "jauh"
+    },
+    {
+      "id": 68,
+      "chapter": 11,
+      "hanzi": "近",
+      "pinyin": "jìn",
+      "arti": "dekat"
+    },
+    {
+      "id": 69,
+      "chapter": 12,
+      "hanzi": "晴",
+      "pinyin": "qíng",
+      "arti": "cerah"
+    },
+    {
+      "id": 70,
+      "chapter": 12,
+      "hanzi": "阴",
+      "pinyin": "yīn",
+      "arti": "mendung"
+    },
+    {
+      "id": 71,
+      "chapter": 12,
+      "hanzi": "热",
+      "pinyin": "rè",
+      "arti": "panas"
+    },
+    {
+      "id": 72,
+      "chapter": 12,
+      "hanzi": "冷",
+      "pinyin": "lěng",
+      "arti": "dingin"
+    },
+    {
+      "id": 73,
+      "chapter": 12,
+      "hanzi": "度",
+      "pinyin": "dù",
+      "arti": "derajat"
+    },
+    {
+      "id": 74,
+      "chapter": 12,
+      "hanzi": "雪",
+      "pinyin": "xuě",
+      "arti": "salju"
+    },
+    {
+      "id": 75,
+      "chapter": 13,
+      "hanzi": "踢",
+      "pinyin": "tī",
+      "arti": "menendang"
+    },
+    {
+      "id": 76,
+      "chapter": 13,
+      "hanzi": "队",
+      "pinyin": "duì",
+      "arti": "tim / regu"
+    },
+    {
+      "id": 77,
+      "chapter": 13,
+      "hanzi": "赢",
+      "pinyin": "yíng",
+      "arti": "menang"
+    },
+    {
+      "id": 78,
+      "chapter": 13,
+      "hanzi": "输",
+      "pinyin": "shū",
+      "arti": "kalah"
+    },
+    {
+      "id": 79,
+      "chapter": 14,
+      "hanzi": "忙",
+      "pinyin": "máng",
+      "arti": "sibuk"
+    },
+    {
+      "id": 80,
+      "chapter": 14,
+      "hanzi": "累",
+      "pinyin": "lèi",
+      "arti": "lelah / capek"
+    },
+    {
+      "id": 81,
+      "chapter": 15,
+      "hanzi": "疼",
+      "pinyin": "téng",
+      "arti": "sakit / nyeri"
+    },
+    {
+      "id": 82,
+      "chapter": 15,
+      "hanzi": "牙",
+      "pinyin": "yá",
+      "arti": "gigi"
+    },
+    {
+      "id": 83,
+      "chapter": 15,
+      "hanzi": "药",
+      "pinyin": "yào",
+      "arti": "obat"
+    }
+  ]
+}

@@ -3,6 +3,7 @@ import Foundation
 import AVFoundation
 import SoundAnalysis
 import Combine
+import Accelerate
 
 // MARK: - Service State
 
@@ -97,7 +98,7 @@ final class ToneEvaluatorService: NSObject, ObservableObject {
 
         do {
             let config = MLModelConfiguration()
-            let model = try HanziSoundClassifierVER42(configuration: config)
+            let model = try HanziSoundClassifierVER5(configuration: config)
             let request = try SNClassifySoundRequest(mlModel: model.model)
             classifyRequest = request
             try analyzer.add(request, withObserver: self)
@@ -108,6 +109,21 @@ final class ToneEvaluatorService: NSObject, ObservableObject {
 
         inputNode.installTap(onBus: 0, bufferSize: 8192, format: format) { [weak self] buffer, time in
             guard let self else { return }
+            
+            // 1. Get channel data
+            guard let channelData = buffer.floatChannelData?[0] else { return }
+            let frameLength = UInt(buffer.frameLength)
+            
+            // 2. Calculate RMS using Accelerate
+            var rms: Float = 0.0
+            vDSP_measqv(channelData, 1, &rms, frameLength)
+            
+            // 3. Convert to dB (avoid log10 of 0)
+            let db = 20 * log10(rms > 0 ? rms : 1e-6)
+            
+            // 4. Gate logic: Ignore if below threshold
+            if db < -40.0 { return }
+            
             self.analysisQueue.async {
                 self.streamAnalyzer?.analyze(buffer, atAudioFramePosition: time.sampleTime)
             }

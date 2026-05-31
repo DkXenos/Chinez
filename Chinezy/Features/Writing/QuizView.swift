@@ -1,13 +1,21 @@
 import SwiftUI
 
 // MARK: - WritingQuizView
-/// Stroke-order quiz with the layered architecture:
-///   Bottom — HanziWebView (animation renderer, no touch)
-///   Top    — StrokeCanvasView (PencilKit / touch drawing)
+/// Interactive Hanzi stroke-order quiz using HanziWriter's built-in
+/// `writer.quiz()` mode (per HanziWriterContext.md §4).
 ///
-/// Receives a `WritingLevel` and quizzes the user on each character.
-/// When the native StrokeValidator confirms a correct stroke, the parent
-/// tells HanziWebView to animate that stroke via the coordinator bridge.
+/// Architecture:
+///   - HanziWebView with `useQuizMode: true` handles ALL touch interaction.
+///   - No PencilKit overlay needed — HanziWriter validates strokes natively.
+///   - JS sends `strokeCorrect` / `strokeMistake` / `quizComplete` messages
+///     back to Swift via webkit.messageHandlers.
+///   - Swift provides haptic feedback and manages quiz progression.
+///
+/// Data flow (per HanziWriterContext.md §2-3):
+///   1. Swift reads character medians from `HSK1_StrokeData.json`
+///   2. Injects as `injectedLocalData` into WKWebView
+///   3. JS `charDataLoader` checks local data first, CDN fallback
+///   4. `writer.quiz()` is called immediately after initialization
 struct WritingQuizView: View {
 
     let level: WritingLevel
@@ -26,58 +34,60 @@ struct WritingQuizView: View {
     /// Tracks total mistake count for the session.
     @State private var mistakeCount: Int = 0
 
-    /// Reference to the HanziWebView coordinator for triggering animations.
-    @State private var hanziCoordinator: HanziWebView.Coordinator?
+    /// Number of correct strokes in the current character (for progress display).
+    @State private var correctStrokesInChar: Int = 0
 
     // MARK: – Body
 
     var body: some View {
         VStack(spacing: DesignSystem.Dimensions.paddingStandard) {
 
-            // ── Progress Indicator ──────────────────────────────────
-            Text("\(currentIndex + 1) / \(level.characters.count)")
-                .font(.system(size: 18, weight: .semibold, design: .rounded))
-                .foregroundColor(DesignSystem.Colors.textSecondary)
-                .padding(.top, DesignSystem.Dimensions.paddingLarge)
+            // ── Progress Header ─────────────────────────────────────────
+            HStack {
+                Text("Karakter \(currentIndex + 1) dari \(level.characters.count)")
+                    .font(DesignSystem.Typography.subheadlineBold)
+                    .foregroundColor(DesignSystem.Colors.textDark.opacity(0.7))
+                Spacer()
+                if mistakeCount > 0 {
+                    HStack(spacing: 4) {
+                        Image(systemName: "xmark.circle.fill")
+                            .font(.system(size: 12))
+                        Text("\(mistakeCount)")
+                            .font(DesignSystem.Typography.subheadlineBold)
+                    }
+                    .foregroundColor(DesignSystem.Colors.error.opacity(0.7))
+                }
+            }
+            .padding(.horizontal, DesignSystem.Dimensions.paddingLarge)
+            .padding(.top, DesignSystem.Dimensions.paddingSmall)
 
-            // ── Target Character (large display) ────────────────────
+            // ── Target Character (large display) ────────────────────────
             Text(currentCharacter)
-                .font(.system(size: 100, weight: .bold))
+                .font(.system(size: 80, weight: .bold))
                 .foregroundColor(DesignSystem.Colors.textPrimary)
-                .padding(.top, DesignSystem.Dimensions.paddingStandard)
+                .frame(height: 100)
 
-            Spacer()
-
-            // ── Layered Canvas ──────────────────────────────────────
+            // ── Interactive Quiz Canvas ──────────────────────────────────
             ZStack {
                 RoundedRectangle(cornerRadius: DesignSystem.Dimensions.cornerRadius, style: .continuous)
                     .fill(DesignSystem.Colors.secondaryBackground)
 
-                // Layer 1: Hanzi Writer animation renderer
+                // HanziWriter with quiz mode enabled — handles ALL touch input
                 HanziWebView(
                     character: $currentCharacter,
-                    onAllStrokesCompleted: nil,
-                    onCoordinatorReady: { coordinator in
-                        hanziCoordinator = coordinator
-                    }
-                )
-
-                // Layer 2: PencilKit drawing input
-                StrokeCanvasView(
-                    character: currentCharacter,
-                    onCharacterFinished: {
-                        handleQuizCompleted()
+                    useQuizMode: true,
+                    onCorrectStroke: { strokeNum in
+                        handleCorrectStroke(strokeNum)
                     },
                     onMistake: {
                         handleMistake()
                     },
-                    onCorrectStroke: { strokeIndex in
-                        hanziCoordinator?.animateStroke(at: strokeIndex)
+                    onQuizComplete: {
+                        handleQuizCompleted()
                     }
                 )
-                .id(currentCharacter)
 
-                // ── Success overlay ─────────────────────────────────
+                // ── Success overlay ─────────────────────────────────────
                 if showSuccessBanner {
                     VStack(spacing: 8) {
                         Image(systemName: "checkmark.circle.fill")
@@ -97,15 +107,13 @@ struct WritingQuizView: View {
             )
             .padding(.horizontal, DesignSystem.Dimensions.paddingLarge)
 
-            Spacer()
+            // ── Hint Text ───────────────────────────────────────────────
+            Text("Tulis guratan sesuai urutan yang benar")
+                .font(DesignSystem.Typography.caption)
+                .foregroundColor(DesignSystem.Colors.textSecondary)
+                .padding(.bottom, DesignSystem.Dimensions.paddingStandard)
 
-            // ── Mistake counter ─────────────────────────────────────
-            if mistakeCount > 0 {
-                Text("Mistakes: \(mistakeCount)")
-                    .font(.system(size: 15, weight: .medium, design: .rounded))
-                    .foregroundColor(DesignSystem.Colors.textSecondary)
-                    .padding(.bottom, DesignSystem.Dimensions.paddingStandard)
-            }
+            Spacer()
         }
         .background(DesignSystem.Colors.background.ignoresSafeArea())
         .navigationTitle(level.title)
@@ -117,7 +125,23 @@ struct WritingQuizView: View {
 
     // MARK: – Handlers
 
-    /// Fires when the user finishes all strokes correctly.
+    /// Fires when a single stroke is drawn correctly (via JS `strokeCorrect`).
+    private func handleCorrectStroke(_ strokeNum: Int) {
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.impactOccurred()
+
+        correctStrokesInChar = strokeNum + 1
+    }
+
+    /// Fires on each incorrect stroke attempt (via JS `strokeMistake`).
+    private func handleMistake() {
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.error)
+
+        mistakeCount += 1
+    }
+
+    /// Fires when the user finishes all strokes correctly (via JS `quizComplete`).
     private func handleQuizCompleted() {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
@@ -126,30 +150,25 @@ struct WritingQuizView: View {
             showSuccessBanner = true
         }
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             withAnimation {
                 showSuccessBanner = false
             }
 
+            // Advance to next character
             let nextIndex = currentIndex + 1
             if nextIndex < level.characters.count {
                 currentIndex = nextIndex
                 currentCharacter = level.characters[nextIndex]
+                correctStrokesInChar = 0
             } else {
-                // Loop back to start for practice
+                // All characters done — loop back for practice
                 currentIndex = 0
                 currentCharacter = level.characters[0]
                 mistakeCount = 0
+                correctStrokesInChar = 0
             }
         }
-    }
-
-    /// Fires on each incorrect stroke attempt.
-    private func handleMistake() {
-        let generator = UINotificationFeedbackGenerator()
-        generator.notificationOccurred(.error)
-
-        mistakeCount += 1
     }
 }
 

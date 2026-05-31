@@ -25,8 +25,9 @@
             -webkit-touch-callout: none;
             -webkit-user-select: none;
             user-select: none;
-            /* Disable ALL pointer events — native layer handles touch */
-            pointer-events: none;
+            /* NOTE: pointer-events NOT disabled here.
+               Touch is controlled by WKWebView.isUserInteractionEnabled
+               from Swift (disabled for animation-only, enabled for quiz mode). */
         }
 
         #writer-container {
@@ -71,21 +72,41 @@
         // ── Globals ──────────────────────────────────────────────────────
         var writer = null;
         var totalStrokes = 0;
-        var _strokeDataCache = null;
 
         /**
-         * charDataLoader — resolves character data from the bundled JSON
-         * (HSK1_StrokeData.json) first, then falls back to CDN.
+         * injectedLocalData — populated by Swift via evaluateJavaScript
+         * BEFORE the writer is initialized.
+         * Should contain the full HanziWriter data object:
+         * { strokes: [...], medians: [...], radStrokes: [...] }
          *
-         * The bundled JSON is an array of { character, medians } objects.
-         * HanziWriter needs { strokes, medians } — so if the bundled data
-         * lacks `strokes`, we fall back to the CDN which has the full data
-         * (SVG paths + medians).
+         * If only medians are available (our current HSK1_StrokeData.json),
+         * the charDataLoader will fall back to CDN for the full data.
+         */
+        var injectedLocalData = null;
+
+        /**
+         * charDataLoader — resolves character data using the OFFLINE BRIDGE.
+         *
+         * Priority:
+         * 1. Use injectedLocalData from Swift (if it has full stroke SVG paths)
+         * 2. Fallback to CDN (temporary, until full data is bundled)
+         *
+         * Per HanziWriterContext.md §2-3: Swift MUST inject data before
+         * writer initialization. The custom charDataLoader checks local first.
          */
         function charDataLoader(character, onLoad, onError) {
-            // Always try CDN first since our bundled JSON only has medians,
-            // not the SVG stroke paths that HanziWriter needs for rendering.
-            // The bundled JSON is used by the native StrokeValidator only.
+            // ── 1. Check Swift-injected local data ──────────────────────
+            if (injectedLocalData && injectedLocalData.strokes && injectedLocalData.strokes.length > 0) {
+                console.log('[HanziQuiz] Using injected local data for: ' + character);
+                totalStrokes = injectedLocalData.strokes.length;
+                onLoad(injectedLocalData);
+                // Clear after use so next character gets fresh data
+                injectedLocalData = null;
+                return;
+            }
+
+            // ── 2. Fallback: CDN fetch (temporary until full data bundled) ─
+            console.log('[HanziQuiz] Local data missing strokes for: ' + character + ', falling back to CDN');
             fetch('https://cdn.jsdelivr.net/npm/hanzi-writer-data@latest/' + character + '.json')
                 .then(function (r) { return r.json(); })
                 .then(function (data) {
@@ -93,17 +114,22 @@
                     onLoad(data);
                 })
                 .catch(function (err) {
-                    console.error('Failed to load character data for: ' + character, err);
-                    onError(err);
+                    console.error('[HanziQuiz] Failed to load character data for: ' + character, err);
+                    if (onError) onError(err);
                 });
         }
+
+        // ================================================================
+        // MODE 1: ANIMATION-ONLY (used by ExerciseContainerView)
+        // Swift calls loadCharacter() + animateStroke() individually.
+        // User interaction is disabled on the WKWebView from Swift.
+        // ================================================================
 
         /**
          * loadCharacter(character)
          * Called from Swift. Creates the HanziWriter instance with the
          * character's outline visible but all strokes initially hidden.
-         * The native layer will call animateStroke() one-by-one after
-         * each successful PencilKit stroke validation.
+         * The native PencilKit layer calls animateStroke() one-by-one.
          */
         function loadCharacter(character) {
             var container = document.getElementById('writer-container');
@@ -115,8 +141,8 @@
                 width: size,
                 height: size,
                 padding: 0,
-                showCharacter: false,     // strokes start hidden
-                showOutline: true,        // show the light outline as guide
+                showCharacter: false,
+                showOutline: true,
                 strokeAnimationSpeed: 5,
                 delayBetweenStrokes: 0,
                 charDataLoader: charDataLoader,
@@ -129,22 +155,17 @@
         /**
          * animateStroke(strokeIndex)
          * Called from Swift after the native StrokeValidator confirms a
-         * correct stroke. Animates the nth stroke on the Hanzi Writer
-         * canvas, visually "inking in" the correct path.
-         *
-         * After the last stroke is animated, sends `allStrokesCompleted`
-         * back to Swift.
+         * correct stroke. Animates the nth stroke, "inking in" the path.
+         * After the last stroke, sends `allStrokesCompleted` to Swift.
          */
         function animateStroke(strokeIndex) {
             if (!writer) {
-                console.warn('animateStroke called but writer is null');
+                console.warn('[HanziQuiz] animateStroke called but writer is null');
                 return;
             }
 
-            // HanziWriter exposes animateStroke to draw a single stroke
             writer.animateStroke(strokeIndex, {
                 onComplete: function () {
-                    // Check if this was the last stroke
                     if (strokeIndex >= totalStrokes - 1) {
                         if (window.webkit && window.webkit.messageHandlers &&
                             window.webkit.messageHandlers.allStrokesCompleted) {
@@ -156,10 +177,97 @@
             });
         }
 
+        // ================================================================
+        // MODE 2: INTERACTIVE QUIZ (used by WritingQuizView)
+        // HanziWriter handles all touch interaction via writer.quiz().
+        // Sends strokeCorrect / strokeMistake / quizComplete to Swift.
+        // ================================================================
+
+        /**
+         * loadCharacterForQuiz(character)
+         * Called from Swift. Creates writer + immediately starts quiz mode.
+         * Per HanziWriterContext.md §4: writer.quiz() MUST be called
+         * immediately after initialization.
+         */
+        function loadCharacterForQuiz(character) {
+            var container = document.getElementById('writer-container');
+            container.innerHTML = '';
+
+            var size = Math.min(window.innerWidth, window.innerHeight);
+
+            writer = HanziWriter.create('writer-container', character, {
+                width: size,
+                height: size,
+                padding: 0,
+                showCharacter: false,
+                showOutline: true,
+                strokeAnimationSpeed: 3,
+                charDataLoader: charDataLoader,
+                strokeColor: '#333',
+                outlineColor: '#CCCCCC',
+                drawingColor: '#B23A2F',
+                drawingWidth: 16,
+                showHintAfterMisses: 3,
+                highlightOnComplete: true,
+                highlightColor: '#1E8C5F'
+            });
+
+            // Start quiz mode immediately (§4)
+            startQuiz();
+        }
+
+        /**
+         * startQuiz()
+         * Activates HanziWriter's interactive quiz mode.
+         * Sends messages back to Swift via webkit.messageHandlers.
+         */
+        function startQuiz() {
+            if (!writer) {
+                console.warn('[HanziQuiz] startQuiz called but writer is null');
+                return;
+            }
+
+            writer.quiz({
+                onCorrectStroke: function (strokeData) {
+                    if (window.webkit && window.webkit.messageHandlers &&
+                        window.webkit.messageHandlers.strokeCorrect) {
+                        window.webkit.messageHandlers.strokeCorrect.postMessage({
+                            strokeNum: strokeData.strokeNum,
+                            mistakesOnStroke: strokeData.mistakesOnStroke,
+                            totalMistakes: strokeData.totalMistakes,
+                            strokesRemaining: strokeData.strokesRemaining
+                        });
+                    }
+                },
+                onMistake: function (strokeData) {
+                    if (window.webkit && window.webkit.messageHandlers &&
+                        window.webkit.messageHandlers.strokeMistake) {
+                        window.webkit.messageHandlers.strokeMistake.postMessage({
+                            strokeNum: strokeData.strokeNum,
+                            mistakesOnStroke: strokeData.mistakesOnStroke,
+                            totalMistakes: strokeData.totalMistakes,
+                            strokesRemaining: strokeData.strokesRemaining
+                        });
+                    }
+                },
+                onComplete: function (summaryData) {
+                    if (window.webkit && window.webkit.messageHandlers &&
+                        window.webkit.messageHandlers.quizComplete) {
+                        window.webkit.messageHandlers.quizComplete.postMessage({
+                            totalMistakes: summaryData.totalMistakes
+                        });
+                    }
+                }
+            });
+        }
+
+        // ================================================================
+        // SHARED UTILITIES
+        // ================================================================
+
         /**
          * animateFullCharacter()
-         * Optional: called from Swift to play the full stroke-order
-         * animation as a demo/review after the quiz is completed.
+         * Plays the full stroke-order animation (demo/review).
          */
         function animateFullCharacter() {
             if (!writer) return;
@@ -168,7 +276,7 @@
 
         /**
          * resetCharacter()
-         * Hides all strokes again so the quiz can restart.
+         * Hides all strokes to restart.
          */
         function resetCharacter() {
             if (!writer) return;

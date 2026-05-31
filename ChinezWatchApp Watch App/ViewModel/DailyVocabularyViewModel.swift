@@ -1,3 +1,4 @@
+import SwiftUI
 //
 //  DailyVocabularyViewModel.swift
 //  Chinez (watchOS)

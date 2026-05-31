@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B04D15B12FCCC740000B112A /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B04D15B02FCCC740000B112A /* FirebaseAuth */; };
+		B04D15B32FCCC740000B112A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = B04D15B22FCCC740000B112A /* FirebaseFirestore */; };
 		B0B298872FCBEA54005AE6E9 /* ChinezWatchApp Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = B0B2987D2FCBEA53005AE6E9 /* ChinezWatchApp Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
@@ -57,6 +59,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B04D15B12FCCC740000B112A /* FirebaseAuth in Frameworks */,
+				B04D15B32FCCC740000B112A /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +79,7 @@
 			children = (
 				B00140522FBF0D1600540C69 /* Chinezy */,
 				B0B2987E2FCBEA53005AE6E9 /* ChinezWatchApp Watch App */,
+				B04D15AE2FCCC5A7000B112A /* Frameworks */,
 				B00140512FBF0D1600540C69 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -86,6 +91,13 @@
 				B0B2987D2FCBEA53005AE6E9 /* ChinezWatchApp Watch App.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		B04D15AE2FCCC5A7000B112A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -110,6 +122,8 @@
 			);
 			name = Chinezy;
 			packageProductDependencies = (
+				B04D15B02FCCC740000B112A /* FirebaseAuth */,
+				B04D15B22FCCC740000B112A /* FirebaseFirestore */,
 			);
 			productName = Chinezy;
 			productReference = B00140502FBF0D1600540C69 /* Chinezy.app */;
@@ -164,6 +178,9 @@
 			);
 			mainGroup = B00140472FBF0D1500540C69;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				B04D15AF2FCCC740000B112A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = B00140512FBF0D1600540C69 /* Products */;
 			projectDirPath = "";
@@ -496,6 +513,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B04D15AF2FCCC740000B112A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.14.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B04D15B02FCCC740000B112A /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B04D15AF2FCCC740000B112A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		B04D15B22FCCC740000B112A /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B04D15AF2FCCC740000B112A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B00140482FBF0D1600540C69 /* Project object */;
 }

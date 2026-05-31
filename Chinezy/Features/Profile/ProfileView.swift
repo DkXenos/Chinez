@@ -1,14 +1,10 @@
-import Combine
 import SwiftUI
+import Combine
 
 struct ProfileView: View {
     @EnvironmentObject var authManager: AuthManager
     
-    @State private var email = ""
-    @State private var password = ""
-    @State private var isLoginMode = true
     @State private var errorMessage: String?
-    @State private var isLoading = false
     
     var body: some View {
         NavigationStack {
@@ -16,69 +12,28 @@ struct ProfileView: View {
                 DesignSystem.Colors.background
                     .ignoresSafeArea()
                 
-                if authManager.userSession == nil {
-                    loginForm
+                if authManager.currentUserProfile == nil {
+                    VStack {
+                        ProgressView("Loading Profile...")
+                            .padding()
+                        
+                        // Fallback Sign Out button in case fetching fails permanently
+                        Button(role: .destructive, action: signOut) {
+                            Text("Sign Out")
+                        }
+                        .padding(.top)
+                    }
                 } else {
                     dashboard
                 }
             }
-            .navigationTitle(authManager.userSession == nil ? (isLoginMode ? "Log In" : "Register") : "Profile")
+            .navigationTitle("Profile")
             .navigationBarTitleDisplayMode(.inline)
         }
     }
     
-    private var loginForm: some View {
-        Form {
-            Section(header: Text(isLoginMode ? "Welcome Back" : "Create Account")) {
-                TextField("Email", text: $email)
-                    .keyboardType(.emailAddress)
-                    .autocapitalization(.none)
-                    .disableAutocorrection(true)
-                SecureField("Password", text: $password)
-            }
-            
-            if let errorMessage = errorMessage {
-                Section {
-                    Text(errorMessage)
-                        .foregroundColor(.red)
-                        .font(.footnote)
-                }
-            }
-            
-            Section {
-                Button(action: handleAction) {
-                    if isLoading {
-                        ProgressView()
-                            .frame(maxWidth: .infinity, alignment: .center)
-                    } else {
-                        Text(isLoginMode ? "Log In" : "Sign Up")
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            .foregroundColor(.white)
-                    }
-                }
-                .disabled(isLoading || email.isEmpty || password.isEmpty)
-                .listRowBackground(
-                    (isLoading || email.isEmpty || password.isEmpty) ? Color.gray : DesignSystem.Colors.primary
-                )
-            }
-            
-            Section {
-                Button(action: {
-                    isLoginMode.toggle()
-                    errorMessage = nil
-                }) {
-                    Text(isLoginMode ? "Need an account? Sign Up" : "Already have an account? Log In")
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .foregroundColor(DesignSystem.Colors.primary)
-                }
-            }
-        }
-        .scrollContentBackground(.hidden)
-    }
-    
     private var dashboard: some View {
         Form {
-            // ── Avatar ─────────────────────────────────
             Section {
                 VStack(spacing: DesignSystem.Dimensions.paddingStandard) {
                     ZStack {
@@ -117,23 +72,11 @@ struct ProfileView: View {
                             .foregroundColor(.secondary)
                             .bold()
                     }
-                } else {
-                    HStack {
-                        Spacer()
-                        ProgressView("Loading Profile...")
-                        Spacer()
-                    }
                 }
             }
             
             Section {
-                Button(role: .destructive, action: {
-                    do {
-                        try authManager.signOut()
-                    } catch {
-                        errorMessage = error.localizedDescription
-                    }
-                }) {
+                Button(role: .destructive, action: signOut) {
                     Text("Sign Out")
                         .frame(maxWidth: .infinity, alignment: .center)
                 }
@@ -150,21 +93,11 @@ struct ProfileView: View {
         .scrollContentBackground(.hidden)
     }
     
-    private func handleAction() {
-        isLoading = true
-        errorMessage = nil
-        
-        Task {
-            do {
-                if isLoginMode {
-                    try await authManager.signIn(email: email, password: password)
-                } else {
-                    try await authManager.signUp(email: email, password: password)
-                }
-            } catch {
-                errorMessage = error.localizedDescription
-            }
-            isLoading = false
+    private func signOut() {
+        do {
+            try authManager.signOut()
+        } catch {
+            errorMessage = error.localizedDescription
         }
     }
 }

@@ -2,6 +2,7 @@ import SwiftUI
 import Combine
 
 struct ContentView: View {
+    @EnvironmentObject var authManager: AuthManager
     @StateObject private var router = NavigationRouter()
 
     /// `true` only when running on iPad.
@@ -11,11 +12,9 @@ struct ContentView: View {
 
     var body: some View {
         Group {
-            switch router.currentState {
-            case .unauthenticated:
-                LandingView()
-
-            case .home:
+            if authManager.userSession == nil {
+                AuthView()
+            } else {
                 if isIPad {
                     IPadSidebarView()
                 } else {
@@ -173,4 +172,5 @@ struct IPhoneTabView: View {
 
 #Preview {
     ContentView()
+        .environmentObject(AuthManager())
 }

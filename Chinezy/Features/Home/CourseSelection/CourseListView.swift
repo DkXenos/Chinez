@@ -29,7 +29,7 @@ public struct CourseListView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
-                    router.openFreeDrawCanvas()
+                    router.openWritingQuiz()
                 }) {
                     Image(systemName: "pencil.tip.crop.circle")
                         .foregroundColor(DesignSystem.Colors.primary)

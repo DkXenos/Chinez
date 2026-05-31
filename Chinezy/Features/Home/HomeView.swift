@@ -52,12 +52,12 @@ struct HomeView: View {
                         .buttonStyle(.plain)
 
                         Button {
-                            router.openFreeDrawCanvas()
+                            router.openWritingQuiz()
                         } label: {
                             QuickActionTile(
                                 icon: "pencil.tip.crop.circle",
-                                title: "Free Draw",
-                                subtitle: "Practice strokes",
+                                title: "Writing",
+                                subtitle: "Stroke order quiz",
                                 gradient: [
                                     Color(red: 0.90, green: 0.45, blue: 0.30),
                                     Color(red: 0.85, green: 0.30, blue: 0.50)

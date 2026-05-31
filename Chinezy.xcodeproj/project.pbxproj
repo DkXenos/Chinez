@@ -6,8 +6,37 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		B0B298872FCBEA54005AE6E9 /* ChinezWatchApp Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = B0B2987D2FCBEA53005AE6E9 /* ChinezWatchApp Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B0B298852FCBEA54005AE6E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B00140482FBF0D1600540C69 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B0B2987C2FCBEA53005AE6E9;
+			remoteInfo = "ChinezWatchApp Watch App";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B0B298882FCBEA54005AE6E9 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				B0B298872FCBEA54005AE6E9 /* ChinezWatchApp Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		B00140502FBF0D1600540C69 /* Chinezy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chinezy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0B2987D2FCBEA53005AE6E9 /* ChinezWatchApp Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ChinezWatchApp Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -16,10 +45,22 @@
 			path = Chinezy;
 			sourceTree = "<group>";
 		};
+		B0B2987E2FCBEA53005AE6E9 /* ChinezWatchApp Watch App */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "ChinezWatchApp Watch App";
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		B001404D2FBF0D1600540C69 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B0B2987A2FCBEA53005AE6E9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -33,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				B00140522FBF0D1600540C69 /* Chinezy */,
+				B0B2987E2FCBEA53005AE6E9 /* ChinezWatchApp Watch App */,
 				B00140512FBF0D1600540C69 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				B00140502FBF0D1600540C69 /* Chinezy.app */,
+				B0B2987D2FCBEA53005AE6E9 /* ChinezWatchApp Watch App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -55,10 +98,12 @@
 				B001404C2FBF0D1600540C69 /* Sources */,
 				B001404D2FBF0D1600540C69 /* Frameworks */,
 				B001404E2FBF0D1600540C69 /* Resources */,
+				B0B298882FCBEA54005AE6E9 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B0B298862FCBEA54005AE6E9 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				B00140522FBF0D1600540C69 /* Chinezy */,
@@ -68,6 +113,28 @@
 			);
 			productName = Chinezy;
 			productReference = B00140502FBF0D1600540C69 /* Chinezy.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B0B2987C2FCBEA53005AE6E9 /* ChinezWatchApp Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B0B2988B2FCBEA54005AE6E9 /* Build configuration list for PBXNativeTarget "ChinezWatchApp Watch App" */;
+			buildPhases = (
+				B0B298792FCBEA53005AE6E9 /* Sources */,
+				B0B2987A2FCBEA53005AE6E9 /* Frameworks */,
+				B0B2987B2FCBEA53005AE6E9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				B0B2987E2FCBEA53005AE6E9 /* ChinezWatchApp Watch App */,
+			);
+			name = "ChinezWatchApp Watch App";
+			packageProductDependencies = (
+			);
+			productName = "ChinezWatchApp Watch App";
+			productReference = B0B2987D2FCBEA53005AE6E9 /* ChinezWatchApp Watch App.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -81,6 +148,9 @@
 				LastUpgradeCheck = 2620;
 				TargetAttributes = {
 					B001404F2FBF0D1600540C69 = {
+						CreatedOnToolsVersion = 26.2;
+					};
+					B0B2987C2FCBEA53005AE6E9 = {
 						CreatedOnToolsVersion = 26.2;
 					};
 				};
@@ -100,12 +170,20 @@
 			projectRoot = "";
 			targets = (
 				B001404F2FBF0D1600540C69 /* Chinezy */,
+				B0B2987C2FCBEA53005AE6E9 /* ChinezWatchApp Watch App */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		B001404E2FBF0D1600540C69 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B0B2987B2FCBEA53005AE6E9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +200,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B0B298792FCBEA53005AE6E9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B0B298862FCBEA54005AE6E9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B0B2987C2FCBEA53005AE6E9 /* ChinezWatchApp Watch App */;
+			targetProxy = B0B298852FCBEA54005AE6E9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		B001405B2FBF0D1700540C69 /* Debug */ = {
@@ -308,6 +401,70 @@
 			};
 			name = Release;
 		};
+		B0B298892FCBEA54005AE6E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = ChinezWatchApp;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.Chinezy;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Chinezy.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 26.2;
+			};
+			name = Debug;
+		};
+		B0B2988A2FCBEA54005AE6E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = ChinezWatchApp;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.Chinezy;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Chinezy.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 26.2;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -325,6 +482,15 @@
 			buildConfigurations = (
 				B001405E2FBF0D1700540C69 /* Debug */,
 				B001405F2FBF0D1700540C69 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B0B2988B2FCBEA54005AE6E9 /* Build configuration list for PBXNativeTarget "ChinezWatchApp Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B0B298892FCBEA54005AE6E9 /* Debug */,
+				B0B2988A2FCBEA54005AE6E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

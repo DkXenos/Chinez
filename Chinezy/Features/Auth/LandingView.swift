@@ -11,7 +11,7 @@ struct LandingView: View {
                 .font(.system(size: 80))
                 .foregroundColor(DesignSystem.Colors.primary)
             
-            Text("Hanzi Academy")
+            Text("Chinez")
                 .font(DesignSystem.Typography.largeTitle)
                 .foregroundColor(DesignSystem.Colors.textPrimary)
             
@@ -31,4 +31,9 @@ struct LandingView: View {
         .padding(.bottom, DesignSystem.Dimensions.paddingLarge)
         .background(DesignSystem.Colors.background.ignoresSafeArea())
     }
+}
+
+#Preview {
+    LandingView()
+        .environmentObject(NavigationRouter())
 }

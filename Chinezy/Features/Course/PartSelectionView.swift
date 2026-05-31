@@ -88,3 +88,7 @@ struct CircularProgressView: View {
         }
     }
 }
+
+#Preview {
+    PartSelectionView(theme: Theme(name: "Airport", iconName: "airplane", isLocked: false))
+}

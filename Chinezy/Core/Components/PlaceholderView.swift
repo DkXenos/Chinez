@@ -1,6 +1,6 @@
 import SwiftUI
 
-public struct ChapterPlaceholderView: View {
+public struct PlaceholderView: View {
     let title: String
 
     public var body: some View {
@@ -15,5 +15,5 @@ public struct ChapterPlaceholderView: View {
 }
 
 #Preview {
-    ChapterPlaceholderView(title: "Quiz section")
+    PlaceholderView(title: "Quiz section")
 }

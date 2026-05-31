@@ -1,6 +1,6 @@
 import SwiftUI
 
-public struct LearningBottomNavigationBar: View {
+struct LearningBottomNavigationBar: View {
     let isShowingDialog: Bool
     let currentIndex: Int
     let totalCount: Int

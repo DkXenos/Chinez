@@ -9,25 +9,31 @@ struct ContentView: View {
             switch router.currentState {
             case .unauthenticated:
                 LandingView()
+                
             case .home:
                 NavigationStack(path: $router.navigationPath) {
-                    ThemeSelectionView()
+                    HomeView()
                         .navigationDestination(for: AppRoute.self) { route in
                             switch route {
-                            case .theme(let theme):
-                                PartSelectionView(theme: theme)
-                            case .part(_):
+                                
+                            case .course(let course):
+                                SubChapterListView(course: course)
+                            case .subChapter(let subChapter):
+                                LearningView(subChapter: subChapter)
+                                
+                            case .courseList:
+                                CourseListView()
+                            case .tonePractice:
+                                TonePracticeView()
+                            case .dictionary:
+                                EmptyView()
+                            case .progress:
                                 EmptyView()
                             }
                         }
-                }
-                .fullScreenCover(isPresented: $router.showExercise) {
-                    if let part = router.selectedPart {
-                        ExerciseContainerView(part: part)
-                    }
-                }
-                .fullScreenCover(isPresented: $router.showFreeDrawCanvas) {
-                    FreeDrawCanvasView()
+                        .fullScreenCover(isPresented: $router.showFreeDrawCanvas) {
+                                            FreeDrawCanvasView()
+                                        }
                 }
             }
         }

@@ -1,6 +1,6 @@
 import SwiftUI
 
-public struct LearningDialogView: View {
+struct LearningDialogView: View {
     let dialogText: String
     let onPlayAudio: () -> Void
 

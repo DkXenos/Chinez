@@ -51,6 +51,7 @@ final class TonePracticeViewModel: ObservableObject {
     }
     
     func startRecording() {
+        toneService.targetToneIdentifier = currentTarget.targetTone
         toneService.startRecording()
     }
     

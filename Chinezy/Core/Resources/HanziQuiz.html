@@ -282,8 +282,18 @@
             if (!writer) return;
             writer.hideCharacter();
         }
-    </script>
 
+        // ================================================================
+        // DYNAMIC RESIZING
+        // ================================================================
+        window.addEventListener('resize', function() {
+            if (writer) {
+                var newSize = Math.min(window.innerWidth, window.innerHeight);
+                writer.updateDimensions({ width: newSize, height: newSize });
+            }
+        });
+
+    </script>
 </body>
 
 </html>

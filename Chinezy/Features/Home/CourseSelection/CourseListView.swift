@@ -21,22 +21,9 @@ public struct CourseListView: View {
             .padding(DesignSystem.Dimensions.paddingStandard)
         }
         .navigationTitle("Belajar")
-        .searchable(text: $viewModel.searchText, prompt: "Cari materi belajar...")
         .background(DesignSystem.Colors.background.ignoresSafeArea())
         .onAppear {
             viewModel.loadCourses()
-        }
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                if UIDevice.current.userInterfaceIdiom == .pad {
-                    Button(action: {
-                        router.selectedTab = .writing
-                    }) {
-                        Image(systemName: "pencil.tip.crop.circle")
-                            .foregroundColor(DesignSystem.Colors.primary)
-                    }
-                }
-            }
         }
     }
 }

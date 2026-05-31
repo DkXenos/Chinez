@@ -1,19 +1,23 @@
 //
-//  ChapterListView.swift
+//  WritingLevelListView.swift
 //  Chinez
 //
+//  Entry-point for the Writing tab (iPad).
+//  Lists all writing exercise levels loaded from WritingExercise.json.
+//  Tapping a level navigates to WritingQuizView for stroke-order practice.
 //
 
 import SwiftUI
+import Combine
 
-struct ChapterListView: View {
-    @StateObject private var viewModel = ChapterListViewModel()
+struct WritingLevelListView: View {
+    @StateObject private var viewModel = WritingLevelListViewModel()
 
     var body: some View {
         content
-            .navigationTitle("Quiz")
-            .navigationDestination(for: Chapter.self) { chapter in
-                QuizSessionView(viewModel: QuizViewModel(chapter: chapter))
+            .navigationTitle("Writing")
+            .navigationDestination(for: WritingLevel.self) { level in
+                WritingQuizView(level: level)
             }
             .tint(DesignSystem.Colors.primary)
     }
@@ -24,28 +28,28 @@ struct ChapterListView: View {
             errorView(message: error)
         } else {
             ScrollView {
-                LazyVStack(spacing: 12) {
-                    ForEach(viewModel.chapters) { chapter in
-                        NavigationLink(value: chapter) {
-                            ChapterRow(chapter: chapter)
+                LazyVStack(spacing: DesignSystem.Dimensions.paddingSmall) {
+                    ForEach(viewModel.levels) { level in
+                        NavigationLink(value: level) {
+                            WritingLevelRow(level: level)
                         }
                         .buttonStyle(.plain)
                     }
                 }
-                .padding(.horizontal, 16)
+                .padding(.horizontal, DesignSystem.Dimensions.paddingStandard)
                 .padding(.top, 8)
-                .padding(.bottom, 24)
+                .padding(.bottom, DesignSystem.Dimensions.paddingLarge)
             }
             .background(DesignSystem.Colors.surfaceWhite)
         }
     }
 
     private func errorView(message: String) -> some View {
-        VStack(spacing: 12) {
+        VStack(spacing: DesignSystem.Dimensions.paddingSmall) {
             Image(systemName: "exclamationmark.triangle.fill")
                 .font(.largeTitle)
                 .foregroundStyle(DesignSystem.Colors.primary)
-            Text("Gagal Memuat Soal")
+            Text("Gagal Memuat Data")
                 .font(.headline)
                 .foregroundStyle(DesignSystem.Colors.textDark)
             Text(message)
@@ -59,27 +63,27 @@ struct ChapterListView: View {
     }
 }
 
-// MARK: - Baris Bab
+// MARK: - Level Row
 
-private struct ChapterRow: View {
-    let chapter: Chapter
+private struct WritingLevelRow: View {
+    let level: WritingLevel
 
     var body: some View {
         HStack(spacing: 14) {
-            // Ikon Hanzi dekoratif dengan ring emas.
+            // ── Decorative Hanzi icon with gold ring ──────────
             ZStack {
                 RoundedRectangle(cornerRadius: DesignSystem.Dimensions.cornerRadiusMedium, style: .continuous)
                     .fill(DesignSystem.Colors.background)
                 RoundedRectangle(cornerRadius: DesignSystem.Dimensions.cornerRadiusMedium, style: .continuous)
                     .strokeBorder(DesignSystem.Colors.gold, lineWidth: 1.5)
-                Text(chapter.hanzi)
+                Text(level.characters.first ?? "字")
                     .font(.system(size: 24, weight: .bold))
                     .foregroundStyle(DesignSystem.Colors.primary)
             }
             .frame(width: 54, height: 54)
 
             VStack(alignment: .leading, spacing: 4) {
-                Text("BAB \(chapter.id)")
+                Text("LEVEL \(level.id)")
                     .font(.system(size: 10, weight: .heavy))
                     .tracking(1)
                     .foregroundStyle(DesignSystem.Colors.primaryDark)
@@ -87,11 +91,11 @@ private struct ChapterRow: View {
                     .padding(.vertical, 2)
                     .background(Capsule().fill(DesignSystem.Colors.goldLight.opacity(0.5)))
 
-                Text(chapter.title)
+                Text(level.title)
                     .font(.headline)
                     .foregroundStyle(DesignSystem.Colors.textDark)
 
-                Text("\(chapter.questionCount) soal")
+                Text("\(level.characterCount) karakter")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
@@ -102,7 +106,7 @@ private struct ChapterRow: View {
                 .font(.subheadline.weight(.semibold))
                 .foregroundStyle(DesignSystem.Colors.primary.opacity(0.45))
         }
-        .padding(14)
+        .padding(DesignSystem.Dimensions.cornerRadiusMedium)
         .background(
             RoundedRectangle(cornerRadius: DesignSystem.Dimensions.cornerRadius, style: .continuous)
                 .fill(DesignSystem.Colors.surfaceWhite)
@@ -115,6 +119,34 @@ private struct ChapterRow: View {
     }
 }
 
+// MARK: - ViewModel
+
+@MainActor
+final class WritingLevelListViewModel: ObservableObject {
+
+    @Published private(set) var levels: [WritingLevel] = []
+    @Published private(set) var errorMessage: String?
+
+    private let service: WritingDataServiceProtocol
+
+    init(service: WritingDataServiceProtocol = WritingDataService()) {
+        self.service = service
+        load()
+    }
+
+    func load() {
+        do {
+            levels = try service.loadLevels()
+            errorMessage = nil
+        } catch {
+            levels = []
+            errorMessage = error.localizedDescription
+        }
+    }
+}
+
 #Preview {
-    ChapterListView()
+    NavigationStack {
+        WritingLevelListView()
+    }
 }

@@ -28,11 +28,13 @@ public struct CourseListView: View {
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: {
-                    router.openWritingQuiz()
-                }) {
-                    Image(systemName: "pencil.tip.crop.circle")
-                        .foregroundColor(DesignSystem.Colors.primary)
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    Button(action: {
+                        router.selectedTab = .writing
+                    }) {
+                        Image(systemName: "pencil.tip.crop.circle")
+                            .foregroundColor(DesignSystem.Colors.primary)
+                    }
                 }
             }
         }

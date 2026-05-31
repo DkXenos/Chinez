@@ -52,7 +52,9 @@ struct HomeView: View {
                         .buttonStyle(.plain)
 
                         Button {
-                            router.openWritingQuiz()
+                            if UIDevice.current.userInterfaceIdiom == .pad {
+                                router.selectedTab = .writing
+                            }
                         } label: {
                             QuickActionTile(
                                 icon: "pencil.tip.crop.circle",

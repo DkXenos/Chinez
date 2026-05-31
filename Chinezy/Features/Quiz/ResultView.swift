@@ -24,7 +24,7 @@ struct ResultView: View {
             VStack(spacing: 6) {
                 Text(headline)
                     .font(.title2.weight(.bold))
-                    .foregroundStyle(Color(red: 43/255, green: 43/255, blue: 43/255))
+                    .foregroundStyle(DesignSystem.Colors.textDark)
                     .multilineTextAlignment(.center)
                 Text(chapterTitle)
                     .font(.subheadline)
@@ -33,9 +33,9 @@ struct ResultView: View {
 
             HStack(spacing: 14) {
                 ScorePill(count: correct, label: "Benar",
-                          tint: Color(red: 212/255, green: 175/255, blue: 55/255), icon: "checkmark.circle.fill")
+                          tint: DesignSystem.Colors.gold, icon: "checkmark.circle.fill")
                 ScorePill(count: wrong, label: "Salah",
-                          tint: Color(red: 178/255, green: 58/255, blue: 46/255), icon: "xmark.circle.fill")
+                          tint: DesignSystem.Colors.error, icon: "xmark.circle.fill")
             }
             .padding(.horizontal, 24)
 
@@ -44,19 +44,19 @@ struct ResultView: View {
             actionButtons
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.white)
+        .background(DesignSystem.Colors.surfaceWhite)
     }
 
     // MARK: - Ring skor
 
     private var scoreRing: some View {
         ZStack {
-            Circle().stroke(Color(red: 251/255, green: 246/255, blue: 234/255), lineWidth: 16)
+            Circle().stroke(DesignSystem.Colors.background, lineWidth: 16)
             Circle()
                 .trim(from: 0, to: CGFloat(percentage) / 100)
                 .stroke(
                     LinearGradient(
-                        colors: [Color(red: 178/255, green: 58/255, blue: 46/255), Color(red: 212/255, green: 175/255, blue: 55/255)],
+                        colors: [DesignSystem.Colors.primary, DesignSystem.Colors.gold],
                         startPoint: .topLeading, endPoint: .bottomTrailing
                     ),
                     style: StrokeStyle(lineWidth: 16, lineCap: .round)
@@ -66,7 +66,7 @@ struct ResultView: View {
             VStack(spacing: 0) {
                 Text("\(percentage)%")
                     .font(.system(size: 46, weight: .heavy, design: .rounded))
-                    .foregroundStyle(Color(red: 178/255, green: 58/255, blue: 46/255))
+                    .foregroundStyle(DesignSystem.Colors.primary)
                 Text("\(correct)/\(total) benar")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
@@ -85,9 +85,9 @@ struct ResultView: View {
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 16)
             }
-            .background(Color(red: 178/255, green: 58/255, blue: 46/255))
+            .background(DesignSystem.Colors.primary)
             .foregroundStyle(.white)
-            .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+            .clipShape(RoundedRectangle(cornerRadius: DesignSystem.Dimensions.cornerRadiusMedium, style: .continuous))
 
             Button(action: onBackToList) {
                 Text("Kembali ke Daftar Bab")
@@ -95,12 +95,12 @@ struct ResultView: View {
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 16)
             }
-            .foregroundStyle(Color(red: 178/255, green: 58/255, blue: 46/255))
-            .background(Color.white)
-            .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+            .foregroundStyle(DesignSystem.Colors.primary)
+            .background(DesignSystem.Colors.surfaceWhite)
+            .clipShape(RoundedRectangle(cornerRadius: DesignSystem.Dimensions.cornerRadiusMedium, style: .continuous))
             .overlay(
-                RoundedRectangle(cornerRadius: 14, style: .continuous)
-                    .strokeBorder(Color(red: 178/255, green: 58/255, blue: 46/255), lineWidth: 1.5)
+                RoundedRectangle(cornerRadius: DesignSystem.Dimensions.cornerRadiusMedium, style: .continuous)
+                    .strokeBorder(DesignSystem.Colors.primary, lineWidth: 1.5)
             )
         }
         .padding(.horizontal, 24)
@@ -132,7 +132,7 @@ private struct ScorePill: View {
                 .foregroundStyle(tint)
             Text("\(count)")
                 .font(.system(size: 30, weight: .heavy, design: .rounded))
-                .foregroundStyle(Color(red: 43/255, green: 43/255, blue: 43/255))
+                .foregroundStyle(DesignSystem.Colors.textDark)
             Text(label)
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
@@ -140,11 +140,11 @@ private struct ScorePill: View {
         .frame(maxWidth: .infinity)
         .padding(.vertical, 18)
         .background(
-            RoundedRectangle(cornerRadius: 16, style: .continuous)
-                .fill(Color(red: 251/255, green: 246/255, blue: 234/255))
+            RoundedRectangle(cornerRadius: DesignSystem.Dimensions.cornerRadius, style: .continuous)
+                .fill(DesignSystem.Colors.background)
         )
         .overlay(
-            RoundedRectangle(cornerRadius: 16, style: .continuous)
+            RoundedRectangle(cornerRadius: DesignSystem.Dimensions.cornerRadius, style: .continuous)
                 .strokeBorder(tint.opacity(0.3), lineWidth: 1)
         )
     }

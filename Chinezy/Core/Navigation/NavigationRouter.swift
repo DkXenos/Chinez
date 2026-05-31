@@ -20,18 +20,19 @@ enum AppRoute: Hashable {
 class NavigationRouter: ObservableObject {
     
     enum Tab: Hashable {
-        case home
+        case materials
+        case quiz
         case tonePractice
-        case writing
+        case writing     // iPad only
+        case profile
     }
     
     @Published var currentState: AppState = .unauthenticated
-    @Published var selectedTab: Tab = .home
+    @Published var selectedTab: Tab = .materials
     @Published var navigationPath = NavigationPath()
     @Published var selectedTheme: Theme?
     @Published var selectedPart: Part?
     @Published var showExercise: Bool = false
-    @Published var showWritingQuiz: Bool = false
     
     func navigateToHome() {
         currentState = .home
@@ -49,8 +50,5 @@ class NavigationRouter: ObservableObject {
         selectedPart = part
         showExercise = true
     }
-    
-    func openWritingQuiz() {
-        showWritingQuiz = true
-    }
 }
+

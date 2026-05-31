@@ -1,27 +1,26 @@
 import SwiftUI
 
-// MARK: - QuizView
-/// A standalone SwiftUI view demonstrating the Hanzi Writer stroke-order
-/// quiz with the layered architecture:
+// MARK: - WritingQuizView
+/// Stroke-order quiz with the layered architecture:
 ///   Bottom — HanziWebView (animation renderer, no touch)
 ///   Top    — StrokeCanvasView (PencilKit / touch drawing)
 ///
+/// Receives a `WritingLevel` and quizzes the user on each character.
 /// When the native StrokeValidator confirms a correct stroke, the parent
 /// tells HanziWebView to animate that stroke via the coordinator bridge.
-struct QuizView: View {
+struct WritingQuizView: View {
+
+    let level: WritingLevel
 
     // MARK: – State
-
-    /// The list of characters to cycle through in the quiz.
-    private let characters: [String] = ["测", "试", "你", "好", "我"]
 
     /// Index of the current character being quizzed.
     @State private var currentIndex: Int = 0
 
     /// The character string fed into the web view binding.
-    @State private var currentCharacter: String = "测"
+    @State private var currentCharacter: String = ""
 
-    /// Controls the "Quiz Passed!" overlay animation.
+    /// Controls the success overlay animation.
     @State private var showSuccessBanner: Bool = false
 
     /// Tracks total mistake count for the session.
@@ -36,7 +35,7 @@ struct QuizView: View {
         VStack(spacing: DesignSystem.Dimensions.paddingStandard) {
 
             // ── Progress Indicator ──────────────────────────────────
-            Text("\(currentIndex + 1) / \(characters.count)")
+            Text("\(currentIndex + 1) / \(level.characters.count)")
                 .font(.system(size: 18, weight: .semibold, design: .rounded))
                 .foregroundColor(DesignSystem.Colors.textSecondary)
                 .padding(.top, DesignSystem.Dimensions.paddingLarge)
@@ -83,8 +82,8 @@ struct QuizView: View {
                     VStack(spacing: 8) {
                         Image(systemName: "checkmark.circle.fill")
                             .font(.system(size: 56))
-                            .foregroundColor(Color(red: 0.2, green: 0.78, blue: 0.35))
-                        Text("Quiz Passed!")
+                            .foregroundColor(DesignSystem.Colors.success)
+                        Text("Benar!")
                             .font(.system(size: 22, weight: .bold, design: .rounded))
                             .foregroundColor(DesignSystem.Colors.textPrimary)
                     }
@@ -109,6 +108,11 @@ struct QuizView: View {
             }
         }
         .background(DesignSystem.Colors.background.ignoresSafeArea())
+        .navigationTitle(level.title)
+        .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
+            currentCharacter = level.characters.first ?? ""
+        }
     }
 
     // MARK: – Handlers
@@ -117,8 +121,6 @@ struct QuizView: View {
     private func handleQuizCompleted() {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
-
-        print("Quiz Passed! Character: \(currentCharacter)")
 
         withAnimation(.spring(response: 0.4, dampingFraction: 0.7)) {
             showSuccessBanner = true
@@ -130,13 +132,13 @@ struct QuizView: View {
             }
 
             let nextIndex = currentIndex + 1
-            if nextIndex < characters.count {
+            if nextIndex < level.characters.count {
                 currentIndex = nextIndex
-                currentCharacter = characters[nextIndex]
+                currentCharacter = level.characters[nextIndex]
             } else {
-                print("🎉 All characters completed!")
+                // Loop back to start for practice
                 currentIndex = 0
-                currentCharacter = characters[0]
+                currentCharacter = level.characters[0]
                 mistakeCount = 0
             }
         }
@@ -148,12 +150,15 @@ struct QuizView: View {
         generator.notificationOccurred(.error)
 
         mistakeCount += 1
-        print("Mistake #\(mistakeCount) on character: \(currentCharacter)")
     }
 }
 
 // MARK: - Preview
 
+#if DEBUG
 #Preview {
-    QuizView()
+    NavigationStack {
+        WritingQuizView(level: .sample)
+    }
 }
+#endif

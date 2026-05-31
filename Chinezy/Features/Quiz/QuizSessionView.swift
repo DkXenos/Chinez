@@ -35,7 +35,7 @@ struct QuizSessionView: View {
                 questionContent
             }
         }
-        .background(Color.white)
+        .background(DesignSystem.Colors.surfaceWhite)
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle(viewModel.isFinished ? "Hasil" : "Bab \(viewModel.chapter.id)")
     }
@@ -51,7 +51,7 @@ struct QuizSessionView: View {
             HStack {
                 Text("Soal \(viewModel.questionNumber) dari \(viewModel.totalQuestions)")
                     .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(Color(red: 43/255, green: 43/255, blue: 43/255).opacity(0.7))
+                    .foregroundStyle(DesignSystem.Colors.textDark.opacity(0.7))
                 Spacer()
                 TypeBadge(text: viewModel.currentQuestion.type)
             }
@@ -63,17 +63,17 @@ struct QuizSessionView: View {
                     // Kartu pertanyaan
                     Text(viewModel.currentQuestion.stem)
                         .font(.title3.weight(.semibold))
-                        .foregroundStyle(Color(red: 43/255, green: 43/255, blue: 43/255))
+                        .foregroundStyle(DesignSystem.Colors.textDark)
                         .fixedSize(horizontal: false, vertical: true)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(18)
                         .background(
-                            RoundedRectangle(cornerRadius: 16, style: .continuous)
-                                .fill(Color(red: 251/255, green: 246/255, blue: 234/255))
+                            RoundedRectangle(cornerRadius: DesignSystem.Dimensions.cornerRadius, style: .continuous)
+                                .fill(DesignSystem.Colors.background)
                         )
                         .overlay(
-                            RoundedRectangle(cornerRadius: 16, style: .continuous)
-                                .strokeBorder(Color(red: 212/255, green: 175/255, blue: 55/255).opacity(0.5), lineWidth: 1)
+                            RoundedRectangle(cornerRadius: DesignSystem.Dimensions.cornerRadius, style: .continuous)
+                                .strokeBorder(DesignSystem.Colors.cardBorder, lineWidth: 1)
                         )
 
                     // Opsi A–D
@@ -110,10 +110,10 @@ struct QuizSessionView: View {
                     .padding(.vertical, 16)
             }
             .background(buttonEnabled
-                        ? Color(red: 178/255, green: 58/255, blue: 46/255)
-                        : Color(red: 178/255, green: 58/255, blue: 46/255).opacity(0.3))
+                        ? DesignSystem.Colors.primary
+                        : DesignSystem.Colors.primary.opacity(0.3))
             .foregroundStyle(.white)
-            .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+            .clipShape(RoundedRectangle(cornerRadius: DesignSystem.Dimensions.cornerRadiusMedium, style: .continuous))
             .disabled(!buttonEnabled)
             .animation(.easeInOut(duration: 0.15), value: buttonEnabled)
             .padding(.horizontal, 20)
@@ -132,12 +132,12 @@ struct QuizSessionView: View {
                 Spacer(minLength: 0)
             }
             .font(.subheadline.weight(.bold))
-            .foregroundStyle(Color(red: 30/255, green: 140/255, blue: 95/255))
+            .foregroundStyle(DesignSystem.Colors.success)
             .padding(12)
             .frame(maxWidth: .infinity, alignment: .leading)
             .background(
-                RoundedRectangle(cornerRadius: 12, style: .continuous)
-                    .fill(Color(red: 30/255, green: 140/255, blue: 95/255).opacity(0.10))
+                RoundedRectangle(cornerRadius: DesignSystem.Dimensions.cornerRadiusSmall, style: .continuous)
+                    .fill(DesignSystem.Colors.success.opacity(0.10))
             )
         } else {
             VStack(alignment: .leading, spacing: 4) {
@@ -146,17 +146,17 @@ struct QuizSessionView: View {
                     Text("Salah")
                 }
                 .font(.subheadline.weight(.bold))
-                .foregroundStyle(Color(red: 178/255, green: 58/255, blue: 46/255))
+                .foregroundStyle(DesignSystem.Colors.error)
 
                 Text("Jawaban yang benar: \(viewModel.correctAnswerText)")
                     .font(.subheadline)
-                    .foregroundStyle(Color(red: 43/255, green: 43/255, blue: 43/255))
+                    .foregroundStyle(DesignSystem.Colors.textDark)
             }
             .padding(12)
             .frame(maxWidth: .infinity, alignment: .leading)
             .background(
-                RoundedRectangle(cornerRadius: 12, style: .continuous)
-                    .fill(Color(red: 178/255, green: 58/255, blue: 46/255).opacity(0.08))
+                RoundedRectangle(cornerRadius: DesignSystem.Dimensions.cornerRadiusSmall, style: .continuous)
+                    .fill(DesignSystem.Colors.error.opacity(0.08))
             )
         }
     }
@@ -213,11 +213,11 @@ private struct QuizProgressBar: View {
     var body: some View {
         GeometryReader { geo in
             ZStack(alignment: .leading) {
-                Capsule().fill(Color(red: 251/255, green: 246/255, blue: 234/255))
+                Capsule().fill(DesignSystem.Colors.background)
                 Capsule()
                     .fill(
                         LinearGradient(
-                            colors: [Color(red: 178/255, green: 58/255, blue: 46/255), Color(red: 212/255, green: 175/255, blue: 55/255)],
+                            colors: [DesignSystem.Colors.primary, DesignSystem.Colors.gold],
                             startPoint: .leading, endPoint: .trailing
                         )
                     )
@@ -238,11 +238,11 @@ private struct TypeBadge: View {
         Text(text.uppercased())
             .font(.system(size: 9, weight: .heavy))
             .tracking(0.5)
-            .foregroundStyle(Color(red: 126/255, green: 40/255, blue: 32/255))
+            .foregroundStyle(DesignSystem.Colors.primaryDark)
             .padding(.horizontal, 9)
             .padding(.vertical, 4)
-            .background(Capsule().fill(Color(red: 240/255, green: 216/255, blue: 122/255).opacity(0.45)))
-            .overlay(Capsule().strokeBorder(Color(red: 212/255, green: 175/255, blue: 55/255).opacity(0.5), lineWidth: 0.5))
+            .background(Capsule().fill(DesignSystem.Colors.goldLight.opacity(0.45)))
+            .overlay(Capsule().strokeBorder(DesignSystem.Colors.cardBorder, lineWidth: 0.5))
     }
 }
 
@@ -280,10 +280,10 @@ private struct OptionButton: View {
             .padding(.vertical, 12)
             .padding(.horizontal, 14)
             .background(
-                RoundedRectangle(cornerRadius: 14, style: .continuous).fill(backgroundFill)
+                RoundedRectangle(cornerRadius: DesignSystem.Dimensions.cornerRadiusMedium, style: .continuous).fill(backgroundFill)
             )
             .overlay(
-                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                RoundedRectangle(cornerRadius: DesignSystem.Dimensions.cornerRadiusMedium, style: .continuous)
                     .strokeBorder(borderColor, lineWidth: borderWidth)
             )
         }
@@ -292,10 +292,10 @@ private struct OptionButton: View {
 
     private var backgroundFill: Color {
         switch state {
-        case .idle, .dimmed: return .white
-        case .selected:      return Color(red: 178/255, green: 58/255, blue: 46/255).opacity(0.06)
-        case .correct:       return Color(red: 30/255, green: 140/255, blue: 95/255).opacity(0.10)
-        case .wrong:         return Color(red: 178/255, green: 58/255, blue: 46/255).opacity(0.10)
+        case .idle, .dimmed: return DesignSystem.Colors.surfaceWhite
+        case .selected:      return DesignSystem.Colors.error.opacity(0.06)
+        case .correct:       return DesignSystem.Colors.success.opacity(0.10)
+        case .wrong:         return DesignSystem.Colors.error.opacity(0.10)
         }
     }
 
@@ -303,8 +303,8 @@ private struct OptionButton: View {
         switch state {
         case .idle:             return Color.black.opacity(0.12)
         case .dimmed:           return Color.black.opacity(0.07)
-        case .selected, .wrong: return Color(red: 178/255, green: 58/255, blue: 46/255)
-        case .correct:          return Color(red: 30/255, green: 140/255, blue: 95/255)
+        case .selected, .wrong: return DesignSystem.Colors.error
+        case .correct:          return DesignSystem.Colors.success
         }
     }
 
@@ -317,15 +317,15 @@ private struct OptionButton: View {
 
     private var circleFill: Color {
         switch state {
-        case .idle, .dimmed:    return Color(red: 251/255, green: 246/255, blue: 234/255)
-        case .selected, .wrong: return Color(red: 178/255, green: 58/255, blue: 46/255)
-        case .correct:          return Color(red: 30/255, green: 140/255, blue: 95/255)
+        case .idle, .dimmed:    return DesignSystem.Colors.background
+        case .selected, .wrong: return DesignSystem.Colors.error
+        case .correct:          return DesignSystem.Colors.success
         }
     }
 
     private var circleText: Color {
         switch state {
-        case .idle:                        return Color(red: 126/255, green: 40/255, blue: 32/255)
+        case .idle:                        return DesignSystem.Colors.primaryDark
         case .dimmed:                      return Color.gray
         case .selected, .correct, .wrong:  return .white
         }
@@ -333,8 +333,8 @@ private struct OptionButton: View {
 
     private var textColor: Color {
         switch state {
-        case .dimmed: return Color(red: 43/255, green: 43/255, blue: 43/255).opacity(0.5)
-        default:      return Color(red: 43/255, green: 43/255, blue: 43/255)
+        case .dimmed: return DesignSystem.Colors.textDark.opacity(0.5)
+        default:      return DesignSystem.Colors.textDark
         }
     }
 
@@ -348,8 +348,8 @@ private struct OptionButton: View {
 
     private var iconColor: Color {
         switch state {
-        case .correct: return Color(red: 30/255, green: 140/255, blue: 95/255)
-        case .wrong:   return Color(red: 178/255, green: 58/255, blue: 46/255)
+        case .correct: return DesignSystem.Colors.success
+        case .wrong:   return DesignSystem.Colors.error
         default:       return .clear
         }
     }

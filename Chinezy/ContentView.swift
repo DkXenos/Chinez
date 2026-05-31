@@ -18,9 +18,9 @@ struct ContentView: View {
             case .home:
                 TabView(selection: $router.selectedTab) {
 
-                    // ── Home (universal) ────────────────────────
+                    // ── Materials (universal) ───────────────────
                     NavigationStack(path: $router.navigationPath) {
-                        HomeView()
+                        CourseListView()
                             .navigationDestination(for: AppRoute.self) { route in
                                 switch route {
                                 case .course(let course):
@@ -37,16 +37,22 @@ struct ContentView: View {
                                     EmptyView()
                                 }
                             }
-                            .fullScreenCover(isPresented: $router.showWritingQuiz) {
-                                QuizView()
-                            }
                     }
                     .tabItem {
-                        Label("Home", systemImage: "house.fill")
+                        Label("Materials", systemImage: "character.book.closed.fill")
                     }
-                    .tag(NavigationRouter.Tab.home)
+                    .tag(NavigationRouter.Tab.materials)
 
-                    // ── Tone Practice (universal) ───────────────
+                    // ── Quiz (universal) ─────────────────────────
+                    NavigationStack {
+                        ChapterListView()
+                    }
+                    .tabItem {
+                        Label("Quiz", systemImage: "questionmark.circle.fill")
+                    }
+                    .tag(NavigationRouter.Tab.quiz)
+
+                    // ── Tones (universal) ────────────────────────
                     NavigationStack {
                         TonePracticeView()
                     }
@@ -55,17 +61,27 @@ struct ContentView: View {
                     }
                     .tag(NavigationRouter.Tab.tonePractice)
 
-                    // ── Writing Practice (iPad only) ────────────
+                    // ── Writing (iPad only) ──────────────────────
                     if isIPad {
                         NavigationStack {
-                            QuizView()
+                            WritingLevelListView()
                         }
                         .tabItem {
                             Label("Writing", systemImage: "pencil.tip.crop.circle")
                         }
                         .tag(NavigationRouter.Tab.writing)
                     }
+
+                    // ── Profile (universal) ──────────────────────
+                    NavigationStack {
+                        ProfileView()
+                    }
+                    .tabItem {
+                        Label("Profile", systemImage: "person.fill")
+                    }
+                    .tag(NavigationRouter.Tab.profile)
                 }
+                .tint(DesignSystem.Colors.primary)
             }
         }
         .environmentObject(router)

@@ -19,23 +19,12 @@ import SwiftUI
 struct WritingQuizView: View {
 
     let level: WritingLevel
+    @StateObject private var viewModel: WritingQuizViewModel
 
-    // MARK: – State
-
-    /// Index of the current character being quizzed.
-    @State private var currentIndex: Int = 0
-
-    /// The character string fed into the web view binding.
-    @State private var currentCharacter: String = ""
-
-    /// Controls the success overlay animation.
-    @State private var showSuccessBanner: Bool = false
-
-    /// Tracks total mistake count for the session.
-    @State private var mistakeCount: Int = 0
-
-    /// Number of correct strokes in the current character (for progress display).
-    @State private var correctStrokesInChar: Int = 0
+    init(level: WritingLevel) {
+        self.level = level
+        _viewModel = StateObject(wrappedValue: WritingQuizViewModel(level: level))
+    }
 
     // MARK: – Body
 
@@ -44,15 +33,15 @@ struct WritingQuizView: View {
 
             // ── Progress Header ─────────────────────────────────────────
             HStack {
-                Text("Karakter \(currentIndex + 1) dari \(level.characters.count)")
+                Text("Karakter \(viewModel.currentIndex + 1) dari \(level.characters.count)")
                     .font(DesignSystem.Typography.subheadlineBold)
                     .foregroundColor(DesignSystem.Colors.textDark.opacity(0.7))
                 Spacer()
-                if mistakeCount > 0 {
+                if viewModel.mistakeCount > 0 {
                     HStack(spacing: 4) {
                         Image(systemName: "xmark.circle.fill")
                             .font(.system(size: 12))
-                        Text("\(mistakeCount)")
+                        Text("\(viewModel.mistakeCount)")
                             .font(DesignSystem.Typography.subheadlineBold)
                     }
                     .foregroundColor(DesignSystem.Colors.error.opacity(0.7))
@@ -62,7 +51,7 @@ struct WritingQuizView: View {
             .padding(.top, DesignSystem.Dimensions.paddingSmall)
 
             // ── Target Character (large display) ────────────────────────
-            Text(currentCharacter)
+            Text(viewModel.currentCharacter)
                 .font(.system(size: 80, weight: .bold))
                 .foregroundColor(DesignSystem.Colors.textPrimary)
                 .frame(height: 100)
@@ -74,21 +63,21 @@ struct WritingQuizView: View {
 
                 // HanziWriter with quiz mode enabled — handles ALL touch input
                 HanziWebView(
-                    character: $currentCharacter,
+                    character: $viewModel.currentCharacter,
                     useQuizMode: true,
                     onCorrectStroke: { strokeNum in
-                        handleCorrectStroke(strokeNum)
+                        viewModel.handleCorrectStroke(strokeNum)
                     },
                     onMistake: {
-                        handleMistake()
+                        viewModel.handleMistake()
                     },
                     onQuizComplete: {
-                        handleQuizCompleted()
+                        viewModel.handleQuizCompleted()
                     }
                 )
 
                 // ── Success overlay ─────────────────────────────────────
-                if showSuccessBanner {
+                if viewModel.showSuccessBanner {
                     VStack(spacing: 8) {
                         Image(systemName: "checkmark.circle.fill")
                             .font(.system(size: 56))
@@ -119,55 +108,7 @@ struct WritingQuizView: View {
         .navigationTitle(level.title)
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
-            currentCharacter = level.characters.first ?? ""
-        }
-    }
-
-    // MARK: – Handlers
-
-    /// Fires when a single stroke is drawn correctly (via JS `strokeCorrect`).
-    private func handleCorrectStroke(_ strokeNum: Int) {
-        let generator = UIImpactFeedbackGenerator(style: .medium)
-        generator.impactOccurred()
-
-        correctStrokesInChar = strokeNum + 1
-    }
-
-    /// Fires on each incorrect stroke attempt (via JS `strokeMistake`).
-    private func handleMistake() {
-        let generator = UINotificationFeedbackGenerator()
-        generator.notificationOccurred(.error)
-
-        mistakeCount += 1
-    }
-
-    /// Fires when the user finishes all strokes correctly (via JS `quizComplete`).
-    private func handleQuizCompleted() {
-        let generator = UINotificationFeedbackGenerator()
-        generator.notificationOccurred(.success)
-
-        withAnimation(.spring(response: 0.4, dampingFraction: 0.7)) {
-            showSuccessBanner = true
-        }
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            withAnimation {
-                showSuccessBanner = false
-            }
-
-            // Advance to next character
-            let nextIndex = currentIndex + 1
-            if nextIndex < level.characters.count {
-                currentIndex = nextIndex
-                currentCharacter = level.characters[nextIndex]
-                correctStrokesInChar = 0
-            } else {
-                // All characters done — loop back for practice
-                currentIndex = 0
-                currentCharacter = level.characters[0]
-                mistakeCount = 0
-                correctStrokesInChar = 0
-            }
+            viewModel.onAppear()
         }
     }
 }

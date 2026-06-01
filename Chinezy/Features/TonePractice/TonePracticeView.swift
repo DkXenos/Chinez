@@ -7,10 +7,14 @@ struct TonePracticeView: View {
     @EnvironmentObject var router: NavigationRouter
     @StateObject private var viewModel = TonePracticeViewModel()
 
+    /// Optional: pass specific targets and a starting index from ToneListView.
+    var targets: [HanziTarget]?
+    var startIndex: Int = 0
+
     var body: some View {
         ZStack {
             // Background
-            Color(uiColor: .systemGroupedBackground)
+            DesignSystem.Colors.background
                 .ignoresSafeArea()
 
             VStack(spacing: 0) {
@@ -39,7 +43,12 @@ struct TonePracticeView: View {
         }
         .navigationTitle("Tone Practice")
         .navigationBarTitleDisplayMode(.inline)
-        .onAppear { viewModel.requestMicrophonePermission() }
+        .onAppear {
+            if let targets = targets {
+                viewModel.configure(targets: targets, startIndex: startIndex)
+            }
+            viewModel.requestMicrophonePermission()
+        }
         .animation(.easeInOut(duration: 0.3), value: viewModel.serviceState)
         .alert("Error", isPresented: .constant(viewModel.errorMessage != nil)) {
             Button("OK") { viewModel.errorMessage = nil }
@@ -113,7 +122,7 @@ struct TonePracticeView: View {
         .foregroundColor(.white)
         .padding(.horizontal, 16)
         .padding(.vertical, 8)
-        .background(Capsule().fill(Color.blue))
+        .background(Capsule().fill(DesignSystem.Colors.primary))
     }
 
     private var feedbackBadge: some View {
@@ -163,7 +172,7 @@ struct TonePracticeView: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 88, height: 88)
-                .foregroundColor(isRecording ? .red : .blue)
+                .foregroundColor(isRecording ? DesignSystem.Colors.error : DesignSystem.Colors.primary)
         }
         .buttonStyle(.plain)
     }
@@ -177,29 +186,28 @@ private struct HanziCard: View {
     var body: some View {
         VStack(spacing: 12) {
             Text("Target: Tone \(target.toneNumber.map { String($0) } ?? "?")")
-                .font(.subheadline)
-                .fontWeight(.semibold)
-                .foregroundColor(.secondary)
+                .font(DesignSystem.Typography.subheadlineBold)
+                .foregroundColor(DesignSystem.Colors.textSecondary)
                 .padding(.top, 28)
 
             Spacer(minLength: 0)
 
             Text(target.character)
                 .font(.system(size: 140, weight: .bold))
-                .foregroundColor(.primary)
+                .foregroundColor(DesignSystem.Colors.textPrimary)
                 .minimumScaleFactor(0.6)
 
             Text(target.pinyin)
                 .font(.system(size: 32, weight: .medium, design: .rounded))
-                .foregroundColor(.secondary)
+                .foregroundColor(DesignSystem.Colors.primary)
 
             Spacer(minLength: 0)
 
             Color.clear.frame(height: 28)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color(uiColor: .secondarySystemGroupedBackground))
-        .clipShape(RoundedRectangle(cornerRadius: 32, style: .continuous))
+        .background(Color(UIColor.secondarySystemGroupedBackground))
+        .clipShape(RoundedRectangle(cornerRadius: DesignSystem.Dimensions.cornerRadius, style: .continuous))
         .shadow(color: Color.black.opacity(0.06), radius: 16, x: 0, y: 6)
     }
 }

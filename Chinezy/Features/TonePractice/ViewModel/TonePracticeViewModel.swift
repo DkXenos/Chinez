@@ -16,10 +16,16 @@ final class TonePracticeViewModel: ObservableObject {
     }
     
     // Data
-    let targets = HanziTarget.defaults
+    @Published var targets: [HanziTarget] = HanziTarget.defaults
     
     var currentTarget: HanziTarget {
         targets[selectedIndex]
+    }
+    
+    /// Configure with specific targets and starting index (called from ToneListView navigation).
+    func configure(targets: [HanziTarget], startIndex: Int) {
+        self.targets = targets
+        self.selectedIndex = min(startIndex, targets.count - 1)
     }
     
     // Forwarded states from service

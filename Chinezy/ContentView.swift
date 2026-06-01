@@ -156,7 +156,7 @@ struct IPhoneTabView: View {
             
             // ── Tones ───────────────────────────────────
             NavigationStack {
-                TonePracticeView()
+                ToneListView()
             }
             .tabItem {
                 Label("Tones", systemImage: "waveform")

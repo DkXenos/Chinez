@@ -1,0 +1,3241 @@
+{
+  "courses": [
+    {
+      "id": "ecbfd3a4-da0f-4c76-a986-8feca177ccdb",
+      "title": "Bab 1: Perkenalan Diri",
+      "description": "Belajar menyapa, berkenalan, dan menanyakan umur atau profesi.",
+      "icon": "你",
+      "subChapters": [
+        {
+          "id": "04b6f092-0de6-446f-b8da-43fca7acd0cf",
+          "title": "1.1 Menyapa",
+          "flashcards": [
+            {
+              "id": "47edf917-0a0a-4828-a655-8430d64b7858",
+              "hanzi": "你好",
+              "pinyin": "nǐ hǎo",
+              "indonesianTranslation": "halo",
+              "imageRef": "hand.wave.fill",
+              "audioRef": "nihao"
+            },
+            {
+              "id": "281a3844-14b1-40ea-9df0-401c4cffe013",
+              "hanzi": "我",
+              "pinyin": "wǒ",
+              "indonesianTranslation": "saya",
+              "imageRef": "person.fill",
+              "audioRef": "wo"
+            },
+            {
+              "id": "42cdfef3-a7a6-4506-b644-0d89def07cd7",
+              "hanzi": "你",
+              "pinyin": "nǐ",
+              "indonesianTranslation": "kamu",
+              "imageRef": "person",
+              "audioRef": "ni"
+            },
+            {
+              "id": "b5db8cef-7e8d-4bec-86b9-c425e885a99b",
+              "hanzi": "叫",
+              "pinyin": "jiào",
+              "indonesianTranslation": "bernama / memanggil",
+              "imageRef": "bubble.left.and.bubble.right.fill",
+              "audioRef": "jiao"
+            },
+            {
+              "id": "2f021b18-448d-4726-98fd-725c1da44e0b",
+              "hanzi": "名字",
+              "pinyin": "míngzi",
+              "indonesianTranslation": "nama",
+              "imageRef": "lanyardcard.fill",
+              "audioRef": "mingzi"
+            },
+            {
+              "id": "35acc335-aad8-4099-95a3-58caf08def0c",
+              "hanzi": "什么",
+              "pinyin": "shénme",
+              "indonesianTranslation": "apa",
+              "imageRef": "questionmark.circle.fill",
+              "audioRef": "shenme"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "你好！"
+            },
+            {
+              "speaker": "B",
+              "text": "你好！你叫什么名字？"
+            },
+            {
+              "speaker": "A",
+              "text": "我叫王明。"
+            },
+            {
+              "speaker": "B",
+              "text": "我叫李娜。"
+            }
+          ],
+          "dialogAudioRef": ""
+        },
+        {
+          "id": "0e717b44-8a59-49db-92e8-f3c75e8c0c08",
+          "title": "1.2 Berkenalan",
+          "flashcards": [
+            {
+              "id": "fda3e0d0-a234-4eb0-8442-961882dc36ab",
+              "hanzi": "认识",
+              "pinyin": "rènshi",
+              "indonesianTranslation": "mengenal",
+              "imageRef": "person.2.fill",
+              "audioRef": "renshi"
+            },
+            {
+              "id": "bd89948a-e3f6-4565-b262-e2fac666689d",
+              "hanzi": "高兴",
+              "pinyin": "gāoxìng",
+              "indonesianTranslation": "senang",
+              "imageRef": "face.smiling",
+              "audioRef": "gaoxing"
+            },
+            {
+              "id": "04396d0a-376e-44e1-8754-31eb31ae19f4",
+              "hanzi": "很",
+              "pinyin": "hěn",
+              "indonesianTranslation": "sangat",
+              "imageRef": "exclamationmark.3",
+              "audioRef": "hen"
+            },
+            {
+              "id": "b97559f3-c3d2-41f4-9a44-7cb1380e9422",
+              "hanzi": "也",
+              "pinyin": "yě",
+              "indonesianTranslation": "juga",
+              "imageRef": "plus.square.fill.on.square.fill",
+              "audioRef": "ye"
+            },
+            {
+              "id": "17d88fbe-3163-410b-8122-cbb427a66f29",
+              "hanzi": "朋友",
+              "pinyin": "péngyou",
+              "indonesianTranslation": "teman",
+              "imageRef": "figure.2.arms.open",
+              "audioRef": "pengyou"
+            },
+            {
+              "id": "84a2e410-b342-4cf0-8e04-24ef93fc1d8f",
+              "hanzi": "谁",
+              "pinyin": "shéi",
+              "indonesianTranslation": "siapa",
+              "imageRef": "person.crop.circle.badge.questionmark",
+              "audioRef": "shei"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "他是谁？"
+            },
+            {
+              "speaker": "B",
+              "text": "他是我的朋友。"
+            },
+            {
+              "speaker": "A",
+              "text": "很高兴认识你。"
+            },
+            {
+              "speaker": "B",
+              "text": "我也很高兴认识你。"
+            }
+          ],
+          "dialogAudioRef": ""
+        },
+        {
+          "id": "f64d1e4c-e967-42cf-a01c-a3228f2fd2be",
+          "title": "1.3 Murid atau Guru",
+          "flashcards": [
+            {
+              "id": "f63c8d82-f7b6-4c50-b697-a44517b109ba",
+              "hanzi": "老师",
+              "pinyin": "lǎoshī",
+              "indonesianTranslation": "guru",
+              "imageRef": "graduationcap.fill",
+              "audioRef": "laoshi"
+            },
+            {
+              "id": "b85c8393-b132-4a56-b1b9-a9a338693796",
+              "hanzi": "学生",
+              "pinyin": "xuésheng",
+              "indonesianTranslation": "murid",
+              "imageRef": "book.fill",
+              "audioRef": "xuesheng"
+            },
+            {
+              "id": "39c2c0be-1cc1-49d1-876b-1906e27f2e8a",
+              "hanzi": "不",
+              "pinyin": "bù",
+              "indonesianTranslation": "tidak / bukan",
+              "imageRef": "xmark.circle.fill",
+              "audioRef": "bu"
+            },
+            {
+              "id": "b89aafc2-4715-42d0-aeed-6f9723bfa046",
+              "hanzi": "多大",
+              "pinyin": "duō dà",
+              "indonesianTranslation": "berapa umur",
+              "imageRef": "clock.arrow.circlepath",
+              "audioRef": "duo_da"
+            },
+            {
+              "id": "92e323ee-f1df-412c-b9ef-c9100f45fb18",
+              "hanzi": "今年",
+              "pinyin": "jīnnián",
+              "indonesianTranslation": "tahun ini",
+              "imageRef": "calendar",
+              "audioRef": "jinnian"
+            },
+            {
+              "id": "0a7cca01-903b-452e-b1e9-ffb3d93fc64b",
+              "hanzi": "岁",
+              "pinyin": "suì",
+              "indonesianTranslation": "tahun (usia)",
+              "imageRef": "birthday.cake.fill",
+              "audioRef": "sui"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "你是老师吗？"
+            },
+            {
+              "speaker": "B",
+              "text": "不，我是学生。"
+            },
+            {
+              "speaker": "A",
+              "text": "你今年多大？"
+            },
+            {
+              "speaker": "B",
+              "text": "我今年十八岁。"
+            }
+          ],
+          "dialogAudioRef": ""
+        }
+      ]
+    },
+    {
+      "id": "d25fd601-7713-436b-b290-fec88a10fe05",
+      "title": "Bab 2: Asal Negara",
+      "description": "Belajar menanyakan asal negara, bahasa, dan kota tempat tinggal.",
+      "icon": "国",
+      "subChapters": [
+        {
+          "id": "a77f32c9-e76a-4965-a063-2b725fcfe97b",
+          "title": "2.1 Dari Negara Mana",
+          "flashcards": [
+            {
+              "id": "79083ca3-c622-492f-8fa8-22b36bd99b5d",
+              "hanzi": "哪",
+              "pinyin": "nǎ",
+              "indonesianTranslation": "mana",
+              "imageRef": "map.fill",
+              "audioRef": "na"
+            },
+            {
+              "id": "edb9d852-bb79-4e98-be51-8824d6a4acd5",
+              "hanzi": "国",
+              "pinyin": "guó",
+              "indonesianTranslation": "negara",
+              "imageRef": "globe",
+              "audioRef": "guo"
+            },
+            {
+              "id": "80074b95-4854-4975-a2a8-96a8748e87b5",
+              "hanzi": "人",
+              "pinyin": "rén",
+              "indonesianTranslation": "orang",
+              "imageRef": "person.fill",
+              "audioRef": "ren"
+            },
+            {
+              "id": "f06b00ea-eb13-4dcd-b7db-17e8990e5062",
+              "hanzi": "中国",
+              "pinyin": "Zhōngguó",
+              "indonesianTranslation": "Tiongkok",
+              "imageRef": "flag.fill",
+              "audioRef": "zhongguo"
+            },
+            {
+              "id": "9dac8fa5-f704-4029-8ea5-197b58724dc3",
+              "hanzi": "印尼",
+              "pinyin": "Yìnní",
+              "indonesianTranslation": "Indonesia",
+              "imageRef": "flag.fill",
+              "audioRef": "yinni"
+            },
+            {
+              "id": "aea59ca5-ffa2-4e3c-b669-d0864a0dc57a",
+              "hanzi": "来",
+              "pinyin": "lái",
+              "indonesianTranslation": "datang / berasal",
+              "imageRef": "arrow.down.right.circle.fill",
+              "audioRef": "lai"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "你是哪国人？"
+            },
+            {
+              "speaker": "B",
+              "text": "我是中国人。"
+            },
+            {
+              "speaker": "A",
+              "text": "我是印尼人。你从哪里来？"
+            },
+            {
+              "speaker": "B",
+              "text": "我从北京来。"
+            }
+          ],
+          "dialogAudioRef": ""
+        },
+        {
+          "id": "a74b62a9-7664-4288-8f12-43b169e5a232",
+          "title": "2.2 Negara Lain",
+          "flashcards": [
+            {
+              "id": "8fd5ce0b-c443-401a-8dae-1ca27612ed83",
+              "hanzi": "美国",
+              "pinyin": "Měiguó",
+              "indonesianTranslation": "Amerika Serikat",
+              "imageRef": "flag.fill",
+              "audioRef": "meiguo"
+            },
+            {
+              "id": "cc5afcf6-f0e7-460a-a6fe-260548102744",
+              "hanzi": "日本",
+              "pinyin": "Rìběn",
+              "indonesianTranslation": "Jepang",
+              "imageRef": "flag.fill",
+              "audioRef": "riben"
+            },
+            {
+              "id": "8a432869-6f86-4b3a-972c-bfb51947f19f",
+              "hanzi": "英国",
+              "pinyin": "Yīngguó",
+              "indonesianTranslation": "Inggris",
+              "imageRef": "flag.fill",
+              "audioRef": "yingguo"
+            },
+            {
+              "id": "8e5e0706-94d9-4b2d-861b-7688251f6990",
+              "hanzi": "他们",
+              "pinyin": "tāmen",
+              "indonesianTranslation": "mereka",
+              "imageRef": "person.3.fill",
+              "audioRef": "tamen"
+            },
+            {
+              "id": "39164cd3-4072-407e-8c9c-723c18a17eaa",
+              "hanzi": "对",
+              "pinyin": "duì",
+              "indonesianTranslation": "benar/ya",
+              "imageRef": "checkmark.circle.fill",
+              "audioRef": "dui"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "他是美国人吗？"
+            },
+            {
+              "speaker": "B",
+              "text": "不是，他是日本人。"
+            },
+            {
+              "speaker": "A",
+              "text": "他们是英国人吗？"
+            },
+            {
+              "speaker": "B",
+              "text": "对，他们是英国人。"
+            }
+          ],
+          "dialogAudioRef": ""
+        },
+        {
+          "id": "4adfd6f9-bd11-43aa-a960-637fbdcfb22b",
+          "title": "2.3 Bahasa & Kota",
+          "flashcards": [
+            {
+              "id": "1c72bc66-66de-414e-9988-255486feda50",
+              "hanzi": "会",
+              "pinyin": "huì",
+              "indonesianTranslation": "bisa",
+              "imageRef": "lightbulb.fill",
+              "audioRef": "hui"
+            },
+            {
+              "id": "4f61bb0c-8ef2-49cd-8460-ed363ddcc776",
+              "hanzi": "说",
+              "pinyin": "shuō",
+              "indonesianTranslation": "berbicara",
+              "imageRef": "bubble.left.fill",
+              "audioRef": "shuo"
+            },
+            {
+              "id": "739dcd5a-d496-4156-9149-944258997f45",
+              "hanzi": "汉语",
+              "pinyin": "Hànyǔ",
+              "indonesianTranslation": "bahasa Mandarin",
+              "imageRef": "character.bubble.fill",
+              "audioRef": "hanyu"
+            },
+            {
+              "id": "8f9b7711-8bd0-4d60-80e3-c5657327029f",
+              "hanzi": "一点儿",
+              "pinyin": "yìdiǎnr",
+              "indonesianTranslation": "sedikit",
+              "imageRef": "hand.point.up.left.fill",
+              "audioRef": "yidianr"
+            },
+            {
+              "id": "8ca9f17c-ec9e-48b1-9324-94c07486ccd3",
+              "hanzi": "住",
+              "pinyin": "zhù",
+              "indonesianTranslation": "tinggal",
+              "imageRef": "house.fill",
+              "audioRef": "zhu"
+            },
+            {
+              "id": "5a55767d-ce5f-4633-ba2e-abc6346c53cf",
+              "hanzi": "城市",
+              "pinyin": "chéngshì",
+              "indonesianTranslation": "kota",
+              "imageRef": "building.2.fill",
+              "audioRef": "chengshi"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "你会说汉语吗？"
+            },
+            {
+              "speaker": "B",
+              "text": "我会说一点儿。"
+            },
+            {
+              "speaker": "A",
+              "text": "你住在哪个城市？"
+            },
+            {
+              "speaker": "B",
+              "text": "我住在上海。"
+            }
+          ],
+          "dialogAudioRef": ""
+        }
+      ]
+    },
+    {
+      "id": "02980065-c883-4ac4-9da1-b534ae2a5156",
+      "title": "Bab 3: Angka",
+      "description": "Belajar menghitung 1-10, menanyakan jumlah, dan nomor telepon.",
+      "icon": "数",
+      "subChapters": [
+        {
+          "id": "7b284479-68e2-4cc7-8f1d-9f65e25a3a62",
+          "title": "3.1 Angka 1–10",
+          "flashcards": [
+            {
+              "id": "85070f0e-a127-4c53-a7ac-17c59f8dc838",
+              "hanzi": "一",
+              "pinyin": "yī",
+              "indonesianTranslation": "satu",
+              "imageRef": "1.circle",
+              "audioRef": "yi"
+            },
+            {
+              "id": "04a1ba3c-bc64-4937-a5c3-5b2a084f4e76",
+              "hanzi": "二",
+              "pinyin": "èr",
+              "indonesianTranslation": "dua",
+              "imageRef": "2.circle",
+              "audioRef": "er"
+            },
+            {
+              "id": "d8339ee2-8a56-4244-bddc-7950aa8585dc",
+              "hanzi": "三",
+              "pinyin": "sān",
+              "indonesianTranslation": "tiga",
+              "imageRef": "3.circle",
+              "audioRef": "san"
+            },
+            {
+              "id": "d32046db-e14d-40b7-a696-45087e47410c",
+              "hanzi": "四",
+              "pinyin": "sì",
+              "indonesianTranslation": "empat",
+              "imageRef": "4.circle",
+              "audioRef": "si"
+            },
+            {
+              "id": "121fb70b-8b0e-4914-a061-c56f0b2325a1",
+              "hanzi": "五",
+              "pinyin": "wǔ",
+              "indonesianTranslation": "lima",
+              "imageRef": "5.circle",
+              "audioRef": "wu"
+            },
+            {
+              "id": "e0e1052d-fea6-4258-8504-c9858936985b",
+              "hanzi": "六",
+              "pinyin": "liù",
+              "indonesianTranslation": "enam",
+              "imageRef": "6.circle",
+              "audioRef": "liu"
+            },
+            {
+              "id": "6f96b171-24a7-448f-b85d-66a66b4f5584",
+              "hanzi": "七",
+              "pinyin": "qī",
+              "indonesianTranslation": "tujuh",
+              "imageRef": "7.circle",
+              "audioRef": "qi"
+            },
+            {
+              "id": "4d842431-40f3-49bb-ac94-e39526057d4d",
+              "hanzi": "八",
+              "pinyin": "bā",
+              "indonesianTranslation": "delapan",
+              "imageRef": "8.circle",
+              "audioRef": "ba"
+            },
+            {
+              "id": "0db099f1-4a67-46c8-a887-c57d3065892b",
+              "hanzi": "九",
+              "pinyin": "jiǔ",
+              "indonesianTranslation": "sembilan",
+              "imageRef": "9.circle",
+              "audioRef": "jiu"
+            },
+            {
+              "id": "ae382093-5c10-4ce4-a32d-b5044b4d9e14",
+              "hanzi": "十",
+              "pinyin": "shí",
+              "indonesianTranslation": "sepuluh",
+              "imageRef": "10.circle",
+              "audioRef": "shi"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "你会数数吗？"
+            },
+            {
+              "speaker": "B",
+              "text": "会，一、二、三、四、五。"
+            },
+            {
+              "speaker": "A",
+              "text": "六、七、八、九、十。"
+            },
+            {
+              "speaker": "B",
+              "text": "太好了！"
+            }
+          ],
+          "dialogAudioRef": ""
+        },
+        {
+          "id": "a347774c-ed5e-4705-9c0a-ddfbdf21fbec",
+          "title": "3.2 Berhitung Jumlah",
+          "flashcards": [
+            {
+              "id": "debcb6e4-da7a-436c-839d-dd50aaae0e69",
+              "hanzi": "有",
+              "pinyin": "yǒu",
+              "indonesianTranslation": "ada / punya",
+              "imageRef": "hand.raised.fill",
+              "audioRef": "you"
+            },
+            {
+              "id": "96459e63-2263-4b3b-b155-212d959ca1e6",
+              "hanzi": "多少",
+              "pinyin": "duōshao",
+              "indonesianTranslation": "berapa (jumlah)",
+              "imageRef": "questionmark.circle.fill",
+              "audioRef": "duoshao"
+            },
+            {
+              "id": "b152863e-4bd9-46d7-87e4-6937be1109c2",
+              "hanzi": "个",
+              "pinyin": "gè",
+              "indonesianTranslation": "(kata bantu bilangan)",
+              "imageRef": "number.circle.fill",
+              "audioRef": "ge"
+            },
+            {
+              "id": "e25b6124-9ce9-44ca-8d88-662e6f1bc1f6",
+              "hanzi": "十一",
+              "pinyin": "shíyī",
+              "indonesianTranslation": "sebelas",
+              "imageRef": "11.circle",
+              "audioRef": "shiyi"
+            },
+            {
+              "id": "c2e4ae82-16ba-48dc-910d-a3cb332052f1",
+              "hanzi": "二十",
+              "pinyin": "èrshí",
+              "indonesianTranslation": "dua puluh",
+              "imageRef": "20.circle",
+              "audioRef": "ershi"
+            },
+            {
+              "id": "2eafd054-bc41-4ea6-9591-76aff2c27204",
+              "hanzi": "一百",
+              "pinyin": "yìbǎi",
+              "indonesianTranslation": "seratus",
+              "imageRef": "100.circle",
+              "audioRef": "yibai"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "这里有多少人？"
+            },
+            {
+              "speaker": "B",
+              "text": "有二十个人。"
+            },
+            {
+              "speaker": "A",
+              "text": "那里有多少？"
+            },
+            {
+              "speaker": "B",
+              "text": "有一百个。"
+            }
+          ],
+          "dialogAudioRef": ""
+        },
+        {
+          "id": "a148e695-c22d-4cc0-85f1-ca041d3d844e",
+          "title": "3.3 Nomor Telepon",
+          "flashcards": [
+            {
+              "id": "7077c4f1-a2fa-4998-bfd2-9c71f865ea4c",
+              "hanzi": "零",
+              "pinyin": "líng",
+              "indonesianTranslation": "nol",
+              "imageRef": "0.circle",
+              "audioRef": "ling"
+            },
+            {
+              "id": "9309e944-4964-4562-a8c9-f04eeca7c45c",
+              "hanzi": "电话",
+              "pinyin": "diànhuà",
+              "indonesianTranslation": "telepon",
+              "imageRef": "phone.fill",
+              "audioRef": "dianhua"
+            },
+            {
+              "id": "fbe7e8ab-ad67-4317-9076-f553bbdf4053",
+              "hanzi": "号码",
+              "pinyin": "hàomǎ",
+              "indonesianTranslation": "nomor",
+              "imageRef": "number",
+              "audioRef": "haoma"
+            },
+            {
+              "id": "7c35ce35-6a55-4209-aa53-13f0f13bf1f4",
+              "hanzi": "的",
+              "pinyin": "de",
+              "indonesianTranslation": "(partikel kepemilikan)",
+              "imageRef": "tag.fill",
+              "audioRef": "de"
+            },
+            {
+              "id": "85d3c6dd-db89-409f-8e63-1e45daffc79d",
+              "hanzi": "好的",
+              "pinyin": "hǎo de",
+              "indonesianTranslation": "baiklah",
+              "imageRef": "hand.thumbsup.fill",
+              "audioRef": "hao_de"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "你的电话号码是多少？"
+            },
+            {
+              "speaker": "B",
+              "text": "我的号码是一三八零零……"
+            },
+            {
+              "speaker": "A",
+              "text": "好的，谢谢。"
+            },
+            {
+              "speaker": "B",
+              "text": "不客气。"
+            }
+          ],
+          "dialogAudioRef": ""
+        }
+      ]
+    },
+    {
+      "id": "bcf61bce-d283-4922-ac90-cd2136d9fdaa",
+      "title": "Bab 4: Keluarga",
+      "description": "Belajar anggota keluarga inti, keluarga besar, dan anak.",
+      "icon": "家",
+      "subChapters": [
+        {
+          "id": "6d6050ed-d3f2-4160-822d-c1f679069560",
+          "title": "4.1 Anggota Inti",
+          "flashcards": [
+            {
+              "id": "d8771db5-809f-47b1-ac6f-881abd5ac38d",
+              "hanzi": "爸爸",
+              "pinyin": "bàba",
+              "indonesianTranslation": "ayah",
+              "imageRef": "figure.stand",
+              "audioRef": "baba"
+            },
+            {
+              "id": "cfc0d3d7-8413-4cbe-b34c-d5037ba88834",
+              "hanzi": "妈妈",
+              "pinyin": "māma",
+              "indonesianTranslation": "ibu",
+              "imageRef": "figure.dress.line.vertical.figure",
+              "audioRef": "mama"
+            },
+            {
+              "id": "2c047f7e-6cb8-456b-b14a-c10b39a8f397",
+              "hanzi": "哥哥",
+              "pinyin": "gēge",
+              "indonesianTranslation": "kakak laki-laki",
+              "imageRef": "person.fill",
+              "audioRef": "gege"
+            },
+            {
+              "id": "0245ed7c-b7d5-4006-a84d-7337ce0783a6",
+              "hanzi": "姐姐",
+              "pinyin": "jiějie",
+              "indonesianTranslation": "kakak perempuan",
+              "imageRef": "person.fill",
+              "audioRef": "jiejie"
+            },
+            {
+              "id": "a1ccc665-825f-4d50-aec7-31eb48d4b45d",
+              "hanzi": "弟弟",
+              "pinyin": "dìdi",
+              "indonesianTranslation": "adik laki-laki",
+              "imageRef": "person",
+              "audioRef": "didi"
+            },
+            {
+              "id": "49954c75-f21a-4554-a698-6438d11a0af5",
+              "hanzi": "妹妹",
+              "pinyin": "mèimei",
+              "indonesianTranslation": "adik perempuan",
+              "imageRef": "person",
+              "audioRef": "meimei"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "这是你的爸爸吗？"
+            },
+            {
+              "speaker": "B",
+              "text": "对，这是我爸爸和妈妈。"
+            },
+            {
+              "speaker": "A",
+              "text": "你有哥哥吗？"
+            },
+            {
+              "speaker": "B",
+              "text": "我有一个姐姐和一个弟弟。"
+            }
+          ],
+          "dialogAudioRef": ""
+        },
+        {
+          "id": "7efd8057-fef2-4b07-9a09-c56bff8030d8",
+          "title": "4.2 Keluarga Besar",
+          "flashcards": [
+            {
+              "id": "ce9940f7-4edb-447c-9ab3-fa64be7d205e",
+              "hanzi": "爷爷",
+              "pinyin": "yéye",
+              "indonesianTranslation": "kakek (dari ayah)",
+              "imageRef": "person.fill.badge.plus",
+              "audioRef": "yeye"
+            },
+            {
+              "id": "2cd5c775-0490-484f-941f-15d807321296",
+              "hanzi": "奶奶",
+              "pinyin": "nǎinai",
+              "indonesianTranslation": "nenek (dari ayah)",
+              "imageRef": "person.fill.badge.minus",
+              "audioRef": "nainai"
+            },
+            {
+              "id": "ac8fb977-791c-4fcf-8f77-cb7c0768d81f",
+              "hanzi": "家",
+              "pinyin": "jiā",
+              "indonesianTranslation": "rumah / keluarga",
+              "imageRef": "house.fill",
+              "audioRef": "jia"
+            },
+            {
+              "id": "9208b088-a410-4722-b1e3-9f608440482a",
+              "hanzi": "几",
+              "pinyin": "jǐ",
+              "indonesianTranslation": "berapa (sedikit)",
+              "imageRef": "questionmark",
+              "audioRef": "ji"
+            },
+            {
+              "id": "fc4da6ed-c972-4fd2-a81b-9fee7155de59",
+              "hanzi": "口",
+              "pinyin": "kǒu",
+              "indonesianTranslation": "(kata bantu org keluarga)",
+              "imageRef": "person.3.sequence.fill",
+              "audioRef": "kou"
+            },
+            {
+              "id": "120a8657-b505-472b-864e-41eeb5e0b6b8",
+              "hanzi": "我们",
+              "pinyin": "wǒmen",
+              "indonesianTranslation": "kami / kita",
+              "imageRef": "person.3.fill",
+              "audioRef": "women"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "你家有几口人？"
+            },
+            {
+              "speaker": "B",
+              "text": "我家有五口人。"
+            },
+            {
+              "speaker": "A",
+              "text": "有爷爷奶奶吗？"
+            },
+            {
+              "speaker": "B",
+              "text": "有，爷爷奶奶和我们一起住。"
+            }
+          ],
+          "dialogAudioRef": ""
+        },
+        {
+          "id": "d7f7d0f5-93f1-4cb7-8bc5-45b0a45dbc86",
+          "title": "4.3 Anak",
+          "flashcards": [
+            {
+              "id": "b00dd8c2-b330-4d14-a1e1-8601f07eced3",
+              "hanzi": "孩子",
+              "pinyin": "háizi",
+              "indonesianTranslation": "anak",
+              "imageRef": "figure.child",
+              "audioRef": "haizi"
+            },
+            {
+              "id": "989a9795-d003-400a-a3a4-27684fd40902",
+              "hanzi": "儿子",
+              "pinyin": "érzi",
+              "indonesianTranslation": "anak laki-laki",
+              "imageRef": "figure.child.circle",
+              "audioRef": "erzi"
+            },
+            {
+              "id": "9b9ba7e0-ab67-442b-a402-93e4f68c3bfb",
+              "hanzi": "女儿",
+              "pinyin": "nǚ'ér",
+              "indonesianTranslation": "anak perempuan",
+              "imageRef": "figure.child.circle.fill",
+              "audioRef": "nuer"
+            },
+            {
+              "id": "1ee24ab1-2d05-4309-9d15-dd2cc21ff239",
+              "hanzi": "没有",
+              "pinyin": "méiyǒu",
+              "indonesianTranslation": "tidak punya",
+              "imageRef": "xmark.circle",
+              "audioRef": "meiyou"
+            },
+            {
+              "id": "8ca284fb-b95c-44a8-bd8f-1fd6169a46ab",
+              "hanzi": "爱",
+              "pinyin": "ài",
+              "indonesianTranslation": "cinta / sayang",
+              "imageRef": "heart.fill",
+              "audioRef": "ai"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "你有孩子吗？"
+            },
+            {
+              "speaker": "B",
+              "text": "有，一个儿子和一个女儿。"
+            },
+            {
+              "speaker": "A",
+              "text": "我还没有孩子。"
+            },
+            {
+              "speaker": "B",
+              "text": "我很爱我的孩子。"
+            }
+          ],
+          "dialogAudioRef": ""
+        }
+      ]
+    },
+    {
+      "id": "0ac094d4-fac8-49af-9c11-f8b99171980c",
+      "title": "Bab 5: Hobi",
+      "description": "Belajar kosakata tentang hobi, olahraga ringan, dan kegiatan akhir pekan.",
+      "icon": "喜",
+      "subChapters": [
+        {
+          "id": "78c90eed-4bc4-4baa-bcb6-d2d47075be6a",
+          "title": "5.1 Suka Melakukan Apa",
+          "flashcards": [
+            {
+              "id": "1967f81d-a8a9-49ac-ba26-ad0db02118ef",
+              "hanzi": "喜欢",
+              "pinyin": "xǐhuan",
+              "indonesianTranslation": "suka",
+              "imageRef": "heart.fill",
+              "audioRef": "xihuan"
+            },
+            {
+              "id": "cb930e5f-757a-4060-8d9f-256636833962",
+              "hanzi": "看",
+              "pinyin": "kàn",
+              "indonesianTranslation": "melihat / menonton",
+              "imageRef": "eye.fill",
+              "audioRef": "kan"
+            },
+            {
+              "id": "43f7a4ea-ae46-4b8e-a3af-13b9b74086d9",
+              "hanzi": "书",
+              "pinyin": "shū",
+              "indonesianTranslation": "buku",
+              "imageRef": "book.fill",
+              "audioRef": "shu"
+            },
+            {
+              "id": "ec14a2eb-1347-43dd-bd09-e40a050aa4d1",
+              "hanzi": "电影",
+              "pinyin": "diànyǐng",
+              "indonesianTranslation": "film",
+              "imageRef": "film.fill",
+              "audioRef": "dianying"
+            },
+            {
+              "id": "08a4a39b-6c66-4be2-bcae-7b37bde02d06",
+              "hanzi": "听",
+              "pinyin": "tīng",
+              "indonesianTranslation": "mendengar",
+              "imageRef": "ear.fill",
+              "audioRef": "ting"
+            },
+            {
+              "id": "fac8ebc0-abf1-4f77-bdc6-44afc99b7fe0",
+              "hanzi": "音乐",
+              "pinyin": "yīnyuè",
+              "indonesianTranslation": "musik",
+              "imageRef": "music.note",
+              "audioRef": "yinyue"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "你喜欢做什么？"
+            },
+            {
+              "speaker": "B",
+              "text": "我喜欢看书和看电影。"
+            },
+            {
+              "speaker": "A",
+              "text": "你喜欢听音乐吗？"
+            },
+            {
+              "speaker": "B",
+              "text": "喜欢，我很喜欢音乐。"
+            }
+          ],
+          "dialogAudioRef": ""
+        },
+        {
+          "id": "43d56341-981d-49aa-925f-e5ba3c91f069",
+          "title": "5.2 Olahraga Ringan",
+          "flashcards": [
+            {
+              "id": "0f3d406f-5eae-4887-a078-a35012ee498f",
+              "hanzi": "运动",
+              "pinyin": "yùndòng",
+              "indonesianTranslation": "olahraga",
+              "imageRef": "figure.run",
+              "audioRef": "yundong"
+            },
+            {
+              "id": "c5942e96-f3e1-4b1a-b2d8-ed98c0cc1fb0",
+              "hanzi": "游泳",
+              "pinyin": "yóuyǒng",
+              "indonesianTranslation": "berenang",
+              "imageRef": "figure.pool.swim",
+              "audioRef": "youyong"
+            },
+            {
+              "id": "455b9c6b-1aa1-44b5-ace9-0259ec12a051",
+              "hanzi": "跑步",
+              "pinyin": "pǎobù",
+              "indonesianTranslation": "lari",
+              "imageRef": "figure.run",
+              "audioRef": "paobu"
+            },
+            {
+              "id": "45fb3b4d-217c-45d8-81d6-ace3d62d432a",
+              "hanzi": "打球",
+              "pinyin": "dǎqiú",
+              "indonesianTranslation": "main bola",
+              "imageRef": "basketball.fill",
+              "audioRef": "daqiu"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "你喜欢运动吗？"
+            },
+            {
+              "speaker": "B",
+              "text": "喜欢，我喜欢游泳和跑步。"
+            },
+            {
+              "speaker": "A",
+              "text": "你会打球吗？"
+            },
+            {
+              "speaker": "B",
+              "text": "会一点儿。"
+            }
+          ],
+          "dialogAudioRef": ""
+        },
+        {
+          "id": "43044b4d-be11-4bb0-bfc0-881e00fa41e7",
+          "title": "5.3 Akhir Pekan",
+          "flashcards": [
+            {
+              "id": "e303205e-6763-4d7c-aac3-5d6f911c4b11",
+              "hanzi": "周末",
+              "pinyin": "zhōumò",
+              "indonesianTranslation": "akhir pekan",
+              "imageRef": "calendar",
+              "audioRef": "zhoumo"
+            },
+            {
+              "id": "4f1e23dd-f188-4d99-8b21-c1cd412444dd",
+              "hanzi": "唱歌",
+              "pinyin": "chànggē",
+              "indonesianTranslation": "menyanyi",
+              "imageRef": "music.mic",
+              "audioRef": "changge"
+            },
+            {
+              "id": "26749813-c972-4132-bf67-85c36277dca5",
+              "hanzi": "跳舞",
+              "pinyin": "tiàowǔ",
+              "indonesianTranslation": "menari",
+              "imageRef": "figure.dance",
+              "audioRef": "tiaowu"
+            },
+            {
+              "id": "14410694-6a39-4506-b36d-6401df3a884c",
+              "hanzi": "画画",
+              "pinyin": "huàhuà",
+              "indonesianTranslation": "menggambar",
+              "imageRef": "paintbrush.fill",
+              "audioRef": "huahua"
+            },
+            {
+              "id": "9a6ef6ad-2f1d-45e7-9679-ed8982226561",
+              "hanzi": "旅游",
+              "pinyin": "lǚyóu",
+              "indonesianTranslation": "berwisata",
+              "imageRef": "airplane",
+              "audioRef": "luyou"
+            },
+            {
+              "id": "19ae6950-966d-4fc9-8169-5db142ff96bf",
+              "hanzi": "一起",
+              "pinyin": "yìqǐ",
+              "indonesianTranslation": "bersama",
+              "imageRef": "person.2.fill",
+              "audioRef": "yiqi"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "你周末做什么？"
+            },
+            {
+              "speaker": "B",
+              "text": "我喜欢唱歌和跳舞。"
+            },
+            {
+              "speaker": "A",
+              "text": "我们一起去旅游吧。"
+            },
+            {
+              "speaker": "B",
+              "text": "好啊！"
+            }
+          ],
+          "dialogAudioRef": ""
+        }
+      ]
+    },
+    {
+      "id": "804beccc-dc81-4e18-9a48-3aaa1c262a2b",
+      "title": "Bab 6: Waktu",
+      "description": "Belajar tentang hari, jam, bulan, dan tahun.",
+      "icon": "时",
+      "subChapters": [
+        {
+          "id": "d1531d65-49da-430d-8300-170e53628d95",
+          "title": "6.1 Hari",
+          "flashcards": [
+            {
+              "id": "bd8751bc-9b68-48ea-97f4-32187ad0c782",
+              "hanzi": "今天",
+              "pinyin": "jīntiān",
+              "indonesianTranslation": "hari ini",
+              "imageRef": "calendar.badge.clock",
+              "audioRef": "jintian"
+            },
+            {
+              "id": "a9d3c581-cfc9-4070-b3f9-b3d431b86730",
+              "hanzi": "明天",
+              "pinyin": "míngtiān",
+              "indonesianTranslation": "besok",
+              "imageRef": "arrow.right.to.line.alt",
+              "audioRef": "mingtian"
+            },
+            {
+              "id": "5414271a-439e-4398-8f63-020fad29c40c",
+              "hanzi": "昨天",
+              "pinyin": "zuótiān",
+              "indonesianTranslation": "kemarin",
+              "imageRef": "arrow.left.to.line.alt",
+              "audioRef": "zuotian"
+            },
+            {
+              "id": "16658a8b-3788-4d22-b75a-3aca425cf94e",
+              "hanzi": "星期",
+              "pinyin": "xīngqī",
+              "indonesianTranslation": "minggu / hari",
+              "imageRef": "calendar",
+              "audioRef": "xingqi"
+            },
+            {
+              "id": "2ce66a08-3b91-4905-b650-d41a90af8feb",
+              "hanzi": "星期一",
+              "pinyin": "xīngqīyī",
+              "indonesianTranslation": "Senin",
+              "imageRef": "1.square.fill",
+              "audioRef": "xingqiyi"
+            },
+            {
+              "id": "0e45fb2a-c950-40b7-85ea-cba16e8066de",
+              "hanzi": "星期天",
+              "pinyin": "xīngqītiān",
+              "indonesianTranslation": "Minggu",
+              "imageRef": "7.square.fill",
+              "audioRef": "xingqitian"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "今天星期几？"
+            },
+            {
+              "speaker": "B",
+              "text": "今天星期一。"
+            },
+            {
+              "speaker": "A",
+              "text": "明天星期几？"
+            },
+            {
+              "speaker": "B",
+              "text": "明天星期二。"
+            }
+          ],
+          "dialogAudioRef": ""
+        },
+        {
+          "id": "7f4d4534-a62d-4a9d-bf96-e89e7036c0a1",
+          "title": "6.2 Jam",
+          "flashcards": [
+            {
+              "id": "dfd044c1-cc6c-43cd-a678-127cb72eb549",
+              "hanzi": "现在",
+              "pinyin": "xiànzài",
+              "indonesianTranslation": "sekarang",
+              "imageRef": "clock.fill",
+              "audioRef": "xianzai"
+            },
+            {
+              "id": "a24ac0e3-4bd6-43c7-a510-2bc5f3e466f4",
+              "hanzi": "点",
+              "pinyin": "diǎn",
+              "indonesianTranslation": "pukul (jam)",
+              "imageRef": "clock",
+              "audioRef": "dian"
+            },
+            {
+              "id": "a473df5e-1f9e-4565-9d1d-4f7603461d5c",
+              "hanzi": "分",
+              "pinyin": "fēn",
+              "indonesianTranslation": "menit",
+              "imageRef": "timer",
+              "audioRef": "fen"
+            },
+            {
+              "id": "1b0db498-11ac-4793-a4cd-aea5933afa62",
+              "hanzi": "半",
+              "pinyin": "bàn",
+              "indonesianTranslation": "setengah",
+              "imageRef": "circle.lefthalf.filled",
+              "audioRef": "ban"
+            },
+            {
+              "id": "f8e2c421-aa1e-4a31-bdb4-f70a34449d38",
+              "hanzi": "早上",
+              "pinyin": "zǎoshang",
+              "indonesianTranslation": "pagi",
+              "imageRef": "sunrise.fill",
+              "audioRef": "zaoshang"
+            },
+            {
+              "id": "1ca93132-8755-469a-a14e-e695ab35b6c1",
+              "hanzi": "晚上",
+              "pinyin": "wǎnshang",
+              "indonesianTranslation": "malam",
+              "imageRef": "moon.stars.fill",
+              "audioRef": "wanshang"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "现在几点？"
+            },
+            {
+              "speaker": "B",
+              "text": "现在八点半。"
+            },
+            {
+              "speaker": "A",
+              "text": "你早上几点起床？"
+            },
+            {
+              "speaker": "B",
+              "text": "我六点起床。"
+            }
+          ],
+          "dialogAudioRef": ""
+        },
+        {
+          "id": "1f15d4f7-fa7b-4984-a4ed-94c96ba1621b",
+          "title": "6.3 Bulan & Tahun",
+          "flashcards": [
+            {
+              "id": "1d5da2a2-1ca8-4aa7-a009-6c87163cfdc9",
+              "hanzi": "月",
+              "pinyin": "yuè",
+              "indonesianTranslation": "bulan",
+              "imageRef": "calendar",
+              "audioRef": "yue"
+            },
+            {
+              "id": "bda0f562-3cde-41d2-88ae-77ae21907280",
+              "hanzi": "号",
+              "pinyin": "hào",
+              "indonesianTranslation": "tanggal",
+              "imageRef": "number.circle.fill",
+              "audioRef": "hao"
+            },
+            {
+              "id": "825e0f30-6f2d-48d9-88de-43e3f08d5380",
+              "hanzi": "年",
+              "pinyin": "nián",
+              "indonesianTranslation": "tahun",
+              "imageRef": "calendar.circle.fill",
+              "audioRef": "nian"
+            },
+            {
+              "id": "5bf93c1a-8385-470c-801e-7b1f0861e23c",
+              "hanzi": "生日",
+              "pinyin": "shēngrì",
+              "indonesianTranslation": "ulang tahun",
+              "imageRef": "birthday.cake.fill",
+              "audioRef": "shengri"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "你的生日是几月几号？"
+            },
+            {
+              "speaker": "B",
+              "text": "我的生日是五月十号。"
+            },
+            {
+              "speaker": "A",
+              "text": "今年是哪一年？"
+            },
+            {
+              "speaker": "B",
+              "text": "今年是二零二六年。"
+            }
+          ],
+          "dialogAudioRef": ""
+        }
+      ]
+    },
+    {
+      "id": "06b46e68-95ed-4608-9b4b-12f51203a130",
+      "title": "Bab 7: Makanan dan Minuman",
+      "description": "Belajar kosakata makanan pokok, minuman, buah, dan rasa.",
+      "icon": "食",
+      "subChapters": [
+        {
+          "id": "bc681865-3266-41a2-aefe-c31679caa0d3",
+          "title": "7.1 Makanan Pokok",
+          "flashcards": [
+            {
+              "id": "7f2ff9a4-7c05-4e5b-8ae8-2830034e275c",
+              "hanzi": "吃",
+              "pinyin": "chī",
+              "indonesianTranslation": "makan",
+              "imageRef": "fork.knife",
+              "audioRef": "chi"
+            },
+            {
+              "id": "f0b17492-f95a-4f7c-8322-ff181da0f803",
+              "hanzi": "饿",
+              "pinyin": "è",
+              "indonesianTranslation": "lapar",
+              "imageRef": "face.dashed",
+              "audioRef": "e"
+            },
+            {
+              "id": "2594f4bc-50ee-4097-8744-a7d4680e2953",
+              "hanzi": "米饭",
+              "pinyin": "mǐfàn",
+              "indonesianTranslation": "nasi",
+              "imageRef": "takeoutbox.fill",
+              "audioRef": "mifan"
+            },
+            {
+              "id": "cd11b65c-10f1-4c45-90fb-1d5dfa9ad9b9",
+              "hanzi": "面条",
+              "pinyin": "miàntiáo",
+              "indonesianTranslation": "mie",
+              "imageRef": "fork.knife.circle",
+              "audioRef": "miantiao"
+            },
+            {
+              "id": "31310347-7a15-40cf-8d0b-939ddfd6f202",
+              "hanzi": "鸡蛋",
+              "pinyin": "jīdàn",
+              "indonesianTranslation": "telur",
+              "imageRef": "oval.fill",
+              "audioRef": "jidan"
+            },
+            {
+              "id": "c21edf8a-09cb-4cbf-bab1-11946334b13e",
+              "hanzi": "面包",
+              "pinyin": "miànbāo",
+              "indonesianTranslation": "roti",
+              "imageRef": "square.fill",
+              "audioRef": "mianbao"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "你饿吗？"
+            },
+            {
+              "speaker": "B",
+              "text": "我很饿，想吃米饭。"
+            },
+            {
+              "speaker": "A",
+              "text": "我想吃面条和鸡蛋。"
+            },
+            {
+              "speaker": "B",
+              "text": "我们去吃饭吧。"
+            }
+          ],
+          "dialogAudioRef": ""
+        },
+        {
+          "id": "437413c4-138c-4ee9-b33a-3bac9ac7bb8d",
+          "title": "7.2 Minuman",
+          "flashcards": [
+            {
+              "id": "b188e727-def7-4f6b-8416-9abd10e19119",
+              "hanzi": "喝",
+              "pinyin": "hē",
+              "indonesianTranslation": "minum",
+              "imageRef": "cup.and.saucer.fill",
+              "audioRef": "he"
+            },
+            {
+              "id": "bd78fee8-4f75-4510-beff-ac0730ab971e",
+              "hanzi": "渴",
+              "pinyin": "kě",
+              "indonesianTranslation": "haus",
+              "imageRef": "drop.triangle",
+              "audioRef": "ke"
+            },
+            {
+              "id": "978d97fa-60ac-4d98-aca5-0755b7a90157",
+              "hanzi": "水",
+              "pinyin": "shuǐ",
+              "indonesianTranslation": "air",
+              "imageRef": "drop.fill",
+              "audioRef": "shui"
+            },
+            {
+              "id": "2bf4dec5-3cc3-49de-b56d-8b3c54c366a6",
+              "hanzi": "茶",
+              "pinyin": "chá",
+              "indonesianTranslation": "teh",
+              "imageRef": "leaf.fill",
+              "audioRef": "cha"
+            },
+            {
+              "id": "1b773fe6-3fdf-4227-8440-b4af5e70709d",
+              "hanzi": "咖啡",
+              "pinyin": "kāfēi",
+              "indonesianTranslation": "kopi",
+              "imageRef": "cup.and.saucer.fill",
+              "audioRef": "kafei"
+            },
+            {
+              "id": "ca8e8e9e-33bc-437a-b897-132d271ed837",
+              "hanzi": "牛奶",
+              "pinyin": "niúnǎi",
+              "indonesianTranslation": "susu",
+              "imageRef": "mug.fill",
+              "audioRef": "niunai"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "你渴吗？"
+            },
+            {
+              "speaker": "B",
+              "text": "渴，我想喝水。"
+            },
+            {
+              "speaker": "A",
+              "text": "你喝茶还是喝咖啡？"
+            },
+            {
+              "speaker": "B",
+              "text": "我喝咖啡，谢谢。"
+            }
+          ],
+          "dialogAudioRef": ""
+        },
+        {
+          "id": "de00b3d2-7fcb-4b23-956d-047c7ada21b4",
+          "title": "7.3 Buah & Rasa",
+          "flashcards": [
+            {
+              "id": "006de96f-b4d2-4e7c-ad7e-0acb2bd64fc9",
+              "hanzi": "水果",
+              "pinyin": "shuǐguǒ",
+              "indonesianTranslation": "buah",
+              "imageRef": "applelogo",
+              "audioRef": "shuiguo"
+            },
+            {
+              "id": "6fd18348-ed13-4c1c-9e6d-e79f54a0ef79",
+              "hanzi": "苹果",
+              "pinyin": "píngguǒ",
+              "indonesianTranslation": "apel",
+              "imageRef": "apple.logo",
+              "audioRef": "pingguo"
+            },
+            {
+              "id": "9b9c1d08-6ab5-4389-ae89-6bf651f37db4",
+              "hanzi": "香蕉",
+              "pinyin": "xiāngjiāo",
+              "indonesianTranslation": "pisang",
+              "imageRef": "leaf.arrow.triangle.circlepath",
+              "audioRef": "xiangjiao"
+            },
+            {
+              "id": "d04006bf-c352-4525-8b62-849768854589",
+              "hanzi": "好吃",
+              "pinyin": "hǎochī",
+              "indonesianTranslation": "enak (makanan)",
+              "imageRef": "hand.thumbsup.fill",
+              "audioRef": "haochi"
+            },
+            {
+              "id": "d1f1235f-5ecd-4276-b38b-95c6dcba6a20",
+              "hanzi": "甜",
+              "pinyin": "tián",
+              "indonesianTranslation": "manis",
+              "imageRef": "face.smiling",
+              "audioRef": "tian"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "你喜欢吃水果吗？"
+            },
+            {
+              "speaker": "B",
+              "text": "喜欢，我喜欢苹果和香蕉。"
+            },
+            {
+              "speaker": "A",
+              "text": "苹果好吃吗？"
+            },
+            {
+              "speaker": "B",
+              "text": "很好吃，很甜。"
+            }
+          ],
+          "dialogAudioRef": ""
+        }
+      ]
+    },
+    {
+      "id": "f5d7947a-9e3f-4b29-be4b-d0a643ee747d",
+      "title": "Bab 8: Binatang",
+      "description": "Belajar tentang hewan peliharaan, hewan ternak, dan kebun binatang.",
+      "icon": "动",
+      "subChapters": [
+        {
+          "id": "e41ad71c-71d6-4d63-9b70-8c9f3367b21b",
+          "title": "8.1 Hewan Peliharaan",
+          "flashcards": [
+            {
+              "id": "6e566a2a-cbfd-4de1-9322-c2cc51702332",
+              "hanzi": "动物",
+              "pinyin": "dòngwù",
+              "indonesianTranslation": "hewan",
+              "imageRef": "pawprint.fill",
+              "audioRef": "dongwu"
+            },
+            {
+              "id": "2cb195f7-1b18-4500-97ee-a3925f88d841",
+              "hanzi": "狗",
+              "pinyin": "gǒu",
+              "indonesianTranslation": "anjing",
+              "imageRef": "dog.fill",
+              "audioRef": "gou"
+            },
+            {
+              "id": "b8e2f9ac-7b01-49f3-8bf4-41020bb3c1c2",
+              "hanzi": "猫",
+              "pinyin": "māo",
+              "indonesianTranslation": "kucing",
+              "imageRef": "cat.fill",
+              "audioRef": "mao"
+            },
+            {
+              "id": "a9f5de48-ebb6-4b3a-9f54-84411519bdd0",
+              "hanzi": "鱼",
+              "pinyin": "yú",
+              "indonesianTranslation": "ikan",
+              "imageRef": "fish.fill",
+              "audioRef": "yu"
+            },
+            {
+              "id": "8b3e8da6-b835-4e62-a830-8a5f38fb6056",
+              "hanzi": "鸟",
+              "pinyin": "niǎo",
+              "indonesianTranslation": "burung",
+              "imageRef": "bird.fill",
+              "audioRef": "niao"
+            },
+            {
+              "id": "43598b04-7268-4c14-a2f8-ac15359f21e7",
+              "hanzi": "可爱",
+              "pinyin": "kě'ài",
+              "indonesianTranslation": "lucu / imut",
+              "imageRef": "heart.fill",
+              "audioRef": "keai"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "你家有动物吗？"
+            },
+            {
+              "speaker": "B",
+              "text": "有，我有一只狗和一只猫。"
+            },
+            {
+              "speaker": "A",
+              "text": "它们很可爱。"
+            },
+            {
+              "speaker": "B",
+              "text": "对，我很喜欢它们。"
+            }
+          ],
+          "dialogAudioRef": ""
+        },
+        {
+          "id": "f7d2deed-7069-453b-82fe-ecf7273fd989",
+          "title": "8.2 Hewan Ternak",
+          "flashcards": [
+            {
+              "id": "7f495b47-19b0-4117-80a6-5475e5f770c5",
+              "hanzi": "马",
+              "pinyin": "mǎ",
+              "indonesianTranslation": "kuda",
+              "imageRef": "tortoise.fill",
+              "audioRef": "ma"
+            },
+            {
+              "id": "08e8d32a-fa55-4b9a-b02e-55aca00512de",
+              "hanzi": "牛",
+              "pinyin": "niú",
+              "indonesianTranslation": "sapi",
+              "imageRef": "hare.fill",
+              "audioRef": "niu"
+            },
+            {
+              "id": "ed4ec0bb-ff03-4f0d-9b00-a959a05afc37",
+              "hanzi": "羊",
+              "pinyin": "yáng",
+              "indonesianTranslation": "kambing / domba",
+              "imageRef": "ant.fill",
+              "audioRef": "yang"
+            },
+            {
+              "id": "89ed7149-a02d-4202-a857-fc6bfe8ebb64",
+              "hanzi": "鸡",
+              "pinyin": "jī",
+              "indonesianTranslation": "ayam",
+              "imageRef": "bird",
+              "audioRef": "ji"
+            },
+            {
+              "id": "416c86cc-1170-4843-98cc-63710231327e",
+              "hanzi": "大",
+              "pinyin": "dà",
+              "indonesianTranslation": "besar",
+              "imageRef": "arrow.up.left.and.arrow.down.right",
+              "audioRef": "da"
+            },
+            {
+              "id": "529adbb9-07a8-425f-a5e7-34ef3098dcaf",
+              "hanzi": "小",
+              "pinyin": "xiǎo",
+              "indonesianTranslation": "kecil",
+              "imageRef": "arrow.down.right.and.arrow.up.left",
+              "audioRef": "xiao"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "那是什么动物？"
+            },
+            {
+              "speaker": "B",
+              "text": "那是马，很大。"
+            },
+            {
+              "speaker": "A",
+              "text": "这只羊很小。"
+            },
+            {
+              "speaker": "B",
+              "text": "对，旁边有牛和鸡。"
+            }
+          ],
+          "dialogAudioRef": ""
+        },
+        {
+          "id": "e3247a25-acaf-4684-8c99-2801d9b7bdfb",
+          "title": "8.3 Kebun Binatang",
+          "flashcards": [
+            {
+              "id": "27c8fef8-cb42-48d6-b3b5-2084c9962e45",
+              "hanzi": "动物园",
+              "pinyin": "dòngwùyuán",
+              "indonesianTranslation": "kebun binatang",
+              "imageRef": "map.fill",
+              "audioRef": "dongwuyuan"
+            },
+            {
+              "id": "bd8f889d-16ae-47c1-97b2-373d6635d29e",
+              "hanzi": "熊猫",
+              "pinyin": "xióngmāo",
+              "indonesianTranslation": "panda",
+              "imageRef": "pawprint",
+              "audioRef": "xiongmao"
+            },
+            {
+              "id": "c4e17654-63f5-4040-a20e-05d15946e365",
+              "hanzi": "老虎",
+              "pinyin": "lǎohǔ",
+              "indonesianTranslation": "harimau",
+              "imageRef": "pawprint.circle",
+              "audioRef": "laohu"
+            },
+            {
+              "id": "523a5ddc-b128-4de6-9710-796bbee92cd2",
+              "hanzi": "大象",
+              "pinyin": "dàxiàng",
+              "indonesianTranslation": "gajah",
+              "imageRef": "ear",
+              "audioRef": "daxiang"
+            },
+            {
+              "id": "dcda436e-f2e8-4812-94c8-f4e3189467f8",
+              "hanzi": "猴子",
+              "pinyin": "hóuzi",
+              "indonesianTranslation": "monyet",
+              "imageRef": "figure.climbing",
+              "audioRef": "houzi"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "周末我们去动物园吧。"
+            },
+            {
+              "speaker": "B",
+              "text": "好！我想看熊猫。"
+            },
+            {
+              "speaker": "A",
+              "text": "那里有老虎和大象吗？"
+            },
+            {
+              "speaker": "B",
+              "text": "有，还有猴子。"
+            }
+          ],
+          "dialogAudioRef": ""
+        }
+      ]
+    },
+    {
+      "id": "c0487b01-c07c-4915-9d71-8d5cadbf8bbc",
+      "title": "Bab 9: Warna",
+      "description": "Belajar warna dasar, warna pakaian, dan perbedaan warna tua-muda.",
+      "icon": "色",
+      "subChapters": [
+        {
+          "id": "efc66b94-0320-4c4e-9a17-51b937c3fe22",
+          "title": "9.1 Warna Dasar",
+          "flashcards": [
+            {
+              "id": "e83e0cb2-d3f2-45bc-b9b5-95a88c2f8f04",
+              "hanzi": "颜色",
+              "pinyin": "yánsè",
+              "indonesianTranslation": "warna",
+              "imageRef": "paintpalette.fill",
+              "audioRef": "yanse"
+            },
+            {
+              "id": "f8726a67-b8cd-4268-b85a-8e8e9616582b",
+              "hanzi": "红色",
+              "pinyin": "hóngsè",
+              "indonesianTranslation": "merah",
+              "imageRef": "circle.fill",
+              "audioRef": "hongse"
+            },
+            {
+              "id": "a2c96b13-102e-4c82-979a-66a359faa51f",
+              "hanzi": "蓝色",
+              "pinyin": "lánsè",
+              "indonesianTranslation": "biru",
+              "imageRef": "circle.fill",
+              "audioRef": "lanse"
+            },
+            {
+              "id": "b6e7cfff-c9fc-44b4-9899-936ba996b108",
+              "hanzi": "黄色",
+              "pinyin": "huángsè",
+              "indonesianTranslation": "kuning",
+              "imageRef": "circle.fill",
+              "audioRef": "huangse"
+            },
+            {
+              "id": "253a56ea-82fe-4de5-a9ee-59a0bd25a59f",
+              "hanzi": "绿色",
+              "pinyin": "lǜsè",
+              "indonesianTranslation": "hijau",
+              "imageRef": "circle.fill",
+              "audioRef": "luse"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "你喜欢什么颜色？"
+            },
+            {
+              "speaker": "B",
+              "text": "我喜欢红色和蓝色。"
+            },
+            {
+              "speaker": "A",
+              "text": "这个是黄色还是绿色？"
+            },
+            {
+              "speaker": "B",
+              "text": "是绿色。"
+            }
+          ],
+          "dialogAudioRef": ""
+        },
+        {
+          "id": "cee5cdb1-9a34-4659-84fc-48d55a6ee839",
+          "title": "9.2 Warna Pakaian",
+          "flashcards": [
+            {
+              "id": "5a290b68-8a92-426c-80be-28eff1b8a27e",
+              "hanzi": "衣服",
+              "pinyin": "yīfu",
+              "indonesianTranslation": "baju",
+              "imageRef": "tshirt.fill",
+              "audioRef": "yifu"
+            },
+            {
+              "id": "d61e9552-c6a4-4e68-8667-07b55298419e",
+              "hanzi": "黑色",
+              "pinyin": "hēisè",
+              "indonesianTranslation": "hitam",
+              "imageRef": "square.fill",
+              "audioRef": "heise"
+            },
+            {
+              "id": "d65591c7-cc38-4aef-bd8b-d2f3543fd2e3",
+              "hanzi": "白色",
+              "pinyin": "báisè",
+              "indonesianTranslation": "putih",
+              "imageRef": "square",
+              "audioRef": "baise"
+            },
+            {
+              "id": "e7e3f655-fdd9-4c91-91fb-bcf68bb8933c",
+              "hanzi": "粉色",
+              "pinyin": "fěnsè",
+              "indonesianTranslation": "merah muda",
+              "imageRef": "heart.circle.fill",
+              "audioRef": "fense"
+            },
+            {
+              "id": "885d9e3f-b0f3-4bea-9727-3812d548ffe3",
+              "hanzi": "漂亮",
+              "pinyin": "piàoliang",
+              "indonesianTranslation": "cantik / indah",
+              "imageRef": "sparkles",
+              "audioRef": "piaoliang"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "你的衣服是什么颜色？"
+            },
+            {
+              "speaker": "B",
+              "text": "是黑色的。"
+            },
+            {
+              "speaker": "A",
+              "text": "这件白色的很漂亮。"
+            },
+            {
+              "speaker": "B",
+              "text": "我也喜欢粉色。"
+            }
+          ],
+          "dialogAudioRef": ""
+        },
+        {
+          "id": "f9124b07-f87f-4f82-a4c1-b43cf98a4639",
+          "title": "9.3 Warna Tua & Muda",
+          "flashcards": [
+            {
+              "id": "418482e1-5eec-48ac-a036-c3728420091f",
+              "hanzi": "天",
+              "pinyin": "tiān",
+              "indonesianTranslation": "langit",
+              "imageRef": "cloud.fill",
+              "audioRef": "tian"
+            },
+            {
+              "id": "7cca91aa-15ed-4ce7-b445-14a5c1c91596",
+              "hanzi": "橙色",
+              "pinyin": "chéngsè",
+              "indonesianTranslation": "oranye",
+              "imageRef": "circle.fill",
+              "audioRef": "chengse"
+            },
+            {
+              "id": "4b78abab-ff13-450c-8eb8-d1ef746fda3d",
+              "hanzi": "灰色",
+              "pinyin": "huīsè",
+              "indonesianTranslation": "abu-abu",
+              "imageRef": "circle.fill",
+              "audioRef": "huise"
+            },
+            {
+              "id": "de49e967-814b-42e4-940e-ac25d8b07a09",
+              "hanzi": "深",
+              "pinyin": "shēn",
+              "indonesianTranslation": "tua / gelap (warna)",
+              "imageRef": "circle.lefthalf.filled",
+              "audioRef": "shen"
+            },
+            {
+              "id": "b9412a25-0f02-4aea-9dea-1af1ef25f858",
+              "hanzi": "浅",
+              "pinyin": "qiǎn",
+              "indonesianTranslation": "muda / terang (warna)",
+              "imageRef": "circle.righthalf.filled",
+              "audioRef": "qian"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "天是什么颜色？"
+            },
+            {
+              "speaker": "B",
+              "text": "天是蓝色的。"
+            },
+            {
+              "speaker": "A",
+              "text": "我喜欢深蓝色。"
+            },
+            {
+              "speaker": "B",
+              "text": "我喜欢浅一点儿的。"
+            }
+          ],
+          "dialogAudioRef": ""
+        }
+      ]
+    },
+    {
+      "id": "b6c0369a-163b-4d02-b557-ca7572c2728f",
+      "title": "Bab 10: Benda-Benda di Sekitar",
+      "description": "Belajar kosakata alat belajar, barang pribadi, dan posisi benda.",
+      "icon": "物",
+      "subChapters": [
+        {
+          "id": "a20a9777-6d52-4b05-8594-0dabce70c89a",
+          "title": "10.1 Alat Belajar",
+          "flashcards": [
+            {
+              "id": "2b602e2c-a85e-4828-85e0-628dfb240853",
+              "hanzi": "笔",
+              "pinyin": "bǐ",
+              "indonesianTranslation": "pena / pulpen",
+              "imageRef": "pencil",
+              "audioRef": "bi"
+            },
+            {
+              "id": "e7b6b097-920c-4e69-b5f5-2b74a0514fa0",
+              "hanzi": "本子",
+              "pinyin": "běnzi",
+              "indonesianTranslation": "buku tulis",
+              "imageRef": "book.closed.fill",
+              "audioRef": "benzi"
+            },
+            {
+              "id": "b82ea4e0-3795-4f86-81a0-95736b3a64bb",
+              "hanzi": "桌子",
+              "pinyin": "zhuōzi",
+              "indonesianTranslation": "meja",
+              "imageRef": "table.furniture.fill",
+              "audioRef": "zhuozi"
+            },
+            {
+              "id": "c207358f-86fc-4300-9835-9af32ac1153e",
+              "hanzi": "椅子",
+              "pinyin": "yǐzi",
+              "indonesianTranslation": "kursi",
+              "imageRef": "chair.lounge.fill",
+              "audioRef": "yizi"
+            },
+            {
+              "id": "d9b680ad-58dd-4ed8-9e18-20cb1165978a",
+              "hanzi": "电脑",
+              "pinyin": "diànnǎo",
+              "indonesianTranslation": "komputer",
+              "imageRef": "laptopcomputer",
+              "audioRef": "diannao"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "桌子上有什么？"
+            },
+            {
+              "speaker": "B",
+              "text": "有一支笔和一个本子。"
+            },
+            {
+              "speaker": "A",
+              "text": "你的电脑在哪儿？"
+            },
+            {
+              "speaker": "B",
+              "text": "在椅子旁边。"
+            }
+          ],
+          "dialogAudioRef": ""
+        },
+        {
+          "id": "bf380f17-d0e0-40c6-a8f5-78056fd25bcf",
+          "title": "10.2 Barang Pribadi",
+          "flashcards": [
+            {
+              "id": "e72f52bf-0c95-4f04-9ff2-10a04848b736",
+              "hanzi": "手机",
+              "pinyin": "shǒujī",
+              "indonesianTranslation": "HP / ponsel",
+              "imageRef": "iphone",
+              "audioRef": "shouji"
+            },
+            {
+              "id": "d3368b16-d947-4dcb-b327-dc521db2c446",
+              "hanzi": "钱",
+              "pinyin": "qián",
+              "indonesianTranslation": "uang",
+              "imageRef": "banknote.fill",
+              "audioRef": "qian"
+            },
+            {
+              "id": "2b1a375d-bb77-4bd4-ad0d-580dda8809c0",
+              "hanzi": "包",
+              "pinyin": "bāo",
+              "indonesianTranslation": "tas",
+              "imageRef": "bag.fill",
+              "audioRef": "bao"
+            },
+            {
+              "id": "e7b922fb-8e69-490d-9d40-dedebc7d4001",
+              "hanzi": "钥匙",
+              "pinyin": "yàoshi",
+              "indonesianTranslation": "kunci",
+              "imageRef": "key.fill",
+              "audioRef": "yaoshi"
+            },
+            {
+              "id": "5001bc43-dc9e-4575-ae61-41c3196da1ec",
+              "hanzi": "眼镜",
+              "pinyin": "yǎnjìng",
+              "indonesianTranslation": "kacamata",
+              "imageRef": "eyeglasses",
+              "audioRef": "yanjing"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "我的手机在哪里？"
+            },
+            {
+              "speaker": "B",
+              "text": "在你的包里。"
+            },
+            {
+              "speaker": "A",
+              "text": "我的钥匙和眼镜呢？"
+            },
+            {
+              "speaker": "B",
+              "text": "在桌子上。"
+            }
+          ],
+          "dialogAudioRef": ""
+        },
+        {
+          "id": "a2eb84e3-62e0-4f0e-9e20-105c32b066b4",
+          "title": "10.3 Posisi Benda",
+          "flashcards": [
+            {
+              "id": "28e014d4-304d-4cf1-be14-a8920de8a7d4",
+              "hanzi": "在",
+              "pinyin": "zài",
+              "indonesianTranslation": "berada di",
+              "imageRef": "mappin.and.ellipse",
+              "audioRef": "zai"
+            },
+            {
+              "id": "2798d472-fcf6-449e-a708-73cc7388eb90",
+              "hanzi": "上面",
+              "pinyin": "shàngmiàn",
+              "indonesianTranslation": "(di) atas",
+              "imageRef": "arrow.up.square.fill",
+              "audioRef": "shangmian"
+            },
+            {
+              "id": "3b435189-d450-4e96-9985-17f2cd2e6b70",
+              "hanzi": "下面",
+              "pinyin": "xiàmiàn",
+              "indonesianTranslation": "(di) bawah",
+              "imageRef": "arrow.down.square.fill",
+              "audioRef": "xiamian"
+            },
+            {
+              "id": "cd106047-2ec2-4543-b36d-ea81deebbdd1",
+              "hanzi": "里面",
+              "pinyin": "lǐmiàn",
+              "indonesianTranslation": "(di) dalam",
+              "imageRef": "shippingbox.fill",
+              "audioRef": "limian"
+            },
+            {
+              "id": "ff11ba6e-6c13-46f0-b800-c1a5ce8b082e",
+              "hanzi": "旁边",
+              "pinyin": "pángbiān",
+              "indonesianTranslation": "(di) sebelah",
+              "imageRef": "rectangle.split.2x1.fill",
+              "audioRef": "pangbian"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "猫在哪里？"
+            },
+            {
+              "speaker": "B",
+              "text": "在桌子下面。"
+            },
+            {
+              "speaker": "A",
+              "text": "书在椅子上面吗？"
+            },
+            {
+              "speaker": "B",
+              "text": "不，在包里面。"
+            }
+          ],
+          "dialogAudioRef": ""
+        }
+      ]
+    },
+    {
+      "id": "f1da064d-aa84-42b2-9d15-fbcd9ba2a6c7",
+      "title": "Bab 11: Ruangan dan Tempat",
+      "description": "Belajar ruangan rumah, tempat umum, dan menanyakan arah jalan.",
+      "icon": "房",
+      "subChapters": [
+        {
+          "id": "302ec81a-4daf-48d7-ad6d-3d7e8288a8d2",
+          "title": "11.1 Ruangan Rumah",
+          "flashcards": [
+            {
+              "id": "b13a2022-ad45-4b2b-b289-816eb29b6456",
+              "hanzi": "房间",
+              "pinyin": "fángjiān",
+              "indonesianTranslation": "kamar / ruangan",
+              "imageRef": "door.left.hand.closed",
+              "audioRef": "fangjian"
+            },
+            {
+              "id": "f1937764-068f-4048-8047-01db4650458e",
+              "hanzi": "客厅",
+              "pinyin": "kètīng",
+              "indonesianTranslation": "ruang tamu",
+              "imageRef": "sofa.fill",
+              "audioRef": "keting"
+            },
+            {
+              "id": "4b51c0b9-ceed-4f84-addf-c34c5f5c8531",
+              "hanzi": "厨房",
+              "pinyin": "chúfáng",
+              "indonesianTranslation": "dapur",
+              "imageRef": "refrigerator.fill",
+              "audioRef": "chufang"
+            },
+            {
+              "id": "9c2e3519-d2c7-43f4-b632-e8a715219b5c",
+              "hanzi": "卧室",
+              "pinyin": "wòshì",
+              "indonesianTranslation": "kamar tidur",
+              "imageRef": "bed.double.fill",
+              "audioRef": "woshi"
+            },
+            {
+              "id": "fcfa8d1c-c3eb-4d1c-bf3f-96ac84600134",
+              "hanzi": "洗手间",
+              "pinyin": "xǐshǒujiān",
+              "indonesianTranslation": "toilet / kamar mandi",
+              "imageRef": "toilet.fill",
+              "audioRef": "xishoujian"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "你家有几个房间？"
+            },
+            {
+              "speaker": "B",
+              "text": "有三个，还有客厅和厨房。"
+            },
+            {
+              "speaker": "A",
+              "text": "洗手间在哪里？"
+            },
+            {
+              "speaker": "B",
+              "text": "在卧室旁边。"
+            }
+          ],
+          "dialogAudioRef": ""
+        },
+        {
+          "id": "0f82be70-f894-40c4-9a0e-80e05c0b6e8f",
+          "title": "11.2 Tempat Umum",
+          "flashcards": [
+            {
+              "id": "53c2f51b-f981-405c-bea8-3cb55c08ef19",
+              "hanzi": "学校",
+              "pinyin": "xuéxiào",
+              "indonesianTranslation": "sekolah",
+              "imageRef": "building.columns.fill",
+              "audioRef": "xuexiao"
+            },
+            {
+              "id": "556957fd-c359-4da9-a408-bc16fdd5c88d",
+              "hanzi": "医院",
+              "pinyin": "yīyuàn",
+              "indonesianTranslation": "rumah sakit",
+              "imageRef": "cross.case.fill",
+              "audioRef": "yiyuan"
+            },
+            {
+              "id": "65351d74-b65a-402e-b1f9-c52e1338c2d9",
+              "hanzi": "商店",
+              "pinyin": "shāngdiàn",
+              "indonesianTranslation": "toko",
+              "imageRef": "cart.fill",
+              "audioRef": "shangdian"
+            },
+            {
+              "id": "dfe08f08-a815-4e0e-94f9-d3f5b7443333",
+              "hanzi": "银行",
+              "pinyin": "yínháng",
+              "indonesianTranslation": "bank",
+              "imageRef": "building.columns.fill",
+              "audioRef": "yinhang"
+            },
+            {
+              "id": "eb53e3de-ade0-4c8d-aa0d-a57a2a8b82f3",
+              "hanzi": "饭馆",
+              "pinyin": "fànguǎn",
+              "indonesianTranslation": "restoran / rumah makan",
+              "imageRef": "fork.knife",
+              "audioRef": "fanguan"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "你去哪儿？"
+            },
+            {
+              "speaker": "B",
+              "text": "我去学校。"
+            },
+            {
+              "speaker": "A",
+              "text": "医院在商店旁边吗？"
+            },
+            {
+              "speaker": "B",
+              "text": "对，旁边还有银行。"
+            }
+          ],
+          "dialogAudioRef": ""
+        },
+        {
+          "id": "c549ecab-e959-4096-8278-fc29f7f480d0",
+          "title": "11.3 Arah Jalan",
+          "flashcards": [
+            {
+              "id": "f38154fa-b280-479b-b47b-1d20e2013468",
+              "hanzi": "车站",
+              "pinyin": "chēzhàn",
+              "indonesianTranslation": "stasiun / halte",
+              "imageRef": "bus.fill",
+              "audioRef": "chezhan"
+            },
+            {
+              "id": "fd23c369-9214-4456-9141-2671f69e9f06",
+              "hanzi": "走",
+              "pinyin": "zǒu",
+              "indonesianTranslation": "berjalan",
+              "imageRef": "figure.walk",
+              "audioRef": "zou"
+            },
+            {
+              "id": "d0b07065-e61a-4bd7-bdfb-16103080dc79",
+              "hanzi": "左",
+              "pinyin": "zuǒ",
+              "indonesianTranslation": "kiri",
+              "imageRef": "arrow.left",
+              "audioRef": "zuo"
+            },
+            {
+              "id": "4e166591-bdaf-4dab-9f13-5a8f6158fbdb",
+              "hanzi": "右",
+              "pinyin": "yòu",
+              "indonesianTranslation": "kanan",
+              "imageRef": "arrow.right",
+              "audioRef": "you"
+            },
+            {
+              "id": "d1e29d7a-f0cc-4087-b45f-302b50f3ced1",
+              "hanzi": "远",
+              "pinyin": "yuǎn",
+              "indonesianTranslation": "jauh",
+              "imageRef": "arrow.up.and.down.and.arrow.left.and.right",
+              "audioRef": "yuan"
+            },
+            {
+              "id": "6b7a158b-2deb-4b6f-a10a-4672456f8962",
+              "hanzi": "近",
+              "pinyin": "jìn",
+              "indonesianTranslation": "dekat",
+              "imageRef": "arrow.down.right.and.arrow.up.left",
+              "audioRef": "jin"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "去车站怎么走？"
+            },
+            {
+              "speaker": "B",
+              "text": "往前走，在左边。"
+            },
+            {
+              "speaker": "A",
+              "text": "远吗？"
+            },
+            {
+              "speaker": "B",
+              "text": "不远，很近。"
+            }
+          ],
+          "dialogAudioRef": ""
+        }
+      ]
+    },
+    {
+      "id": "3864f4f4-8749-492d-96ca-db7d0b56a505",
+      "title": "Bab 12: Cuaca",
+      "description": "Belajar kondisi cuaca, suhu, dan musim.",
+      "icon": "天",
+      "subChapters": [
+        {
+          "id": "b97b7098-e462-4cc0-a0de-810acb416720",
+          "title": "12.1 Kondisi Cuaca",
+          "flashcards": [
+            {
+              "id": "919239b7-78bc-4e1c-8964-326cac9fc94e",
+              "hanzi": "天气",
+              "pinyin": "tiānqì",
+              "indonesianTranslation": "cuaca",
+              "imageRef": "cloud.sun.fill",
+              "audioRef": "tianqi"
+            },
+            {
+              "id": "47e87fc6-1f04-4427-9f21-c3d0d530d0bb",
+              "hanzi": "怎么样",
+              "pinyin": "zěnmeyàng",
+              "indonesianTranslation": "bagaimana",
+              "imageRef": "questionmark.bubble.fill",
+              "audioRef": "zenmeyang"
+            },
+            {
+              "id": "942d7d4d-11ee-4271-bf2a-1c6ed6c49d32",
+              "hanzi": "晴",
+              "pinyin": "qíng",
+              "indonesianTranslation": "cerah",
+              "imageRef": "sun.max.fill",
+              "audioRef": "qing"
+            },
+            {
+              "id": "bd119ea5-5134-46f8-b6bb-0736b6df15d4",
+              "hanzi": "阴",
+              "pinyin": "yīn",
+              "indonesianTranslation": "mendung",
+              "imageRef": "cloud.fill",
+              "audioRef": "yin"
+            },
+            {
+              "id": "25317ecb-443a-4b54-8ba7-69de460a6412",
+              "hanzi": "下雨",
+              "pinyin": "xiàyǔ",
+              "indonesianTranslation": "hujan",
+              "imageRef": "cloud.rain.fill",
+              "audioRef": "xiayu"
+            },
+            {
+              "id": "b30b94b2-ab53-4d52-8b24-d24c25d0131b",
+              "hanzi": "刮风",
+              "pinyin": "guāfēng",
+              "indonesianTranslation": "berangin",
+              "imageRef": "wind",
+              "audioRef": "guafeng"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "今天天气怎么样？"
+            },
+            {
+              "speaker": "B",
+              "text": "今天是晴天。"
+            },
+            {
+              "speaker": "A",
+              "text": "明天下雨吗？"
+            },
+            {
+              "speaker": "B",
+              "text": "明天下雨，还刮风。"
+            }
+          ],
+          "dialogAudioRef": ""
+        },
+        {
+          "id": "6cf958d9-19a1-4232-948e-a781b3746bc1",
+          "title": "12.2 Suhu",
+          "flashcards": [
+            {
+              "id": "76691414-a668-4a7a-bc29-b67dfd64b3fa",
+              "hanzi": "热",
+              "pinyin": "rè",
+              "indonesianTranslation": "panas",
+              "imageRef": "thermometer.sun.fill",
+              "audioRef": "re"
+            },
+            {
+              "id": "604edf7f-5e4c-48aa-bee5-672f874a80f5",
+              "hanzi": "冷",
+              "pinyin": "lěng",
+              "indonesianTranslation": "dingin",
+              "imageRef": "thermometer.snowflake",
+              "audioRef": "leng"
+            },
+            {
+              "id": "b1dbc91b-9435-443f-ad40-87b009c56ef6",
+              "hanzi": "暖和",
+              "pinyin": "nuǎnhuo",
+              "indonesianTranslation": "hangat",
+              "imageRef": "sun.min.fill",
+              "audioRef": "nuanhuo"
+            },
+            {
+              "id": "27e41cab-34b8-4c01-893c-4a2b833c335a",
+              "hanzi": "凉快",
+              "pinyin": "liángkuai",
+              "indonesianTranslation": "sejuk",
+              "imageRef": "wind",
+              "audioRef": "liangkuai"
+            },
+            {
+              "id": "a6b94586-d6bf-4d2a-a8bb-a8d413d665cc",
+              "hanzi": "度",
+              "pinyin": "dù",
+              "indonesianTranslation": "derajat",
+              "imageRef": "thermometer",
+              "audioRef": "du"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "今天热吗？"
+            },
+            {
+              "speaker": "B",
+              "text": "很热，有三十五度。"
+            },
+            {
+              "speaker": "A",
+              "text": "冬天冷不冷？"
+            },
+            {
+              "speaker": "B",
+              "text": "很冷，要穿很多衣服。"
+            }
+          ],
+          "dialogAudioRef": ""
+        },
+        {
+          "id": "4642289d-03cb-46b6-8173-c1eb64bb26c5",
+          "title": "12.3 Musim",
+          "flashcards": [
+            {
+              "id": "97f92363-a3ef-4fc3-8377-1e775afe9439",
+              "hanzi": "季节",
+              "pinyin": "jìjié",
+              "indonesianTranslation": "musim",
+              "imageRef": "leaf.arrow.triangle.circlepath",
+              "audioRef": "jijie"
+            },
+            {
+              "id": "4401346f-4d66-415c-9e0e-3b52983970b0",
+              "hanzi": "春天",
+              "pinyin": "chūntiān",
+              "indonesianTranslation": "musim semi",
+              "imageRef": "leaf.fill",
+              "audioRef": "chuntian"
+            },
+            {
+              "id": "45513a9f-bf52-4926-a81d-f8e58611ba67",
+              "hanzi": "夏天",
+              "pinyin": "xiàtiān",
+              "indonesianTranslation": "musim panas",
+              "imageRef": "sun.max.fill",
+              "audioRef": "xiatian"
+            },
+            {
+              "id": "3a11e6b8-612e-4354-b1f6-198e626d861d",
+              "hanzi": "秋天",
+              "pinyin": "qiūtiān",
+              "indonesianTranslation": "musim gugur",
+              "imageRef": "leaf.fill",
+              "audioRef": "qiutian"
+            },
+            {
+              "id": "598b5982-277b-493e-9a43-4941e3b8fe97",
+              "hanzi": "冬天",
+              "pinyin": "dōngtiān",
+              "indonesianTranslation": "musim dingin",
+              "imageRef": "snowflake",
+              "audioRef": "dongtian"
+            },
+            {
+              "id": "0beb82e1-d101-477b-8276-56b2da4c3c8d",
+              "hanzi": "雪",
+              "pinyin": "xuě",
+              "indonesianTranslation": "salju",
+              "imageRef": "snow",
+              "audioRef": "xue"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "你喜欢什么季节？"
+            },
+            {
+              "speaker": "B",
+              "text": "我喜欢春天和秋天。"
+            },
+            {
+              "speaker": "A",
+              "text": "冬天会下雪吗？"
+            },
+            {
+              "speaker": "B",
+              "text": "会，冬天很冷。"
+            }
+          ],
+          "dialogAudioRef": ""
+        }
+      ]
+    },
+    {
+      "id": "9364b45c-04b0-4775-a223-aada5876d1ca",
+      "title": "Bab 13: Jenis Olahraga",
+      "description": "Belajar olahraga bola, aktivitas fisik, dan pertandingan.",
+      "icon": "球",
+      "subChapters": [
+        {
+          "id": "26600c59-6145-48b3-bfc2-6633de108e29",
+          "title": "13.1 Olahraga Bola",
+          "flashcards": [
+            {
+              "id": "bf724196-2a7f-43b0-a8ac-60db97724e9c",
+              "hanzi": "篮球",
+              "pinyin": "lánqiú",
+              "indonesianTranslation": "bola basket",
+              "imageRef": "basketball.fill",
+              "audioRef": "lanqiu"
+            },
+            {
+              "id": "c0b876f2-4312-4716-a47b-ef7c76e5dfc7",
+              "hanzi": "足球",
+              "pinyin": "zúqiú",
+              "indonesianTranslation": "sepak bola",
+              "imageRef": "figure.soccer",
+              "audioRef": "zuqiu"
+            },
+            {
+              "id": "9dec0391-bf7b-4d9e-a79d-b967cea2ca93",
+              "hanzi": "网球",
+              "pinyin": "wǎngqiú",
+              "indonesianTranslation": "tenis",
+              "imageRef": "tennis.racket",
+              "audioRef": "wangqiu"
+            },
+            {
+              "id": "3253bb9f-d017-45aa-8914-500f88910d27",
+              "hanzi": "乒乓球",
+              "pinyin": "pīngpāngqiú",
+              "indonesianTranslation": "tenis meja",
+              "imageRef": "circle.circle.fill",
+              "audioRef": "pingpangqiu"
+            },
+            {
+              "id": "339426b0-df2b-4382-9cdc-14e5cf3da952",
+              "hanzi": "踢",
+              "pinyin": "tī",
+              "indonesianTranslation": "menendang",
+              "imageRef": "figure.soccer",
+              "audioRef": "ti"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "你喜欢什么运动？"
+            },
+            {
+              "speaker": "B",
+              "text": "我喜欢打篮球。"
+            },
+            {
+              "speaker": "A",
+              "text": "你会踢足球吗？"
+            },
+            {
+              "speaker": "B",
+              "text": "会，我也喜欢打乒乓球。"
+            }
+          ],
+          "dialogAudioRef": ""
+        },
+        {
+          "id": "cc7dd5c3-1dda-4bad-8125-d8642c08c638",
+          "title": "13.2 Aktivitas Fisik",
+          "flashcards": [
+            {
+              "id": "40830574-98c7-4e90-b96b-db7df8f69a16",
+              "hanzi": "锻炼",
+              "pinyin": "duànliàn",
+              "indonesianTranslation": "berlatih / olahraga",
+              "imageRef": "figure.run",
+              "audioRef": "duanlian"
+            },
+            {
+              "id": "503fd76e-6692-4cce-95bc-5ba0291e3909",
+              "hanzi": "每天",
+              "pinyin": "měitiān",
+              "indonesianTranslation": "setiap hari",
+              "imageRef": "calendar.badge.clock",
+              "audioRef": "meitian"
+            },
+            {
+              "id": "05822716-8e0a-42dc-8179-b29582865413",
+              "hanzi": "骑车",
+              "pinyin": "qíchē",
+              "indonesianTranslation": "bersepeda",
+              "imageRef": "bicycle",
+              "audioRef": "qiche"
+            },
+            {
+              "id": "20253874-debe-4e4c-86be-d0744ec93248",
+              "hanzi": "爬山",
+              "pinyin": "páshān",
+              "indonesianTranslation": "mendaki gunung",
+              "imageRef": "figure.hiking",
+              "audioRef": "pashan"
+            },
+            {
+              "id": "638e5c1d-28d5-46c7-b4de-e0a736137866",
+              "hanzi": "健身",
+              "pinyin": "jiànshēn",
+              "indonesianTranslation": "fitness",
+              "imageRef": "dumbbell.fill",
+              "audioRef": "jianshen"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "你每天锻炼吗？"
+            },
+            {
+              "speaker": "B",
+              "text": "对，我喜欢跑步和骑车。"
+            },
+            {
+              "speaker": "A",
+              "text": "周末我们去爬山吧。"
+            },
+            {
+              "speaker": "B",
+              "text": "好，我也想去健身。"
+            }
+          ],
+          "dialogAudioRef": ""
+        },
+        {
+          "id": "69fe2e01-b1bc-46d4-8fb7-25c96744244c",
+          "title": "13.3 Pertandingan",
+          "flashcards": [
+            {
+              "id": "92e814e2-c952-40fe-ac22-c839590d2982",
+              "hanzi": "比赛",
+              "pinyin": "bǐsài",
+              "indonesianTranslation": "pertandingan",
+              "imageRef": "sportscourt.fill",
+              "audioRef": "bisai"
+            },
+            {
+              "id": "50a11be4-e3c2-4322-b140-9a6e65ee0f6f",
+              "hanzi": "队",
+              "pinyin": "duì",
+              "indonesianTranslation": "tim / regu",
+              "imageRef": "person.3.fill",
+              "audioRef": "dui"
+            },
+            {
+              "id": "dc9f3a1f-704d-4b1f-a028-17dcb9888761",
+              "hanzi": "赢",
+              "pinyin": "yíng",
+              "indonesianTranslation": "menang",
+              "imageRef": "trophy.fill",
+              "audioRef": "ying"
+            },
+            {
+              "id": "631d9f12-189d-491f-b4af-43b9079b7331",
+              "hanzi": "输",
+              "pinyin": "shū",
+              "indonesianTranslation": "kalah",
+              "imageRef": "hand.thumbsdown.fill",
+              "audioRef": "shu"
+            },
+            {
+              "id": "d10d6bae-c4f9-48a8-8f8a-cc49781a0ba0",
+              "hanzi": "加油",
+              "pinyin": "jiāyóu",
+              "indonesianTranslation": "semangat / ayo!",
+              "imageRef": "flame.fill",
+              "audioRef": "jiayou"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "今天有篮球比赛。"
+            },
+            {
+              "speaker": "B",
+              "text": "哪个队会赢？"
+            },
+            {
+              "speaker": "A",
+              "text": "我们队不会输！"
+            },
+            {
+              "speaker": "B",
+              "text": "加油！"
+            }
+          ],
+          "dialogAudioRef": ""
+        }
+      ]
+    },
+    {
+      "id": "3988173b-fcbd-4d90-9869-53de0bc82846",
+      "title": "Bab 14: Profesi",
+      "description": "Belajar kosakata profesi umum, profesi lain, dan tempat kerja.",
+      "icon": "工",
+      "subChapters": [
+        {
+          "id": "451bacdc-d663-4afd-a178-4485d0b9e072",
+          "title": "14.1 Profesi Umum",
+          "flashcards": [
+            {
+              "id": "4199f5b9-ca61-4b0a-9103-bdf28459e4f3",
+              "hanzi": "工作",
+              "pinyin": "gōngzuò",
+              "indonesianTranslation": "pekerjaan / bekerja",
+              "imageRef": "briefcase.fill",
+              "audioRef": "gongzuo"
+            },
+            {
+              "id": "d2c9676d-137f-4148-a386-b154b07c6f30",
+              "hanzi": "医生",
+              "pinyin": "yīshēng",
+              "indonesianTranslation": "dokter",
+              "imageRef": "stethoscope",
+              "audioRef": "yisheng"
+            },
+            {
+              "id": "a35319ac-0214-4505-ba04-aa6c467eed59",
+              "hanzi": "护士",
+              "pinyin": "hùshi",
+              "indonesianTranslation": "perawat",
+              "imageRef": "cross.case.fill",
+              "audioRef": "hushi"
+            },
+            {
+              "id": "34577bfc-03f1-4c87-acc0-57ff4363e0ed",
+              "hanzi": "工人",
+              "pinyin": "gōngrén",
+              "indonesianTranslation": "buruh / pekerja",
+              "imageRef": "wrench.and.screwdriver.fill",
+              "audioRef": "gongren"
+            },
+            {
+              "id": "bb7b3540-05d5-47ee-990d-c9dc7133c71f",
+              "hanzi": "司机",
+              "pinyin": "sījī",
+              "indonesianTranslation": "sopir",
+              "imageRef": "car.fill",
+              "audioRef": "siji"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "你爸爸做什么工作？"
+            },
+            {
+              "speaker": "B",
+              "text": "他是医生。"
+            },
+            {
+              "speaker": "A",
+              "text": "你妈妈呢？"
+            },
+            {
+              "speaker": "B",
+              "text": "她是护士。"
+            }
+          ],
+          "dialogAudioRef": ""
+        },
+        {
+          "id": "d3360074-669e-43a7-ad1a-6eb33ab0cbab",
+          "title": "14.2 Profesi Lain",
+          "flashcards": [
+            {
+              "id": "c7ffe801-5e8a-411a-9667-f47aec4aeb4c",
+              "hanzi": "警察",
+              "pinyin": "jǐngchá",
+              "indonesianTranslation": "polisi",
+              "imageRef": "star.shield.fill",
+              "audioRef": "jingcha"
+            },
+            {
+              "id": "2a1008ef-b278-4f7b-bc9c-1082a805a514",
+              "hanzi": "厨师",
+              "pinyin": "chúshī",
+              "indonesianTranslation": "koki",
+              "imageRef": "frying.pan.fill",
+              "audioRef": "chushi"
+            },
+            {
+              "id": "bca450dc-e9c1-459f-89b7-3f44285ccb72",
+              "hanzi": "农民",
+              "pinyin": "nóngmín",
+              "indonesianTranslation": "petani",
+              "imageRef": "leaf.fill",
+              "audioRef": "nongmin"
+            },
+            {
+              "id": "3c02ed7e-ad85-49d3-834e-20c8bf56b5e6",
+              "hanzi": "商人",
+              "pinyin": "shāngrén",
+              "indonesianTranslation": "pedagang",
+              "imageRef": "bag.fill",
+              "audioRef": "shangren"
+            },
+            {
+              "id": "363f80fe-4b13-4d3e-88db-6ca115b4b6ea",
+              "hanzi": "律师",
+              "pinyin": "lǜshī",
+              "indonesianTranslation": "pengacara",
+              "imageRef": "building.columns.fill",
+              "audioRef": "lushi"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "那个人是警察吗？"
+            },
+            {
+              "speaker": "B",
+              "text": "不是，他是厨师。"
+            },
+            {
+              "speaker": "A",
+              "text": "你想做什么工作？"
+            },
+            {
+              "speaker": "B",
+              "text": "我想当律师。"
+            }
+          ],
+          "dialogAudioRef": ""
+        },
+        {
+          "id": "9a434efa-efc0-44c0-a1af-b22829be5df0",
+          "title": "14.3 Tempat Kerja",
+          "flashcards": [
+            {
+              "id": "6b7290df-fc61-46c7-8634-3482fcfbf83a",
+              "hanzi": "公司",
+              "pinyin": "gōngsī",
+              "indonesianTranslation": "perusahaan",
+              "imageRef": "building.2.fill",
+              "audioRef": "gongsi"
+            },
+            {
+              "id": "3eb59574-0231-46ea-b3e3-4e9faeb8e899",
+              "hanzi": "上班",
+              "pinyin": "shàngbān",
+              "indonesianTranslation": "masuk/berangkat kerja",
+              "imageRef": "briefcase.fill",
+              "audioRef": "shangban"
+            },
+            {
+              "id": "754232ab-887e-49cb-baf8-4c6a473b2536",
+              "hanzi": "下班",
+              "pinyin": "xiàbān",
+              "indonesianTranslation": "pulang kerja",
+              "imageRef": "house.fill",
+              "audioRef": "xiaban"
+            },
+            {
+              "id": "a3822b62-f6bd-45b2-8f24-59a69f627784",
+              "hanzi": "忙",
+              "pinyin": "máng",
+              "indonesianTranslation": "sibuk",
+              "imageRef": "clock.badge.exclamationmark.fill",
+              "audioRef": "mang"
+            },
+            {
+              "id": "2159537d-8e03-4ead-bd1b-1d9a62a0bc67",
+              "hanzi": "累",
+              "pinyin": "lèi",
+              "indonesianTranslation": "lelah / capek",
+              "imageRef": "zzz",
+              "audioRef": "lei"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "你在哪里上班？"
+            },
+            {
+              "speaker": "B",
+              "text": "我在一家公司上班。"
+            },
+            {
+              "speaker": "A",
+              "text": "工作忙吗？"
+            },
+            {
+              "speaker": "B",
+              "text": "很忙，也很累。"
+            }
+          ],
+          "dialogAudioRef": ""
+        }
+      ]
+    },
+    {
+      "id": "d859697a-d8fe-4fbb-b069-8661c4467034",
+      "title": "Bab 15: Penyakit",
+      "description": "Belajar gejala umum penyakit, bagian yang sakit, dan berobat.",
+      "icon": "病",
+      "subChapters": [
+        {
+          "id": "fdc4cf07-36aa-42b4-8734-b5757483e838",
+          "title": "15.1 Gejala Umum",
+          "flashcards": [
+            {
+              "id": "64645a06-914c-4b66-a7a6-22c91856fd35",
+              "hanzi": "生病",
+              "pinyin": "shēngbìng",
+              "indonesianTranslation": "sakit / jatuh sakit",
+              "imageRef": "bed.double.fill",
+              "audioRef": "shengbing"
+            },
+            {
+              "id": "0267c69f-7731-47c6-9dfc-087fec80d097",
+              "hanzi": "怎么了",
+              "pinyin": "zěnme le",
+              "indonesianTranslation": "kenapa / ada apa",
+              "imageRef": "questionmark.circle.fill",
+              "audioRef": "zenme_le"
+            },
+            {
+              "id": "a083a877-f958-4c51-b230-de388d47c062",
+              "hanzi": "感冒",
+              "pinyin": "gǎnmào",
+              "indonesianTranslation": "flu / masuk angin",
+              "imageRef": "thermometer.snowflake",
+              "audioRef": "ganmao"
+            },
+            {
+              "id": "b510499d-095e-4d72-8139-2cdd89dd7a43",
+              "hanzi": "发烧",
+              "pinyin": "fāshāo",
+              "indonesianTranslation": "demam",
+              "imageRef": "thermometer.sun.fill",
+              "audioRef": "fashao"
+            },
+            {
+              "id": "cd450e64-7d94-4784-b79d-e09e561cf216",
+              "hanzi": "咳嗽",
+              "pinyin": "késou",
+              "indonesianTranslation": "batuk",
+              "imageRef": "waveform.path.ecg",
+              "audioRef": "kesou"
+            },
+            {
+              "id": "91399d43-7323-423d-815b-f4bc64c5374e",
+              "hanzi": "头疼",
+              "pinyin": "tóuténg",
+              "indonesianTranslation": "sakit kepala",
+              "imageRef": "brain.head.profile",
+              "audioRef": "touteng"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "你怎么了？"
+            },
+            {
+              "speaker": "B",
+              "text": "我生病了，有点儿感冒。"
+            },
+            {
+              "speaker": "A",
+              "text": "你发烧吗？"
+            },
+            {
+              "speaker": "B",
+              "text": "发烧，还头疼、咳嗽。"
+            }
+          ],
+          "dialogAudioRef": ""
+        },
+        {
+          "id": "f9cbedfa-cb49-42d4-b079-cde085ab734f",
+          "title": "15.2 Bagian yang Sakit",
+          "flashcards": [
+            {
+              "id": "f2df08d3-a7c3-4487-b2e7-a5ddddfdbca9",
+              "hanzi": "舒服",
+              "pinyin": "shūfu",
+              "indonesianTranslation": "enak badan / nyaman",
+              "imageRef": "hand.thumbsup.fill",
+              "audioRef": "shufu"
+            },
+            {
+              "id": "bd139b84-cabe-4905-af21-0c1d76ccb69b",
+              "hanzi": "难受",
+              "pinyin": "nánshòu",
+              "indonesianTranslation": "tidak enak badan",
+              "imageRef": "face.dashed",
+              "audioRef": "nanshou"
+            },
+            {
+              "id": "c1f0f124-2f1b-45a2-8616-1bdad04c4040",
+              "hanzi": "肚子",
+              "pinyin": "dùzi",
+              "indonesianTranslation": "perut",
+              "imageRef": "figure.dress.line.vertical.figure",
+              "audioRef": "duzi"
+            },
+            {
+              "id": "e14ae5b6-9cb8-4ff2-9e3b-ab05d0758b96",
+              "hanzi": "疼",
+              "pinyin": "téng",
+              "indonesianTranslation": "sakit / nyeri",
+              "imageRef": "bolt.heart.fill",
+              "audioRef": "teng"
+            },
+            {
+              "id": "59c3f9cb-cb0c-4ede-ab52-7eac71c897ff",
+              "hanzi": "牙",
+              "pinyin": "yá",
+              "indonesianTranslation": "gigi",
+              "imageRef": "mouth.fill",
+              "audioRef": "ya"
+            },
+            {
+              "id": "059094f9-e737-4217-a8a4-6d407a0e9c94",
+              "hanzi": "嗓子",
+              "pinyin": "sǎngzi",
+              "indonesianTranslation": "tenggorokan",
+              "imageRef": "lungs.fill",
+              "audioRef": "sangzi"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "你哪里不舒服？"
+            },
+            {
+              "speaker": "B",
+              "text": "我肚子疼。"
+            },
+            {
+              "speaker": "A",
+              "text": "牙疼不疼？"
+            },
+            {
+              "speaker": "B",
+              "text": "不疼，但是嗓子很难受。"
+            }
+          ],
+          "dialogAudioRef": ""
+        },
+        {
+          "id": "e399845a-cc19-4bbd-86f0-b4ee769aaab5",
+          "title": "15.3 Berobat",
+          "flashcards": [
+            {
+              "id": "219ef842-742f-40e9-9c42-8d662060d58c",
+              "hanzi": "看病",
+              "pinyin": "kànbìng",
+              "indonesianTranslation": "berobat / periksa",
+              "imageRef": "cross.case.fill",
+              "audioRef": "kanbing"
+            },
+            {
+              "id": "1ce3ecb3-f460-4331-a98f-255db443e5df",
+              "hanzi": "药",
+              "pinyin": "yào",
+              "indonesianTranslation": "obat",
+              "imageRef": "pills.fill",
+              "audioRef": "yao"
+            },
+            {
+              "id": "ad59c0c8-0ff3-4e26-8265-243c975e283a",
+              "hanzi": "吃药",
+              "pinyin": "chī yào",
+              "indonesianTranslation": "minum obat",
+              "imageRef": "pills.fill",
+              "audioRef": "chi_yao"
+            },
+            {
+              "id": "82948d8c-55df-43e0-a522-0f952d2ee076",
+              "hanzi": "休息",
+              "pinyin": "xiūxi",
+              "indonesianTranslation": "istirahat",
+              "imageRef": "bed.double.fill",
+              "audioRef": "xiuxi"
+            },
+            {
+              "id": "7a0ab8f3-c346-444e-9a51-8ca7fd01314e",
+              "hanzi": "没事",
+              "pinyin": "méishì",
+              "indonesianTranslation": "tidak apa-apa",
+              "imageRef": "hand.thumbsup.fill",
+              "audioRef": "meishi"
+            }
+          ],
+          "dialogLines": [
+            {
+              "speaker": "A",
+              "text": "你要去医院看病吗？"
+            },
+            {
+              "speaker": "B",
+              "text": "要，医生让我吃药。"
+            },
+            {
+              "speaker": "A",
+              "text": "你要多休息。"
+            },
+            {
+              "speaker": "B",
+              "text": "谢谢，我没事。"
+            }
+          ],
+          "dialogAudioRef": ""
+        }
+      ]
+    }
+  ]
+}

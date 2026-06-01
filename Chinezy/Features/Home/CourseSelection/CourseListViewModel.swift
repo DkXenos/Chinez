@@ -8,7 +8,7 @@ public class CourseListViewModel: ObservableObject {
 
     private let courseService: CourseService
 
-    init(courseService: CourseService = MockCourseService()) {
+    init(courseService: CourseService = CourseDataService()) {
         self.courseService = courseService
     }
 

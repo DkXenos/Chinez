@@ -9,23 +9,7 @@ struct SubChapterListView: View {
             DesignSystem.Colors.background.ignoresSafeArea()
 
             VStack(spacing: 0) {
-                Picker("Pilih Mode", selection: $selectedTab) {
-                    ForEach(ChapterTabOption.allCases) { tab in
-                        Text(tab.rawValue).tag(tab)
-                    }
-                }
-                .pickerStyle(SegmentedPickerStyle())
-                .padding()
-                .background(DesignSystem.Colors.cardBackground)
-
-                switch selectedTab {
-                case .material:
-                    materialContent
-                case .quiz:
-                    PlaceholderView(title: "Quiz Section")
-                case .writing:
-                    PlaceholderView(title: "Writing Section")
-                }
+                materialContent
             }
         }
         .navigationTitle(course.title)
@@ -57,8 +41,8 @@ struct SubChapterListView_Previews: PreviewProvider {
                     description: "Belajar menyapa, berkenalan, dan menanyakan umur atau profesi.",
                     icon: "book.fill",
                     subChapters: [
-                        SubChapter(title: "1.1 Menyapa", dialogText: ""),
-                        SubChapter(title: "1.2 Berkenalan", dialogText: "")
+                        SubChapter(title: "1.1 Menyapa", dialogLines: []),
+                        SubChapter(title: "1.2 Berkenalan", dialogLines: [])
                     ]
                 )
             )

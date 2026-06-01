@@ -12,8 +12,9 @@ struct LearningView: View {
             VStack(spacing: DesignSystem.Dimensions.paddingStandard) {
                 if viewModel.isShowingDialog {
                     LearningDialogView(
-                        dialogText: subChapter.dialogText,
-                        onPlayAudio: viewModel.playDialogAudio
+                        dialogLines: subChapter.dialogLines,
+                        onPlayAudio: viewModel.toggleDialogAudio,
+                        isPlaying: viewModel.isPlayingDialog
                     )
                 } else if let flashcard = viewModel.currentFlashcard {
                     LearningFlashcardContent(
@@ -26,6 +27,9 @@ struct LearningView: View {
                             if viewModel.isCardFlipped {
                                 viewModel.playFlashcardAudio()
                             }
+                        },
+                        onPlayAudio: {
+                            viewModel.playFlashcardAudio()
                         }
                     )
                 }
@@ -66,7 +70,10 @@ struct LearningView: View {
             flashcards: [
                 Flashcard(hanzi: "你好", pinyin: "nǐ hǎo", indonesianTranslation: "halo", imageRef: "hand.wave.fill", audioRef: "")
             ],
-            dialogText: "A: 你好！\nB: 你好！"
+            dialogLines: [
+                DialogLine(speaker: "A", text: "你好！"),
+                DialogLine(speaker: "B", text: "你好！")
+            ]
         )
     )
 }

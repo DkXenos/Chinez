@@ -54,7 +54,7 @@ struct LearningBottomNavigationBar: View {
                         }
                     }
 
-                    // Blue Button
+                    // Next Button
                     if isLastCard {
                         Button(action: onOpenDialog) {
                             HStack {

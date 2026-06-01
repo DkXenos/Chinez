@@ -43,7 +43,10 @@ struct SubChapterRowView_Previews: PreviewProvider {
             subChapter: SubChapter(
                 title: "1.1 Menyapa",
                 flashcards: [],
-                dialogText: "A: 你好！\nB: 你好！"
+                dialogLines: [
+                    DialogLine(speaker: "A", text: "你好！"),
+                    DialogLine(speaker: "B", text: "你好！")
+                ]
             )
         )
         .padding()

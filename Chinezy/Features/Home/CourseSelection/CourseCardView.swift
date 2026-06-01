@@ -5,13 +5,14 @@ struct CourseCardView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
+            
             HStack {
                 Image(systemName: course.icon)
-                    .font(.title2)
+                    .font(.title)
                     .foregroundColor(DesignSystem.Colors.primary)
-                    .frame(width: 40, height: 40)
+                    .frame(width: 100, height: 100)
                     .background(
-                        Circle()
+                        RoundedRectangle(cornerRadius: 16)
                             .fill(DesignSystem.Colors.primary.opacity(0.1))
                     )
                 
@@ -29,6 +30,8 @@ struct CourseCardView: View {
                     .foregroundColor(DesignSystem.Colors.textSecondary)
                     .lineLimit(3)
             }
+            
+            Spacer()
         }
         .padding()
         .frame(maxWidth: .infinity, alignment: .topLeading)
@@ -45,8 +48,8 @@ struct CourseCardView: View {
         description: "Belajar menyapa, berkenalan, dan menanyakan umur atau profesi.",
         icon: "book.fill",
         subChapters: [
-            SubChapter(title: "1.1 Menyapa", dialogText: ""),
-            SubChapter(title: "1.2 Berkenalan", dialogText: "")
+            SubChapter(title: "1.1 Menyapa", dialogLines: []),
+            SubChapter(title: "1.2 Berkenalan", dialogLines: [])
         ]
     ))
 }

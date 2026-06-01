@@ -39,8 +39,8 @@ public struct CourseRowView: View {
         description: "Belajar menyapa, berkenalan, dan menanyakan umur atau profesi.",
         icon: "book.fill",
         subChapters: [
-            SubChapter(title: "1.1 Menyapa", dialogText: ""),
-            SubChapter(title: "1.2 Berkenalan", dialogText: "")
+            SubChapter(title: "1.1 Menyapa", dialogLines: []),
+            SubChapter(title: "1.2 Berkenalan", dialogLines: [])
         ]
     ))
 }

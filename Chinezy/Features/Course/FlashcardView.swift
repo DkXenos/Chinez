@@ -3,23 +3,42 @@ import SwiftUI
 struct FlashcardView: View {
     let flashcard: Flashcard
     let isFlipped: Bool
-
-    public init(flashcard: Flashcard, isFlipped: Bool) {
-        self.flashcard = flashcard
-        self.isFlipped = isFlipped
-    }
+    let onFlip: () -> Void
+    let onPlayAudio: () -> Void
 
     public var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: DesignSystem.Dimensions.cornerRadius)
-                .fill(DesignSystem.Colors.cardBackground)
-                .shadow(color: Color.black.opacity(0.1), radius: 10, x: 0, y: 5)
+            Button(action: onFlip) {
+                ZStack {
+                    RoundedRectangle(cornerRadius: DesignSystem.Dimensions.cornerRadius)
+                        .fill(DesignSystem.Colors.cardBackground)
+                        .shadow(color: Color.black.opacity(0.1), radius: 10, x: 0, y: 5)
 
+                    frontFace
+                        .opacity(isFlipped ? 0 : 1)
+                    
+                    backFace
+                        .opacity(isFlipped ? 1 : 0)
+                        .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
+                }
+            }
+            .buttonStyle(.plain)
+            
             if isFlipped {
-                backFace
-                    .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
-            } else {
-                frontFace
+                VStack {
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        Button(action: onPlayAudio) {
+                            Image(systemName: "speaker.wave.2.circle.fill")
+                                .font(.system(size: 32))
+                                .foregroundColor(DesignSystem.Colors.primary)
+                                .background(Circle().fill(Color.white))
+                        }
+                        .padding(16)
+                    }
+                }
+                .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
             }
         }
         .rotation3DEffect(
@@ -61,7 +80,9 @@ struct FlashcardView: View {
 #Preview {
     FlashcardView(
         flashcard: Flashcard(hanzi: "你好", pinyin: "nǐ hǎo", indonesianTranslation: "halo", imageRef: "hand.wave.fill", audioRef: ""),
-        isFlipped: true
+        isFlipped: true,
+        onFlip: { print("Flip card") },
+        onPlayAudio: { print("Play Audio Tapped") }
     )
     .frame(height: 400)
     .padding()

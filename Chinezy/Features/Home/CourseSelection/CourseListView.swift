@@ -21,7 +21,7 @@ public struct CourseListView: View {
             }
             .padding(DesignSystem.Dimensions.paddingStandard)
         }
-        .navigationTitle("Belajar")
+        .navigationTitle("Materials")
         .background(DesignSystem.Colors.background.ignoresSafeArea())
         .onAppear {
             viewModel.loadCourses()

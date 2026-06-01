@@ -19,7 +19,12 @@ class MockCourseService: CourseService {
                             Flashcard(hanzi: "名字", pinyin: "míngzi", indonesianTranslation: "nama", imageRef: "lanyardcard.fill", audioRef: "mingzi"),
                             Flashcard(hanzi: "什么", pinyin: "shénme", indonesianTranslation: "apa", imageRef: "questionmark.circle.fill", audioRef: "shenme")
                         ],
-                        dialogText: "A: 你好！\nB: 你好！你叫什么名字？\nA: 我叫王明。\nB: 我叫李娜。"
+                        dialogLines: [
+                            DialogLine(speaker: "A", text: "你好！"),
+                            DialogLine(speaker: "B", text: "你好！你叫什么名字？"),
+                            DialogLine(speaker: "A", text: "我叫王明。"),
+                            DialogLine(speaker: "B", text: "我叫李娜。")
+                        ]
                     ),
                     SubChapter(
                         title: "1.2 Berkenalan",
@@ -31,7 +36,12 @@ class MockCourseService: CourseService {
                             Flashcard(hanzi: "朋友", pinyin: "péngyou", indonesianTranslation: "teman", imageRef: "figure.2.arms.open", audioRef: "pengyou"),
                             Flashcard(hanzi: "谁", pinyin: "shéi", indonesianTranslation: "siapa", imageRef: "person.crop.circle.badge.questionmark", audioRef: "shei")
                         ],
-                        dialogText: "A: 他是谁？\nB: 他是我的朋友。\nA: 很高兴认识你。\nB: 我也很高兴认识你。"
+                        dialogLines: [
+                            DialogLine(speaker: "A", text: "他是谁？"),
+                            DialogLine(speaker: "B", text: "他是我的朋友。"),
+                            DialogLine(speaker: "A", text: "很高兴认识你。"),
+                            DialogLine(speaker: "B", text: "我也很高兴认识你。")
+                        ]
                     ),
                     SubChapter(
                         title: "1.3 Murid atau Guru",
@@ -43,7 +53,12 @@ class MockCourseService: CourseService {
                             Flashcard(hanzi: "今年", pinyin: "jīnnián", indonesianTranslation: "tahun ini", imageRef: "calendar", audioRef: "jinnian"),
                             Flashcard(hanzi: "岁", pinyin: "suì", indonesianTranslation: "tahun (usia)", imageRef: "birthday.cake.fill", audioRef: "sui")
                         ],
-                        dialogText: "A: 你是老师吗？\nB: 不，我是学生。\nA: 你今年多大？\nB: 我今年十八岁。"
+                        dialogLines: [
+                            DialogLine(speaker: "A", text: "你是老师吗？"),
+                            DialogLine(speaker: "B", text: "不，我是学生。"),
+                            DialogLine(speaker: "A", text: "你今年多大？"),
+                            DialogLine(speaker: "B", text: "我今年十八岁。")
+                        ]
                     )
                 ]
             ),
@@ -62,7 +77,12 @@ class MockCourseService: CourseService {
                             Flashcard(hanzi: "印尼", pinyin: "Yìnní", indonesianTranslation: "Indonesia", imageRef: "flag.fill", audioRef: "yinni"),
                             Flashcard(hanzi: "来", pinyin: "lái", indonesianTranslation: "datang / berasal", imageRef: "arrow.down.right.circle.fill", audioRef: "lai")
                         ],
-                        dialogText: "A: 你是哪国人？\nB: 我是中国人。\nA: 我是印尼人。你从哪里来？\nB: 我从北京来。"
+                        dialogLines: [
+                            DialogLine(speaker: "A", text: "你是哪国人？"),
+                            DialogLine(speaker: "B", text: "我是中国人。"),
+                            DialogLine(speaker: "A", text: "我是印尼人。你从哪里来？"),
+                            DialogLine(speaker: "B", text: "我从北京来。")
+                        ]
                     ),
                     SubChapter(
                         title: "2.2 Negara Lain",
@@ -73,7 +93,12 @@ class MockCourseService: CourseService {
                             Flashcard(hanzi: "他们", pinyin: "tāmen", indonesianTranslation: "mereka", imageRef: "person.3.fill", audioRef: "tamen"),
                             Flashcard(hanzi: "对", pinyin: "duì", indonesianTranslation: "benar/ya", imageRef: "checkmark.circle.fill", audioRef: "dui")
                         ],
-                        dialogText: "A: 他是美国人吗？\nB: 不是，他是日本人。\nA: 他们是英国人吗？\nB: 对，他们是英国人。"
+                        dialogLines: [
+                            DialogLine(speaker: "A", text: "他是美国人吗？"),
+                            DialogLine(speaker: "B", text: "不是，他是日本人。"),
+                            DialogLine(speaker: "A", text: "他们是英国人吗？"),
+                            DialogLine(speaker: "B", text: "对，他们是英国人。")
+                        ]
                     ),
                     SubChapter(
                         title: "2.3 Bahasa & Kota",
@@ -85,7 +110,12 @@ class MockCourseService: CourseService {
                             Flashcard(hanzi: "住", pinyin: "zhù", indonesianTranslation: "tinggal", imageRef: "house.fill", audioRef: "zhu"),
                             Flashcard(hanzi: "城市", pinyin: "chéngshì", indonesianTranslation: "kota", imageRef: "building.2.fill", audioRef: "chengshi")
                         ],
-                        dialogText: "A: 你会说汉语吗？\nB: 我会说一点儿。\nA: 你住在哪个城市？\nB: 我住在上海。"
+                        dialogLines: [
+                            DialogLine(speaker: "A", text: "你会说汉语吗？"),
+                            DialogLine(speaker: "B", text: "我会说一点儿。"),
+                            DialogLine(speaker: "A", text: "你住在哪个城市？"),
+                            DialogLine(speaker: "B", text: "我住在上海。")
+                        ]
                     )
                 ]
             )

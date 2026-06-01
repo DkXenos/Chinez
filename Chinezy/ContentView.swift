@@ -13,7 +13,8 @@ struct ContentView: View {
     var body: some View {
         Group {
             if authManager.userSession == nil {
-                AuthView()
+                IPhoneTabView()
+                //AuthView()
             } else {
                 if isIPad {
                     IPadSidebarView()
@@ -48,7 +49,7 @@ struct IPadSidebarView: View {
         NavigationSplitView(columnVisibility: $columnVisibility) {
             List(selection: tabSelection) {
                 NavigationLink(value: NavigationRouter.Tab.materials) {
-                    Label("Materials", systemImage: "character.book.closed.fill")
+                    Label("Materials", systemImage: "character.book.closed.fill") 
                 }
                 NavigationLink(value: NavigationRouter.Tab.quiz) {
                     Label("Quiz", systemImage: "questionmark.circle.fill")

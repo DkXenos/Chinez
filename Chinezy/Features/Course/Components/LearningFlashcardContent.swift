@@ -6,10 +6,11 @@ struct LearningFlashcardContent: View {
     let currentIndex: Int
     let totalCount: Int
     let onTap: () -> Void
+    let onPlayAudio: () -> Void
 
     public var body: some View {
         VStack(spacing: 12) {
-            FlashcardView(flashcard: flashcard, isFlipped: isFlipped)
+            FlashcardView(flashcard: flashcard, isFlipped: isFlipped, onFlip: onTap, onPlayAudio: onPlayAudio)
                 .frame(maxHeight: .infinity)
                 .onTapGesture(perform: onTap)
 

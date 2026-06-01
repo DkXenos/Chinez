@@ -4,38 +4,30 @@ struct CourseCardView: View {
     let course: Course
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .center, spacing: 16) {
             
-            HStack {
-                Image(systemName: course.icon)
-                    .font(.title)
-                    .foregroundColor(DesignSystem.Colors.primary)
-                    .frame(width: 100, height: 100)
-                    .background(
-                        RoundedRectangle(cornerRadius: 16)
-                            .fill(DesignSystem.Colors.primary.opacity(0.1))
-                    )
-                
-                Spacer()
+            // Thumbnail matching QuizView's hanzi style
+            ZStack {
+                RoundedRectangle(cornerRadius: DesignSystem.Dimensions.cornerRadiusMedium, style: .continuous)
+                    .fill(DesignSystem.Colors.background)
+                RoundedRectangle(cornerRadius: DesignSystem.Dimensions.cornerRadiusMedium, style: .continuous)
+                    .strokeBorder(DesignSystem.Colors.gold, lineWidth: 1.5)
+                Text(course.icon) // we use course.icon to pass the chapter hanzi
+                    .font(.system(size: 40, weight: .bold))
+                    .foregroundStyle(DesignSystem.Colors.primary)
             }
+            .frame(width: 80, height: 80)
             
-            VStack(alignment: .leading, spacing: 4) {
-                Text(course.title)
-                    .font(.headline)
-                    .foregroundColor(DesignSystem.Colors.textPrimary)
-                    .lineLimit(3)
-                
-                Text(course.description)
-                    .font(.caption)
-                    .foregroundColor(DesignSystem.Colors.textSecondary)
-                    .lineLimit(3)
-            }
+            Text(course.title)
+                .font(.headline)
+                .foregroundColor(DesignSystem.Colors.textPrimary)
+                .multilineTextAlignment(.center)
+                .lineLimit(2)
             
-            Spacer()
         }
         .padding()
-        .frame(maxWidth: .infinity, alignment: .topLeading)
-        .frame(height: 260)
+        .frame(maxWidth: .infinity)
+        .frame(height: 180)
         .background(Color(UIColor.secondarySystemGroupedBackground))
         .cornerRadius(16)
         .shadow(color: Color.black.opacity(0.05), radius: 5, x: 0, y: 2)
@@ -45,8 +37,8 @@ struct CourseCardView: View {
 #Preview {
     CourseCardView(course: Course(
         title: "Bab 1: Perkenalan Diri",
-        description: "Belajar menyapa, berkenalan, dan menanyakan umur atau profesi.",
-        icon: "book.fill",
+        description: "",
+        icon: "你",
         subChapters: [
             SubChapter(title: "1.1 Menyapa", dialogLines: []),
             SubChapter(title: "1.2 Berkenalan", dialogLines: [])

@@ -37,7 +37,7 @@ struct ChapterListView: View {
                 .padding(.top, 8)
                 .padding(.bottom, 24)
             }
-            .background(DesignSystem.Colors.surfaceWhite)
+            .foregroundColor(DesignSystem.Colors.primary)
         }
     }
 

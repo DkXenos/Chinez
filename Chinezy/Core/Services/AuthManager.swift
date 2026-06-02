@@ -61,4 +61,6 @@ final class AuthManager: ObservableObject {
             print("Failed to fetch user profile: \(error.localizedDescription)")
         }
     }
+
+    deinit {}
 }

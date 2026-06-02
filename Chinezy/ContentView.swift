@@ -13,13 +13,7 @@ struct ContentView: View {
     var body: some View {
         Group {
             if authManager.userSession == nil {
-                // AuthView()
-                // Bypassing auth for now
-                if isIPad {
-                    IPadSidebarView()
-                } else {
-                    IPhoneTabView()
-                }
+                AuthView()
             } else {
                 if isIPad {
                     IPadSidebarView()

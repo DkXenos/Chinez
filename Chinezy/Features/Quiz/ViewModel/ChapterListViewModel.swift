@@ -30,4 +30,6 @@ final class ChapterListViewModel: ObservableObject {
             errorMessage = error.localizedDescription
         }
     }
+
+    deinit {}
 }

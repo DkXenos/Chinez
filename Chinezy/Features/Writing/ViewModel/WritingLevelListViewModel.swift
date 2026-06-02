@@ -24,4 +24,6 @@ final class WritingLevelListViewModel: ObservableObject {
             errorMessage = error.localizedDescription
         }
     }
+
+    deinit {}
 }

@@ -111,5 +111,7 @@ final class TonePracticeViewModel: ObservableObject {
         default:       return raw
         }
     }
+
+    deinit {}
 }
 

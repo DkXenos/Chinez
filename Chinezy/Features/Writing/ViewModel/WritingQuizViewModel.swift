@@ -61,5 +61,7 @@ final class WritingQuizViewModel: ObservableObject {
             }
         }
     }
+
+    deinit {}
 }
 

@@ -89,4 +89,6 @@ final class QuizViewModel: ObservableObject {
         correctCount = 0
         isFinished = false
     }
+
+    deinit {}
 }

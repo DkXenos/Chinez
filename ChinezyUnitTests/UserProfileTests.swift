@@ -16,14 +16,12 @@ final class UserProfileTests: XCTestCase {
         let profile = UserProfile(
             id: "uid_123",
             email: "test@example.com",
-            totalQuizzesCompleted: 5,
-            completedChapters: ["ch1", "ch2"]
+            quizScores: ["quiz1": 80, "quiz2": 100]
         )
 
         XCTAssertEqual(profile.id, "uid_123")
         XCTAssertEqual(profile.email, "test@example.com")
-        XCTAssertEqual(profile.totalQuizzesCompleted, 5)
-        XCTAssertEqual(profile.completedChapters, ["ch1", "ch2"])
+        XCTAssertEqual(profile.quizScores, ["quiz1": 80, "quiz2": 100])
     }
 
     // MARK: - Dictionary Initializer (valid)
@@ -32,8 +30,7 @@ final class UserProfileTests: XCTestCase {
         let dict: [String: Any] = [
             "id": "uid_456",
             "email": "user@mail.com",
-            "totalQuizzesCompleted": 10,
-            "completedChapters": ["ch3"]
+            "quizScores": ["quiz3": 95]
         ]
 
         let profile = UserProfile(dictionary: dict)
@@ -41,8 +38,7 @@ final class UserProfileTests: XCTestCase {
         XCTAssertNotNil(profile)
         XCTAssertEqual(profile?.id, "uid_456")
         XCTAssertEqual(profile?.email, "user@mail.com")
-        XCTAssertEqual(profile?.totalQuizzesCompleted, 10)
-        XCTAssertEqual(profile?.completedChapters, ["ch3"])
+        XCTAssertEqual(profile?.quizScores, ["quiz3": 95])
     }
 
     // MARK: - Dictionary Initializer (invalid — missing keys)
@@ -50,8 +46,7 @@ final class UserProfileTests: XCTestCase {
     func testInitFromDictionaryMissingId() {
         let dict: [String: Any] = [
             "email": "user@mail.com",
-            "totalQuizzesCompleted": 0,
-            "completedChapters": []
+            "quizScores": ["quiz1": 100]
         ]
         XCTAssertNil(UserProfile(dictionary: dict))
     }
@@ -59,26 +54,7 @@ final class UserProfileTests: XCTestCase {
     func testInitFromDictionaryMissingEmail() {
         let dict: [String: Any] = [
             "id": "uid_1",
-            "totalQuizzesCompleted": 0,
-            "completedChapters": []
-        ]
-        XCTAssertNil(UserProfile(dictionary: dict))
-    }
-
-    func testInitFromDictionaryMissingQuizzes() {
-        let dict: [String: Any] = [
-            "id": "uid_1",
-            "email": "a@b.com",
-            "completedChapters": []
-        ]
-        XCTAssertNil(UserProfile(dictionary: dict))
-    }
-
-    func testInitFromDictionaryMissingChapters() {
-        let dict: [String: Any] = [
-            "id": "uid_1",
-            "email": "a@b.com",
-            "totalQuizzesCompleted": 0
+            "quizScores": ["quiz1": 100]
         ]
         XCTAssertNil(UserProfile(dictionary: dict))
     }
@@ -93,8 +69,7 @@ final class UserProfileTests: XCTestCase {
         let original = UserProfile(
             id: "round_trip",
             email: "rt@test.com",
-            totalQuizzesCompleted: 3,
-            completedChapters: ["a", "b"]
+            quizScores: ["q1": 70, "q2": 100]
         )
 
         let dict = original.dictionary
@@ -103,8 +78,7 @@ final class UserProfileTests: XCTestCase {
         XCTAssertNotNil(restored)
         XCTAssertEqual(restored?.id, original.id)
         XCTAssertEqual(restored?.email, original.email)
-        XCTAssertEqual(restored?.totalQuizzesCompleted, original.totalQuizzesCompleted)
-        XCTAssertEqual(restored?.completedChapters, original.completedChapters)
+        XCTAssertEqual(restored?.quizScores, original.quizScores)
     }
 
     // MARK: - Wrong types
@@ -113,9 +87,12 @@ final class UserProfileTests: XCTestCase {
         let dict: [String: Any] = [
             "id": 123,  // should be String
             "email": "a@b.com",
-            "totalQuizzesCompleted": 0,
-            "completedChapters": []
+            "quizScores": ["quiz1": "100"] // should be [String: Int]
         ]
-        XCTAssertNil(UserProfile(dictionary: dict))
+        
+        let profile = UserProfile(dictionary: dict)
+        // With current dictionary initializer, if quizScores fails to cast to [String: Int], it defaults to [:]
+        // But if id is missing/wrong type, it fails completely.
+        XCTAssertNil(profile)
     }
 }

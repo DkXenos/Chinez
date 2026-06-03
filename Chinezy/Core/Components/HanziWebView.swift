@@ -43,6 +43,7 @@ struct HanziWebView: UIViewRepresentable {
     /// `animateStroke(at:)` from the native drawing layer (animation mode).
     var onCoordinatorReady: ((Coordinator) -> Void)?
 
+
     // MARK: Quiz Mode Callbacks
 
     /// Fires when a correct stroke is drawn in quiz mode.
@@ -55,6 +56,9 @@ struct HanziWebView: UIViewRepresentable {
     /// Fires when all strokes are completed in quiz mode.
     var onQuizComplete: (() -> Void)?
 
+    /// Fired when Hanzi Writer finishes fetching and parsing the stroke data.
+    var onLoaded: (() -> Void)? = nil
+
     // MARK: – UIViewRepresentable
 
     func makeCoordinator() -> Coordinator {
@@ -63,7 +67,8 @@ struct HanziWebView: UIViewRepresentable {
             onAllStrokesCompleted: onAllStrokesCompleted,
             onCorrectStroke: onCorrectStroke,
             onMistake: onMistake,
-            onQuizComplete: onQuizComplete
+            onQuizComplete: onQuizComplete,
+            onLoaded: onLoaded
         )
     }
 
@@ -78,6 +83,7 @@ struct HanziWebView: UIViewRepresentable {
         contentController.add(context.coordinator, name: "strokeCorrect")
         contentController.add(context.coordinator, name: "strokeMistake")
         contentController.add(context.coordinator, name: "quizComplete")
+        contentController.add(context.coordinator, name: "hanziLoaded")
 
         // ── Create the web view ─────────────────────────────────────
         let webView = WKWebView(frame: .zero, configuration: config)
@@ -145,19 +151,22 @@ struct HanziWebView: UIViewRepresentable {
         private let onCorrectStroke: ((Int) -> Void)?
         private let onMistake: (() -> Void)?
         private let onQuizComplete: (() -> Void)?
+        private let onLoaded: (() -> Void)?
 
         init(
             useQuizMode: Bool,
             onAllStrokesCompleted: (() -> Void)?,
             onCorrectStroke: ((Int) -> Void)?,
             onMistake: (() -> Void)?,
-            onQuizComplete: (() -> Void)?
+            onQuizComplete: (() -> Void)?,
+            onLoaded: (() -> Void)?
         ) {
             self.useQuizMode = useQuizMode
             self.onAllStrokesCompleted = onAllStrokesCompleted
             self.onCorrectStroke = onCorrectStroke
             self.onMistake = onMistake
             self.onQuizComplete = onQuizComplete
+            self.onLoaded = onLoaded
             super.init()
         }
 
@@ -192,6 +201,11 @@ struct HanziWebView: UIViewRepresentable {
             case "quizComplete":
                 DispatchQueue.main.async { [weak self] in
                     self?.onQuizComplete?()
+                }
+
+            case "hanziLoaded":
+                DispatchQueue.main.async { [weak self] in
+                    self?.onLoaded?()
                 }
 
             default:

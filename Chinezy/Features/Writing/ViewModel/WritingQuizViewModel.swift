@@ -10,6 +10,8 @@ final class WritingQuizViewModel: ObservableObject {
     @Published var showSuccessBanner: Bool = false
     @Published var mistakeCount: Int = 0
     @Published var correctStrokesInChar: Int = 0
+    
+    var onFinish: (() -> Void)?
 
     init(level: WritingLevel) {
         self.level = level
@@ -53,11 +55,7 @@ final class WritingQuizViewModel: ObservableObject {
                 self.currentCharacter = self.level.characters[nextIndex]
                 self.correctStrokesInChar = 0
             } else {
-                // Loop back
-                self.currentIndex = 0
-                self.currentCharacter = self.level.characters[0]
-                self.mistakeCount = 0
-                self.correctStrokesInChar = 0
+                self.onFinish?()
             }
         }
     }

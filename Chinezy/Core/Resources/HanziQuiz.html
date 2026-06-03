@@ -148,7 +148,12 @@
                 charDataLoader: charDataLoader,
                 strokeColor: '#333',
                 outlineColor: '#CCCCCC',
-                drawingWidth: 12
+                drawingWidth: 12,
+                onLoadCharDataSuccess: function(data) {
+                    if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.hanziLoaded) {
+                        window.webkit.messageHandlers.hanziLoaded.postMessage(true);
+                    }
+                }
             });
         }
 
@@ -209,7 +214,12 @@
                 drawingWidth: 16,
                 showHintAfterMisses: 3,
                 highlightOnComplete: true,
-                highlightColor: '#1E8C5F'
+                highlightColor: '#1E8C5F',
+                onLoadCharDataSuccess: function(data) {
+                    if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.hanziLoaded) {
+                        window.webkit.messageHandlers.hanziLoaded.postMessage(true);
+                    }
+                }
             });
 
             // Start quiz mode immediately (§4)

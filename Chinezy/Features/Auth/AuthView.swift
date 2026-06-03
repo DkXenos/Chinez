@@ -26,11 +26,13 @@ struct AuthView: View {
                                 .font(DesignSystem.Typography.largeTitle)
                                 .foregroundColor(DesignSystem.Colors.textDark)
                                 .multilineTextAlignment(.center)
+                                .accessibilityIdentifier("Auth.WelcomeHeader")
                             
                             Text(isLoginMode ? "Log in to continue your learning journey" : "Sign up to start mastering Chinese")
                                 .font(DesignSystem.Typography.body)
                                 .foregroundColor(DesignSystem.Colors.textSecondary)
                                 .multilineTextAlignment(.center)
+                                .accessibilityIdentifier("Auth.Subtitle")
                         }
                         .padding(.top, 60)
                         .padding(.bottom, 20)
@@ -42,6 +44,7 @@ struct AuthView: View {
                                 .autocapitalization(.none)
                                 .disableAutocorrection(true)
                                 .padding(DesignSystem.Dimensions.paddingStandard)
+                                .accessibilityIdentifier("Auth.EmailField")
                                 .background(DesignSystem.Colors.surfaceWhite)
                                 .cornerRadius(DesignSystem.Dimensions.cornerRadiusSmall)
                                 .foregroundColor(DesignSystem.Colors.textPrimary)
@@ -52,6 +55,7 @@ struct AuthView: View {
                             
                             SecureField("Password", text: $password)
                                 .padding(DesignSystem.Dimensions.paddingStandard)
+                                .accessibilityIdentifier("Auth.PasswordField")
                                 .background(DesignSystem.Colors.surfaceWhite)
                                 .cornerRadius(DesignSystem.Dimensions.cornerRadiusSmall)
                                 .foregroundColor(DesignSystem.Colors.textPrimary)
@@ -81,6 +85,7 @@ struct AuthView: View {
                         }
                         .disabled(isLoading || email.isEmpty || password.isEmpty)
                         .padding(.top, DesignSystem.Dimensions.paddingSmall)
+                        .accessibilityIdentifier("Auth.ActionButton")
                         
                         // Toggle Mode Button
                         Button(action: {
@@ -94,6 +99,7 @@ struct AuthView: View {
                                 .foregroundColor(DesignSystem.Colors.primary)
                         }
                         .padding(.top, DesignSystem.Dimensions.paddingStandard)
+                        .accessibilityIdentifier("Auth.ToggleButton")
                         
                         Spacer()
                     }

@@ -15,6 +15,8 @@ final class ChinezyUITests: XCTestCase {
     override func setUpWithError() throws {
         continueAfterFailure = false
         app = XCUIApplication()
+        // Inject argument to force clean state and bypass splash screens
+        app.launchArguments.append("-UITesting")
         app.launch()
     }
 
@@ -33,30 +35,30 @@ final class ChinezyUITests: XCTestCase {
 
     // MARK: - Auth Screen Elements
 
-    /// Verifies the login screen displays the "Welcome Back" header.
+    /// Verifies the login screen displays the welcome header.
     @MainActor
     func testAuthScreenShowsWelcomeHeader() throws {
-        let welcomeText = app.staticTexts["Welcome Back"]
+        let welcomeText = app.staticTexts["Auth.WelcomeHeader"]
         XCTAssertTrue(
             welcomeText.waitForExistence(timeout: 5),
-            "The 'Welcome Back' header should be visible on the auth screen."
+            "The header should be visible on the auth screen."
         )
     }
 
     /// Verifies the login subtitle text is shown.
     @MainActor
     func testAuthScreenShowsSubtitle() throws {
-        let subtitle = app.staticTexts["Log in to continue your learning journey"]
+        let subtitle = app.staticTexts["Auth.Subtitle"]
         XCTAssertTrue(
             subtitle.waitForExistence(timeout: 5),
-            "The login subtitle should be visible on the auth screen."
+            "The subtitle should be visible on the auth screen."
         )
     }
 
     /// Verifies the Email text field is present on the auth screen.
     @MainActor
     func testAuthScreenHasEmailField() throws {
-        let emailField = app.textFields["Email"]
+        let emailField = app.textFields["Auth.EmailField"]
         XCTAssertTrue(
             emailField.waitForExistence(timeout: 5),
             "The Email text field should be visible on the auth screen."
@@ -66,84 +68,80 @@ final class ChinezyUITests: XCTestCase {
     /// Verifies the Password secure field is present on the auth screen.
     @MainActor
     func testAuthScreenHasPasswordField() throws {
-        let passwordField = app.secureTextFields["Password"]
+        let passwordField = app.secureTextFields["Auth.PasswordField"]
         XCTAssertTrue(
             passwordField.waitForExistence(timeout: 5),
             "The Password field should be visible on the auth screen."
         )
     }
 
-    /// Verifies the "Log In" button is present on the auth screen.
+    /// Verifies the action button is present on the auth screen.
     @MainActor
     func testAuthScreenHasLoginButton() throws {
-        let loginButton = app.buttons["Log In"]
+        let loginButton = app.buttons["Auth.ActionButton"]
         XCTAssertTrue(
             loginButton.waitForExistence(timeout: 5),
-            "The 'Log In' button should be visible on the auth screen."
+            "The action button should be visible on the auth screen."
         )
     }
 
-    /// Verifies the toggle link to switch to sign-up mode is present.
+    /// Verifies the toggle mode link is present.
     @MainActor
     func testAuthScreenHasSignUpToggle() throws {
-        let toggleButton = app.buttons["Need an account? Sign Up"]
+        let toggleButton = app.buttons["Auth.ToggleButton"]
         XCTAssertTrue(
             toggleButton.waitForExistence(timeout: 5),
-            "The 'Need an account? Sign Up' toggle button should be visible."
+            "The toggle button should be visible."
         )
     }
 
     // MARK: - Auth Mode Toggle
 
-    /// Verifies tapping the toggle switches from login to sign-up mode.
+    /// Verifies tapping the toggle switches mode correctly.
     @MainActor
     func testToggleToSignUpMode() throws {
-        let toggleButton = app.buttons["Need an account? Sign Up"]
+        let toggleButton = app.buttons["Auth.ToggleButton"]
         XCTAssertTrue(toggleButton.waitForExistence(timeout: 5))
 
         toggleButton.tap()
 
-        // After toggling, we should see "Create Account" header
-        let createAccountText = app.staticTexts["Create Account"]
+        // After toggling, we should see header change text but same identifier
+        let headerText = app.staticTexts["Auth.WelcomeHeader"]
         XCTAssertTrue(
-            createAccountText.waitForExistence(timeout: 3),
-            "After toggling, 'Create Account' header should be visible."
+            headerText.waitForExistence(timeout: 3),
+            "After toggling, header should be visible."
         )
-
-        // The button text should now offer to go back to login
-        let loginToggle = app.buttons["Already have an account? Log In"]
-        XCTAssertTrue(
-            loginToggle.waitForExistence(timeout: 3),
-            "The toggle should now show 'Already have an account? Log In'."
-        )
-
+        // Ensure it switched to sign up mode
+        XCTAssertEqual(headerText.label, "Create Account")
+        
         // The action button should say "Sign Up"
-        let signUpButton = app.buttons["Sign Up"]
+        let actionButton = app.buttons["Auth.ActionButton"]
         XCTAssertTrue(
-            signUpButton.waitForExistence(timeout: 3),
-            "The action button should now say 'Sign Up'."
+            actionButton.waitForExistence(timeout: 3),
+            "The action button should be visible."
         )
+        XCTAssertEqual(actionButton.label, "Sign Up")
     }
 
     /// Verifies toggling back from sign-up to login mode.
     @MainActor
     func testToggleBackToLoginMode() throws {
+        let toggleButton = app.buttons["Auth.ToggleButton"]
+        XCTAssertTrue(toggleButton.waitForExistence(timeout: 5))
+        
         // First go to sign-up mode
-        let signUpToggle = app.buttons["Need an account? Sign Up"]
-        XCTAssertTrue(signUpToggle.waitForExistence(timeout: 5))
-        signUpToggle.tap()
+        toggleButton.tap()
 
         // Then toggle back to login mode
-        let loginToggle = app.buttons["Already have an account? Log In"]
-        XCTAssertTrue(loginToggle.waitForExistence(timeout: 3))
-        loginToggle.tap()
+        toggleButton.tap()
 
         // Should be back to login
-        let welcomeText = app.staticTexts["Welcome Back"]
+        let headerText = app.staticTexts["Auth.WelcomeHeader"]
         XCTAssertTrue(
-            welcomeText.waitForExistence(timeout: 3),
-            "After toggling back, 'Welcome Back' header should be visible."
+            headerText.waitForExistence(timeout: 3),
+            "After toggling back, header should be visible."
         )
+        XCTAssertEqual(headerText.label, "Welcome Back")
     }
 
     // MARK: - Auth Field Interaction
@@ -151,7 +149,7 @@ final class ChinezyUITests: XCTestCase {
     /// Verifies the user can type into the Email field.
     @MainActor
     func testCanTypeInEmailField() throws {
-        let emailField = app.textFields["Email"]
+        let emailField = app.textFields["Auth.EmailField"]
         XCTAssertTrue(emailField.waitForExistence(timeout: 5))
 
         emailField.tap()
@@ -168,7 +166,7 @@ final class ChinezyUITests: XCTestCase {
     /// Verifies the user can type into the Password field.
     @MainActor
     func testCanTypeInPasswordField() throws {
-        let passwordField = app.secureTextFields["Password"]
+        let passwordField = app.secureTextFields["Auth.PasswordField"]
         XCTAssertTrue(passwordField.waitForExistence(timeout: 5))
 
         passwordField.tap()

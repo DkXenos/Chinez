@@ -1,6 +1,7 @@
 import Combine
 import SwiftUI
 import FirebaseCore
+import FirebaseAuth
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(
@@ -16,6 +17,12 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct ChinezyApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject private var authManager = AuthManager()
+
+    init() {
+        if CommandLine.arguments.contains("-UITesting") {
+            try? Auth.auth().signOut()
+        }
+    }
 
     var body: some Scene {
         WindowGroup {

@@ -6,7 +6,6 @@
 //
 
 import XCTest
-import Combine
 @testable import Chinezy
 
 // MARK: - Mock Service
@@ -25,17 +24,14 @@ private class MockCourseServiceForTests: CourseService {
 
 // MARK: - Tests
 
+@MainActor
 final class CourseListViewModelTests: XCTestCase {
     
-    private var cancellables: Set<AnyCancellable>!
-
     override func setUp() {
         super.setUp()
-        cancellables = []
     }
     
     override func tearDown() {
-        cancellables = nil
         super.tearDown()
     }
 
@@ -49,28 +45,17 @@ final class CourseListViewModelTests: XCTestCase {
     
     // MARK: - Helper
 
-    // Helper to safely update search text and wait for Combine to process
-    private func setSearchTextAndWait(_ vm: CourseListViewModel, text: String) {
-        let expectation = XCTestExpectation(description: "Wait for Combine to process search text")
-        
-        vm.$searchText
-            .dropFirst()
-            .sink { _ in
-                // Fulfill asynchronously to ensure Combine finishes all in-flight broadcasts 
-                // before the test scope ends and the ViewModel is deallocated (prevents SIGABRT).
-                DispatchQueue.main.async {
-                    expectation.fulfill()
-                }
-            }
-            .store(in: &cancellables)
-            
+    // Helper to safely update search text and yield to the concurrency runtime
+    private func setSearchTextAndWait(_ vm: CourseListViewModel, text: String) async {
         vm.searchText = text
-        wait(for: [expectation], timeout: 2.0)
+        // Yield to allow any pending MainActor/Combine tasks to run before deallocation
+        // This prevents the SIGABRT crash from Swift Concurrency internals.
+        await Task.yield()
     }
 
     // MARK: - loadCourses
 
-    func testLoadCourses() {
+    func testLoadCourses() async throws {
         let service = MockCourseServiceForTests(courses: makeSampleCourses())
         let vm = CourseListViewModel(courseService: service)
         vm.loadCourses()
@@ -79,7 +64,7 @@ final class CourseListViewModelTests: XCTestCase {
         XCTAssertEqual(vm.courses[0].title, "Bab 1: Perkenalan Diri")
     }
 
-    func testLoadCoursesEmpty() {
+    func testLoadCoursesEmpty() async throws {
         let service = MockCourseServiceForTests(courses: [])
         let vm = CourseListViewModel(courseService: service)
         vm.loadCourses()
@@ -89,7 +74,7 @@ final class CourseListViewModelTests: XCTestCase {
 
     // MARK: - filteredCourses — no search
 
-    func testFilteredCoursesNoSearch() {
+    func testFilteredCoursesNoSearch() async throws {
         let service = MockCourseServiceForTests(courses: makeSampleCourses())
         let vm = CourseListViewModel(courseService: service)
         vm.loadCourses()
@@ -99,57 +84,57 @@ final class CourseListViewModelTests: XCTestCase {
 
     // MARK: - filteredCourses — with search
 
-    func testFilteredCoursesWithSearch() {
+    func testFilteredCoursesWithSearch() async throws {
         let service = MockCourseServiceForTests(courses: makeSampleCourses())
         let vm = CourseListViewModel(courseService: service)
         vm.loadCourses()
 
-        setSearchTextAndWait(vm, text: "Perkenalan")
+        await setSearchTextAndWait(vm, text: "Perkenalan")
         
         XCTAssertEqual(vm.filteredCourses.count, 1)
         XCTAssertEqual(vm.filteredCourses.first?.title, "Bab 1: Perkenalan Diri")
     }
 
-    func testFilteredCoursesCaseInsensitive() {
+    func testFilteredCoursesCaseInsensitive() async throws {
         let service = MockCourseServiceForTests(courses: makeSampleCourses())
         let vm = CourseListViewModel(courseService: service)
         vm.loadCourses()
 
-        setSearchTextAndWait(vm, text: "angka") // lowercase
+        await setSearchTextAndWait(vm, text: "angka") // lowercase
         
         XCTAssertEqual(vm.filteredCourses.count, 1)
         XCTAssertEqual(vm.filteredCourses.first?.icon, "数")
     }
 
-    func testFilteredCoursesNoMatch() {
+    func testFilteredCoursesNoMatch() async throws {
         let service = MockCourseServiceForTests(courses: makeSampleCourses())
         let vm = CourseListViewModel(courseService: service)
         vm.loadCourses()
 
-        setSearchTextAndWait(vm, text: "nonexistent")
+        await setSearchTextAndWait(vm, text: "nonexistent")
         
         XCTAssertTrue(vm.filteredCourses.isEmpty)
     }
 
-    func testFilteredCoursesPartialMatch() {
+    func testFilteredCoursesPartialMatch() async throws {
         let service = MockCourseServiceForTests(courses: makeSampleCourses())
         let vm = CourseListViewModel(courseService: service)
         vm.loadCourses()
 
-        setSearchTextAndWait(vm, text: "Bab")
+        await setSearchTextAndWait(vm, text: "Bab")
         
         XCTAssertEqual(vm.filteredCourses.count, 3)
     }
 
-    func testFilteredCoursesEmptySearchShowsAll() {
+    func testFilteredCoursesEmptySearchShowsAll() async throws {
         let service = MockCourseServiceForTests(courses: makeSampleCourses())
         let vm = CourseListViewModel(courseService: service)
         vm.loadCourses()
 
-        setSearchTextAndWait(vm, text: "Perkenalan")
+        await setSearchTextAndWait(vm, text: "Perkenalan")
         XCTAssertEqual(vm.filteredCourses.count, 1)
 
-        setSearchTextAndWait(vm, text: "") // Clear search
+        await setSearchTextAndWait(vm, text: "") // Clear search
         XCTAssertEqual(vm.filteredCourses.count, 3)
     }
 }

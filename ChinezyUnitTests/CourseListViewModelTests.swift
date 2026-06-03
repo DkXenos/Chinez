@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import Combine
 @testable import Chinezy
 
 // MARK: - Mock Service
@@ -25,6 +26,18 @@ private class MockCourseServiceForTests: CourseService {
 // MARK: - Tests
 
 final class CourseListViewModelTests: XCTestCase {
+    
+    private var cancellables: Set<AnyCancellable>!
+
+    override func setUp() {
+        super.setUp()
+        cancellables = []
+    }
+    
+    override func tearDown() {
+        cancellables = nil
+        super.tearDown()
+    }
 
     private func makeSampleCourses() -> [Course] {
         [
@@ -32,6 +45,27 @@ final class CourseListViewModelTests: XCTestCase {
             Course(title: "Bab 2: Asal Negara", description: "Desc 2", icon: "国", subChapters: []),
             Course(title: "Bab 3: Angka", description: "Desc 3", icon: "数", subChapters: [])
         ]
+    }
+    
+    // MARK: - Helper
+
+    // Helper to safely update search text and wait for Combine to process
+    private func setSearchTextAndWait(_ vm: CourseListViewModel, text: String) {
+        let expectation = XCTestExpectation(description: "Wait for Combine to process search text")
+        
+        vm.$searchText
+            .dropFirst()
+            .sink { _ in
+                // Fulfill asynchronously to ensure Combine finishes all in-flight broadcasts 
+                // before the test scope ends and the ViewModel is deallocated (prevents SIGABRT).
+                DispatchQueue.main.async {
+                    expectation.fulfill()
+                }
+            }
+            .store(in: &cancellables)
+            
+        vm.searchText = text
+        wait(for: [expectation], timeout: 2.0)
     }
 
     // MARK: - loadCourses
@@ -70,7 +104,8 @@ final class CourseListViewModelTests: XCTestCase {
         let vm = CourseListViewModel(courseService: service)
         vm.loadCourses()
 
-        vm.searchText = "Perkenalan"
+        setSearchTextAndWait(vm, text: "Perkenalan")
+        
         XCTAssertEqual(vm.filteredCourses.count, 1)
         XCTAssertEqual(vm.filteredCourses.first?.title, "Bab 1: Perkenalan Diri")
     }
@@ -80,7 +115,8 @@ final class CourseListViewModelTests: XCTestCase {
         let vm = CourseListViewModel(courseService: service)
         vm.loadCourses()
 
-        vm.searchText = "angka" // lowercase
+        setSearchTextAndWait(vm, text: "angka") // lowercase
+        
         XCTAssertEqual(vm.filteredCourses.count, 1)
         XCTAssertEqual(vm.filteredCourses.first?.icon, "数")
     }
@@ -90,7 +126,8 @@ final class CourseListViewModelTests: XCTestCase {
         let vm = CourseListViewModel(courseService: service)
         vm.loadCourses()
 
-        vm.searchText = "nonexistent"
+        setSearchTextAndWait(vm, text: "nonexistent")
+        
         XCTAssertTrue(vm.filteredCourses.isEmpty)
     }
 
@@ -99,7 +136,8 @@ final class CourseListViewModelTests: XCTestCase {
         let vm = CourseListViewModel(courseService: service)
         vm.loadCourses()
 
-        vm.searchText = "Bab"
+        setSearchTextAndWait(vm, text: "Bab")
+        
         XCTAssertEqual(vm.filteredCourses.count, 3)
     }
 
@@ -108,10 +146,10 @@ final class CourseListViewModelTests: XCTestCase {
         let vm = CourseListViewModel(courseService: service)
         vm.loadCourses()
 
-        vm.searchText = "Perkenalan"
+        setSearchTextAndWait(vm, text: "Perkenalan")
         XCTAssertEqual(vm.filteredCourses.count, 1)
 
-        vm.searchText = "" // Clear search
+        setSearchTextAndWait(vm, text: "") // Clear search
         XCTAssertEqual(vm.filteredCourses.count, 3)
     }
 }

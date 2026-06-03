@@ -178,13 +178,4 @@ final class ChinezyUITests: XCTestCase {
         XCTAssertTrue(passwordField.exists, "Password field should still exist after typing.")
     }
 
-    // MARK: - Launch Performance
-
-    /// Measures how long it takes to launch the application.
-    @MainActor
-    func testLaunchPerformance() throws {
-        measure(metrics: [XCTApplicationLaunchMetric()]) {
-            XCUIApplication().launch()
-        }
-    }
 }

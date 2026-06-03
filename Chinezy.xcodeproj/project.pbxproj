@@ -55,6 +55,7 @@
 		B0447EBE2FCEEE6A0058B506 /* ChinezyUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChinezyUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0447ECB2FCEEE760058B506 /* ChinezyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChinezyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0B2987D2FCBEA53005AE6E9 /* ChinezWatchApp Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ChinezWatchApp Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0BC39F02FD0B1BA00AB3833 /* Chinezy.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Chinezy.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -135,6 +136,7 @@
 		B00140472FBF0D1500540C69 = {
 			isa = PBXGroup;
 			children = (
+				B0BC39F02FD0B1BA00AB3833 /* Chinezy.xctestplan */,
 				B00140522FBF0D1600540C69 /* Chinezy */,
 				B0B2987E2FCBEA53005AE6E9 /* ChinezWatchApp Watch App */,
 				B0447EBF2FCEEE6A0058B506 /* ChinezyUnitTests */,

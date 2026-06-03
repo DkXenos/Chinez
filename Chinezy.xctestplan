@@ -1,0 +1,41 @@
+{
+  "configurations" : [
+    {
+      "id" : "CAA505CA-0379-48CD-A586-3732B083CB6D",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "addressSanitizer" : {
+      "enabled" : true
+    },
+    "performanceAntipatternCheckerEnabled" : true,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Chinezy.xcodeproj",
+      "identifier" : "B001404F2FBF0D1600540C69",
+      "name" : "Chinezy"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : false,
+      "target" : {
+        "containerPath" : "container:Chinezy.xcodeproj",
+        "identifier" : "B0447EBD2FCEEE6A0058B506",
+        "name" : "ChinezyUnitTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Chinezy.xcodeproj",
+        "identifier" : "B0447ECA2FCEEE760058B506",
+        "name" : "ChinezyUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

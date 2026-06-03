@@ -66,9 +66,10 @@ struct ProfileView: View {
             Section(header: Text("Progress Info")) {
                 if let profile = authManager.currentUserProfile {
                     HStack {
-                        Text("Quizzes Completed")
+                        Text("Passed Quizzes")
                         Spacer()
-                        Text("\(profile.totalQuizzesCompleted)")
+                        let passedCount = profile.quizScores.values.filter { $0 >= 70 }.count
+                        Text("\(passedCount)")
                             .foregroundColor(.secondary)
                             .bold()
                     }

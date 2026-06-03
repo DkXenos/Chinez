@@ -15,6 +15,7 @@ import SwiftUI
 struct QuizSessionView: View {
     @StateObject private var viewModel: QuizViewModel
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var authManager: AuthManager
 
     init(viewModel: QuizViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
@@ -39,6 +40,13 @@ struct QuizSessionView: View {
         .background(DesignSystem.Colors.surfaceWhite)
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle(viewModel.isFinished ? "Hasil" : "Bab \(viewModel.chapter.id)")
+        .onChange(of: viewModel.isFinished) { isFinished in
+            if isFinished {
+                Task {
+                    await authManager.saveQuizScore(quizId: String(viewModel.chapter.id), percentage: viewModel.scorePercentage)
+                }
+            }
+        }
     }
 
     // MARK: - Konten Soal

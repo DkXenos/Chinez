@@ -33,8 +33,7 @@ final class AuthManager: ObservableObject {
         let newProfile = UserProfile(
             id: user.uid,
             email: email,
-            totalQuizzesCompleted: 0,
-            completedChapters: []
+            quizScores: [:]
         )
         
         try await db.collection("users").document(user.uid).setData(newProfile.dictionary)
@@ -56,9 +55,35 @@ final class AuthManager: ObservableObject {
             let document = try await db.collection("users").document(uid).getDocument()
             if document.exists, let data = document.data() {
                 self.currentUserProfile = UserProfile(dictionary: data)
+            } else {
+                // Fix infinite loading: if the user document is missing, create a default one
+                let email = userSession?.email ?? "unknown@example.com"
+                let newProfile = UserProfile(id: uid, email: email, quizScores: [:])
+                try await db.collection("users").document(uid).setData(newProfile.dictionary)
+                self.currentUserProfile = newProfile
             }
         } catch {
             print("Failed to fetch user profile: \(error.localizedDescription)")
+        }
+    }
+    
+    func saveQuizScore(quizId: String, percentage: Int) async {
+        guard let uid = userSession?.uid, var currentProfile = currentUserProfile else { return }
+        
+        // Only update if the new score is higher than the currently saved score
+        let currentScore = currentProfile.quizScores[quizId] ?? -1
+        guard percentage > currentScore else { return }
+        
+        do {
+            try await db.collection("users").document(uid).updateData([
+                "quizScores.\(quizId)": percentage
+            ])
+            
+            // Update local state immediately
+            currentProfile.quizScores[quizId] = percentage
+            self.currentUserProfile = currentProfile
+        } catch {
+            print("Failed to save quiz score: \(error.localizedDescription)")
         }
     }
 

@@ -5,36 +5,30 @@ import Foundation
 struct UserProfile: Codable, Identifiable {
     let id: String
     let email: String
-    var totalQuizzesCompleted: Int
-    var completedChapters: [String]
+    var quizScores: [String: Int]
     
     var dictionary: [String: Any] {
         return [
             "id": id,
             "email": email,
-            "totalQuizzesCompleted": totalQuizzesCompleted,
-            "completedChapters": completedChapters
+            "quizScores": quizScores
         ]
     }
     
     init?(dictionary: [String: Any]) {
         guard let id = dictionary["id"] as? String,
-              let email = dictionary["email"] as? String,
-              let totalQuizzesCompleted = dictionary["totalQuizzesCompleted"] as? Int,
-              let completedChapters = dictionary["completedChapters"] as? [String] else {
+              let email = dictionary["email"] as? String else {
             return nil
         }
         
         self.id = id
         self.email = email
-        self.totalQuizzesCompleted = totalQuizzesCompleted
-        self.completedChapters = completedChapters
+        self.quizScores = dictionary["quizScores"] as? [String: Int] ?? [:]
     }
     
-    init(id: String, email: String, totalQuizzesCompleted: Int, completedChapters: [String]) {
+    init(id: String, email: String, quizScores: [String: Int]) {
         self.id = id
         self.email = email
-        self.totalQuizzesCompleted = totalQuizzesCompleted
-        self.completedChapters = completedChapters
+        self.quizScores = quizScores
     }
 }

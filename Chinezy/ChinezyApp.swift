@@ -8,7 +8,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil
     ) -> Bool {
-        FirebaseApp.configure()
         return true
     }
 }
@@ -16,12 +15,19 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct ChinezyApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    @StateObject private var authManager = AuthManager()
+    @StateObject private var authManager: AuthManager
 
     init() {
+        // 1. Configure Firebase FIRST
+        FirebaseApp.configure()
+        
+        // 2. Handle UI Testing state clearing
         if CommandLine.arguments.contains("-UITesting") {
             try? Auth.auth().signOut()
         }
+        
+        // 3. Initialize the StateObject AFTER Firebase is configured
+        _authManager = StateObject(wrappedValue: AuthManager())
     }
 
     var body: some Scene {

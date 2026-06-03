@@ -17,12 +17,6 @@ import WebKit
 /// Sends `strokeCorrect`, `strokeMistake`, `quizComplete` messages back
 /// to Swift via `webkit.messageHandlers`.
 /// Used by `WritingQuizView`.
-///
-/// ## Data Loading (per HanziWriterContext.md)
-/// Swift injects local stroke data from `HSK1_StrokeData.json` into the
-/// WebView BEFORE initializing the writer. The JS `charDataLoader` checks
-/// `injectedLocalData` first, then falls back to CDN if full SVG paths
-/// are not available locally.
 struct HanziWebView: UIViewRepresentable {
 
     // MARK: – Public Interface
@@ -43,7 +37,6 @@ struct HanziWebView: UIViewRepresentable {
     /// `animateStroke(at:)` from the native drawing layer (animation mode).
     var onCoordinatorReady: ((Coordinator) -> Void)?
 
-
     // MARK: Quiz Mode Callbacks
 
     /// Fires when a correct stroke is drawn in quiz mode.
@@ -56,9 +49,6 @@ struct HanziWebView: UIViewRepresentable {
     /// Fires when all strokes are completed in quiz mode.
     var onQuizComplete: (() -> Void)?
 
-    /// Fired when Hanzi Writer finishes fetching and parsing the stroke data.
-    var onLoaded: (() -> Void)? = nil
-
     // MARK: – UIViewRepresentable
 
     func makeCoordinator() -> Coordinator {
@@ -67,8 +57,7 @@ struct HanziWebView: UIViewRepresentable {
             onAllStrokesCompleted: onAllStrokesCompleted,
             onCorrectStroke: onCorrectStroke,
             onMistake: onMistake,
-            onQuizComplete: onQuizComplete,
-            onLoaded: onLoaded
+            onQuizComplete: onQuizComplete
         )
     }
 
@@ -83,7 +72,6 @@ struct HanziWebView: UIViewRepresentable {
         contentController.add(context.coordinator, name: "strokeCorrect")
         contentController.add(context.coordinator, name: "strokeMistake")
         contentController.add(context.coordinator, name: "quizComplete")
-        contentController.add(context.coordinator, name: "hanziLoaded")
 
         // ── Create the web view ─────────────────────────────────────
         let webView = WKWebView(frame: .zero, configuration: config)
@@ -151,22 +139,19 @@ struct HanziWebView: UIViewRepresentable {
         private let onCorrectStroke: ((Int) -> Void)?
         private let onMistake: (() -> Void)?
         private let onQuizComplete: (() -> Void)?
-        private let onLoaded: (() -> Void)?
 
         init(
             useQuizMode: Bool,
             onAllStrokesCompleted: (() -> Void)?,
             onCorrectStroke: ((Int) -> Void)?,
             onMistake: (() -> Void)?,
-            onQuizComplete: (() -> Void)?,
-            onLoaded: (() -> Void)?
+            onQuizComplete: (() -> Void)?
         ) {
             self.useQuizMode = useQuizMode
             self.onAllStrokesCompleted = onAllStrokesCompleted
             self.onCorrectStroke = onCorrectStroke
             self.onMistake = onMistake
             self.onQuizComplete = onQuizComplete
-            self.onLoaded = onLoaded
             super.init()
         }
 
@@ -203,11 +188,6 @@ struct HanziWebView: UIViewRepresentable {
                     self?.onQuizComplete?()
                 }
 
-            case "hanziLoaded":
-                DispatchQueue.main.async { [weak self] in
-                    self?.onLoaded?()
-                }
-
             default:
                 break
             }
@@ -215,30 +195,21 @@ struct HanziWebView: UIViewRepresentable {
 
         // MARK: – JS Bridge Methods
 
-        /// Loads a character into Hanzi Writer.
-        ///
-        /// Per HanziWriterContext.md §2-3:
-        /// 1. Reads local stroke data from `HanziDataManager`
-        /// 2. Injects it as `injectedLocalData` via evaluateJavaScript
-        /// 3. Calls the appropriate JS load function
+        /// Loads a character into Hanzi Writer using fully local stroke data.
         func loadCharacter(_ character: String) {
             guard !character.isEmpty else { return }
 
-            // ── Step 1: Inject local data from HSK1_StrokeData.json ─────
-            injectLocalStrokeData(for: character)
+            guard let base64String = fetchLocalStrokeData(for: character) else { return }
 
-            // ── Step 2: Call the appropriate JS function ─────────────────
-            let escaped = character
+            let escapedChar = character
                 .replacingOccurrences(of: "\\", with: "\\\\")
                 .replacingOccurrences(of: "'", with: "\\'")
 
             if useQuizMode {
-                // Quiz mode: creates writer + calls writer.quiz()
-                let js = "loadCharacterForQuiz('\(escaped)');"
+                let js = "loadBase64CharacterForQuiz('\(escapedChar)', '\(base64String)');"
                 evaluateWithRetry(js)
             } else {
-                // Animation mode: creates writer with strokes hidden
-                let js = "loadCharacter('\(escaped)');"
+                let js = "loadBase64Character('\(escapedChar)', '\(base64String)');"
                 evaluateWithRetry(js)
             }
         }
@@ -266,33 +237,23 @@ struct HanziWebView: UIViewRepresentable {
 
         // MARK: – Data Injection
 
-        /// Reads the character's stroke data from the local bundle
-        /// (via HanziDataManager) and injects it into the WebView's
-        /// `injectedLocalData` global variable.
-        private func injectLocalStrokeData(for character: String) {
-            guard let hanziData = HanziDataManager.shared.dictionary[character] else {
-                print("[HanziWebView] No local data found for '\(character)' in HSK1_StrokeData.json")
-                // injectedLocalData stays null → charDataLoader will use CDN fallback
-                webView?.evaluateJavaScript("injectedLocalData = null;", completionHandler: nil)
-                return
+        private func fetchLocalStrokeData(for character: String) -> String? {
+            var url = Bundle.main.url(forResource: character, withExtension: "json", subdirectory: "hanzi-writer-data")
+            if url == nil {
+                url = Bundle.main.url(forResource: character, withExtension: "json")
             }
-
-            // Serialize medians to JSON string.
-            // Note: Our HSK1_StrokeData.json only has medians (no SVG stroke paths).
-            // The JS charDataLoader will detect this and fall back to CDN for full data.
-            // When full hanzi-writer-data is bundled, this will include 'strokes' too.
+            
+            guard let validURL = url else {
+                print("❌ SWIFT ERROR: Cannot find file for \(character).json in bundle.")
+                return nil
+            }
+            
             do {
-                let mediansData = try JSONEncoder().encode(hanziData.medians)
-                guard let mediansJSON = String(data: mediansData, encoding: .utf8) else { return }
-
-                let js = "injectedLocalData = {\"medians\": \(mediansJSON)};"
-                webView?.evaluateJavaScript(js) { _, error in
-                    if let error = error {
-                        print("[HanziWebView] Failed to inject local data: \(error.localizedDescription)")
-                    }
-                }
+                let data = try Data(contentsOf: validURL)
+                return data.base64EncodedString()
             } catch {
-                print("[HanziWebView] Failed to encode medians: \(error.localizedDescription)")
+                print("❌ SWIFT ERROR reading local data for \(character): \(error.localizedDescription)")
+                return nil
             }
         }
 

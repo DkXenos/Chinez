@@ -21,7 +21,6 @@ struct WritingQuizView: View {
 
     let level: WritingLevel
     @StateObject private var viewModel: WritingQuizViewModel
-    @State private var isLoaded: Bool = false
     @Environment(\.dismiss) private var dismiss
 
     init(level: WritingLevel) {
@@ -76,20 +75,8 @@ struct WritingQuizView: View {
                     },
                     onQuizComplete: {
                         viewModel.handleQuizCompleted()
-                    },
-                    onLoaded: {
-                        withAnimation(.easeInOut) {
-                            isLoaded = true
-                        }
                     }
                 )
-
-                if !isLoaded {
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle())
-                        .scaleEffect(1.5)
-                        .transition(.opacity)
-                }
 
                 // ── Success overlay ─────────────────────────────────────
                 if viewModel.showSuccessBanner {
@@ -127,9 +114,6 @@ struct WritingQuizView: View {
                 dismiss()
             }
             viewModel.onAppear()
-        }
-        .onChange(of: viewModel.currentCharacter) { _ in
-            isLoaded = false
         }
     }
 }

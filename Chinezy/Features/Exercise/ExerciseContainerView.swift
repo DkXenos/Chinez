@@ -15,9 +15,6 @@ struct ExerciseContainerView: View {
     /// Reference to the HanziWebView's coordinator so we can call
     /// `animateStroke(at:)` from the native drawing layer.
     @State private var hanziCoordinator: HanziWebView.Coordinator?
-    
-    /// Tracks if the character is fully loaded in the WebView.
-    @State private var isLoaded: Bool = false
 
     var body: some View {
         NavigationStack {
@@ -71,13 +68,9 @@ struct ExerciseContainerView: View {
                                 onAllStrokesCompleted: nil,
                                 onCoordinatorReady: { coordinator in
                                     hanziCoordinator = coordinator
-                                },
-                                onLoaded: {
-                                    withAnimation(.easeInOut) {
-                                        isLoaded = true
-                                    }
                                 }
                             )
+                            .id(viewModel.currentCharacter)
 
                             // Layer 2: PencilKit — user draws strokes here
                             StrokeCanvasView(
@@ -94,13 +87,6 @@ struct ExerciseContainerView: View {
                                 }
                             )
                             .id(viewModel.currentCharacter)
-
-                            if !isLoaded {
-                                ProgressView()
-                                    .progressViewStyle(CircularProgressViewStyle())
-                                    .scaleEffect(1.5)
-                                    .transition(.opacity)
-                            }
 
                             // Success overlay between characters
                             if showStrokeSuccess {
@@ -151,7 +137,6 @@ struct ExerciseContainerView: View {
                 quizCharacter = viewModel.currentCharacter
             }
             .onChange(of: viewModel.currentIndex) { _ in
-                isLoaded = false
                 quizCharacter = viewModel.currentCharacter
             }
         }

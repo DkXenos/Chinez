@@ -73,101 +73,42 @@
         var writer = null;
         var totalStrokes = 0;
 
-        /**
-         * injectedLocalData — populated by Swift via evaluateJavaScript
-         * BEFORE the writer is initialized.
-         * Should contain the full HanziWriter data object:
-         * { strokes: [...], medians: [...], radStrokes: [...] }
-         *
-         * If only medians are available (our current HSK1_StrokeData.json),
-         * the charDataLoader will fall back to CDN for the full data.
-         */
-        var injectedLocalData = null;
-
-        /**
-         * charDataLoader — resolves character data using the OFFLINE BRIDGE.
-         *
-         * Priority:
-         * 1. Use injectedLocalData from Swift (if it has full stroke SVG paths)
-         * 2. Fallback to CDN (temporary, until full data is bundled)
-         *
-         * Per HanziWriterContext.md §2-3: Swift MUST inject data before
-         * writer initialization. The custom charDataLoader checks local first.
-         */
-        function charDataLoader(character, onLoad, onError) {
-            // ── 1. Check Swift-injected local data ──────────────────────
-            if (injectedLocalData && injectedLocalData.strokes && injectedLocalData.strokes.length > 0) {
-                console.log('[HanziQuiz] Using injected local data for: ' + character);
-                totalStrokes = injectedLocalData.strokes.length;
-                onLoad(injectedLocalData);
-                // Clear after use so next character gets fresh data
-                injectedLocalData = null;
-                return;
-            }
-
-            // ── 2. Fallback: CDN fetch (temporary until full data bundled) ─
-            console.log('[HanziQuiz] Local data missing strokes for: ' + character + ', falling back to CDN');
-            fetch('https://cdn.jsdelivr.net/npm/hanzi-writer-data@latest/' + character + '.json')
-                .then(function (r) { return r.json(); })
-                .then(function (data) {
-                    totalStrokes = data.strokes.length;
-                    onLoad(data);
-                })
-                .catch(function (err) {
-                    console.error('[HanziQuiz] Failed to load character data for: ' + character, err);
-                    if (onError) onError(err);
-                });
-        }
-
         // ================================================================
         // MODE 1: ANIMATION-ONLY (used by ExerciseContainerView)
-        // Swift calls loadCharacter() + animateStroke() individually.
-        // User interaction is disabled on the WKWebView from Swift.
         // ================================================================
 
-        /**
-         * loadCharacter(character)
-         * Called from Swift. Creates the HanziWriter instance with the
-         * character's outline visible but all strokes initially hidden.
-         * The native PencilKit layer calls animateStroke() one-by-one.
-         */
-        function loadCharacter(character) {
-            var container = document.getElementById('writer-container');
-            container.innerHTML = '';
+        function loadBase64Character(character, base64String) {
+            try {
+                var container = document.getElementById('writer-container');
+                container.innerHTML = '';
 
-            var size = Math.min(window.innerWidth, window.innerHeight);
+                var size = Math.min(window.innerWidth, window.innerHeight);
+                const decodedString = decodeURIComponent(escape(window.atob(base64String)));
+                const charData = JSON.parse(decodedString);
 
-            writer = HanziWriter.create('writer-container', character, {
-                width: size,
-                height: size,
-                padding: 0,
-                showCharacter: false,
-                showOutline: true,
-                strokeAnimationSpeed: 5,
-                delayBetweenStrokes: 0,
-                charDataLoader: charDataLoader,
-                strokeColor: '#333',
-                outlineColor: '#CCCCCC',
-                drawingWidth: 12,
-                onLoadCharDataSuccess: function(data) {
-                    if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.hanziLoaded) {
-                        window.webkit.messageHandlers.hanziLoaded.postMessage(true);
-                    }
-                }
-            });
+                writer = HanziWriter.create('writer-container', character, {
+                    width: size,
+                    height: size,
+                    padding: 0,
+                    showCharacter: false,
+                    showOutline: true,
+                    strokeAnimationSpeed: 5,
+                    delayBetweenStrokes: 0,
+                    charDataLoader: function(char, onLoad) { onLoad(charData); },
+                    strokeColor: '#333',
+                    outlineColor: '#CCCCCC',
+                    drawingWidth: 12
+                });
+                
+                totalStrokes = charData.strokes.length;
+                console.log("✅ JS SUCCESS: Character " + character + " loaded successfully for animation.");
+            } catch (e) {
+                console.error("❌ JS ERROR loading animation for " + character + ":", e);
+            }
         }
 
-        /**
-         * animateStroke(strokeIndex)
-         * Called from Swift after the native StrokeValidator confirms a
-         * correct stroke. Animates the nth stroke, "inking in" the path.
-         * After the last stroke, sends `allStrokesCompleted` to Swift.
-         */
         function animateStroke(strokeIndex) {
-            if (!writer) {
-                console.warn('[HanziQuiz] animateStroke called but writer is null');
-                return;
-            }
+            if (!writer) return;
 
             writer.animateStroke(strokeIndex, {
                 onComplete: function () {
@@ -184,58 +125,44 @@
 
         // ================================================================
         // MODE 2: INTERACTIVE QUIZ (used by WritingQuizView)
-        // HanziWriter handles all touch interaction via writer.quiz().
-        // Sends strokeCorrect / strokeMistake / quizComplete to Swift.
         // ================================================================
 
-        /**
-         * loadCharacterForQuiz(character)
-         * Called from Swift. Creates writer + immediately starts quiz mode.
-         * Per HanziWriterContext.md §4: writer.quiz() MUST be called
-         * immediately after initialization.
-         */
-        function loadCharacterForQuiz(character) {
-            var container = document.getElementById('writer-container');
-            container.innerHTML = '';
+        function loadBase64CharacterForQuiz(character, base64String) {
+            try {
+                var container = document.getElementById('writer-container');
+                container.innerHTML = '';
 
-            var size = Math.min(window.innerWidth, window.innerHeight);
+                var size = Math.min(window.innerWidth, window.innerHeight);
+                const decodedString = decodeURIComponent(escape(window.atob(base64String)));
+                const charData = JSON.parse(decodedString);
 
-            writer = HanziWriter.create('writer-container', character, {
-                width: size,
-                height: size,
-                padding: 0,
-                showCharacter: false,
-                showOutline: true,
-                strokeAnimationSpeed: 3,
-                charDataLoader: charDataLoader,
-                strokeColor: '#333',
-                outlineColor: '#CCCCCC',
-                drawingColor: '#B23A2F',
-                drawingWidth: 16,
-                showHintAfterMisses: 3,
-                highlightOnComplete: true,
-                highlightColor: '#1E8C5F',
-                onLoadCharDataSuccess: function(data) {
-                    if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.hanziLoaded) {
-                        window.webkit.messageHandlers.hanziLoaded.postMessage(true);
-                    }
-                }
-            });
-
-            // Start quiz mode immediately (§4)
-            startQuiz();
+                writer = HanziWriter.create('writer-container', character, {
+                    width: size,
+                    height: size,
+                    padding: 0,
+                    showCharacter: false,
+                    showOutline: true,
+                    strokeAnimationSpeed: 3,
+                    charDataLoader: function(char, onLoad) { onLoad(charData); },
+                    strokeColor: '#333',
+                    outlineColor: '#CCCCCC',
+                    drawingColor: '#B23A2F',
+                    drawingWidth: 16,
+                    showHintAfterMisses: 3,
+                    highlightOnComplete: true,
+                    highlightColor: '#1E8C5F'
+                });
+                
+                totalStrokes = charData.strokes.length;
+                startQuiz();
+                console.log("✅ JS SUCCESS: Character " + character + " loaded successfully for quiz.");
+            } catch (e) {
+                console.error("❌ JS ERROR loading quiz for " + character + ":", e);
+            }
         }
 
-        /**
-         * startQuiz()
-         * Activates HanziWriter's interactive quiz mode.
-         * Sends messages back to Swift via webkit.messageHandlers.
-         */
         function startQuiz() {
-            if (!writer) {
-                console.warn('[HanziQuiz] startQuiz called but writer is null');
-                return;
-            }
+            if (!writer) return;
 
             writer.quiz({
                 onCorrectStroke: function (strokeData) {
@@ -275,27 +202,16 @@
         // SHARED UTILITIES
         // ================================================================
 
-        /**
-         * animateFullCharacter()
-         * Plays the full stroke-order animation (demo/review).
-         */
         function animateFullCharacter() {
             if (!writer) return;
             writer.animateCharacter();
         }
 
-        /**
-         * resetCharacter()
-         * Hides all strokes to restart.
-         */
         function resetCharacter() {
             if (!writer) return;
             writer.hideCharacter();
         }
 
-        // ================================================================
-        // DYNAMIC RESIZING
-        // ================================================================
         window.addEventListener('resize', function() {
             if (writer) {
                 var newSize = Math.min(window.innerWidth, window.innerHeight);

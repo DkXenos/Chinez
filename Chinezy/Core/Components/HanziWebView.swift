@@ -1,55 +1,16 @@
 import SwiftUI
 import WebKit
 
-// MARK: - HanziWebView
-/// A `UIViewRepresentable` that wraps a `WKWebView` to render Hanzi Writer.
-///
-/// Supports **two modes** via `useQuizMode`:
-///
-/// ### Mode 1: Animation-Only (default, `useQuizMode = false`)
-/// User interaction is disabled. The native PencilKit/touch layer handles
-/// drawing. Swift calls `animateStroke(index)` when the `StrokeValidator`
-/// confirms a correct stroke, and Hanzi Writer inks it in.
-/// Used by `ExerciseContainerView`.
-///
-/// ### Mode 2: Interactive Quiz (`useQuizMode = true`)
-/// HanziWriter's built-in `writer.quiz()` mode handles all touch input.
-/// Sends `strokeCorrect`, `strokeMistake`, `quizComplete` messages back
-/// to Swift via `webkit.messageHandlers`.
-/// Used by `WritingQuizView`.
 struct HanziWebView: UIViewRepresentable {
 
-    // MARK: – Public Interface
-
-    /// The character to display. Changing this value loads the new
-    /// character outline and resets all animated strokes.
     @Binding var character: String
-
-    /// When `true`, uses HanziWriter's `writer.quiz()` mode for interactive
-    /// stroke input. When `false`, operates in animation-only mode.
-    /// Default is `false` for backward compatibility with ExerciseContainerView.
     var useQuizMode: Bool = false
-
-    /// Closure fired after the final stroke animation completes (animation mode).
     var onAllStrokesCompleted: (() -> Void)?
-
-    /// Delivers the Coordinator reference so the parent can call
-    /// `animateStroke(at:)` from the native drawing layer (animation mode).
     var onCoordinatorReady: ((Coordinator) -> Void)?
 
-    // MARK: Quiz Mode Callbacks
-
-    /// Fires when a correct stroke is drawn in quiz mode.
-    /// Parameter: stroke index (0-based).
     var onCorrectStroke: ((Int) -> Void)?
-
-    /// Fires when an incorrect stroke is drawn in quiz mode.
     var onMistake: (() -> Void)?
-
-    /// Fires when all strokes are completed in quiz mode.
     var onQuizComplete: (() -> Void)?
-
-    // MARK: – UIViewRepresentable
 
     func makeCoordinator() -> Coordinator {
         Coordinator(

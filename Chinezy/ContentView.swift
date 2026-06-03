@@ -26,7 +26,6 @@ struct ContentView: View {
     }
 }
 
-// MARK: - iPad Sidebar Layout
 struct IPadSidebarView: View {
     @EnvironmentObject var router: NavigationRouter
     
@@ -107,14 +106,11 @@ struct IPadSidebarView: View {
     }
 }
 
-// MARK: - iPhone Tab Layout
 struct IPhoneTabView: View {
     @EnvironmentObject var router: NavigationRouter
     
     var body: some View {
         TabView(selection: $router.selectedTab) {
-            
-            // ── Materials ──────────────────────────────
             NavigationStack(path: $router.navigationPath) {
                 CourseListView()
                     .navigationDestination(for: AppRoute.self) { route in
@@ -139,7 +135,6 @@ struct IPhoneTabView: View {
             }
             .tag(NavigationRouter.Tab.materials)
             
-            // ── Quiz ────────────────────────────────────
             NavigationStack {
                 ChapterListView()
             }
@@ -148,7 +143,6 @@ struct IPhoneTabView: View {
             }
             .tag(NavigationRouter.Tab.quiz)
             
-            // ── Tones ───────────────────────────────────
             NavigationStack {
                 ToneListView()
             }
@@ -157,7 +151,6 @@ struct IPhoneTabView: View {
             }
             .tag(NavigationRouter.Tab.tonePractice)
             
-            // ── Profile ─────────────────────────────────
             NavigationStack {
                 ProfileView()
             }

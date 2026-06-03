@@ -153,6 +153,12 @@ final class ChinezyUITests: XCTestCase {
         XCTAssertTrue(emailField.waitForExistence(timeout: 5))
 
         emailField.tap()
+        
+        // Wait for keyboard focus to avoid SwiftUI animation lag causing 'Neither element nor any descendant has keyboard focus'
+        let hasFocus = NSPredicate(format: "hasKeyboardFocus == true")
+        let focusExpectation = expectation(for: hasFocus, evaluatedWith: emailField, handler: nil)
+        wait(for: [focusExpectation], timeout: 3.0)
+        
         emailField.typeText("test@example.com")
 
         // Verify the text was entered (value should contain what we typed)
@@ -170,6 +176,12 @@ final class ChinezyUITests: XCTestCase {
         XCTAssertTrue(passwordField.waitForExistence(timeout: 5))
 
         passwordField.tap()
+        
+        // Wait for keyboard focus
+        let hasFocus = NSPredicate(format: "hasKeyboardFocus == true")
+        let focusExpectation = expectation(for: hasFocus, evaluatedWith: passwordField, handler: nil)
+        wait(for: [focusExpectation], timeout: 3.0)
+        
         passwordField.typeText("password123")
 
         // SecureField won't expose the actual value, but we verify no crash

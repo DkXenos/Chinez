@@ -46,17 +46,6 @@
                ReferencedContainer = "container:Chinezy.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B0447ECA2FCEEE760058B506"
-               BuildableName = "ChinezyUITests.xctest"
-               BlueprintName = "ChinezyUITests"
-               ReferencedContainer = "container:Chinezy.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

@@ -20,13 +20,6 @@
 			remoteGlobalIDString = B001404F2FBF0D1600540C69;
 			remoteInfo = Chinezy;
 		};
-		B0447ED12FCEEE760058B506 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B00140482FBF0D1600540C69 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B001404F2FBF0D1600540C69;
-			remoteInfo = Chinezy;
-		};
 		B0B298852FCBEA54005AE6E9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B00140482FBF0D1600540C69 /* Project object */;
@@ -53,7 +46,6 @@
 /* Begin PBXFileReference section */
 		B00140502FBF0D1600540C69 /* Chinezy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chinezy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0447EBE2FCEEE6A0058B506 /* ChinezyUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChinezyUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B0447ECB2FCEEE760058B506 /* ChinezyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChinezyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0B2987D2FCBEA53005AE6E9 /* ChinezWatchApp Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ChinezWatchApp Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0BC39F02FD0B1BA00AB3833 /* Chinezy.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Chinezy.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -157,92 +149,6 @@
 			);
 			target = B0447EBD2FCEEE6A0058B506 /* ChinezyUnitTests */;
 		};
-		B0E17E672FD0D8CE0027371E /* Exceptions for "Chinezy" folder in "ChinezyUITests" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				"Core/Resources/hanzi-writer-data/一.json",
-				"Core/Resources/hanzi-writer-data/七.json",
-				"Core/Resources/hanzi-writer-data/三.json",
-				"Core/Resources/hanzi-writer-data/上.json",
-				"Core/Resources/hanzi-writer-data/下.json",
-				"Core/Resources/hanzi-writer-data/不.json",
-				"Core/Resources/hanzi-writer-data/中.json",
-				"Core/Resources/hanzi-writer-data/九.json",
-				"Core/Resources/hanzi-writer-data/二.json",
-				"Core/Resources/hanzi-writer-data/云.json",
-				"Core/Resources/hanzi-writer-data/五.json",
-				"Core/Resources/hanzi-writer-data/人.json",
-				"Core/Resources/hanzi-writer-data/今.json",
-				"Core/Resources/hanzi-writer-data/他.json",
-				"Core/Resources/hanzi-writer-data/们.json",
-				"Core/Resources/hanzi-writer-data/你.json",
-				"Core/Resources/hanzi-writer-data/做.json",
-				"Core/Resources/hanzi-writer-data/八.json",
-				"Core/Resources/hanzi-writer-data/六.json",
-				"Core/Resources/hanzi-writer-data/写.json",
-				"Core/Resources/hanzi-writer-data/十.json",
-				"Core/Resources/hanzi-writer-data/去.json",
-				"Core/Resources/hanzi-writer-data/吃.json",
-				"Core/Resources/hanzi-writer-data/吗.json",
-				"Core/Resources/hanzi-writer-data/听.json",
-				"Core/Resources/hanzi-writer-data/哥.json",
-				"Core/Resources/hanzi-writer-data/喝.json",
-				"Core/Resources/hanzi-writer-data/四.json",
-				"Core/Resources/hanzi-writer-data/大.json",
-				"Core/Resources/hanzi-writer-data/天.json",
-				"Core/Resources/hanzi-writer-data/她.json",
-				"Core/Resources/hanzi-writer-data/好.json",
-				"Core/Resources/hanzi-writer-data/妈.json",
-				"Core/Resources/hanzi-writer-data/妹.json",
-				"Core/Resources/hanzi-writer-data/姐.json",
-				"Core/Resources/hanzi-writer-data/学.json",
-				"Core/Resources/hanzi-writer-data/家.json",
-				"Core/Resources/hanzi-writer-data/小.json",
-				"Core/Resources/hanzi-writer-data/山.json",
-				"Core/Resources/hanzi-writer-data/年.json",
-				"Core/Resources/hanzi-writer-data/弟.json",
-				"Core/Resources/hanzi-writer-data/我.json",
-				"Core/Resources/hanzi-writer-data/日.json",
-				"Core/Resources/hanzi-writer-data/明.json",
-				"Core/Resources/hanzi-writer-data/星.json",
-				"Core/Resources/hanzi-writer-data/昨.json",
-				"Core/Resources/hanzi-writer-data/是.json",
-				"Core/Resources/hanzi-writer-data/月.json",
-				"Core/Resources/hanzi-writer-data/果.json",
-				"Core/Resources/hanzi-writer-data/树.json",
-				"Core/Resources/hanzi-writer-data/水.json",
-				"Core/Resources/hanzi-writer-data/汤.json",
-				"Core/Resources/hanzi-writer-data/火.json",
-				"Core/Resources/hanzi-writer-data/爸.json",
-				"Core/Resources/hanzi-writer-data/白.json",
-				"Core/Resources/hanzi-writer-data/的.json",
-				"Core/Resources/hanzi-writer-data/看.json",
-				"Core/Resources/hanzi-writer-data/米.json",
-				"Core/Resources/hanzi-writer-data/红.json",
-				"Core/Resources/hanzi-writer-data/紫.json",
-				"Core/Resources/hanzi-writer-data/绿.json",
-				"Core/Resources/hanzi-writer-data/肉.json",
-				"Core/Resources/hanzi-writer-data/色.json",
-				"Core/Resources/hanzi-writer-data/花.json",
-				"Core/Resources/hanzi-writer-data/茶.json",
-				"Core/Resources/hanzi-writer-data/菜.json",
-				"Core/Resources/hanzi-writer-data/蓝.json",
-				"Core/Resources/hanzi-writer-data/蛋.json",
-				"Core/Resources/hanzi-writer-data/说.json",
-				"Core/Resources/hanzi-writer-data/读.json",
-				"Core/Resources/hanzi-writer-data/金.json",
-				"Core/Resources/hanzi-writer-data/银.json",
-				"Core/Resources/hanzi-writer-data/雨.json",
-				"Core/Resources/hanzi-writer-data/雪.json",
-				"Core/Resources/hanzi-writer-data/面.json",
-				"Core/Resources/hanzi-writer-data/风.json",
-				"Core/Resources/hanzi-writer-data/饭.json",
-				"Core/Resources/hanzi-writer-data/鱼.json",
-				"Core/Resources/hanzi-writer-data/黄.json",
-				"Core/Resources/hanzi-writer-data/黑.json",
-			);
-			target = B0447ECA2FCEEE760058B506 /* ChinezyUITests */;
-		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -251,7 +157,6 @@
 			exceptions = (
 				B0447EB92FCEEBBB0058B506 /* Exceptions for "Chinezy" folder in "Chinezy" target */,
 				B0E17E662FD0D8CE0027371E /* Exceptions for "Chinezy" folder in "ChinezyUnitTests" target */,
-				B0E17E672FD0D8CE0027371E /* Exceptions for "Chinezy" folder in "ChinezyUITests" target */,
 			);
 			path = Chinezy;
 			sourceTree = "<group>";
@@ -259,11 +164,6 @@
 		B0447EBF2FCEEE6A0058B506 /* ChinezyUnitTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = ChinezyUnitTests;
-			sourceTree = "<group>";
-		};
-		B0447ECC2FCEEE760058B506 /* ChinezyUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = ChinezyUITests;
 			sourceTree = "<group>";
 		};
 		B0B2987E2FCBEA53005AE6E9 /* ChinezWatchApp Watch App */ = {
@@ -290,13 +190,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B0447EC82FCEEE760058B506 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		B0B2987A2FCBEA53005AE6E9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -314,7 +207,6 @@
 				B00140522FBF0D1600540C69 /* Chinezy */,
 				B0B2987E2FCBEA53005AE6E9 /* ChinezWatchApp Watch App */,
 				B0447EBF2FCEEE6A0058B506 /* ChinezyUnitTests */,
-				B0447ECC2FCEEE760058B506 /* ChinezyUITests */,
 				B04D15AE2FCCC5A7000B112A /* Frameworks */,
 				B00140512FBF0D1600540C69 /* Products */,
 			);
@@ -326,7 +218,6 @@
 				B00140502FBF0D1600540C69 /* Chinezy.app */,
 				B0B2987D2FCBEA53005AE6E9 /* ChinezWatchApp Watch App.app */,
 				B0447EBE2FCEEE6A0058B506 /* ChinezyUnitTests.xctest */,
-				B0447ECB2FCEEE760058B506 /* ChinezyUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -390,29 +281,6 @@
 			productReference = B0447EBE2FCEEE6A0058B506 /* ChinezyUnitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		B0447ECA2FCEEE760058B506 /* ChinezyUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B0447ED32FCEEE760058B506 /* Build configuration list for PBXNativeTarget "ChinezyUITests" */;
-			buildPhases = (
-				B0447EC72FCEEE760058B506 /* Sources */,
-				B0447EC82FCEEE760058B506 /* Frameworks */,
-				B0447EC92FCEEE760058B506 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B0447ED22FCEEE760058B506 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				B0447ECC2FCEEE760058B506 /* ChinezyUITests */,
-			);
-			name = ChinezyUITests;
-			packageProductDependencies = (
-			);
-			productName = ChinezyUITests;
-			productReference = B0447ECB2FCEEE760058B506 /* ChinezyUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 		B0B2987C2FCBEA53005AE6E9 /* ChinezWatchApp Watch App */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B0B2988B2FCBEA54005AE6E9 /* Build configuration list for PBXNativeTarget "ChinezWatchApp Watch App" */;
@@ -452,10 +320,6 @@
 						CreatedOnToolsVersion = 26.2;
 						TestTargetID = B001404F2FBF0D1600540C69;
 					};
-					B0447ECA2FCEEE760058B506 = {
-						CreatedOnToolsVersion = 26.2;
-						TestTargetID = B001404F2FBF0D1600540C69;
-					};
 					B0B2987C2FCBEA53005AE6E9 = {
 						CreatedOnToolsVersion = 26.2;
 					};
@@ -481,7 +345,6 @@
 				B001404F2FBF0D1600540C69 /* Chinezy */,
 				B0B2987C2FCBEA53005AE6E9 /* ChinezWatchApp Watch App */,
 				B0447EBD2FCEEE6A0058B506 /* ChinezyUnitTests */,
-				B0447ECA2FCEEE760058B506 /* ChinezyUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -495,13 +358,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		B0447EBC2FCEEE6A0058B506 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B0447EC92FCEEE760058B506 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -532,13 +388,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B0447EC72FCEEE760058B506 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		B0B298792FCBEA53005AE6E9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -553,11 +402,6 @@
 			isa = PBXTargetDependency;
 			target = B001404F2FBF0D1600540C69 /* Chinezy */;
 			targetProxy = B0447EC22FCEEE6A0058B506 /* PBXContainerItemProxy */;
-		};
-		B0447ED22FCEEE760058B506 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B001404F2FBF0D1600540C69 /* Chinezy */;
-			targetProxy = B0447ED12FCEEE760058B506 /* PBXContainerItemProxy */;
 		};
 		B0B298862FCBEA54005AE6E9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -790,44 +634,6 @@
 			};
 			name = Release;
 		};
-		B0447ED42FCEEE760058B506 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ChinezyUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Chinezy;
-			};
-			name = Debug;
-		};
-		B0447ED52FCEEE760058B506 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ChinezyUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Chinezy;
-			};
-			name = Release;
-		};
 		B0B298892FCBEA54005AE6E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -918,15 +724,6 @@
 			buildConfigurations = (
 				B0447EC52FCEEE6B0058B506 /* Debug */,
 				B0447EC62FCEEE6B0058B506 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B0447ED32FCEEE760058B506 /* Build configuration list for PBXNativeTarget "ChinezyUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B0447ED42FCEEE760058B506 /* Debug */,
-				B0447ED52FCEEE760058B506 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

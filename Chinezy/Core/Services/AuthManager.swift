@@ -56,7 +56,6 @@ final class AuthManager: ObservableObject {
             if document.exists, let data = document.data() {
                 self.currentUserProfile = UserProfile(dictionary: data)
             } else {
-                // Fix infinite loading: if the user document is missing, create a default one
                 let email = userSession?.email ?? "unknown@example.com"
                 let newProfile = UserProfile(id: uid, email: email, quizScores: [:])
                 try await db.collection("users").document(uid).setData(newProfile.dictionary)
@@ -70,7 +69,6 @@ final class AuthManager: ObservableObject {
     func saveQuizScore(quizId: String, percentage: Int) async {
         guard let uid = userSession?.uid, var currentProfile = currentUserProfile else { return }
         
-        // Only update if the new score is higher than the currently saved score
         let currentScore = currentProfile.quizScores[quizId] ?? -1
         guard percentage > currentScore else { return }
         
@@ -79,7 +77,6 @@ final class AuthManager: ObservableObject {
                 "quizScores.\(quizId)": percentage
             ])
             
-            // Update local state immediately
             currentProfile.quizScores[quizId] = percentage
             self.currentUserProfile = currentProfile
         } catch {

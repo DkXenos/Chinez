@@ -8,7 +8,6 @@ struct PartSelectionView: View {
     
     var body: some View {
         List {
-            // ── Tone Practice shortcut ──────────────────────
             Section {
                 NavigationLink(destination: TonePracticeView()) {
                     HStack(spacing: 14) {
@@ -44,7 +43,6 @@ struct PartSelectionView: View {
                 }
             }
 
-            // ── Parts ───────────────────────────────────────
             Section {
                 ForEach(viewModel.parts) { part in
                     Button(action: {

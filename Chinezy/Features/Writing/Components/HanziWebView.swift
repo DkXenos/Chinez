@@ -23,18 +23,15 @@ struct HanziWebView: UIViewRepresentable {
     }
 
     func makeUIView(context: Context) -> WKWebView {
-        // ── Configuration ───────────────────────────────────────────
         let config = WKWebViewConfiguration()
         config.allowsInlineMediaPlayback = true
 
-        // Register JS → Swift message handlers
         let contentController = config.userContentController
         contentController.add(context.coordinator, name: "allStrokesCompleted")
         contentController.add(context.coordinator, name: "strokeCorrect")
         contentController.add(context.coordinator, name: "strokeMistake")
         contentController.add(context.coordinator, name: "quizComplete")
 
-        // ── Create the web view ─────────────────────────────────────
         let webView = WKWebView(frame: .zero, configuration: config)
         webView.isOpaque = false
         webView.backgroundColor = .clear
@@ -42,8 +39,6 @@ struct HanziWebView: UIViewRepresentable {
         webView.scrollView.isScrollEnabled = false
         webView.scrollView.bounces = false
 
-        // Quiz mode: enable touch (HanziWriter handles interaction).
-        // Animation mode: disable touch (native PencilKit layer handles it).
         webView.isUserInteractionEnabled = useQuizMode
 
         #if DEBUG
@@ -55,7 +50,6 @@ struct HanziWebView: UIViewRepresentable {
         context.coordinator.webView = webView
         loadLocalHTML(into: webView)
 
-        // Deliver the coordinator reference to the parent
         DispatchQueue.main.async { [coordinator = context.coordinator] in
             self.onCoordinatorReady?(coordinator)
         }
@@ -71,7 +65,6 @@ struct HanziWebView: UIViewRepresentable {
         }
     }
 
-    // MARK: – Helpers
 
     private func loadLocalHTML(into webView: WKWebView) {
         guard let htmlURL = Bundle.main.url(
@@ -88,7 +81,6 @@ struct HanziWebView: UIViewRepresentable {
         webView.loadFileURL(htmlURL, allowingReadAccessTo: resourceDir)
     }
 
-    // MARK: – Coordinator
 
     class Coordinator: NSObject, WKScriptMessageHandler {
 
@@ -116,7 +108,6 @@ struct HanziWebView: UIViewRepresentable {
             super.init()
         }
 
-        // MARK: WKScriptMessageHandler
 
         func userContentController(
             _ userContentController: WKUserContentController,
@@ -124,13 +115,11 @@ struct HanziWebView: UIViewRepresentable {
         ) {
             switch message.name {
 
-            // ── Animation mode callback ─────────────────────────────
             case "allStrokesCompleted":
                 DispatchQueue.main.async { [weak self] in
                     self?.onAllStrokesCompleted?()
                 }
 
-            // ── Quiz mode callbacks ─────────────────────────────────
             case "strokeCorrect":
                 if let body = message.body as? [String: Any],
                    let strokeNum = body["strokeNum"] as? Int {
@@ -154,9 +143,7 @@ struct HanziWebView: UIViewRepresentable {
             }
         }
 
-        // MARK: – JS Bridge Methods
 
-        /// Loads a character into Hanzi Writer using fully local stroke data.
         func loadCharacter(_ character: String) {
             guard !character.isEmpty else { return }
 
@@ -175,8 +162,6 @@ struct HanziWebView: UIViewRepresentable {
             }
         }
 
-        /// Animates a single stroke at the given index (animation mode).
-        /// Called by the native StrokeCanvasView after validation succeeds.
         func animateStroke(at index: Int) {
             let js = "animateStroke(\(index));"
             webView?.evaluateJavaScript(js) { _, error in
@@ -186,17 +171,14 @@ struct HanziWebView: UIViewRepresentable {
             }
         }
 
-        /// Plays the full character animation (useful for review/demo).
         func animateFullCharacter() {
             webView?.evaluateJavaScript("animateFullCharacter();", completionHandler: nil)
         }
 
-        /// Hides all strokes to restart.
         func resetCharacter() {
             webView?.evaluateJavaScript("resetCharacter();", completionHandler: nil)
         }
 
-        // MARK: – Data Injection
 
         private func fetchLocalStrokeData(for character: String) -> String? {
             var url = Bundle.main.url(forResource: character, withExtension: "json", subdirectory: "hanzi-writer-data")
@@ -218,7 +200,6 @@ struct HanziWebView: UIViewRepresentable {
             }
         }
 
-        // MARK: Helpers
 
         private func evaluateWithRetry(_ js: String) {
             webView?.evaluateJavaScript(js) { [weak self] _, error in

@@ -1,8 +1,3 @@
-//
-//  QuizDataService.swift
-//  Chinez
-//
-//
 
 import Foundation
 
@@ -39,7 +34,6 @@ struct QuizDataService: QuizDataServiceProtocol {
         do {
             let data = try Data(contentsOf: url)
             let decoded = try JSONDecoder().decode(QuizData.self, from: data)
-            // Urutkan berdasarkan id bab agar tampil 1..15 secara konsisten.
             return decoded.chapters.sorted { $0.id < $1.id }
         } catch let error as DataError {
             throw error

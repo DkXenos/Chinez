@@ -1,11 +1,3 @@
-//
-//  WritingLevelListView.swift
-//  Chinez
-//
-//  Entry-point for the Writing tab (iPad).
-//  Lists all writing exercise levels loaded from WritingExercise.json.
-//  Tapping a level navigates to WritingQuizView for stroke-order practice.
-//
 
 import SwiftUI
 import Combine
@@ -63,14 +55,12 @@ struct WritingLevelListView: View {
     }
 }
 
-// MARK: - Level Row
 
 private struct WritingLevelRow: View {
     let level: WritingLevel
 
     var body: some View {
         HStack(spacing: 14) {
-            // ── Decorative Hanzi icon with gold ring ──────────
             ZStack {
                 RoundedRectangle(cornerRadius: DesignSystem.Dimensions.cornerRadiusMedium, style: .continuous)
                     .fill(DesignSystem.Colors.background)

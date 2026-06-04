@@ -1,16 +1,10 @@
-//
-//  WritingModels.swift
-//  Chinez
-//
 
 import Foundation
 
-/// Top-level wrapper matching the WritingExercise.json structure.
 struct WritingExerciseData: Codable {
     let levels: [WritingLevel]
 }
 
-/// A single writing exercise level containing a list of Hanzi characters.
 struct WritingLevel: Codable, Identifiable, Hashable {
     let id: Int
     let title: String

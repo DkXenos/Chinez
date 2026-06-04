@@ -18,10 +18,8 @@ struct ChinezyApp: App {
     @StateObject private var authManager: AuthManager
 
     init() {
-        // 1. Configure Firebase FIRST
         FirebaseApp.configure()
         
-        // 2. Initialize the StateObject AFTER Firebase is configured
         _authManager = StateObject(wrappedValue: AuthManager())
     }
 

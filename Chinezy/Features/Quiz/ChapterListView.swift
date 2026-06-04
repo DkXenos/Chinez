@@ -1,9 +1,4 @@
 import Combine
-//
-//  ChapterListView.swift
-//  Chinez
-//
-//
 
 import SwiftUI
 
@@ -62,7 +57,6 @@ struct ChapterListView: View {
     }
 }
 
-// MARK: - Baris Bab
 
 private struct ChapterRow: View {
     let chapter: Chapter
@@ -70,7 +64,6 @@ private struct ChapterRow: View {
 
     var body: some View {
         HStack(spacing: 14) {
-            // Ikon Hanzi dekoratif dengan ring emas.
             ZStack {
                 RoundedRectangle(cornerRadius: DesignSystem.Dimensions.cornerRadiusMedium, style: .continuous)
                     .fill(DesignSystem.Colors.background)

@@ -1,14 +1,4 @@
 import Combine
-//
-//  QuizSessionView.swift
-//  Chinez
-//
-//  Layar pengerjaan satu sesi kuis (untuk satu bab).
-//  Alur tiap soal: pilih opsi A–D → tombol "Periksa" menampilkan benar/salah
-//  (opsi benar disorot hijau; bila salah, pilihan user merah + jawaban benar
-//  ditampilkan) → tombol "Lanjut" untuk ke soal berikutnya.
-//  Saat 10 soal selesai, otomatis menampilkan ResultView.
-//
 
 import SwiftUI
 
@@ -49,7 +39,6 @@ struct QuizSessionView: View {
         }
     }
 
-    // MARK: - Konten Soal
 
     private var questionContent: some View {
         VStack(spacing: 0) {
@@ -69,7 +58,6 @@ struct QuizSessionView: View {
 
             ScrollView {
                 VStack(alignment: .leading, spacing: 22) {
-                    // Kartu pertanyaan
                     Text(viewModel.currentQuestion.stem)
                         .font(.title3.weight(.semibold))
                         .foregroundStyle(DesignSystem.Colors.textDark)
@@ -85,7 +73,6 @@ struct QuizSessionView: View {
                                 .strokeBorder(DesignSystem.Colors.cardBorder, lineWidth: 1)
                         )
 
-                    // Opsi A–D
                     VStack(spacing: 12) {
                         ForEach(Array(viewModel.currentQuestion.options.enumerated()), id: \.offset) { index, option in
                             OptionButton(
@@ -103,7 +90,6 @@ struct QuizSessionView: View {
                 .padding(20)
             }
 
-            // Feedback benar/salah (muncul setelah "Periksa")
             if viewModel.isRevealed {
                 feedbackBanner
                     .padding(.horizontal, 20)
@@ -111,7 +97,6 @@ struct QuizSessionView: View {
                     .transition(.move(edge: .bottom).combined(with: .opacity))
             }
 
-            // Tombol: Periksa → Lanjut / Lihat Hasil
             Button(action: primaryAction) {
                 Text(buttonTitle)
                     .font(.headline)
@@ -130,7 +115,6 @@ struct QuizSessionView: View {
         }
     }
 
-    // MARK: - Feedback banner
 
     @ViewBuilder
     private var feedbackBanner: some View {
@@ -170,7 +154,6 @@ struct QuizSessionView: View {
         }
     }
 
-    // MARK: - Helpers
 
     private func optionState(for index: Int) -> OptionState {
         if viewModel.isRevealed {
@@ -204,17 +187,16 @@ struct QuizSessionView: View {
     private static let letters = ["A", "B", "C", "D"]
 }
 
-// MARK: - Status tampilan opsi
+
 
 private enum OptionState {
-    case idle      // belum diperiksa, tidak dipilih
-    case selected  // belum diperiksa, dipilih (merah)
-    case correct   // sudah diperiksa, ini jawaban benar (hijau)
-    case wrong     // sudah diperiksa, ini pilihan user yang salah (merah)
-    case dimmed    // sudah diperiksa, opsi lain (redup)
+    case idle
+    case selected
+    case correct
+    case wrong
+    case dimmed
 }
 
-// MARK: - Progress Bar
 
 private struct QuizProgressBar: View {
     let progress: Double
@@ -238,7 +220,6 @@ private struct QuizProgressBar: View {
     }
 }
 
-// MARK: - Badge Tipe Soal
 
 private struct TypeBadge: View {
     let text: String
@@ -255,7 +236,6 @@ private struct TypeBadge: View {
     }
 }
 
-// MARK: - Tombol Opsi (warna mengikuti OptionState)
 
 private struct OptionButton: View {
     let letter: String

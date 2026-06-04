@@ -5,7 +5,6 @@ struct ContentView: View {
     @EnvironmentObject var authManager: AuthManager
     @StateObject private var router = NavigationRouter()
 
-    /// `true` only when running on iPad.
     private var isIPad: Bool {
         UIDevice.current.userInterfaceIdiom == .pad
     }
@@ -29,7 +28,6 @@ struct ContentView: View {
 struct IPadSidebarView: View {
     @EnvironmentObject var router: NavigationRouter
     
-    // We optionally bind the NavigationSplitView's column visibility
     @State private var columnVisibility = NavigationSplitViewVisibility.doubleColumn
     
     private var tabSelection: Binding<NavigationRouter.Tab?> {

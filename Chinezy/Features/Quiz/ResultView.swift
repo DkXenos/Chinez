@@ -1,8 +1,3 @@
-//
-//  ResultView.swift
-//  Chinez
-//
-//
 
 import SwiftUI
 
@@ -47,7 +42,6 @@ struct ResultView: View {
         .background(DesignSystem.Colors.surfaceWhite)
     }
 
-    // MARK: - Ring skor
 
     private var scoreRing: some View {
         ZStack {
@@ -75,7 +69,6 @@ struct ResultView: View {
         .frame(width: 200, height: 200)
     }
 
-    // MARK: - Tombol aksi
 
     private var actionButtons: some View {
         VStack(spacing: 12) {
@@ -117,7 +110,6 @@ struct ResultView: View {
     }
 }
 
-// MARK: - Kartu skor (Benar / Salah)
 
 private struct ScorePill: View {
     let count: Int

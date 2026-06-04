@@ -7,7 +7,6 @@ enum AppState {
 }
 
 enum AppRoute: Hashable {
-    // Used
     case course(Course)
     case subChapter(SubChapter)
     
@@ -23,7 +22,7 @@ class NavigationRouter: ObservableObject {
         case materials
         case quiz
         case tonePractice
-        case writing     // iPad only
+        case writing
         case profile
     }
     

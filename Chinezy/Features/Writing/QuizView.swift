@@ -74,7 +74,6 @@ struct WritingQuizView: View {
             )
             .padding(.horizontal, DesignSystem.Dimensions.paddingLarge)
 
-            // ── Hint Text ───────────────────────────────────────────────
             Text("Tulis guratan sesuai urutan yang benar")
                 .font(DesignSystem.Typography.caption)
                 .foregroundColor(DesignSystem.Colors.textSecondary)
@@ -94,7 +93,6 @@ struct WritingQuizView: View {
     }
 }
 
-// MARK: - Preview
 
 #if DEBUG
 #Preview {

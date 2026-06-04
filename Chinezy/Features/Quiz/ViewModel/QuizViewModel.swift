@@ -1,12 +1,4 @@
 import SwiftUI
-//
-//  QuizViewModel.swift
-//  Chinez
-//
-//  VIEWMODEL untuk satu sesi kuis (QuizSessionView).
-//  Mengelola: soal aktif, pilihan user, status periksa (feedback), skor, dan selesai.
-//  Alur tiap soal: pilih opsi → submit() (periksa: skor + feedback) → advance() (lanjut).
-//
 
 import Foundation
 import Combine
@@ -28,7 +20,6 @@ final class QuizViewModel: ObservableObject {
         self.questions = chapter.questions
     }
 
-    // MARK: - Derived state (dibaca oleh View)
 
     var currentQuestion: QuizQuestion { questions[currentIndex] }
     var totalQuestions: Int { questions.count }
@@ -36,14 +27,10 @@ final class QuizViewModel: ObservableObject {
     var isLastQuestion: Bool { currentIndex == totalQuestions - 1 }
     var hasSelection: Bool { selectedOption != nil }
 
-    /// Indeks opsi yang benar untuk soal saat ini.
     var correctIndex: Int { currentQuestion.answerIndex }
-    /// Teks jawaban yang benar (untuk ditampilkan saat user salah).
     var correctAnswerText: String { currentQuestion.options[correctIndex] }
-    /// True bila pilihan user pada soal saat ini benar.
     var isCurrentCorrect: Bool { selectedOption == correctIndex }
 
-    /// Progres 0.0–1.0 untuk progress bar.
     var progress: Double {
         guard totalQuestions > 0 else { return 0 }
         return Double(currentIndex + 1) / Double(totalQuestions)
@@ -56,7 +43,6 @@ final class QuizViewModel: ObservableObject {
         return Int((Double(correctCount) / Double(totalQuestions) * 100).rounded())
     }
 
-    // MARK: - Actions (dipanggil oleh View)
 
     func select(_ index: Int) {
         guard !isRevealed else { return }

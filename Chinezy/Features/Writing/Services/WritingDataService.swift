@@ -1,7 +1,3 @@
-//
-//  WritingDataService.swift
-//  Chinez
-//
 
 import Foundation
 

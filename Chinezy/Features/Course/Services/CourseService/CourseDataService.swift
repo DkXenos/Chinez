@@ -45,7 +45,6 @@ struct CourseDataService: CourseDataServiceProtocol {
         }
     }
     
-    // Conformance to CourseService
     func fetchCourses() -> [Course] {
         do {
             return try loadCourses()

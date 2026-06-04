@@ -6,13 +6,12 @@ struct CourseCardView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 16) {
             
-            // Thumbnail matching QuizView's hanzi style
             ZStack {
                 RoundedRectangle(cornerRadius: DesignSystem.Dimensions.cornerRadiusMedium, style: .continuous)
                     .fill(DesignSystem.Colors.background)
                 RoundedRectangle(cornerRadius: DesignSystem.Dimensions.cornerRadiusMedium, style: .continuous)
                     .strokeBorder(DesignSystem.Colors.gold, lineWidth: 1.5)
-                Text(course.icon) // we use course.icon to pass the chapter hanzi
+                Text(course.icon)
                     .font(.system(size: 40, weight: .bold))
                     .foregroundStyle(DesignSystem.Colors.primary)
             }

@@ -1,9 +1,4 @@
 import SwiftUI
-//
-//  ChapterListViewModel.swift
-//  Chinez
-//
-//
 
 import Foundation
 import Combine

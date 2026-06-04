@@ -1,6 +1,5 @@
 import SwiftUI
 
-// MARK: - Tone List View (Landing page for the Tones tab)
 
 struct ToneListView: View {
     @EnvironmentObject var router: NavigationRouter
@@ -27,14 +26,12 @@ struct ToneListView: View {
     }
 }
 
-// MARK: - Tone Group Row
 
 struct ToneGroupRow: View {
     let group: ToneGroup
 
     var body: some View {
         HStack(spacing: DesignSystem.Dimensions.paddingStandard) {
-            // Tone icon
             Image(systemName: group.icon)
                 .font(.title2)
                 .fontWeight(.bold)
@@ -45,7 +42,6 @@ struct ToneGroupRow: View {
                         .fill(DesignSystem.Colors.primary.opacity(0.1))
                 )
 
-            // Text
             VStack(alignment: .leading, spacing: 4) {
                 Text(group.title)
                     .font(DesignSystem.Typography.headline)
@@ -59,7 +55,6 @@ struct ToneGroupRow: View {
 
             Spacer()
 
-            // Character count badge
             Text("\(group.targets.count)")
                 .font(DesignSystem.Typography.subheadlineBold)
                 .foregroundColor(DesignSystem.Colors.primary)
@@ -81,7 +76,6 @@ struct ToneGroupRow: View {
     }
 }
 
-// MARK: - Tone Group Detail (list of characters in a tone)
 
 struct ToneGroupDetailView: View {
     let group: ToneGroup
@@ -107,14 +101,12 @@ struct ToneGroupDetailView: View {
     }
 }
 
-// MARK: - Tone Character Row
 
 struct ToneCharacterRow: View {
     let target: HanziTarget
 
     var body: some View {
         HStack(spacing: DesignSystem.Dimensions.paddingStandard) {
-            // Hanzi character
             Text(target.character)
                 .font(.system(size: 36, weight: .bold, design: .rounded))
                 .foregroundColor(DesignSystem.Colors.textPrimary)
@@ -149,14 +141,12 @@ struct ToneCharacterRow: View {
     }
 }
 
-// MARK: - Navigation Route
 
 struct TonePracticeRoute: Hashable {
     let group: ToneGroup
     let startIndex: Int
 }
 
-// MARK: - Preview
 
 #Preview {
     NavigationStack {

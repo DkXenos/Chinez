@@ -4,31 +4,25 @@ import Combine
 @MainActor
 final class TonePracticeViewModel: ObservableObject {
     
-    // Dependencies
     private let toneService: ToneEvaluatorService
     
-    // State
     @Published var selectedIndex: Int = 0 {
         didSet {
-            // Reset evaluator when the user swipes to a new target
             resetService()
         }
     }
     
-    // Data
     @Published var targets: [HanziTarget] = HanziTarget.defaults
     
     var currentTarget: HanziTarget {
         targets[selectedIndex]
     }
     
-    /// Configure with specific targets and starting index (called from ToneListView navigation).
     func configure(targets: [HanziTarget], startIndex: Int) {
         self.targets = targets
         self.selectedIndex = min(startIndex, targets.count - 1)
     }
     
-    // Forwarded states from service
     var serviceState: ToneEvaluatorState {
         toneService.state
     }
@@ -38,13 +32,11 @@ final class TonePracticeViewModel: ObservableObject {
         set { toneService.errorMessage = newValue }
     }
     
-    // Combine subscription
     private var cancellables = Set<AnyCancellable>()
     
     init(toneService: ToneEvaluatorService = ToneEvaluatorService()) {
         self.toneService = toneService
         
-        // Forward changes from toneService to self so View updates
         toneService.objectWillChange
             .sink { [weak self] _ in
                 self?.objectWillChange.send()
@@ -69,7 +61,6 @@ final class TonePracticeViewModel: ObservableObject {
         toneService.reset()
     }
     
-    // MARK: - Verdict Logic
     
     struct Verdict {
         let text: String

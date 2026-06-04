@@ -1,8 +1,3 @@
-//
-//  QuizModels.swift
-//  Chinez
-//
-//
 
 import Foundation
 

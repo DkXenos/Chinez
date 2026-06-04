@@ -13,14 +13,12 @@ struct AuthView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                // Background matching the rest of the app
                 DesignSystem.Colors.background
                     .ignoresSafeArea()
                 
                 ScrollView {
                     VStack(spacing: DesignSystem.Dimensions.paddingLarge) {
                         
-                        // Header
                         VStack(spacing: DesignSystem.Dimensions.paddingSmall) {
                             Text(isLoginMode ? "Welcome Back" : "Create Account")
                                 .font(DesignSystem.Typography.largeTitle)
@@ -37,7 +35,6 @@ struct AuthView: View {
                         .padding(.top, 60)
                         .padding(.bottom, 20)
                         
-                        // Input Fields
                         VStack(spacing: DesignSystem.Dimensions.paddingStandard) {
                             TextField("Email", text: $email)
                                 .keyboardType(.emailAddress)
@@ -65,7 +62,6 @@ struct AuthView: View {
                                 )
                         }
                         
-                        // Action Button
                         Button(action: handleAction) {
                             HStack {
                                 if isLoading {
@@ -87,7 +83,6 @@ struct AuthView: View {
                         .padding(.top, DesignSystem.Dimensions.paddingSmall)
                         .accessibilityIdentifier("Auth.ActionButton")
                         
-                        // Toggle Mode Button
                         Button(action: {
                             withAnimation {
                                 isLoginMode.toggle()
@@ -104,7 +99,6 @@ struct AuthView: View {
                         Spacer()
                     }
                     .padding(.horizontal, DesignSystem.Dimensions.paddingLarge)
-                    // Restrict max width for iPad so the form doesn't stretch edge-to-edge
                     .frame(maxWidth: 500)
                 }
             }

@@ -21,7 +21,6 @@ struct LearningBottomNavigationBar: View {
         VStack(spacing: 12) {
             if isShowingDialog {
                 
-                // DIALOG BUTTON
                 Button(action: onBackToFlashcard) {
                     HStack {
                         Image(systemName: "arrow.left.circle")
@@ -36,10 +35,8 @@ struct LearningBottomNavigationBar: View {
                 }
             } else {
                 
-                // FLASHCARD BUTTON
                 HStack(spacing: 16) {
                     
-                    // Back Button
                     if !isFirstCard {
                         Button(action: onPrevious) {
                             HStack {
@@ -54,7 +51,6 @@ struct LearningBottomNavigationBar: View {
                         }
                     }
 
-                    // Next Button
                     if isLastCard {
                         Button(action: onOpenDialog) {
                             HStack {

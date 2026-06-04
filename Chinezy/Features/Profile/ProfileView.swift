@@ -17,7 +17,6 @@ struct ProfileView: View {
                         ProgressView("Loading Profile...")
                             .padding()
                         
-                        // Fallback Sign Out button in case fetching fails permanently
                         Button(role: .destructive, action: signOut) {
                             Text("Sign Out")
                         }

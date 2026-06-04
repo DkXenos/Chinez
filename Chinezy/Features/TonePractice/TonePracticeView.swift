@@ -1,42 +1,35 @@
 import SwiftUI
 import Combine
 
-// MARK: - Main View
 
 struct TonePracticeView: View {
     @EnvironmentObject var router: NavigationRouter
     @StateObject private var viewModel = TonePracticeViewModel()
 
-    /// Optional: pass specific targets and a starting index from ToneListView.
     var targets: [HanziTarget]?
     var startIndex: Int = 0
 
     var body: some View {
         ZStack {
-            // Background
             DesignSystem.Colors.background
                 .ignoresSafeArea()
 
             VStack(spacing: 0) {
 
-                // ── Top: Carousel ────────────────────────────
                 targetCarousel
                     .padding(.top, 16)
 
-                // ── Page Indicator ───────────────────────────
                 pageIndicator
                     .padding(.top, 12)
 
                 Spacer()
 
-                // ── Feedback Area ────────────────────────────
                 feedbackArea
                     .frame(minHeight: 52)
                     .padding(.horizontal, 24)
 
                 Spacer()
 
-                // ── Microphone Button ────────────────────────
                 actionArea
                     .padding(.bottom, 32)
             }
@@ -57,7 +50,6 @@ struct TonePracticeView: View {
         }
     }
 
-    // MARK: - Carousel
 
     private var targetCarousel: some View {
         TabView(selection: $viewModel.selectedIndex) {
@@ -69,10 +61,8 @@ struct TonePracticeView: View {
         }
         .tabViewStyle(.page(indexDisplayMode: .never))
         .frame(height: 360)
-        // Resetting is now handled via didSet in ViewModel
     }
 
-    // MARK: - Page Indicator
 
     private var pageIndicator: some View {
         HStack(spacing: 8) {
@@ -85,7 +75,6 @@ struct TonePracticeView: View {
         }
     }
 
-    // MARK: - Feedback Area
 
     @ViewBuilder
     private var feedbackArea: some View {
@@ -110,7 +99,6 @@ struct TonePracticeView: View {
         }
     }
 
-    // MARK: - Badges
 
     private var listeningBadge: some View {
         HStack(spacing: 6) {
@@ -146,7 +134,6 @@ struct TonePracticeView: View {
         )
     }
 
-    // MARK: - Action Area
 
     @ViewBuilder
     private var actionArea: some View {
@@ -178,7 +165,6 @@ struct TonePracticeView: View {
     }
 }
 
-// MARK: - Hanzi Card
 
 private struct HanziCard: View {
     let target: HanziTarget

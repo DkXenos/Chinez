@@ -5,7 +5,6 @@ import SoundAnalysis
 import CoreML
 import Combine
 
-// MARK: - Service State
 
 enum ToneEvaluatorState: Equatable {
     case idle
@@ -14,24 +13,20 @@ enum ToneEvaluatorState: Equatable {
     case result
 }
 
-// MARK: - Service
 
 final class ToneEvaluatorService: NSObject, ObservableObject {
 
-    // MARK: - Published State
 
     @Published var state: ToneEvaluatorState = .idle
     @Published var predictedTone: String = ""
     @Published var targetToneIdentifier: String?
     @Published var errorMessage: String?
 
-    // MARK: - Prediction Buffer
 
     nonisolated(unsafe) private var accumulatedPredictions: [String] = []
     nonisolated(unsafe) private var instantPassTriggered: Bool = false
     nonisolated(unsafe) private let bufferLock = NSLock()
 
-    // MARK: - Audio Properties
 
     nonisolated(unsafe) private let audioEngine = AVAudioEngine()
     nonisolated(unsafe) private var streamAnalyzer: SNAudioStreamAnalyzer?
@@ -40,7 +35,6 @@ final class ToneEvaluatorService: NSObject, ObservableObject {
         label: "com.chinezy.toneAnalysis"
     )
 
-    // MARK: - Lifecycle
 
     override init() {
         super.init()
@@ -51,7 +45,6 @@ final class ToneEvaluatorService: NSObject, ObservableObject {
         audioEngine.inputNode.removeTap(onBus: 0)
     }
 
-    // MARK: - Microphone Permission
 
     func requestMicrophonePermission() {
         AVAudioApplication.requestRecordPermission { [weak self] granted in
@@ -64,10 +57,8 @@ final class ToneEvaluatorService: NSObject, ObservableObject {
         }
     }
 
-    // MARK: - Recording Controls
 
     func startRecording() {
-        // Reset
         predictedTone = ""
         errorMessage = nil
         bufferLock.lock()
@@ -92,7 +83,6 @@ final class ToneEvaluatorService: NSObject, ObservableObject {
             return
         }
 
-        // SoundAnalysis handles resampling from any sample rate → 16kHz automatically.
         let analyzer = SNAudioStreamAnalyzer(format: format)
         streamAnalyzer = analyzer
 
@@ -107,8 +97,6 @@ final class ToneEvaluatorService: NSObject, ObservableObject {
             return
         }
 
-        // Feed every buffer straight to SoundAnalysis — no volume gate.
-        // The model itself distinguishes speech from silence via its training.
         inputNode.installTap(onBus: 0, bufferSize: 8192, format: format) { [weak self] buffer, time in
             guard let self else { return }
             self.analysisQueue.async {
@@ -140,7 +128,6 @@ final class ToneEvaluatorService: NSObject, ObservableObject {
     func stopAndEvaluate() {
         stopAudioEngine()
 
-        // If instant pass already triggered, the result is already set.
         bufferLock.lock()
         let alreadyPassed = instantPassTriggered
         let predictions = accumulatedPredictions
@@ -153,13 +140,11 @@ final class ToneEvaluatorService: NSObject, ObservableObject {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
             guard let self else { return }
 
-            // Double-check in case instant pass fired after stopAudioEngine.
             self.bufferLock.lock()
             let passedInFlight = self.instantPassTriggered
             self.bufferLock.unlock()
             if passedInFlight { return }
 
-            // Use accumulated predictions as fallback.
             if predictions.isEmpty {
                 self.predictedTone = "Unclear"
             } else {
@@ -181,7 +166,6 @@ final class ToneEvaluatorService: NSObject, ObservableObject {
         state = .idle
     }
 
-    // MARK: - Helpers
 
     private static func mode(of array: [String]) -> String {
         var counts: [String: Int] = [:]
@@ -190,7 +174,6 @@ final class ToneEvaluatorService: NSObject, ObservableObject {
     }
 }
 
-// MARK: - SNResultsObserving
 
 extension ToneEvaluatorService: @preconcurrency SNResultsObserving {
     nonisolated func request(_ request: SNRequest, didProduce result: SNResult) {
@@ -201,7 +184,6 @@ extension ToneEvaluatorService: @preconcurrency SNResultsObserving {
 
         print("🔍 [SoundAnalysis] \(top.identifier): \(String(format: "%.0f%%", top.confidence * 100))")
 
-        // Instant Pass: correct tone detected at ≥ 80% confidence → immediate success.
         if top.confidence >= 0.80 {
             Task { @MainActor in
                 if self.state == .recording,
@@ -219,7 +201,6 @@ extension ToneEvaluatorService: @preconcurrency SNResultsObserving {
             }
         }
 
-        // Accumulate any prediction ≥ 50% as fallback data.
         if top.confidence >= 0.50 {
             bufferLock.lock()
             accumulatedPredictions.append(top.identifier)

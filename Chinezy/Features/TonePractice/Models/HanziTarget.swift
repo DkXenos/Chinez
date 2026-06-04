@@ -1,8 +1,6 @@
 import Foundation
 
-// MARK: - Hanzi Practice Target
 
-/// A single Hanzi character the user practices pronouncing with the correct tone.
 struct HanziTarget: Identifiable, Hashable {
     let id: UUID
     let character: String
@@ -16,7 +14,6 @@ struct HanziTarget: Identifiable, Hashable {
         self.targetTone = targetTone
     }
 
-    /// The numeric tone value (1–4) extracted from `targetTone`, or `nil` for noise.
     var toneNumber: Int? {
         switch targetTone {
         case "Tone_1": return 1
@@ -28,9 +25,7 @@ struct HanziTarget: Identifiable, Hashable {
     }
 }
 
-// MARK: - Tone Group
 
-/// A group of HanziTargets sharing the same tone, used for the list view.
 struct ToneGroup: Identifiable, Hashable {
     let id: UUID
     let toneNumber: Int
@@ -49,15 +44,12 @@ struct ToneGroup: Identifiable, Hashable {
     }
 }
 
-// MARK: - Default Targets
 
 extension HanziTarget {
 
-    /// Five practice targets covering all four tones (legacy).
     static let defaults: [HanziTarget] = ToneGroup.allGroups.flatMap { $0.targets }
 }
 
-// MARK: - Default Tone Groups
 
 extension ToneGroup {
     

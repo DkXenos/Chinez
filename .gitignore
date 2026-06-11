@@ -1,1 +1,40 @@
+# Xcode
+#
+build/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+*.xccheckout
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+*.xcuserstate
+project.xcworkspace/
+
+# Swift Package Manager
+.build/
+
+# CocoaPods
+# Pods/
+
+# Mac OS
+.DS_Store
+
+# Specific to Chinezy Project
 Chinezy/GoogleService-Info.plist
+
+# Auth Helper scripts
+oauth_helper*
+node_modules/
+
+# Ignored Reports and PDFs
+*.pdf
+*Unit_Testing_Report.html
+*Unit_Testing_Report.md

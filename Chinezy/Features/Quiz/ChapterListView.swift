@@ -4,7 +4,6 @@ import SwiftUI
 
 struct ChapterListView: View {
     @StateObject private var viewModel = ChapterListViewModel()
-    @EnvironmentObject var authManager: AuthManager
 
     var body: some View {
         content
@@ -23,9 +22,8 @@ struct ChapterListView: View {
             ScrollView {
                 LazyVStack(spacing: 12) {
                     ForEach(viewModel.chapters) { chapter in
-                        let score = authManager.currentUserProfile?.quizScores[String(chapter.id)]
                         NavigationLink(value: chapter) {
-                            ChapterRow(chapter: chapter, score: score)
+                            ChapterRow(chapter: chapter)
                         }
                         .buttonStyle(.plain)
                     }
@@ -60,7 +58,6 @@ struct ChapterListView: View {
 
 private struct ChapterRow: View {
     let chapter: Chapter
-    let score: Int?
 
     var body: some View {
         HStack(spacing: 14) {
@@ -95,20 +92,9 @@ private struct ChapterRow: View {
 
             Spacer(minLength: 8)
 
-            if let score = score {
-                VStack(alignment: .trailing, spacing: 4) {
-                    Image(systemName: score >= 70 ? "checkmark.seal.fill" : "xmark.seal.fill")
-                        .font(.title3)
-                        .foregroundStyle(score >= 70 ? Color.green : Color.red)
-                    Text("\(score)%")
-                        .font(.caption.weight(.bold))
-                        .foregroundStyle(score >= 70 ? Color.green : Color.red)
-                }
-            } else {
-                Image(systemName: "chevron.right")
-                    .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(DesignSystem.Colors.primary.opacity(0.45))
-            }
+            Image(systemName: "chevron.right")
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(DesignSystem.Colors.primary.opacity(0.45))
         }
         .padding(14)
         .background(
@@ -118,13 +104,8 @@ private struct ChapterRow: View {
         )
         .overlay(
             RoundedRectangle(cornerRadius: DesignSystem.Dimensions.cornerRadius, style: .continuous)
-                .strokeBorder(borderColor, lineWidth: score != nil ? 2 : 1)
+                .strokeBorder(DesignSystem.Colors.primary.opacity(0.08), lineWidth: 1)
         )
-    }
-    
-    private var borderColor: Color {
-        guard let score = score else { return DesignSystem.Colors.primary.opacity(0.08) }
-        return score >= 70 ? Color.green : Color.red
     }
 }
 

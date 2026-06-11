@@ -1,11 +1,6 @@
 import SwiftUI
 import Combine
 
-enum AppState {
-    case unauthenticated
-    case home
-}
-
 enum AppRoute: Hashable {
     case course(Course)
     case subChapter(SubChapter)
@@ -23,19 +18,13 @@ class NavigationRouter: ObservableObject {
         case quiz
         case tonePractice
         case writing
-        case profile
     }
     
-    @Published var currentState: AppState = .unauthenticated
     @Published var selectedTab: Tab = .materials
     @Published var navigationPath = NavigationPath()
     @Published var selectedTheme: Theme?
     @Published var selectedPart: Part?
     @Published var showExercise: Bool = false
-    
-    func navigateToHome() {
-        currentState = .home
-    }
     
     func navigateToCourse(course: Course) {
         navigationPath.append(AppRoute.course(course))
@@ -50,4 +39,3 @@ class NavigationRouter: ObservableObject {
         showExercise = true
     }
 }
-

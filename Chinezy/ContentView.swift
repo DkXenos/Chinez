@@ -2,7 +2,6 @@ import SwiftUI
 import Combine
 
 struct ContentView: View {
-    @EnvironmentObject var authManager: AuthManager
     @StateObject private var router = NavigationRouter()
 
     private var isIPad: Bool {
@@ -11,14 +10,10 @@ struct ContentView: View {
 
     var body: some View {
         Group {
-            if authManager.userSession == nil {
-                AuthView()
+            if isIPad {
+                IPadSidebarView()
             } else {
-                if isIPad {
-                    IPadSidebarView()
-                } else {
-                    IPhoneTabView()
-                }
+                IPhoneTabView()
             }
         }
         .environmentObject(router)
@@ -53,9 +48,6 @@ struct IPadSidebarView: View {
                 NavigationLink(value: NavigationRouter.Tab.writing) {
                     Label("Writing", systemImage: "pencil.tip.crop.circle")
                 }
-                NavigationLink(value: NavigationRouter.Tab.profile) {
-                    Label("Profile", systemImage: "person.fill")
-                }
             }
             .navigationTitle("Menu")
         } detail: {
@@ -74,10 +66,6 @@ struct IPadSidebarView: View {
             case .writing:
                 NavigationStack {
                     WritingLevelListView()
-                }
-            case .profile:
-                NavigationStack {
-                    ProfileView()
                 }
             default:
                 EmptyView()
@@ -148,14 +136,6 @@ struct IPhoneTabView: View {
                 Label("Tones", systemImage: "waveform")
             }
             .tag(NavigationRouter.Tab.tonePractice)
-            
-            NavigationStack {
-                ProfileView()
-            }
-            .tabItem {
-                Label("Profile", systemImage: "person.fill")
-            }
-            .tag(NavigationRouter.Tab.profile)
         }
         .tint(DesignSystem.Colors.primary)
     }
@@ -163,5 +143,4 @@ struct IPhoneTabView: View {
 
 #Preview {
     ContentView()
-        .environmentObject(AuthManager())
 }

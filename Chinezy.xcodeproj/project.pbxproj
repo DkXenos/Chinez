@@ -60,7 +60,6 @@
 				Core/Resources/Audios/Ch5/5.1/shu.mp3,
 				Core/Resources/Audios/Ch7/7.3/tian.mp3,
 				Core/Resources/Audios/Ch9/9.3/qian.mp3,
-				GithubLink.md,
 			);
 			target = B001404F2FBF0D1600540C69 /* Chinezy */;
 		};
@@ -152,22 +151,11 @@
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
-/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-		B078E07F2FD171C800FFDE99 /* Exceptions for "Chinezy" folder in "Compile Sources" phase from "Chinezy" target */ = {
-			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
-			buildPhase = B001404C2FBF0D1600540C69 /* Sources */;
-			membershipExceptions = (
-				GithubLink.md,
-			);
-		};
-/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		B00140522FBF0D1600540C69 /* Chinezy */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				B0447EB92FCEEBBB0058B506 /* Exceptions for "Chinezy" folder in "Chinezy" target */,
-				B078E07F2FD171C800FFDE99 /* Exceptions for "Chinezy" folder in "Compile Sources" phase from "Chinezy" target */,
 				B0E17E662FD0D8CE0027371E /* Exceptions for "Chinezy" folder in "ChinezyUnitTests" target */,
 			);
 			path = Chinezy;

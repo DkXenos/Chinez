@@ -68,7 +68,7 @@ struct LearningView: View {
         SubChapter(
             title: "1.1 Menyapa",
             flashcards: [
-                Flashcard(hanzi: "你好", pinyin: "nǐ hǎo", indonesianTranslation: "halo", imageRef: "hand.wave.fill", audioRef: "")
+                Flashcard(hanzi: "你好", pinyin: "nǐ hǎo", indonesianTranslation: "halo", imageRef: "hand.wave.fill", audioRef: "nihao")
             ],
             dialogLines: [
                 DialogLine(speaker: "A", text: "你好！"),

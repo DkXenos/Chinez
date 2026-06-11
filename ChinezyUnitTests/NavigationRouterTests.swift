@@ -27,7 +27,6 @@ final class NavigationRouterTests: XCTestCase {
     // MARK: - Default State
 
     func testDefaultState() {
-        XCTAssertEqual(router.currentState, .unauthenticated)
         XCTAssertEqual(router.selectedTab, .materials)
         XCTAssertTrue(router.navigationPath.isEmpty)
         XCTAssertNil(router.selectedTheme)
@@ -35,21 +34,11 @@ final class NavigationRouterTests: XCTestCase {
         XCTAssertFalse(router.showExercise)
     }
 
-    // MARK: - navigateToHome
-
-    func testNavigateToHome() {
-        router.navigateToHome()
-        XCTAssertEqual(router.currentState, .home)
-    }
-
     // MARK: - Tab Selection
 
     func testSelectTab() {
         router.selectedTab = .quiz
         XCTAssertEqual(router.selectedTab, .quiz)
-
-        router.selectedTab = .profile
-        XCTAssertEqual(router.selectedTab, .profile)
 
         router.selectedTab = .tonePractice
         XCTAssertEqual(router.selectedTab, .tonePractice)
@@ -98,14 +87,7 @@ final class NavigationRouterTests: XCTestCase {
         XCTAssertTrue(router.showExercise)
     }
 
-    // MARK: - AppState Enum
 
-    func testAppStateValues() {
-        let unauthenticated = AppState.unauthenticated
-        let home = AppState.home
-
-        XCTAssertNotEqual(String(describing: unauthenticated), String(describing: home))
-    }
 
     // MARK: - AppRoute Hashable
 

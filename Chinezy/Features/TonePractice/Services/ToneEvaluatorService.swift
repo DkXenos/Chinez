@@ -184,7 +184,7 @@ extension ToneEvaluatorService: @preconcurrency SNResultsObserving {
 
         print("🔍 [SoundAnalysis] \(top.identifier): \(String(format: "%.0f%%", top.confidence * 100))")
 
-        if top.confidence >= 0.80 {
+        if top.confidence >= 0.65 {
             Task { @MainActor in
                 if self.state == .recording,
                    let target = self.targetToneIdentifier,
@@ -201,7 +201,7 @@ extension ToneEvaluatorService: @preconcurrency SNResultsObserving {
             }
         }
 
-        if top.confidence >= 0.50 {
+        if top.confidence >= 0.45 {
             bufferLock.lock()
             accumulatedPredictions.append(top.identifier)
             bufferLock.unlock()

@@ -4,11 +4,7 @@ struct CourseDataWrapper: Codable {
     let courses: [Course]
 }
 
-protocol CourseDataServiceProtocol: CourseService {
-    func loadCourses() throws -> [Course]
-}
-
-struct CourseDataService: CourseDataServiceProtocol {
+struct CourseDataService: CourseService {
     
     enum DataError: LocalizedError {
         case fileNotFound
@@ -17,9 +13,9 @@ struct CourseDataService: CourseDataServiceProtocol {
         var errorDescription: String? {
             switch self {
             case .fileNotFound:
-                return "File courses.json tidak ditemukan di bundle aplikasi."
+                return "File courses.json not found in app bundle."
             case .decodingFailed(let error):
-                return "Gagal membaca courses.json: \(error.localizedDescription)"
+                return "Failed to read courses.json: \(error.localizedDescription)"
             }
         }
     }
@@ -30,7 +26,7 @@ struct CourseDataService: CourseDataServiceProtocol {
         self.resourceName = resourceName
     }
     
-    func loadCourses() throws -> [Course] {
+    private func loadCourses() throws -> [Course] {
         guard let url = Bundle.main.url(forResource: resourceName, withExtension: "json") else {
             throw DataError.fileNotFound
         }
